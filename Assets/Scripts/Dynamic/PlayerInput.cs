@@ -10,27 +10,20 @@ public class PlayerInput : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
+        if (Input.GetKeyDown(KeyCode.Space)){
             spacePressed = true;
-        }else if(Input.GetKeyUp(KeyCode.Space)){
-            spacePressed = false;
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow)){
             leftPressed = true;
-        }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            rightPressed = true;
-        }
-        if (Input.GetKeyUp(KeyCode.RightArrow))
-        {
-            rightPressed = false;
-        }
-        if (Input.GetKeyUp(KeyCode.LeftArrow))
-        {
+        }else if (Input.GetKeyUp(KeyCode.LeftArrow)){
             leftPressed = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow)){
+            rightPressed = true;
+        }else if (Input.GetKeyUp(KeyCode.RightArrow)){
+            rightPressed = false;
         }
     }
     
