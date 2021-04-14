@@ -1,2 +1,3 @@
 # Unity2DProject
-Unity 2D Project
+
+Using C# for Unity to write specific components related to 2D games.
