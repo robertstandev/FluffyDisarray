@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class CheckGround : MonoBehaviour
 {
-    private bool grounded = false;
+    public bool grounded = false;
     private SpriteRenderer sprite;
     private RaycastHit2D boxResult;
     private Vector2 origin;
@@ -29,11 +29,7 @@ public class CheckGround : MonoBehaviour
         //Physics2D.BoxCast(origin,size,angleForBoxRotation,directionForBox,distance)
         boxResult = Physics2D.BoxCast(origin, boxSize, 0, Vector2.down, boxSize.y);
 
-        if(boxResult){
-            grounded = true;
-        }else{
-            grounded = false;
-        }
+        grounded = boxResult ? true : false;
     }
 
     public bool isGrounded(){
