@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class CheckGround : MonoBehaviour
 {
-    public bool grounded = false;
+    private bool grounded = false;
     private SpriteRenderer sprite;
     private RaycastHit2D boxResult;
     private Vector2 origin;
