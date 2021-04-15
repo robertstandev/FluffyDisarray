@@ -15,7 +15,7 @@ public class CheckGround : MonoBehaviour
     private void Awake() {
         sprite = GetComponent<SpriteRenderer>();
         originExtension = new Vector3(0, sprite.bounds.extents.y + boxSize.y, 0);
-        boxSize = new Vector2(0.40f,0.02f);
+        boxSize = new Vector2(0.4f,0.02f);
     }
 
     private void FixedUpdate() {
