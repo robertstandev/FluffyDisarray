@@ -24,7 +24,7 @@ public class Jump : MonoBehaviour
         }
     }
     
-    private bool canJump(){
+    public bool canJump(){
        return jumpCounter < maxNrOfJumps;
     }
 
