@@ -31,10 +31,8 @@ public class PlayerController : MonoBehaviour
 
    private void checkInputAndApply(){
        if(inputComponent.isSpacePressed()){
-           if(jumpComponent.canJump()){
-               checkJump();
-           }
-           inputComponent.executedSpacePressed();
+            checkJump();
+            inputComponent.executedSpacePressed();
        }
        
        if(inputComponent.isLeftPressed()){
