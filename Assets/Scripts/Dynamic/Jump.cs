@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Jump : MonoBehaviour
 {
     private Rigidbody2D rb;
@@ -18,8 +19,8 @@ public class Jump : MonoBehaviour
     
     public void jump(){
         if(canJump()){
-            applyPhysics();
             jumpCounter += 1;
+            applyPhysics();
         }
     }
     
