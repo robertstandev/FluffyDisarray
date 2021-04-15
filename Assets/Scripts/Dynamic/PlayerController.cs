@@ -25,16 +25,18 @@ public class PlayerController : MonoBehaviour
    }
 
    private void FixedUpdate(){
-        checkInput();
+        checkInputAndApply();
         checkGround();
    }
 
-   private void checkInput(){
+   private void checkInputAndApply(){
        if(inputComponent.isSpacePressed()){
+           if(jumpComponent.canJump()){
+               checkJump();
+           }
            inputComponent.executedSpacePressed();
-           checkJump();
        }
-
+       
        if(inputComponent.isLeftPressed()){
             changeOrientation(false);
             moveComponent.walk();
@@ -45,7 +47,7 @@ public class PlayerController : MonoBehaviour
    }
 
    private void checkGround(){
-        if(checkGroundComponent.getIsGroundedState()){
+        if(checkGroundComponent.isGrounded()){
             if(canModify){
                 canModify = false;
                 staminaComponent.startStaminaModifierTimer(0.3f,staminaComponent.addStamina,5);
