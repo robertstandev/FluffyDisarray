@@ -26,16 +26,13 @@ public class PlayerController : MonoBehaviour
 
    private void FixedUpdate(){
         checkInputAndApply();
-        checkGround();
+        checkGroundAndModifyStamina();
    }
 
    private void checkInputAndApply(){
        if(inputComponent.isSpacePressed()){
-            if(jumpComponent.canJump()){
-               checkJump();
-            }
-            
-            inputComponent.executedSpacePressed();
+          checkJump();
+          inputComponent.executedSpacePressed();
        }
        
        if(inputComponent.isLeftPressed()){
@@ -45,13 +42,15 @@ public class PlayerController : MonoBehaviour
        }
    }
 
-   private void checkGround(){
+   private void checkGroundAndModifyStamina(){
         if(checkGroundComponent.isGrounded()){
-            if(canModify){
-                canModify = false;
-                staminaComponent.startStaminaModifierTimer(0.3f,staminaComponent.addStamina,5);
-                jumpComponent.resetJumpCounter();
-            }
+               if(!canModify){
+                    return;
+               }else{
+                    canModify = false;
+                    staminaComponent.startStaminaModifierTimer(0.3f,staminaComponent.addStamina,5);
+                    jumpComponent.resetJumpCounter();
+             }
        }else{
            canModify = true;
            staminaComponent.stopStaminaModifierTimer();
@@ -64,10 +63,12 @@ public class PlayerController : MonoBehaviour
         moveComponent.walk();
    }
 
-   private void checkJump(){
-       if(staminaComponent.getStamina() >= 10){
-            jumpComponent.jump();
-            staminaComponent.substractStamina(10);
-       }
-   }
+     private void checkJump(){
+          if(jumpComponent.canJump()){
+               if(staminaComponent.getStamina() >= 10){
+                    jumpComponent.jump();
+                    staminaComponent.substractStamina(10);
+               }
+          }
+     }
 }
