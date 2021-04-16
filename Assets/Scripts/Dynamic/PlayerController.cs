@@ -39,11 +39,9 @@ public class PlayerController : MonoBehaviour
        }
        
        if(inputComponent.isLeftPressed()){
-            changeOrientation(false);
-            moveComponent.walk();
+            changeOrientationAndMove(false);
        }else if(inputComponent.isRightPressed()){
-            changeOrientation(true);
-            moveComponent.walk();
+            changeOrientationAndMove(true);
        }
    }
 
@@ -60,9 +58,10 @@ public class PlayerController : MonoBehaviour
        }
    }
 
-   private void changeOrientation(bool isWalkingRight){
+   private void changeOrientationAndMove(bool isWalkingRight){
         orientationComponent.isFacingRight(isWalkingRight);
         moveComponent.isFacingRight(isWalkingRight);
+        moveComponent.walk();
    }
 
    private void checkJump(){
