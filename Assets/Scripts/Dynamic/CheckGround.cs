@@ -21,7 +21,6 @@ public class CheckGround : MonoBehaviour
         originExtension.y = sprite.bounds.extents.y + boxSize.y;
         origin = transform.position - originExtension;
 
-        //Physics2D.BoxCast(origin,size,angleForBoxRotation,directionForBox,distance)
         boxResult = Physics2D.BoxCast(origin, boxSize, 0, Vector2.down, boxSize.y);
 
         return boxResult;
