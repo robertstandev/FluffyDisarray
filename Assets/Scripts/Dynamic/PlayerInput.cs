@@ -4,26 +4,38 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
+    [SerializeField]private KeyCode jumpButton = KeyCode.Space;
+    [SerializeField]private KeyCode leftButton = KeyCode.LeftArrow;
+    [SerializeField]private KeyCode rightButton = KeyCode.RightArrow;
+    [SerializeField]private KeyCode crouchButton = KeyCode.DownArrow;
+
     private bool spacePressed = false;
     private bool leftPressed = false;
     private bool rightPressed = false;
+    private bool crouchPressed = false;
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)){
+        if (Input.GetKeyDown(jumpButton)){
             spacePressed = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow)){
+        if (Input.GetKeyDown(leftButton)){
             leftPressed = true;
-        }else if (Input.GetKeyUp(KeyCode.LeftArrow)){
+        }else if (Input.GetKeyUp(leftButton)){
             leftPressed = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow)){
+        if (Input.GetKeyDown(rightButton)){
             rightPressed = true;
-        }else if (Input.GetKeyUp(KeyCode.RightArrow)){
+        }else if (Input.GetKeyUp(rightButton)){
             rightPressed = false;
+        }
+
+        if (Input.GetKeyDown(crouchButton)){
+            crouchPressed = true;
+        }else if (Input.GetKeyUp(crouchButton)){
+            crouchPressed = false;
         }
     }
     
@@ -42,5 +54,9 @@ public class PlayerInput : MonoBehaviour
 
     public bool isRightPressed(){
         return this.rightPressed;
+    }
+
+    public bool isCrouchPressed(){
+        return this.crouchPressed;
     }
 }
