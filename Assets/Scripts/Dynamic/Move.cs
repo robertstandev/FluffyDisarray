@@ -11,6 +11,8 @@ public class Move : MonoBehaviour
    private Rigidbody2D rb;
    
    private bool facingRight = true;
+   private Vector3 facingRightOrientation;
+   private Vector3 facingLeftOrientation;
 
    private Vector2 movingRight;
    private Vector2 movingLeft;
@@ -25,26 +27,30 @@ public class Move : MonoBehaviour
 
       runningRight = new Vector2(runForce, 0f);
       runningLeft = new Vector2((runForce * -1), 0f);
+
+      facingRightOrientation = transform.localScale;
+      facingLeftOrientation = new Vector3(facingRightOrientation.x * -1, facingRightOrientation.y , facingRightOrientation.z);
    }
 
    public void walk(){
       if(facingRight){
-        movingRight.y = rb.velocity.y;
-        rb.velocity = movingRight;
+        velocityModifier(movingRight);
      }else{
-        movingLeft.y = rb.velocity.y;
-        rb.velocity = movingLeft;
+        velocityModifier(movingLeft);
      }
    }
 
    public void run(){
       if(facingRight){
-        runningRight.y = rb.velocity.y;
-        rb.velocity = runningRight;
+        velocityModifier(runningRight);
      }else{
-        runningLeft.y = rb.velocity.y;
-        rb.velocity = runningLeft;
+        velocityModifier(runningLeft);
      }
+   }
+
+   private void velocityModifier(Vector2 movementAndDirection){
+      movementAndDirection.y = rb.velocity.y;
+      rb.velocity = movementAndDirection;
    }
 
    public bool isFacingRight(){
@@ -53,5 +59,6 @@ public class Move : MonoBehaviour
 
    public void flip(){
       this.facingRight = !facingRight;
+      transform.localScale = facingRight ? facingRightOrientation : facingLeftOrientation;
    }
 }
