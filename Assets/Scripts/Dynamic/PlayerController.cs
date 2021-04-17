@@ -4,43 +4,41 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private PlayerInput inputComponent;
-    private Orientation orientationComponent;
-    private Move moveComponent;
-    private Jump jumpComponent;
-    private CheckGround checkGroundComponent;
-    private Crouch crouchComponent;
-    private Stamina staminaComponent;
+     private PlayerInput inputComponent;
+     private Orientation orientationComponent;
+     private Move moveComponent;
+     private Jump jumpComponent;
+     private CheckGround checkGroundComponent;
+     private Crouch crouchComponent;
+     private Stamina staminaComponent;
 
-    private bool canModify = true;
+     private bool canModify = true;
 
-   private void Awake(){
-       inputComponent = GetComponent<PlayerInput>();
-       orientationComponent = GetComponent<Orientation>();
-       moveComponent = GetComponent<Move>();
-       jumpComponent = GetComponent<Jump>();
-       checkGroundComponent = GetComponent<CheckGround>();
-       crouchComponent = GetComponent<Crouch>();
-       staminaComponent = GetComponent<Stamina>();
-   }
+     private void Awake(){
+          inputComponent = GetComponent<PlayerInput>();
+          orientationComponent = GetComponent<Orientation>();
+          moveComponent = GetComponent<Move>();
+          jumpComponent = GetComponent<Jump>();
+          checkGroundComponent = GetComponent<CheckGround>();
+          crouchComponent = GetComponent<Crouch>();
+          staminaComponent = GetComponent<Stamina>();
+     }
 
-   private void FixedUpdate(){
-        checkInput();
-        checkGroundAndModifyStamina();
-   }
+     private void FixedUpdate(){
+          checkGroundAndModifyStamina();
+          checkInput();
+     }
 
-   private void checkGroundAndModifyStamina(){
-          if(checkGroundComponent.isGrounded()){
-               if(canModify){
-                    canModify = false;
-                    staminaComponent.startStaminaModifierTimer(0.3f,staminaComponent.addStamina,5);
-                    jumpComponent.resetJumpCounter();
-               }
-          }else{
+     private void checkGroundAndModifyStamina(){
+          if(canModify && checkGroundComponent.isGrounded()){
+               canModify = false;
+               staminaComponent.startStaminaModifierTimer(0.3f,staminaComponent.addStamina,5);
+               jumpComponent.resetJumpCounter();
+          }else if(!canModify && !checkGroundComponent.isGrounded()){
                canModify = true;
                staminaComponent.stopStaminaModifierTimer();
           }
-   }
+     }
 
      private void checkInput(){     
           if(inputComponent.isSpacePressed()){
@@ -55,14 +53,14 @@ public class PlayerController : MonoBehaviour
           }
      }
 
-   private void checkOrientationAndMove(bool isWalkingRight){
-        if(orientationComponent.isFacingRight() != isWalkingRight){
-             orientationComponent.flip();
-             moveComponent.flip();
-        }
+     private void checkOrientationAndMove(bool isWalkingRight){
+          if(orientationComponent.isFacingRight() != isWalkingRight){
+               orientationComponent.flip();
+               moveComponent.flip();
+          }
 
-        moveComponent.walk();
-   }
+          moveComponent.walk();
+     }
 
      private void checkJump(){
           if(jumpComponent.canJump() && staminaComponent.getStamina() >= 10){
