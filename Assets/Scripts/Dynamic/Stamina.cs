@@ -43,4 +43,12 @@ public class Stamina : MonoBehaviour
    public void startStaminaModifierTimer(float interval, System.Action<int> getMethod , int amountPerTick){
       this.staminaModifierTimerInstance = StartCoroutine(staminaModifierTimer(interval,getMethod,amountPerTick));
    }
+
+   public bool canJump(int amountOfStaminaToSubstract){
+      if(this.currentStamina >= amountOfStaminaToSubstract){
+         substractStamina(amountOfStaminaToSubstract);
+         return true;
+      }
+      return false;
+   }
 }
