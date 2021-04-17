@@ -29,28 +29,20 @@ public class Move : MonoBehaviour
       runningLeft = new Vector2((runForce * -1), 0f);
 
       facingRightOrientation = transform.localScale;
-      facingLeftOrientation = new Vector3(facingRightOrientation.x * -1, facingRightOrientation.y , facingRightOrientation.z);
+      facingLeftOrientation = new Vector3(transform.localScale.x * -1, transform.localScale.y , transform.localScale.z);
    }
 
    public void walk(){
-      if(facingRight){
-        velocityModifier(movingRight);
-     }else{
-        velocityModifier(movingLeft);
-     }
+      velocityModifier(facingRight ? movingRight : movingLeft);
    }
 
    public void run(){
-      if(facingRight){
-        velocityModifier(runningRight);
-     }else{
-        velocityModifier(runningLeft);
-     }
+      velocityModifier(facingRight ? runningRight : runningLeft);
    }
 
-   private void velocityModifier(Vector2 movementAndDirection){
-      movementAndDirection.y = rb.velocity.y;
-      rb.velocity = movementAndDirection;
+   private void velocityModifier(Vector2 movementTypeAndDirection){
+      movementTypeAndDirection.y = rb.velocity.y;
+      rb.velocity = movementTypeAndDirection;
    }
 
    public bool isFacingRight(){
