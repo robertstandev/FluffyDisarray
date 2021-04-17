@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class Orientation : MonoBehaviour
 {
-    [SerializeField]private Transform face;
-    private Vector3 facingRight;
-    private Vector3 facingLeft;
+    private Vector3 facingRightState;
+    private Vector3 facingLeftState;
+    private bool facingRight = true;
 
     void Awake(){
-        facingRight = face.localPosition;
-        facingLeft = new Vector3(face.localPosition.x * -1, face.localPosition.y, face.localPosition.z);
+        facingRightState = transform.localScale;
+        facingLeftState = new Vector3(facingRightState.x * -1, facingRightState.y , facingRightState.z);
     }
 
-    public void isFacingRight(bool value){
-        face.localPosition = value ? facingRight : facingLeft;
+    public void flip(){
+        facingRight = !facingRight;
+        transform.localScale = facingRight ? facingRightState : facingLeftState;
+    }
+
+    public bool isFacingRight(){
+        return this.facingRight;
     }
 }
