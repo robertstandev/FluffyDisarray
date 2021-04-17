@@ -30,7 +30,12 @@ public class Stamina : MonoBehaviour
        
        while(true){
             yield return delay;
+
             getMethod?.Invoke(amountPerTick);
+
+            if(((getMethod == addStamina) && (currentStamina == maximumStamina)) || ((getMethod == substractStamina) && (currentStamina == 0))){
+               stopStaminaModifierTimer();
+            }
        }
    }
 
