@@ -14,7 +14,7 @@ public class Jump : MonoBehaviour
 
     private void Awake(){
         rb = GetComponent<Rigidbody2D>();
-        jumpVelocity = new Vector2(rb.velocity.x, jumpForce);
+        jumpVelocity = new Vector2(0f, jumpForce);
     }
     
     public void jump(){
