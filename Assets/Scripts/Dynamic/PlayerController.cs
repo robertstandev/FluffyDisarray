@@ -25,55 +25,49 @@ public class PlayerController : MonoBehaviour
    }
 
    private void FixedUpdate(){
-        checkInputAndApply();
+        checkInput();
         checkGroundAndModifyStamina();
    }
 
-   private void checkInputAndApply(){
-       if(inputComponent.isSpacePressed()){
-          checkJump();
-          inputComponent.executedSpacePressed();
-       }
-       
-       if(inputComponent.isLeftPressed()){
-            changeOrientationAndMove(false);
-       }else if(inputComponent.isRightPressed()){
-            changeOrientationAndMove(true);
-       }
-   }
-
    private void checkGroundAndModifyStamina(){
-        if(checkGroundComponent.isGrounded()){
-               if(!canModify){
-                    return;
-               }else{
+          if(checkGroundComponent.isGrounded()){
+               if(canModify){
                     canModify = false;
                     staminaComponent.startStaminaModifierTimer(0.3f,staminaComponent.addStamina,5);
                     jumpComponent.resetJumpCounter();
-             }
-       }else{
-           canModify = true;
-           staminaComponent.stopStaminaModifierTimer();
-       }
+               }
+          }else{
+               canModify = true;
+               staminaComponent.stopStaminaModifierTimer();
+          }
    }
 
-   private void changeOrientationAndMove(bool isWalkingRight){
+     private void checkInput(){     
+          if(inputComponent.isSpacePressed()){
+               checkJump();
+               inputComponent.executedSpacePressed();
+          }  
+
+          if(inputComponent.isLeftPressed()){
+               checkOrientationAndMove(false);
+          }else if(inputComponent.isRightPressed()){
+               checkOrientationAndMove(true);
+          }
+     }
+
+   private void checkOrientationAndMove(bool isWalkingRight){
         if(orientationComponent.isFacingRight() != isWalkingRight){
              orientationComponent.flip();
-        }
-
-        if(moveComponent.isFacingRight() != isWalkingRight){
              moveComponent.flip();
         }
+
         moveComponent.walk();
    }
 
      private void checkJump(){
-          if(jumpComponent.canJump()){
-               if(staminaComponent.getStamina() >= 10){
-                    staminaComponent.substractStamina(10);
-                    jumpComponent.jump();
-               }
+          if(jumpComponent.canJump() && staminaComponent.getStamina() >= 10){
+               staminaComponent.substractStamina(10);
+               jumpComponent.jump();
           }
      }
 }
