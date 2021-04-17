@@ -58,8 +58,13 @@ public class PlayerController : MonoBehaviour
    }
 
    private void changeOrientationAndMove(bool isWalkingRight){
-        orientationComponent.isFacingRight(isWalkingRight);
-        moveComponent.isFacingRight(isWalkingRight);
+        if(orientationComponent.isFacingRight() != isWalkingRight){
+             orientationComponent.flip();
+        }
+
+        if(moveComponent.isFacingRight() != isWalkingRight){
+             moveComponent.flip();
+        }
         moveComponent.walk();
    }
 
