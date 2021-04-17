@@ -20,7 +20,7 @@ public class Jump : MonoBehaviour
     public void jump(){
         if(canJump()){
             jumpCounter += 1;
-            applyPhysics();
+            rb.velocity = jumpVelocity;
         }
     }
     
@@ -30,9 +30,5 @@ public class Jump : MonoBehaviour
 
     public void resetJumpCounter(){
         this.jumpCounter = 0;
-    }
-    
-    private void applyPhysics(){
-        rb.velocity = jumpVelocity;
     }
 }
