@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
      private PlayerInput inputComponent;
-     private Orientation orientationComponent;
      private Move moveComponent;
      private Jump jumpComponent;
      private CheckGround checkGroundComponent;
@@ -16,7 +15,6 @@ public class PlayerController : MonoBehaviour
 
      private void Awake(){
           inputComponent = GetComponent<PlayerInput>();
-          orientationComponent = GetComponent<Orientation>();
           moveComponent = GetComponent<Move>();
           jumpComponent = GetComponent<Jump>();
           checkGroundComponent = GetComponent<CheckGround>();
@@ -54,8 +52,7 @@ public class PlayerController : MonoBehaviour
      }
 
      private void checkOrientationAndMove(bool isWalkingRight){
-          if(orientationComponent.isFacingRight() != isWalkingRight){
-               orientationComponent.flip();
+          if(moveComponent.isFacingRight() != isWalkingRight){
                moveComponent.flip();
           }
 
