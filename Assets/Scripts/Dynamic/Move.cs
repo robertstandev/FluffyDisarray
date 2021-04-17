@@ -47,7 +47,11 @@ public class Move : MonoBehaviour
      }
    }
 
-   public void isFacingRight(bool value){
-      this.facingRight = value;
+   public bool isFacingRight(){
+      return this.facingRight;
+   }
+
+   public void flip(){
+      this.facingRight = !facingRight;
    }
 }
