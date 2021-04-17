@@ -7,7 +7,6 @@ public class CheckGround : MonoBehaviour
 {
     private SpriteRenderer sprite;
     private RaycastHit2D boxResult;
-    private Vector2 origin;
     private Vector3 originExtension;
     private Vector2 boxSize;
 
@@ -19,10 +18,6 @@ public class CheckGround : MonoBehaviour
 
     public bool isGrounded(){
         originExtension.y = sprite.bounds.extents.y + boxSize.y;
-        origin = transform.position - originExtension;
-
-        boxResult = Physics2D.BoxCast(origin, boxSize, 0, Vector2.down, boxSize.y);
-
-        return boxResult;
+        return boxResult = Physics2D.BoxCast(transform.position - originExtension, boxSize, 0, Vector2.down, boxSize.y);
     }
 }
