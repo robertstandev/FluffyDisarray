@@ -65,7 +65,8 @@ public class PlayerController : MonoBehaviour
 
      private void checkJump(){
           if(jumpComponent.canJump()){
-               if(staminaComponent.canJump(10)){
+               if(staminaComponent.getStamina() >= 10){
+                    staminaComponent.substractStamina(10);
                     jumpComponent.jump();
                }
           }
