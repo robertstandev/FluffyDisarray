@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
      private void checkGroundAndModifyStamina(){
           if(canModify && checkGroundComponent.isGrounded()){
                canModify = false;
-               staminaComponent.startStaminaModifierTimer(0.5f, staminaComponent.addStamina, 10);
+               staminaComponent.startStaminaModifierTimer(0.3f, staminaComponent.addStamina, 5);
                jumpComponent.resetJumpCounter();
           }else if(!canModify && !checkGroundComponent.isGrounded()){
                canModify = true;
