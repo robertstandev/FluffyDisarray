@@ -2,13 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
 public class Move : MonoBehaviour
 {
    [SerializeField]private float moveForce = 2f;
    [SerializeField]private float runForce = 4f;
-
-   private Rigidbody2D rb;
    
    private bool facingRight = true;
    private Vector3 facingRightOrientation;
@@ -20,8 +17,6 @@ public class Move : MonoBehaviour
    private Vector2 runningLeft;
 
    private void Awake(){
-      rb = GetComponent<Rigidbody2D>();
-
       movingRight = new Vector2(moveForce, 0f);
       movingLeft = new Vector2((moveForce * -1), 0f);
 
@@ -32,15 +27,15 @@ public class Move : MonoBehaviour
       facingLeftOrientation = new Vector3(transform.localScale.x * -1, transform.localScale.y , transform.localScale.z);
    }
 
-   public void walk(){
-      velocityModifier(facingRight ? movingRight : movingLeft);
+   public void walk(Rigidbody2D rb){
+      velocityModifier(rb, facingRight ? movingRight : movingLeft);
    }
 
-   public void run(){
-      velocityModifier(facingRight ? runningRight : runningLeft);
+   public void run(Rigidbody2D rb){
+      velocityModifier(rb, facingRight ? runningRight : runningLeft);
    }
 
-   private void velocityModifier(Vector2 movementTypeAndDirection){
+   private void velocityModifier(Rigidbody2D rb, Vector2 movementTypeAndDirection){
       movementTypeAndDirection.y = rb.velocity.y;
       rb.velocity = movementTypeAndDirection;
    }
