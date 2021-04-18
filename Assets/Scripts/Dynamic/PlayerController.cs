@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
      private PlayerInput inputComponent;
-     private Move moveComponent;
+     private Movement movementComponent;
      private Jump jumpComponent;
      private CheckGround checkGroundComponent;
      private Crouch crouchComponent;
@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
 
      private void Awake(){
           inputComponent = GetComponent<PlayerInput>();
-          moveComponent = GetComponent<Move>();
+          movementComponent = GetComponent<Movement>();
           jumpComponent = GetComponent<Jump>();
           checkGroundComponent = GetComponent<CheckGround>();
           crouchComponent = GetComponent<Crouch>();
@@ -59,11 +59,11 @@ public class PlayerController : MonoBehaviour
      }
 
      private void checkOrientationAndMove(bool isMovingRight){
-          if(moveComponent.isFacingRight() != isMovingRight){
-               moveComponent.flip();
+          if(movementComponent.isFacingRight() != isMovingRight){
+               movementComponent.flip();
           }
 
-          moveComponent.walk(rb);
+          movementComponent.move(rb);
      }
 
      private void checkJump(){
