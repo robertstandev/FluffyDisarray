@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class PlayerController : MonoBehaviour
 {
      private PlayerInput inputComponent;
@@ -13,6 +14,7 @@ public class PlayerController : MonoBehaviour
      private Stamina staminaComponent;
 
      private Rigidbody2D rb;
+     private SpriteRenderer sprite;
      private bool canModify = true;
 
      private void Awake(){
@@ -24,6 +26,7 @@ public class PlayerController : MonoBehaviour
           staminaComponent = GetComponent<Stamina>();
 
           rb = GetComponent<Rigidbody2D>();
+          sprite = GetComponent<SpriteRenderer>();
      }
 
      private void FixedUpdate(){
@@ -32,11 +35,11 @@ public class PlayerController : MonoBehaviour
      }
 
      private void checkGroundAndModifyStamina(){
-          if(canModify && checkGroundComponent.isGrounded()){
+          if(canModify && checkGroundComponent.isGrounded(sprite)){
                canModify = false;
                staminaComponent.startStaminaModifierTimer(0.3f, staminaComponent.addStamina, 5);
                jumpComponent.resetJumpCounter();
-          }else if(!canModify && !checkGroundComponent.isGrounded()){
+          }else if(!canModify && !checkGroundComponent.isGrounded(sprite)){
                canModify = true;
                staminaComponent.stopStaminaModifierTimer();
           }
