@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
      private PlayerInput inputComponent;
@@ -11,6 +12,7 @@ public class PlayerController : MonoBehaviour
      private Crouch crouchComponent;
      private Stamina staminaComponent;
 
+     private Rigidbody2D rb;
      private bool canModify = true;
 
      private void Awake(){
@@ -20,6 +22,8 @@ public class PlayerController : MonoBehaviour
           checkGroundComponent = GetComponent<CheckGround>();
           crouchComponent = GetComponent<Crouch>();
           staminaComponent = GetComponent<Stamina>();
+
+          rb = GetComponent<Rigidbody2D>();
      }
 
      private void FixedUpdate(){
@@ -56,13 +60,13 @@ public class PlayerController : MonoBehaviour
                moveComponent.flip();
           }
 
-          moveComponent.walk();
+          moveComponent.walk(rb);
      }
 
      private void checkJump(){
           if(jumpComponent.canJump() && staminaComponent.getStamina() >= 10){
                staminaComponent.substractStamina(10);
-               jumpComponent.jump();
+               jumpComponent.jump(rb);
           }
      }
 }
