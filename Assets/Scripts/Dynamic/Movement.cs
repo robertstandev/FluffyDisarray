@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Move : MonoBehaviour
+public class Movement : MonoBehaviour
 {
    [SerializeField]private float moveForce = 2f;
    [SerializeField]private float runForce = 4f;
@@ -27,7 +27,7 @@ public class Move : MonoBehaviour
       facingLeftOrientation = new Vector3(transform.localScale.x * -1, transform.localScale.y , transform.localScale.z);
    }
 
-   public void walk(Rigidbody2D rb){
+   public void move(Rigidbody2D rb){
       velocityModifier(rb, facingRight ? movingRight : movingLeft);
    }
 
