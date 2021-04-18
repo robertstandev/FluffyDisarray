@@ -6,9 +6,9 @@ public class Jump : MonoBehaviour
 {
     [SerializeField]private float jumpForce = 10f;
     [SerializeField]private int maxNrOfJumps = 2;
+    
     private int jumpCounter = 0;
     private Vector2 jumpVelocity;
-
 
     private void Awake(){
         jumpVelocity = new Vector2(0f, jumpForce);
