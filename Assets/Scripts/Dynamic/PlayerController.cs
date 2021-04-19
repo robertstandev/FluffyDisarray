@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
      private Movement movementComponent;
      private Jump jumpComponent;
      private CheckGround checkGroundComponent;
-     private Crouch crouchComponent;
      private Stamina staminaComponent;
 
      private Rigidbody2D rb;
@@ -22,7 +21,6 @@ public class PlayerController : MonoBehaviour
           movementComponent = GetComponent<Movement>();
           jumpComponent = GetComponent<Jump>();
           checkGroundComponent = GetComponent<CheckGround>();
-          crouchComponent = GetComponent<Crouch>();
           staminaComponent = GetComponent<Stamina>();
 
           rb = GetComponent<Rigidbody2D>();
