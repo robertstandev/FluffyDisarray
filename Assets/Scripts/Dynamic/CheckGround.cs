@@ -5,7 +5,7 @@ using UnityEngine;
 public class CheckGround : MonoBehaviour
 {
     [SerializeField]private float distanceToCheck = 0.02f;
-    private RaycastHit2D groundCheckBox;
+    private RaycastHit2D groundCheckBoxTrigger;
     private Vector3 groundCheckBoxPosition;
     private Vector2 groundCheckBoxSize;
 
@@ -18,6 +18,6 @@ public class CheckGround : MonoBehaviour
         groundCheckBoxSize.x = sprite.bounds.size.x;
         groundCheckBoxPosition.y = sprite.bounds.extents.y + groundCheckBoxSize.y;
 
-        return groundCheckBox = Physics2D.BoxCast(transform.position - groundCheckBoxPosition, groundCheckBoxSize, 0, Vector2.down, groundCheckBoxSize.y);
+        return groundCheckBoxTrigger = Physics2D.BoxCast(transform.position - groundCheckBoxPosition, groundCheckBoxSize, 0, Vector2.down, groundCheckBoxSize.y);
     }
 }
