@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class CheckGround : MonoBehaviour
 {
-    private RaycastHit2D boxResult;
-    private Vector3 originExtension;
-    private Vector2 boxSize;
+    [SerializeField]private float distanceToCheck = 0.02f;
+    private RaycastHit2D groundCheckBox;
+    private Vector3 groundCheckBoxPosition;
+    private Vector2 groundCheckBoxSize;
 
     private void Awake() {
-        originExtension = Vector3.zero;
-        boxSize = new Vector2(0.4f,0.02f);
+        groundCheckBoxPosition = Vector3.zero;
+        groundCheckBoxSize = new Vector2(0f, distanceToCheck);
     }
 
     public bool isGrounded(SpriteRenderer sprite){
-        originExtension.y = sprite.bounds.extents.y + boxSize.y;
-        return boxResult = Physics2D.BoxCast(transform.position - originExtension, boxSize, 0, Vector2.down, boxSize.y);
+        groundCheckBoxSize.x = sprite.bounds.size.x;
+        groundCheckBoxPosition.y = sprite.bounds.extents.y + groundCheckBoxSize.y;
+
+        return groundCheckBox = Physics2D.BoxCast(transform.position - groundCheckBoxPosition, groundCheckBoxSize, 0, Vector2.down, groundCheckBoxSize.y);
     }
 }
