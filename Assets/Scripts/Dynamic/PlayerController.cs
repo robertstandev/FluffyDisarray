@@ -29,16 +29,16 @@ public class PlayerController : MonoBehaviour
      }
 
      private void FixedUpdate(){
-          checkGroundAndModifyStamina();
+          checkSurroundings();
           checkInput();
      }
 
-     private void checkGroundAndModifyStamina(){
-          if(canModify && checkGroundComponent.isGrounded(sprite)){
+     private void checkSurroundings(){
+          if(canModify && checkGroundComponent.isGrounded(sprite)){                                 //is on the ground
                canModify = false;
                staminaComponent.startStaminaModifierTimer(0.3f, staminaComponent.addStamina, 5);
-               jumpComponent.resetJumpCounter();
-          }else if(!canModify && !checkGroundComponent.isGrounded(sprite)){
+               jumpComponent.setJumpCounter(0);
+          }else if(!canModify && !checkGroundComponent.isGrounded(sprite)){                         //just jumped
                canModify = true;
                staminaComponent.stopStaminaModifierTimer();
           }
