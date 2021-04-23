@@ -6,7 +6,6 @@ public class Jump : MonoBehaviour
 {
     [SerializeField]private float jumpForce = 10f;
     [SerializeField]private int maxNrOfJumps = 2;
-    
     private int jumpCounter = 0;
     private Vector2 jumpVelocity;
 
@@ -25,7 +24,13 @@ public class Jump : MonoBehaviour
        return jumpCounter < maxNrOfJumps;
     }
 
-    public void resetJumpCounter(){
-        this.jumpCounter = 0;
+    public int getJumpCounter(){
+        return this.jumpCounter;
+    }
+
+    public void setJumpCounter(int value){
+        if(value <= maxNrOfJumps){
+            this.jumpCounter = value;
+        }
     }
 }
