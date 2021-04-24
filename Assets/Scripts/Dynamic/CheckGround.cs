@@ -2,22 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CheckGround : MonoBehaviour
+public class CheckSurroundings : MonoBehaviour
 {
-    [SerializeField]private float distanceToCheck = 0.02f;
-    private RaycastHit2D groundCheckBoxTrigger;
-    private Vector3 groundCheckBoxPosition;
-    private Vector2 groundCheckBoxSize;
 
-    private void Awake() {
-        groundCheckBoxPosition = Vector3.zero;
-        groundCheckBoxSize = new Vector2(0f, distanceToCheck);
-    }
+    private RaycastHit2D groundCheckBoxTrigger;
+    private Vector2 positionWhereBoxCastStarts;
+    private Vector2 groundCheckBoxSize = new Vector2(0f, 0.025f);
 
     public bool isGrounded(SpriteRenderer sprite){
         groundCheckBoxSize.x = sprite.bounds.size.x;
-        groundCheckBoxPosition.y = sprite.bounds.extents.y + groundCheckBoxSize.y;
-
-        return groundCheckBoxTrigger = Physics2D.BoxCast(transform.position - groundCheckBoxPosition, groundCheckBoxSize, 0, Vector2.down, groundCheckBoxSize.y);
+        positionWhereBoxCastStarts = transform.position;
+        positionWhereBoxCastStarts.y -= sprite.bounds.extents.y + 0.05f;
+        
+        return groundCheckBoxTrigger = Physics2D.BoxCast(positionWhereBoxCastStarts, groundCheckBoxSize, 0, Vector2.down, groundCheckBoxSize.y);
     }
 }
