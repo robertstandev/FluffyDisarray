@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CheckSurroundings : MonoBehaviour
 {
-
     private RaycastHit2D groundCheckBoxTrigger;
     private Vector2 positionWhereBoxCastStarts;
     private Vector2 groundCheckBoxSize = new Vector2(0f, 0.025f);
