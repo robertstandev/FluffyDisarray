@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
      private PlayerInput inputComponent;
      private Movement movementComponent;
      private Jump jumpComponent;
-     private CheckGround checkGroundComponent;
+     private CheckSurroundings checkSurroundingsComponent;
      private Stamina staminaComponent;
 
      private Rigidbody2D rb;
@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
           inputComponent = GetComponent<PlayerInput>();
           movementComponent = GetComponent<Movement>();
           jumpComponent = GetComponent<Jump>();
-          checkGroundComponent = GetComponent<CheckGround>();
+          checkSurroundingsComponent = GetComponent<CheckSurroundings>();
           staminaComponent = GetComponent<Stamina>();
 
           rb = GetComponent<Rigidbody2D>();
@@ -34,11 +34,11 @@ public class PlayerController : MonoBehaviour
      }
 
      private void checkSurroundings(){
-          if(canModify && checkGroundComponent.isGrounded(sprite)){                                 //is on the ground
+          if(canModify && checkSurroundingsComponent.isGrounded(sprite)){                                 //its on the ground
                canModify = false;
                staminaComponent.startStaminaModifierTimer(0.3f, staminaComponent.addStamina, 5);
                jumpComponent.setJumpCounter(0);
-          }else if(!canModify && !checkGroundComponent.isGrounded(sprite)){                         //just jumped
+          }else if(!canModify && !checkSurroundingsComponent.isGrounded(sprite)){                         //just jumped
                canModify = true;
                staminaComponent.stopStaminaModifierTimer();
           }
