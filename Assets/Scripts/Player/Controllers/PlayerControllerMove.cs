@@ -1,18 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerControllerMove : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private InputAction movementInput;
+    private Movement movementComponent;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void Awake() {
+        movementInput = GetComponent<IPlayerInput>().getMovementInput;
+        movementComponent = GetComponent<Movement>();
     }
 }
