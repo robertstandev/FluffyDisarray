@@ -2,21 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
 public class Jump : MonoBehaviour
 {
-    private Rigidbody2D rb;
     [SerializeField]private float jumpForce = 10f;
     [SerializeField]private int maxNrOfJumps = 2;
     private int jumpCounter = 0;
     private Vector2 jumpVelocity = Vector2.zero;
 
-    private void Awake(){ rb = GetComponent<Rigidbody2D>(); }
-
     public bool canJump() { return jumpCounter < maxNrOfJumps; }    
 
-    public void jump(Stamina staminaComponent, int staminaToConsume){
+    public void jump(Rigidbody2D rb, Stamina staminaComponent, int staminaToConsume){
         if(canJump() && (staminaComponent.getStamina() >= staminaToConsume)){
+            staminaComponent.substractStamina(staminaToConsume);
             jumpCounter += 1;
 
             jumpVelocity.y = jumpForce;
