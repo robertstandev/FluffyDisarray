@@ -4,39 +4,27 @@ using UnityEngine;
 
 public class Stamina : MonoBehaviour
 {
-   
-   [SerializeField]private int maximumStamina = 100;
    private int currentStamina = 100;
    private Coroutine staminaModifierTimerInstance;
 
-    public int getStamina(){
-       return this.currentStamina;
-   }
+   public int getStamina() { return this.currentStamina; }
 
-    public void setStamina(int value){
-       this.currentStamina = value;
-   }
+   public void substractStamina(int amount) { this.currentStamina = this.currentStamina >= amount ? this.currentStamina -= amount : 0; }
 
-    public void substractStamina(int amount){
-       this.currentStamina = this.currentStamina >= amount ? this.currentStamina -= amount : 0;
-   }
-
-    public void addStamina(int amount){
-        this.currentStamina = (this.currentStamina + amount) <= maximumStamina ? this.currentStamina += amount : maximumStamina;
-   }
+   public void addStamina(int amount) { this.currentStamina = (this.currentStamina + amount) <= 100 ? this.currentStamina += amount : 100; }
    
-    private IEnumerator staminaModifierTimer(float interval, System.Action<int> getMethod , int amountPerTick){
-       WaitForSeconds delay = new WaitForSeconds(interval);
+   private IEnumerator staminaModifierTimer(float interval, System.Action<int> getMethod , int amountPerTick){
+      WaitForSeconds delay = new WaitForSeconds(interval);
        
-       while(true){
+      while(true){
             yield return delay;
 
             getMethod?.Invoke(amountPerTick);
 
-            if(((getMethod == addStamina) && (currentStamina == maximumStamina)) || ((getMethod == substractStamina) && (currentStamina == 0))){
+            if(((getMethod == addStamina) && (currentStamina == 100)) || ((getMethod == substractStamina) && (currentStamina == 0))){
                stopStaminaModifierTimer();
             }
-       }
+      }
    }
 
    public void stopStaminaModifierTimer(){
