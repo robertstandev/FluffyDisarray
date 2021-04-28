@@ -4,12 +4,18 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Movement))]
+[RequireComponent(typeof(Jump))]
+[RequireComponent(typeof(Stamina))]
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(SpriteRenderer))]
-public class PlayerControllerMove : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     private InputAction movementInput;
+    private InputAction jumpInput;
+
     private Movement movementComponent;
+    private Jump jumpComponent;
+    private Stamina staminaComponent;
     private Rigidbody2D rb;
     private SpriteRenderer mySpriteRenderer;
 
@@ -19,15 +25,29 @@ public class PlayerControllerMove : MonoBehaviour
         movementInput.performed += context => OnMove(context);
         movementInput.canceled += context => OnMove(context);
 
+        jumpInput = GetComponent<IPlayerInput>().getJumpInput;
+        jumpInput.performed += context => OnJump();
+
         movementComponent = GetComponent<Movement>();
+        jumpComponent = GetComponent<Jump>();
+        staminaComponent = GetComponent<Stamina>();
         rb = GetComponent<Rigidbody2D>();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    private void OnEnable() { movementInput.Enable(); }
-    private void OnDisable() { movementInput.Disable(); }
+    private void OnEnable()
+    {
+        movementInput.Enable();
+        jumpInput.Enable();
+    }
+    private void OnDisable()
+    { 
+        movementInput.Disable(); 
+        jumpInput.Disable();
+    }
 
     private void OnMove(InputAction.CallbackContext context) {  movementComponent.move(mySpriteRenderer, context.ReadValue<float>()); }
+    private void OnJump() { jumpComponent.jump(rb, staminaComponent, 10); }
 
     private void FixedUpdate() { movementComponent.moveCharacter(rb); }
 }
