@@ -37,14 +37,17 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
-        movementInput.Enable();
-        jumpInput.Enable();
+        enableInput(movementInput);
+        enableInput(jumpInput);
     }
     private void OnDisable()
-    { 
-        movementInput.Disable(); 
-        jumpInput.Disable();
+    {
+        disableInput(movementInput);
+        disableInput(jumpInput);
     }
+
+    private void disableInput(InputAction input) { input.Disable(); }
+    private void enableInput(InputAction input) { input.Enable(); }
 
     private void OnMove(InputAction.CallbackContext context) {  movementComponent.move(mySpriteRenderer, context.ReadValue<float>()); }
     private void OnJump() { jumpComponent.jump(rb, staminaComponent, 10); }
