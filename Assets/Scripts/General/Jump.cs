@@ -23,9 +23,5 @@ public class Jump : MonoBehaviour
     
     public int getJumpCounter() { return this.jumpCounter; }
 
-    public void setJumpCounter(int value){
-        if(value <= maxNrOfJumps){
-            this.jumpCounter = value;
-        }
-    }
+    public void setJumpCounter(int value) { this.jumpCounter = value <= maxNrOfJumps ? value : this.jumpCounter; }
 }
