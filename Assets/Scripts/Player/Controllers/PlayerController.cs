@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private Movement movementComponent;
     private Jump jumpComponent;
     private Stamina staminaComponent;
+    private CheckSurroundings checkSurroundingsComponent;
     private Rigidbody2D rb;
     private SpriteRenderer mySpriteRenderer;
 
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
         movementComponent = GetComponent<Movement>();
         jumpComponent = GetComponent<Jump>();
         staminaComponent = GetComponent<Stamina>();
+        checkSurroundingsComponent = GetComponent<CheckSurroundings>();
         rb = GetComponent<Rigidbody2D>();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -53,4 +55,17 @@ public class PlayerController : MonoBehaviour
     private void OnJump() { jumpComponent.jump(rb, staminaComponent, 10); }
 
     private void FixedUpdate() { movementComponent.moveCharacter(rb); }
+
+    private void LateUpdate()
+    { 
+        if(checkSurroundingsComponent.isGrounded(mySpriteRenderer))
+        {
+            jumpComponent.setJumpCounter(1);
+            staminaComponent.startStaminaModifierTimer(1f, staminaComponent.addStamina, 10);
+        }
+        else if(!checkSurroundingsComponent.isGrounded(mySpriteRenderer))
+        {
+            staminaComponent.stopStaminaModifierTimer();
+        }
+    }
 }
