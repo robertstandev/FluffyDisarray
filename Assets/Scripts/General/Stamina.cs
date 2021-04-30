@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Stamina : MonoBehaviour
 {
-   private int currentStamina = 100;
-   private Coroutine staminaModifierTimerInstance;
+   public int currentStamina = 100;
+   private IEnumerator staminaModifierTimerInstance;
 
    public int getStamina() { return this.currentStamina; }
 
@@ -41,7 +41,8 @@ public class Stamina : MonoBehaviour
    public void startStaminaModifierTimer(float interval, System.Action<int> getMethod , int amountPerTick){
       if(staminaModifierTimerInstance == null)
       {
-      this.staminaModifierTimerInstance = StartCoroutine(staminaModifierTimer(interval,getMethod,amountPerTick));
+         this.staminaModifierTimerInstance = staminaModifierTimer(interval,getMethod,amountPerTick);
+         StartCoroutine(staminaModifierTimerInstance);
       }
    }
 }
