@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Stamina : MonoBehaviour
 {
-   public int currentStamina = 100;
+   private int currentStamina = 100;
    private IEnumerator staminaModifierTimerInstance;
 
    public int getStamina() { return this.currentStamina; }
