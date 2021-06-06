@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,6 +8,8 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Stamina))]
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(CheckSurroundings))]
+[RequireComponent(typeof(BoxCollider2D))]
 public class PlayerController : MonoBehaviour
 {
     private InputAction movementInput;
@@ -19,6 +21,7 @@ public class PlayerController : MonoBehaviour
     private CheckSurroundings checkSurroundingsComponent;
     private Rigidbody2D rb;
     private SpriteRenderer mySpriteRenderer;
+    private BoxCollider2D characterCollider;
 
     private void Awake()
     {
@@ -35,6 +38,7 @@ public class PlayerController : MonoBehaviour
         checkSurroundingsComponent = GetComponent<CheckSurroundings>();
         rb = GetComponent<Rigidbody2D>();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
+        characterCollider = GetComponent<BoxCollider2D>();
     }
 
     private void OnEnable()
@@ -58,14 +62,32 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     { 
+        updateCharacterCollider();//pentru performanta pot pune asta doar cand se va schimba spriteul , la modulul care o sa il fac de schimba spriteul
+        checkSurroundings();
+    }
+
+    private void checkSurroundings()
+    {
         if(checkSurroundingsComponent.isGrounded(mySpriteRenderer))
         {
             jumpComponent.setJumpCounter(1);
             staminaComponent.startStaminaModifierTimer(1f, staminaComponent.addStamina, 10);
+            Debug.Log("Grounded");
         }
-        else if(!checkSurroundingsComponent.isGrounded(mySpriteRenderer))
+        else
         {
             staminaComponent.stopStaminaModifierTimer();
+            Debug.Log("NotGrounded");
         }
+
+        if(checkSurroundingsComponent.canGrabLedge(mySpriteRenderer))
+        {
+            Debug.Log("Touching wall in front");
+        }
+    }
+
+    private void updateCharacterCollider()
+    {
+        characterCollider.size = mySpriteRenderer.bounds.size;
     }
 }
