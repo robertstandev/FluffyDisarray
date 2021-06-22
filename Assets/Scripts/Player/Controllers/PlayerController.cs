@@ -1,20 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Movement))]
 [RequireComponent(typeof(Jump))]
 [RequireComponent(typeof(Stamina))]
+[RequireComponent(typeof(CheckSurroundings))]
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(SpriteRenderer))]
-[RequireComponent(typeof(CheckSurroundings))]
-[RequireComponent(typeof(BoxCollider2D))]
 public class PlayerController : MonoBehaviour
 {
-    private InputAction movementInput;
-    private InputAction jumpInput;
-
+    private InputAction movementInput , jumpInput;
     private Movement movementComponent;
     private Jump jumpComponent;
     private Stamina staminaComponent;
@@ -38,7 +33,6 @@ public class PlayerController : MonoBehaviour
         checkSurroundingsComponent = GetComponent<CheckSurroundings>();
         rb = GetComponent<Rigidbody2D>();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
-        characterCollider = GetComponent<BoxCollider2D>();
     }
 
     private void OnEnable()
@@ -62,7 +56,6 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     { 
-        updateCharacterCollider();//pentru performanta pot pune asta doar cand se va schimba spriteul , la modulul care o sa il fac de schimba spriteul
         checkSurroundings();
     }
 
@@ -80,14 +73,31 @@ public class PlayerController : MonoBehaviour
             Debug.Log("NotGrounded");
         }
 
-        if(checkSurroundingsComponent.canGrabLedge(mySpriteRenderer))
+        if(checkSurroundingsComponent.canWallJump(mySpriteRenderer) && !checkSurroundingsComponent.canGrabLedge(mySpriteRenderer))//daca vreau pot sa il pun sa caute doar daca e in aer (!isGrounded de sus)
         {
-            Debug.Log("Touching wall in front");
+            Debug.Log("Touching wall in front so you can jump again if you have stamina");
+            jumpComponent.setJumpCounter(1);
+            //aici poti face sa dea si flip si sa te arunce in directia opusa fie direct din animatie fie cu rigidbody.velocity
         }
-    }
 
-    private void updateCharacterCollider()
-    {
-        characterCollider.size = mySpriteRenderer.bounds.size;
+        if(checkSurroundingsComponent.canGrabLedge(mySpriteRenderer))//daca vreau pot sa il pun sa caute doar daca e in aer (!isGrounded de sus)
+        {
+            Debug.Log("Grabbed Ledge");
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionY;
+            //de aici ce faci?
+            //apesi in sus ca sa urci sus pe pamant
+            //apesi jos ca sa cazi
+        }
+        else
+        {
+            //apesi stanga deci nu mai detecteaza peretele si cazi
+            rb.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
+        }
+
+        if(checkSurroundingsComponent.isOnSlope(mySpriteRenderer))
+        {
+            Debug.Log("Slope detected");
+        }
+
     }
 }

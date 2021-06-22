@@ -5,10 +5,9 @@ using UnityEngine;
 public class CheckSurroundings : MonoBehaviour
 {
     private RaycastHit2D raycastHit2D;
-    private Vector2 boxCastPosition;
-    private Vector2 boxCastSize;
-    private Vector2 boxCastDirection;
-    private Vector2 temporarySpriteGroundData;
+    private Vector2 boxCastPosition , boxCastSize , boxCastDirection;
+    private Color[] spritePixels;
+    private float temporaryGroundDataStartPos , temporaryGroundDataEndPos, temporaryGroundDataWidth;
 
     private bool isBoxCastColliding()
     {
@@ -17,61 +16,114 @@ public class CheckSurroundings : MonoBehaviour
 
     public bool isGrounded(SpriteRenderer spriteRenderer)
     {
-        temporarySpriteGroundData = getGroundContactData(spriteRenderer);
+        calculateGroundContactData(spriteRenderer);
 
-        this.boxCastSize.x = temporarySpriteGroundData.y;
-        this.boxCastSize.y = 0.025f;
+        this.boxCastSize.x = this.temporaryGroundDataWidth;
+        this.boxCastSize.y = 0.005f;
 
-        this.boxCastPosition.x = transform.position.x - spriteRenderer.bounds.extents.x + (temporarySpriteGroundData.y / 2) + temporarySpriteGroundData.x;
-        this.boxCastPosition.y = transform.position.y - spriteRenderer.bounds.extents.y - 0.05f;
+        this.boxCastPosition.x = !spriteRenderer.flipX ? 
+        transform.position.x - spriteRenderer.bounds.extents.x + (this.temporaryGroundDataWidth / 2) + this.temporaryGroundDataStartPos : 
+        transform.position.x + spriteRenderer.bounds.extents.x + (this.temporaryGroundDataWidth / 2) - this.temporaryGroundDataEndPos;
+
+        this.boxCastPosition.y = transform.position.y - spriteRenderer.bounds.extents.y - 0.01f;
 
         this.boxCastDirection = Vector2.down;
 
         return isBoxCastColliding();
     }
 
-    public Vector2 getGroundContactData(SpriteRenderer spriteRenderer)
+    private void calculateGroundContactData(SpriteRenderer spriteRenderer)
     {
-        Color[] pixels = spriteRenderer.sprite.texture.GetPixels((int)spriteRenderer.sprite.textureRect.x , (int)spriteRenderer.sprite.textureRect.y , (int)spriteRenderer.sprite.textureRect.width , 1);        
+        this.spritePixels = spriteRenderer.sprite.texture.GetPixels((int)spriteRenderer.sprite.textureRect.x , (int)spriteRenderer.sprite.textureRect.y , (int)spriteRenderer.sprite.textureRect.width , 1);        
 
-        float spriteStartingX = 0;
-        float spriteEndX = 0;
+        this.temporaryGroundDataStartPos = -1;
+        this.temporaryGroundDataEndPos = 0;
 
-        for(int i = 0; i < pixels.Length; i++)
+        for(int i = 0; i < spritePixels.Length; i++)
         {
-            if(pixels[i].a > 0.1f)
+            if(spritePixels[i].a > 0.1f)
             {
-                if(spriteStartingX == 0)
+                if(this.temporaryGroundDataStartPos == -1)
                 {
-                    spriteStartingX = i;
+                    this.temporaryGroundDataStartPos = i;
                 }
-                if(spriteEndX < i)
+                if(this.temporaryGroundDataEndPos < i)
                 {
-                    spriteEndX = i;
+                    this.temporaryGroundDataEndPos = i;
                 }
             }
         }
-
-        return new Vector2(spriteStartingX / 100, (spriteEndX - spriteStartingX + 1) / 100);
+        this.temporaryGroundDataEndPos += 1;
+        this.temporaryGroundDataStartPos /= 100;
+        this.temporaryGroundDataEndPos /= 100;
+        this.temporaryGroundDataWidth = this.temporaryGroundDataEndPos - this.temporaryGroundDataStartPos;
     }
 
-    public bool canGrabLedge(SpriteRenderer spriteRenderer)
+    public bool canWallJump(SpriteRenderer spriteRenderer)
     {
-        this.boxCastSize.x = 0.1f;
-        this.boxCastSize.y = spriteRenderer.bounds.size.y - 0.2f;
+        this.boxCastSize.x = 0.005f;
+        this.boxCastSize.y = spriteRenderer.bounds.size.y - 0.1f;
         
-        if(!spriteRenderer.flipX)
-        {
-            this.boxCastPosition.x = transform.position.x + spriteRenderer.bounds.extents.x + 0.1f;
-        }
-        else
-        {
-            this.boxCastPosition.x = transform.position.x - spriteRenderer.bounds.extents.x - 0.1f;
-        }
-        this.boxCastPosition.y = transform.position.y + 0.1f;
+        this.boxCastPosition.x = !spriteRenderer.flipX ? transform.position.x + spriteRenderer.bounds.extents.x + 0.02f : transform.position.x - spriteRenderer.bounds.extents.x - 0.02f;
+        this.boxCastPosition.y = transform.position.y + 0.05f;
 
         this.boxCastDirection = Vector2.zero;
 
         return isBoxCastColliding();
+    }
+
+    public bool canGrabLedge(SpriteRenderer spriteRenderer)
+    {
+        return ledgeMiddleDetection(spriteRenderer) && !ledgeTopDetection(spriteRenderer) ? true : false;
+    }
+
+    private bool ledgeMiddleDetection(SpriteRenderer spriteRenderer)
+    {
+        this.boxCastSize.x = 0.005f;
+        this.boxCastSize.y = spriteRenderer.bounds.extents.y;
+        
+        this.boxCastPosition.x = !spriteRenderer.flipX ? transform.position.x + spriteRenderer.bounds.extents.x + 0.02f : transform.position.x - spriteRenderer.bounds.extents.x - 0.02f;
+        this.boxCastPosition.y = transform.position.y;
+
+        this.boxCastDirection = Vector2.zero;
+
+        return isBoxCastColliding();
+    }
+
+    private bool ledgeTopDetection(SpriteRenderer spriteRenderer)
+    {
+        this.boxCastSize.x = 0.005f;
+        this.boxCastSize.y = 0.05f;
+        
+        this.boxCastPosition.x = !spriteRenderer.flipX ? transform.position.x + spriteRenderer.bounds.extents.x + 0.02f : transform.position.x - spriteRenderer.bounds.extents.x - 0.02f;
+        this.boxCastPosition.y = transform.position.y + spriteRenderer.bounds.extents.y - (this.boxCastSize.y / 2);
+
+        this.boxCastDirection = Vector2.zero;
+
+        return isBoxCastColliding();
+    }
+
+
+
+
+
+
+
+//==============================================================================================================
+    //IN CURS DE PROIECTARE
+    //De imbunatatit modul de detectare cand e in varful unui triunghi ca nu detecteaza inca de sus ci de pe la 10% in jos
+    //poate rescriu de la celalalt
+    public bool isOnSlope(SpriteRenderer spriteRenderer)
+    {
+        return isLeftSideOnSlope(spriteRenderer) || isRightSideOnSlope(spriteRenderer) ? true : false;
+    }
+
+    private bool isLeftSideOnSlope(SpriteRenderer spriteRenderer)
+    {
+        return false;
+    }
+    private bool isRightSideOnSlope(SpriteRenderer spriteRenderer)
+    {      
+        return false;
     }
 }
