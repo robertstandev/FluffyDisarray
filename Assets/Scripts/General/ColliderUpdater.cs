@@ -42,7 +42,7 @@ namespace RobertStan.ColliderUpdater
         private void Update()
         {
             updateDirtyState();
-            if (dirty)
+            if (this.dirty)
             {
                 recalculatePolygon();
             }
@@ -50,53 +50,53 @@ namespace RobertStan.ColliderUpdater
 
         private void updateDirtyState()
         {
-            if (spriteRenderer.sprite != lastSprite)
+            if (spriteRenderer.sprite != this.lastSprite)
             {
-                lastSprite = spriteRenderer.sprite;
-                dirty = true;
+                this.lastSprite = spriteRenderer.sprite;
+                this.dirty = true;
             }
             if (spriteRenderer.sprite != null)
             {
-                if (lastOffset != spriteRenderer.sprite.pivot)
+                if (this.lastOffset != spriteRenderer.sprite.pivot)
                 {
-                    lastOffset = spriteRenderer.sprite.pivot;
-                    dirty = true;
+                    this.lastOffset = spriteRenderer.sprite.pivot;
+                    this.dirty = true;
                 }
-                if (lastRect != spriteRenderer.sprite.rect)
+                if (this.lastRect != spriteRenderer.sprite.rect)
                 {
-                    lastRect = spriteRenderer.sprite.rect;
-                    dirty = true;
+                    this.lastRect = spriteRenderer.sprite.rect;
+                    this.dirty = true;
                 }
-                if (lastPixelsPerUnit != spriteRenderer.sprite.pixelsPerUnit)
+                if (this.lastPixelsPerUnit != spriteRenderer.sprite.pixelsPerUnit)
                 {
-                    lastPixelsPerUnit = spriteRenderer.sprite.pixelsPerUnit;
-                    dirty = true;
+                    this.lastPixelsPerUnit = spriteRenderer.sprite.pixelsPerUnit;
+                    this.dirty = true;
                 }
-                if (lastFlipX != spriteRenderer.flipX)
+                if (this.lastFlipX != spriteRenderer.flipX)
                 {
-                    lastFlipX = spriteRenderer.flipX;
-                    dirty = true;
+                    this.lastFlipX = spriteRenderer.flipX;
+                    this.dirty = true;
                 }
-                if (lastFlipY != spriteRenderer.flipY)
+                if (this.lastFlipY != spriteRenderer.flipY)
                 {
-                    lastFlipY = spriteRenderer.flipY;
-                    dirty = true;
+                    this.lastFlipY = spriteRenderer.flipY;
+                    this.dirty = true;
                 }
             }
-            if (AlphaTolerance != lastAlphaTolerance)
+            if (this.AlphaTolerance != this.lastAlphaTolerance)
             {
-                lastAlphaTolerance = AlphaTolerance;
-                dirty = true;
+                this.lastAlphaTolerance = this.AlphaTolerance;
+                this.dirty = true;
             }
-            if (Scale != lastScale)
+            if (this.Scale != this.lastScale)
             {
-                lastScale = Scale;
-                dirty = true;
+                this.lastScale = Scale;
+                this.dirty = true;
             }
-            if (DistanceThreshold != lastDistanceThreshold)
+            if (this.DistanceThreshold != this.lastDistanceThreshold)
             {
-                lastDistanceThreshold = DistanceThreshold;
-                dirty = true;
+                this.lastDistanceThreshold = this.DistanceThreshold;
+                this.dirty = true;
             }
         }
         public void recalculatePolygon()
@@ -119,7 +119,7 @@ namespace RobertStan.ColliderUpdater
                 return;
             }
 
-            dirty = false;
+            this.dirty = false;
             populateCollider(polygonCollider);
         }
 
@@ -129,13 +129,11 @@ namespace RobertStan.ColliderUpdater
             {
                 int width = (int)this.rectData.width;
                 int height = (int)this.rectData.height;
-                int x = (int)this.rectData.x;
-                int y = (int)this.rectData.y;
-                UnityEngine.Color[] pixels = this.spriteTexture.GetPixels(x, y, width, height, 0);
-                List<Vertices> verts = geometryDetector.DetectVertices(pixels, width, this.AlphaTolerance);
-                int pathIndex = 0;
+                UnityEngine.Color[] pixels = this.spriteTexture.GetPixels((int)this.rectData.x, (int)this.rectData.y, width, height, 0);
+                List<Vertices> verts = this.geometryDetector.DetectVertices(pixels, width, this.AlphaTolerance);
                 List<Vector2[]> list = new List<Vector2[]>();
 
+                int pathIndex = 0;
                 for (int i = 0; i < verts.Count; i++)
                 {
                     processVertices(collider, verts[i], list, ref pathIndex);
@@ -149,7 +147,6 @@ namespace RobertStan.ColliderUpdater
 
         private List<Vector2[]> processVertices(PolygonCollider2D collider, Vertices v, List<Vector2[]> list, ref int pathIndex)
         {
-            Vector2 offset = this.offsetData;
             float flipXMultiplier = (spriteRenderer.flipX ? -1.0f : 1.0f);
             float flipYMultiplier = (spriteRenderer.flipY ? -1.0f : 1.0f);
 
@@ -157,16 +154,19 @@ namespace RobertStan.ColliderUpdater
 			{
 				v = SimplifyTools.DouglasPeuckerSimplify (v, this.DistanceThreshold);
 			}
-                collider.pathCount = pathIndex + 1;
-                for (int i = 0; i < v.Count; i++)
-                {
-					float xValue = (2.0f * (((v[i].x - offset.x) + 0.5f) / this.rectData.width));
-					float yValue = (2.0f * (((v[i].y - offset.y) + 0.5f) / this.rectData.height));
-                    v[i] = new Vector2(xValue * this.xMultiplier * Scale * flipXMultiplier, yValue * this.yMultiplier * Scale * flipYMultiplier);
-                }
-                Vector2[] arr = v.ToArray();
-                collider.SetPath(pathIndex++, arr);
-                list.Add(arr);
+            
+            collider.pathCount = pathIndex + 1;
+            for (int i = 0; i < v.Count; i++)
+            {
+				float xValue = (2.0f * (((v[i].x - this.offsetData.x) + 0.5f) / this.rectData.width));
+				float yValue = (2.0f * (((v[i].y - this.offsetData.y) + 0.5f) / this.rectData.height));
+                v[i] = new Vector2(xValue * this.xMultiplier * this.Scale * flipXMultiplier, yValue * this.yMultiplier * Scale * flipYMultiplier);
+            }
+            
+            Vector2[] arr = v.ToArray();
+            collider.SetPath(pathIndex++, arr);
+            list.Add(arr);
+
             return list;
         }
     }
