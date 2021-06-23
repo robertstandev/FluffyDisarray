@@ -28,6 +28,12 @@ namespace RobertStan.ColliderUpdater
         private float lastPixelsPerUnit;
         private bool lastFlipX, lastFlipY;
         private readonly TextureConverter geometryDetector = new TextureConverter();
+
+        private Texture2D spriteTexture;
+        private Rect rectData;
+        private Vector2 offsetData;
+        private float xMultiplier, yMultiplier;
+        
         private void Start()
         {
             polygonCollider = GetComponent<PolygonCollider2D>();
@@ -35,14 +41,14 @@ namespace RobertStan.ColliderUpdater
         }
         private void Update()
         {
-            UpdateDirtyState();
+            updateDirtyState();
             if (dirty)
             {
-                RecalculatePolygon();
+                recalculatePolygon();
             }
         }
 
-        private void UpdateDirtyState()
+        private void updateDirtyState()
         {
             if (spriteRenderer.sprite != lastSprite)
             {
@@ -93,23 +99,20 @@ namespace RobertStan.ColliderUpdater
                 dirty = true;
             }
         }
-        public void RecalculatePolygon()
+        public void recalculatePolygon()
         {
             if (spriteRenderer.sprite != null)
             {
-                ColliderData cd = new ColliderData();
-                cd.AlphaTolerance = AlphaTolerance;
-                cd.DistanceThreshold = DistanceThreshold;
-                cd.Rect = spriteRenderer.sprite.rect;
-                cd.Offset = spriteRenderer.sprite.pivot;
-                cd.Texture = spriteRenderer.sprite.texture;
-                cd.XMultiplier = (spriteRenderer.sprite.rect.width * 0.5f) / spriteRenderer.sprite.pixelsPerUnit;
-                cd.YMultiplier = (spriteRenderer.sprite.rect.height * 0.5f) / spriteRenderer.sprite.pixelsPerUnit;
-                UpdatePolygonCollider(ref cd);
+                this.rectData = spriteRenderer.sprite.rect;
+                this.offsetData = spriteRenderer.sprite.pivot;
+                this.spriteTexture = spriteRenderer.sprite.texture;
+                this.xMultiplier = (spriteRenderer.sprite.rect.width * 0.5f) / spriteRenderer.sprite.pixelsPerUnit;
+                this.yMultiplier = (spriteRenderer.sprite.rect.height * 0.5f) / spriteRenderer.sprite.pixelsPerUnit;
+                updatePolygonCollider();
             }
         }
 
-        public void UpdatePolygonCollider(ref ColliderData cd)
+        public void updatePolygonCollider()
         {
             if (spriteRenderer.sprite == null || spriteRenderer.sprite.texture == null)
             {
@@ -117,25 +120,25 @@ namespace RobertStan.ColliderUpdater
             }
 
             dirty = false;
-            PopulateCollider(polygonCollider, ref cd);
+            populateCollider(polygonCollider);
         }
 
-        public void PopulateCollider(PolygonCollider2D collider, ref ColliderData cd)
+        public void populateCollider(PolygonCollider2D collider)
         {
             try
             {
-                int width = (int)cd.Rect.width;
-                int height = (int)cd.Rect.height;
-                int x = (int)cd.Rect.x;
-                int y = (int)cd.Rect.y;
-                UnityEngine.Color[] pixels = cd.Texture.GetPixels(x, y, width, height, 0);
-                List<Vertices> verts = geometryDetector.DetectVertices(pixels, width, cd.AlphaTolerance);
+                int width = (int)this.rectData.width;
+                int height = (int)this.rectData.height;
+                int x = (int)this.rectData.x;
+                int y = (int)this.rectData.y;
+                UnityEngine.Color[] pixels = this.spriteTexture.GetPixels(x, y, width, height, 0);
+                List<Vertices> verts = geometryDetector.DetectVertices(pixels, width, this.AlphaTolerance);
                 int pathIndex = 0;
                 List<Vector2[]> list = new List<Vector2[]>();
 
                 for (int i = 0; i < verts.Count; i++)
                 {
-                    ProcessVertices(collider, verts[i], list, ref cd, ref pathIndex);
+                    processVertices(collider, verts[i], list, ref pathIndex);
                 }
             }
             catch (Exception ex)
@@ -144,64 +147,27 @@ namespace RobertStan.ColliderUpdater
             }
         }
 
-        private List<Vector2[]> ProcessVertices(PolygonCollider2D collider, Vertices v, List<Vector2[]> list, ref ColliderData cd, ref int pathIndex)
+        private List<Vector2[]> processVertices(PolygonCollider2D collider, Vertices v, List<Vector2[]> list, ref int pathIndex)
         {
-            Vector2 offset = cd.Offset;
+            Vector2 offset = this.offsetData;
             float flipXMultiplier = (spriteRenderer.flipX ? -1.0f : 1.0f);
             float flipYMultiplier = (spriteRenderer.flipY ? -1.0f : 1.0f);
 
-			if (cd.DistanceThreshold > 1)
+			if (this.DistanceThreshold > 1)
 			{
-				v = SimplifyTools.DouglasPeuckerSimplify (v, cd.DistanceThreshold);
+				v = SimplifyTools.DouglasPeuckerSimplify (v, this.DistanceThreshold);
 			}
                 collider.pathCount = pathIndex + 1;
                 for (int i = 0; i < v.Count; i++)
                 {
-					float xValue = (2.0f * (((v[i].x - offset.x) + 0.5f) / cd.Rect.width));
-					float yValue = (2.0f * (((v[i].y - offset.y) + 0.5f) / cd.Rect.height));
-                    v[i] = new Vector2(xValue * cd.XMultiplier * Scale * flipXMultiplier, yValue * cd.YMultiplier * Scale * flipYMultiplier);
+					float xValue = (2.0f * (((v[i].x - offset.x) + 0.5f) / this.rectData.width));
+					float yValue = (2.0f * (((v[i].y - offset.y) + 0.5f) / this.rectData.height));
+                    v[i] = new Vector2(xValue * this.xMultiplier * Scale * flipXMultiplier, yValue * this.yMultiplier * Scale * flipYMultiplier);
                 }
                 Vector2[] arr = v.ToArray();
                 collider.SetPath(pathIndex++, arr);
                 list.Add(arr);
             return list;
-        }
-    }
-    public struct ColliderData
-    {
-        public Texture2D Texture;
-
-        public Rect Rect;
-
-        public Vector2 Offset;
-
-        public float XMultiplier;
-        public float YMultiplier;
-
-        public byte AlphaTolerance;
-
-        public int DistanceThreshold;
-
-        public override int GetHashCode()
-        {
-            int h = Texture.GetHashCode();
-            if (h == 0)
-            {
-                h = 1;
-            }
-            return h * (int)(Rect.GetHashCode() * XMultiplier * YMultiplier * AlphaTolerance * Mathf.Max(DistanceThreshold, 1));
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (obj is ColliderData)
-            {
-                ColliderData cd = (ColliderData)obj;
-                return Texture == cd.Texture && Rect == cd.Rect &&
-                    XMultiplier == cd.XMultiplier && YMultiplier == cd.YMultiplier &&
-                    AlphaTolerance == cd.AlphaTolerance && DistanceThreshold == cd.DistanceThreshold;
-            }
-            return false;
         }
     }
 }
