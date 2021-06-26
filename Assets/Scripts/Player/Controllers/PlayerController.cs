@@ -7,16 +7,18 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CheckSurroundings))]
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(PolygonCollider2D))]
 public class PlayerController : MonoBehaviour
 {
     private InputAction movementInput , jumpInput;
+    private ColliderUpdater colliderUpdaterComponent;
     private Movement movementComponent;
     private Jump jumpComponent;
     private Stamina staminaComponent;
     private CheckSurroundings checkSurroundingsComponent;
     private Rigidbody2D rb;
     private SpriteRenderer mySpriteRenderer;
-    private BoxCollider2D characterCollider;
+    private PolygonCollider2D characterCollider;
 
     private void Awake()
     {
@@ -27,12 +29,14 @@ public class PlayerController : MonoBehaviour
         jumpInput = GetComponent<IPlayerInput>().getJumpInput;
         jumpInput.performed += context => OnJump();
 
+        colliderUpdaterComponent = GetComponent<ColliderUpdater>();
         movementComponent = GetComponent<Movement>();
         jumpComponent = GetComponent<Jump>();
         staminaComponent = GetComponent<Stamina>();
         checkSurroundingsComponent = GetComponent<CheckSurroundings>();
         rb = GetComponent<Rigidbody2D>();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
+        characterCollider = GetComponent<PolygonCollider2D>();
     }
 
     private void OnEnable()
@@ -57,6 +61,7 @@ public class PlayerController : MonoBehaviour
     private void LateUpdate()
     { 
         checkSurroundings();
+        colliderUpdaterComponent.updateCollider(mySpriteRenderer, characterCollider);
     }
 
     private void checkSurroundings()

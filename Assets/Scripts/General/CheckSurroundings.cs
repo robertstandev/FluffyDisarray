@@ -111,8 +111,6 @@ public class CheckSurroundings : MonoBehaviour
 
 //==============================================================================================================
     //IN CURS DE PROIECTARE
-    //De imbunatatit modul de detectare cand e in varful unui triunghi ca nu detecteaza inca de sus ci de pe la 10% in jos
-    //poate rescriu de la celalalt
     public bool isOnSlope(SpriteRenderer spriteRenderer)
     {
         return isLeftSideOnSlope(spriteRenderer) || isRightSideOnSlope(spriteRenderer) ? true : false;
