@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 [RequireComponent(typeof(Movement))]
 [RequireComponent(typeof(Jump))]
@@ -8,14 +9,18 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(PolygonCollider2D))]
+[RequireComponent(typeof(RespondToSurroundings))]
 public class PlayerController : MonoBehaviour
 {
-    private InputAction movementInput , jumpInput;
+    private InputAction movementInput, upInput, downInput, jumpInput;
+
     private ColliderUpdater colliderUpdaterComponent;
     private Movement movementComponent;
     private Jump jumpComponent;
     private Stamina staminaComponent;
     private CheckSurroundings checkSurroundingsComponent;
+    private RespondToSurroundings respondToSurroundingsComponent;
+
     private Rigidbody2D rb;
     private SpriteRenderer mySpriteRenderer;
     private PolygonCollider2D characterCollider;
@@ -26,6 +31,13 @@ public class PlayerController : MonoBehaviour
         movementInput.performed += context => OnMove(context);
         movementInput.canceled += context => OnMove(context);
 
+        upInput = GetComponent<IPlayerInput>().getUpInput;
+        upInput.performed += context => OnUpInput();
+
+        downInput = GetComponent<IPlayerInput>().getDownInput;
+        downInput.performed += context => OnDownInput();
+        downInput.canceled += context => OnDownInputRelease();
+
         jumpInput = GetComponent<IPlayerInput>().getJumpInput;
         jumpInput.performed += context => OnJump();
 
@@ -34,6 +46,8 @@ public class PlayerController : MonoBehaviour
         jumpComponent = GetComponent<Jump>();
         staminaComponent = GetComponent<Stamina>();
         checkSurroundingsComponent = GetComponent<CheckSurroundings>();
+        respondToSurroundingsComponent = GetComponent<RespondToSurroundings>();
+
         rb = GetComponent<Rigidbody2D>();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         characterCollider = GetComponent<PolygonCollider2D>();
@@ -42,11 +56,15 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         enableInput(movementInput);
+        enableInput(upInput);
+        enableInput(downInput);
         enableInput(jumpInput);
     }
     private void OnDisable()
     {
         disableInput(movementInput);
+        disableInput(upInput);
+        disableInput(downInput);
         disableInput(jumpInput);
     }
 
@@ -54,55 +72,28 @@ public class PlayerController : MonoBehaviour
     private void enableInput(InputAction input) { input.Enable(); }
 
     private void OnMove(InputAction.CallbackContext context) {  movementComponent.move(mySpriteRenderer, context.ReadValue<float>()); }
-    private void OnJump() { jumpComponent.jump(rb, staminaComponent, 10); }
+    private void OnUpInput() { respondToSurroundingsComponent.respondToUpInput(mySpriteRenderer, rb); }
+    private void OnDownInput() { respondToSurroundingsComponent.respondToDownInput(mySpriteRenderer, rb, true); }
+    private void OnDownInputRelease() { respondToSurroundingsComponent.respondToDownInput(mySpriteRenderer, rb, false); }
+    private void OnJump() { respondToSurroundingsComponent.respondToJumpInput(rb, jumpComponent, staminaComponent, 10); }
 
     private void FixedUpdate() { movementComponent.moveCharacter(rb); }
 
     private void LateUpdate()
     { 
-        checkSurroundings();
+        checkSurroundingsAndRespondToThem();
         colliderUpdaterComponent.updateCollider(mySpriteRenderer, characterCollider);
     }
 
-    private void checkSurroundings()
+    private void checkSurroundingsAndRespondToThem()
     {
-        if(checkSurroundingsComponent.isGrounded(mySpriteRenderer))
-        {
-            jumpComponent.setJumpCounter(1);
-            staminaComponent.startStaminaModifierTimer(1f, staminaComponent.addStamina, 10);
-            Debug.Log("Grounded");
-        }
-        else
-        {
-            staminaComponent.stopStaminaModifierTimer();
-            Debug.Log("NotGrounded");
-        }
-
-        if(checkSurroundingsComponent.canWallJump(mySpriteRenderer) && !checkSurroundingsComponent.canGrabLedge(mySpriteRenderer))//daca vreau pot sa il pun sa caute doar daca e in aer (!isGrounded de sus)
-        {
-            Debug.Log("Touching wall in front so you can jump again if you have stamina");
-            jumpComponent.setJumpCounter(1);
-            //aici poti face sa dea si flip si sa te arunce in directia opusa fie direct din animatie fie cu rigidbody.velocity
-        }
-
-        if(checkSurroundingsComponent.canGrabLedge(mySpriteRenderer))//daca vreau pot sa il pun sa caute doar daca e in aer (!isGrounded de sus)
-        {
-            Debug.Log("Grabbed Ledge");
-            rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionY;
-            //de aici ce faci?
-            //apesi in sus ca sa urci sus pe pamant
-            //apesi jos ca sa cazi
-        }
-        else
-        {
-            //apesi stanga deci nu mai detecteaza peretele si cazi
-            rb.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
-        }
-
-        if(checkSurroundingsComponent.isOnSlope(mySpriteRenderer))
-        {
-            Debug.Log("Slope detected");
-        }
-
+        respondToSurroundingsComponent.configureAndRespondToSurroundings
+        (
+        rb, jumpComponent, staminaComponent,
+        checkSurroundingsComponent.isGrounded(mySpriteRenderer),
+        checkSurroundingsComponent.canWallJump(mySpriteRenderer),
+        checkSurroundingsComponent.canGrabLedge(mySpriteRenderer),
+        checkSurroundingsComponent.isOnSlope(mySpriteRenderer)
+        );
     }
 }

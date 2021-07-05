@@ -103,25 +103,29 @@ public class CheckSurroundings : MonoBehaviour
         return isBoxCastColliding();
     }
 
-
-
-
-
-
-
 //==============================================================================================================
     //IN CURS DE PROIECTARE
+    private bool isRayCastOnAngle()
+    {
+        this.raycastHit2D = Physics2D.Raycast(this.boxCastPosition, this.boxCastDirection, this.boxCastSize.y);
+        return Mathf.Abs(this.raycastHit2D.normal.x) != 0;
+    }
     public bool isOnSlope(SpriteRenderer spriteRenderer)
     {
-        return isLeftSideOnSlope(spriteRenderer) || isRightSideOnSlope(spriteRenderer) ? true : false;
+        this.boxCastSize.y = 0.5f;
+        this.boxCastDirection = -Vector2.up;
+        this.boxCastPosition.y = transform.position.y - spriteRenderer.bounds.extents.y - 0.01f;
+        return isLeftSideOnSlope(spriteRenderer) || isRightSideOnSlope(spriteRenderer)? true : false;
     }
 
     private bool isLeftSideOnSlope(SpriteRenderer spriteRenderer)
     {
-        return false;
+        //this.boxCastPosition.x data | temporaryGroundDataEndPos , startPos, width
+        return isRayCastOnAngle();
     }
     private bool isRightSideOnSlope(SpriteRenderer spriteRenderer)
-    {      
-        return false;
+    {   
+        //this.boxCastPosition.x data | temporaryGroundDataEndPos , startPos, width
+        return isRayCastOnAngle();
     }
 }
