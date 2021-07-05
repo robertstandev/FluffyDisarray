@@ -6,10 +6,10 @@ using System.Collections;
 [RequireComponent(typeof(Jump))]
 [RequireComponent(typeof(Stamina))]
 [RequireComponent(typeof(CheckSurroundings))]
+[RequireComponent(typeof(RespondToSurroundings))]
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(PolygonCollider2D))]
-[RequireComponent(typeof(RespondToSurroundings))]
 public class PlayerController : MonoBehaviour
 {
     private InputAction movementInput, upInput, downInput, jumpInput;
@@ -73,8 +73,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnMove(InputAction.CallbackContext context) {  movementComponent.move(mySpriteRenderer, context.ReadValue<float>()); }
     private void OnUpInput() { respondToSurroundingsComponent.respondToUpInput(mySpriteRenderer, rb); }
-    private void OnDownInput() { respondToSurroundingsComponent.respondToDownInput(mySpriteRenderer, rb, true); }
-    private void OnDownInputRelease() { respondToSurroundingsComponent.respondToDownInput(mySpriteRenderer, rb, false); }
+    private void OnDownInput() { respondToSurroundingsComponent.respondToDownInputPress(mySpriteRenderer, rb); }
+    private void OnDownInputRelease() { respondToSurroundingsComponent.respondToDownInputRelease(); }
     private void OnJump() { respondToSurroundingsComponent.respondToJumpInput(rb, jumpComponent, staminaComponent, 10); }
 
     private void FixedUpdate() { movementComponent.moveCharacter(rb); }

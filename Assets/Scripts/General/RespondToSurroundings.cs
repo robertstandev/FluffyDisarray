@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class RespondToSurroundings : MonoBehaviour
 {
-
+    [SerializeField]private float groundedStaminaReloadSpeed = 1f;
+    [SerializeField]private int groundedStaminaReloadAmmount = 10;
     [SerializeField]private float wallSlideSpeed = 0.3f;
     [SerializeField]private float groundPoungSpeed = 5f;
 
@@ -26,41 +27,38 @@ public class RespondToSurroundings : MonoBehaviour
             //
         }
     }
-    public void respondToDownInput(SpriteRenderer mySpriteRenderer, Rigidbody2D rb, bool isDownButtonPressed)
+    public void respondToDownInputPress(SpriteRenderer mySpriteRenderer, Rigidbody2D rb)
     {
-        if(isDownButtonPressed)
+        if(this.canGrabLedge)
         {
-            if(this.canGrabLedge)
-            {
-                reactivateGravity(rb);
-                transform.position = new Vector2(transform.position.x, transform.position.y - (mySpriteRenderer.bounds.extents.y / 2));
-                Debug.Log("Ledge Drop");
-            }
-            else if(this.isGrounded && !this.canGrabLedge)
-            {
-                this.isCrouching = true;
-                Debug.Log("Crouching");
-            }
-            else if(!this.isGrounded && !this.canGrabLedge && !this.isOnSlope)
-            {
-                this.isGroundPounding = true;
-                rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
-                rb.velocity = new Vector2(0f, -groundPoungSpeed);
-                Debug.Log("Ground Pounding");
-            }
+            reactivateGravity(rb);
+            transform.position = new Vector2(transform.position.x, transform.position.y - (mySpriteRenderer.bounds.extents.y / 2));
+            Debug.Log("Ledge Drop");
         }
-        else
+        else if(this.isGrounded && !this.canGrabLedge)
         {
-            if(this.isCrouching)
-            {
-                this.isCrouching = false;
-                Debug.Log("Not Crouching Anymore");
-            }
+            this.isCrouching = true;
+            Debug.Log("Crouching");
+        }
+        else if(!this.isGrounded && !this.canGrabLedge && !this.isOnSlope)
+        {
+            this.isGroundPounding = true;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
+            rb.velocity = new Vector2(0f, -this.groundPoungSpeed);
+            Debug.Log("Ground Pounding");
+        }
+    }
+    public void respondToDownInputRelease()
+    {
+        if(this.isCrouching)
+        {
+            this.isCrouching = false;
+            Debug.Log("Not Crouching Anymore");
         }
     }
     public void respondToJumpInput(Rigidbody2D rb, Jump jumpComponent, Stamina staminaComponent, int value)
     {
-        if(!isCrouching && !isGroundPounding && !canGrabLedge)
+        if(!this.isCrouching && !this.isGroundPounding && !this.canGrabLedge)
         {
             jumpComponent.jump(rb, staminaComponent, value);
         }
@@ -86,7 +84,7 @@ public class RespondToSurroundings : MonoBehaviour
             this.canGrabLedgePrevVal = false;
             this.isGroundPounding = false;      //daca fac isGrounded sa caute doar in functie de Layer atunci sa fac si un OnCollisionEnter pt a pune isGroundPounding = false, atunci cand o sa cada pe inamici sau alte obiecte altfel va ramane la infinit cu isGroundPounding(true) ca nu detecteaza pamantul pt a il reseta
             jumpComponent.setJumpCounter(0);
-            staminaComponent.startStaminaModifierTimer(1f, staminaComponent.addStamina, 10);
+            staminaComponent.startStaminaModifierTimer(this.groundedStaminaReloadSpeed, staminaComponent.addStamina, this.groundedStaminaReloadAmmount);
             reactivateGravity(rb);
             Debug.Log("Grounded");
         }
@@ -113,7 +111,7 @@ public class RespondToSurroundings : MonoBehaviour
         }
         else if(this.canWallJump && !this.canGrabLedge && !this.isGrounded && !this.isGroundPounding)
         {
-            rb.velocity = new Vector2(rb.velocity.x , Mathf.Clamp(rb.velocity.y , -wallSlideSpeed, float.MaxValue));
+            rb.velocity = new Vector2(rb.velocity.x , Mathf.Clamp(rb.velocity.y , -this.wallSlideSpeed, float.MaxValue));
             Debug.Log("Wall Sliding");
         }
     }
