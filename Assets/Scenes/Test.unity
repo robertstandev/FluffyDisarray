@@ -343,7 +343,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 216505938}
   m_LocalRotation: {x: -0, y: -0, z: 0.32543424, w: 0.9455647}
-  m_LocalPosition: {x: -2.986, y: -4.572, z: 0}
+  m_LocalPosition: {x: -2.986, y: -5, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -453,8 +453,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 662679938}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.166, y: -2.947, z: 0}
-  m_LocalScale: {x: 1, y: 1.5, z: 1}
+  m_LocalPosition: {x: -1.166, y: -3.094, z: 0}
+  m_LocalScale: {x: 1, y: 1.4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -732,7 +732,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2
+  orthographic size: 1.7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -756,7 +756,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1446250812}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.023000002, y: 1.4000001, z: 3.2080243}
+  m_LocalPosition: {x: 0.023000002, y: 1.239, z: 3.2080243}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1853256364}
@@ -959,7 +959,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2089731101}
   m_LocalRotation: {x: -0, y: -0, z: 0.32543424, w: 0.9455647}
-  m_LocalPosition: {x: -2.986, y: -3.85, z: 0}
+  m_LocalPosition: {x: -2.986, y: -4.3, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -985,12 +985,12 @@ PrefabInstance:
     - target: {fileID: 8437609470101633852, guid: 8f40cfc841bee64b6b83ae7a6f48df4c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.539
+      value: -0.79
       objectReference: {fileID: 0}
     - target: {fileID: 8437609470101633852, guid: 8f40cfc841bee64b6b83ae7a6f48df4c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.638
+      value: -0.173
       objectReference: {fileID: 0}
     - target: {fileID: 8437609470101633852, guid: 8f40cfc841bee64b6b83ae7a6f48df4c,
         type: 3}
