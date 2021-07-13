@@ -7,8 +7,32 @@ public class AnimationsManager : MonoBehaviour
     private Animation currentAnimation;
 
     //aici se stocheaza informatiile pentru fiecare sprite in parte pentru a nu mai fi recalculate====================================================
-    //format (int, Vector2, Vector2, Vector2) = (spriteInstanceID, colliderSize , groundCheckBoxCastSize, frontCheckBoxCastSize)
-    private (int, Vector2, Vector2, Vector2)[] spritesInformationArray;
+    //Tuple
+    private (
+        int spriteInstanceID,
+        Vector2 groundCheckBoxSize,
+        Vector2 groundCheckBoxPosition,
+        Vector2 wallCheckBoxSize,
+        Vector2 wallCheckBoxPosition,
+        Vector2 middleGrabLedgeCheckBoxSize,
+        Vector2 middleGrabLedgeCheckBoxPosition,
+        Vector2 topGrabLedgeCheckBoxSize,
+        Vector2 topGrabLedgeCheckBoxPosition,
+        int[] colliderPointsIndex,
+        Vector2[] colliderPointsPosition
+        )[] spriteInformationTuple;
+
+    //tuple trebuie convertit in list ca sa poti sterge sau adauga iteme insa este mai compact si rapid
+   
+    //SAU INDIVIDUAL
+    // private List<int> spriteInstanceID;
+    // private List<Vector2> groundCheckBoxSize, groundCheckBoxPosition;
+    // private List<Vector2> wallCheckBoxSize, wallCheckBoxPosition;
+    // private List<Vector2> middleGrabLedgeCheckBoxSize, middleGrabLedgeCheckBoxPosition, topGrabLedgeCheckBoxSize, topGrabLedgeCheckBoxPosition;
+    // private List<int[]> colliderPointsIndex;
+    // private List<Vector2[]> colliderPointsPosition;
+    //=================================================
+
     //verifica daca spriteul e deja in lista si daca e atunci:
     //Vector2 colliderSize = GetComponent<BoxCollider2D>().size = spritesInformationArray[0].Item2; //0 = index la spriteInstanceID , facut alta metoda care da return cu spriteInstanceID
     //Vector2 groundCheckBoxCastSize = GetComponent<BoxCollider2D>().size = spritesInformationArray[0].Item3;

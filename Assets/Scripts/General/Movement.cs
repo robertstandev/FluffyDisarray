@@ -8,6 +8,10 @@ public class Movement : MonoBehaviour
    [SerializeField]private float runForce = 4f;
 
    private Vector2 movingVector2 = Vector2.zero;
+   public Vector2 getMovingVector2()
+   {
+      return this.movingVector2;
+   }
 
    public void move(SpriteRenderer mySpriteRenderer, float movingFloat)
    {
