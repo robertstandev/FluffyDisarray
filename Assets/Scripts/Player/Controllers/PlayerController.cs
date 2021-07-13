@@ -21,8 +21,8 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer mySpriteRenderer;
     private PolygonCollider2D characterCollider;
 
-    [SerializeField]private float groundedStaminaReloadSpeed = 1f;
-    [SerializeField]private int groundedStaminaReloadAmmount = 10;
+    [SerializeField]private float staminaReloadSpeed = 1f;
+    [SerializeField]private int staminaReloadAmmount = 10;
     [SerializeField]private float wallSlideSpeed = 0.3f;
     [SerializeField]private float groundPoungSpeed = 5f;
     private Vector2 velocityModifier = Vector2.zero;
@@ -134,7 +134,7 @@ public class PlayerController : MonoBehaviour
         if(!this.isCrouching && !this.isGroundPounding && !this.canGrabLedge)
         {
             jumpComponent.jump(rb, staminaComponent, 10);
-            Debug.Log("Jump");
+            Debug.Log("Check Jump");
         }
     }
 
@@ -178,7 +178,7 @@ public class PlayerController : MonoBehaviour
             this.canGrabLedgePrevVal = false;
             this.isGroundPounding = false;      //daca fac isGrounded sa caute doar in functie de Layer atunci sa fac si un OnCollisionEnter pt a pune isGroundPounding = false, atunci cand o sa cada pe inamici sau alte obiecte altfel va ramane la infinit cu isGroundPounding(true) ca nu detecteaza pamantul pt a il reseta
             jumpComponent.setJumpCounter(0);
-            staminaComponent.startStaminaModifierTimer(this.groundedStaminaReloadSpeed, staminaComponent.addStamina, this.groundedStaminaReloadAmmount);
+            staminaComponent.startStaminaModifierTimer(this.staminaReloadSpeed, staminaComponent.addStamina, this.staminaReloadAmmount);
             reactivateGravity();
             Debug.Log("Grounded");
         }
