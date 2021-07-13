@@ -19,7 +19,6 @@ GameObject:
   - component: {fileID: 8437609470101633841}
   - component: {fileID: 8437609470101633842}
   - component: {fileID: 8437609470101633843}
-  - component: {fileID: 1793344377488294849}
   - component: {fileID: 8437609470101633845}
   m_Layer: 0
   m_Name: Character
@@ -105,7 +104,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 90
+  m_Mass: 75
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -307,6 +306,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d88d3847e2ac386d9655a1593ed4c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundedStaminaReloadSpeed: 1
+  groundedStaminaReloadAmmount: 10
+  wallSlideSpeed: 0.3
+  groundPoungSpeed: 5
 --- !u!114 &1302808751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,22 +377,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8957fe41b01696ad9bd263c404bec744, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1793344377488294849
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8437609470101633848}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe1e89f4818749dfeb9b0ef7bfa2c775, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groundedStaminaReloadSpeed: 1
-  groundedStaminaReloadAmmount: 10
-  wallSlideSpeed: 0.3
-  groundPoungSpeed: 5
 --- !u!95 &8437609470101633845
 Animator:
   serializedVersion: 3
