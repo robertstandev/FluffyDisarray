@@ -5,29 +5,29 @@ using UnityEngine;
 public class CheckSurroundings : MonoBehaviour
 {
     private RaycastHit2D raycastHit2D;
-    private Vector2 boxCastPosition , boxCastSize , boxCastDirection;
+    private Vector2 castPosition , castSize , castDirection;
     private Color[] spritePixels;
     private float temporaryGroundDataStartPos , temporaryGroundDataEndPos, temporaryGroundDataWidth;
 
     private bool isBoxCastColliding()
     {
-        return this.raycastHit2D = Physics2D.BoxCast(this.boxCastPosition, this.boxCastSize, 0, this.boxCastDirection, this.boxCastSize.y);
+        return this.raycastHit2D = Physics2D.BoxCast(this.castPosition, this.castSize, 0, this.castDirection, this.castSize.y);
     }
 
     public bool isGrounded(SpriteRenderer spriteRenderer)
     {
         calculateGroundContactData(spriteRenderer);
 
-        this.boxCastSize.x = this.temporaryGroundDataWidth;
-        this.boxCastSize.y = 0.005f;
+        this.castSize.x = this.temporaryGroundDataWidth;
+        this.castSize.y = 0.005f;
 
-        this.boxCastPosition.x = !spriteRenderer.flipX ? 
+        this.castPosition.x = !spriteRenderer.flipX ? 
         transform.position.x - spriteRenderer.bounds.extents.x + (this.temporaryGroundDataWidth / 2) + this.temporaryGroundDataStartPos : 
         transform.position.x + spriteRenderer.bounds.extents.x + (this.temporaryGroundDataWidth / 2) - this.temporaryGroundDataEndPos;
 
-        this.boxCastPosition.y = transform.position.y - spriteRenderer.bounds.extents.y - 0.01f;
+        this.castPosition.y = transform.position.y - spriteRenderer.bounds.extents.y - 0.01f;
 
-        this.boxCastDirection = Vector2.down;
+        this.castDirection = Vector2.down;
 
         return isBoxCastColliding();
     }
@@ -61,13 +61,13 @@ public class CheckSurroundings : MonoBehaviour
 
     public bool canWallJump(SpriteRenderer spriteRenderer)
     {
-        this.boxCastSize.x = 0.005f;
-        this.boxCastSize.y = spriteRenderer.bounds.size.y - 0.1f;
+        this.castSize.x = 0.005f;
+        this.castSize.y = spriteRenderer.bounds.size.y - 0.1f;
         
-        this.boxCastPosition.x = !spriteRenderer.flipX ? transform.position.x + spriteRenderer.bounds.extents.x + 0.02f : transform.position.x - spriteRenderer.bounds.extents.x - 0.02f;
-        this.boxCastPosition.y = transform.position.y + 0.05f;
+        this.castPosition.x = !spriteRenderer.flipX ? transform.position.x + spriteRenderer.bounds.extents.x + 0.02f : transform.position.x - spriteRenderer.bounds.extents.x - 0.02f;
+        this.castPosition.y = transform.position.y + 0.05f;
 
-        this.boxCastDirection = Vector2.zero;
+        this.castDirection = Vector2.zero;
 
         return isBoxCastColliding();
     }
@@ -79,53 +79,65 @@ public class CheckSurroundings : MonoBehaviour
 
     private bool ledgeMiddleDetection(SpriteRenderer spriteRenderer)
     {
-        this.boxCastSize.x = 0.005f;
-        this.boxCastSize.y = spriteRenderer.bounds.extents.y;
+        this.castSize.x = 0.005f;
+        this.castSize.y = spriteRenderer.bounds.extents.y;
         
-        this.boxCastPosition.x = !spriteRenderer.flipX ? transform.position.x + spriteRenderer.bounds.extents.x + 0.02f : transform.position.x - spriteRenderer.bounds.extents.x - 0.02f;
-        this.boxCastPosition.y = transform.position.y;
+        this.castPosition.x = !spriteRenderer.flipX ? transform.position.x + spriteRenderer.bounds.extents.x + 0.02f : transform.position.x - spriteRenderer.bounds.extents.x - 0.02f;
+        this.castPosition.y = transform.position.y;
 
-        this.boxCastDirection = Vector2.zero;
+        this.castDirection = Vector2.zero;
 
         return isBoxCastColliding();
     }
 
     private bool ledgeTopDetection(SpriteRenderer spriteRenderer)
     {
-        this.boxCastSize.x = 0.005f;
-        this.boxCastSize.y = 0.05f;
+        this.castSize.x = 0.005f;
+        this.castSize.y = 0.05f;
         
-        this.boxCastPosition.x = !spriteRenderer.flipX ? transform.position.x + spriteRenderer.bounds.extents.x + 0.02f : transform.position.x - spriteRenderer.bounds.extents.x - 0.02f;
-        this.boxCastPosition.y = transform.position.y + spriteRenderer.bounds.extents.y - (this.boxCastSize.y / 2);
+        this.castPosition.x = !spriteRenderer.flipX ? transform.position.x + spriteRenderer.bounds.extents.x + 0.02f : transform.position.x - spriteRenderer.bounds.extents.x - 0.02f;
+        this.castPosition.y = transform.position.y + spriteRenderer.bounds.extents.y - (this.castSize.y / 2);
 
-        this.boxCastDirection = Vector2.zero;
+        this.castDirection = Vector2.zero;
 
         return isBoxCastColliding();
     }
 
-//==============================================================================================================
-    //IN CURS DE PROIECTARE
     private bool isRayCastOnAngle()
     {
-        this.raycastHit2D = Physics2D.Raycast(this.boxCastPosition, this.boxCastDirection, this.boxCastSize.y);
-        return Mathf.Abs(this.raycastHit2D.normal.x) != 0;
+        this.raycastHit2D = Physics2D.Raycast(this.castPosition, this.castDirection, this.castSize.y);
+            if (raycastHit2D.collider)
+            {
+                if (raycastHit2D.normal != Vector2.up)
+                {
+                return true;
+                }
+            }
+        return false;
     }
+
     public bool isOnSlope(SpriteRenderer spriteRenderer)
     {
-        this.boxCastSize.y = 0.5f;
-        this.boxCastDirection = -Vector2.up;
-        this.boxCastPosition.y = transform.position.y - spriteRenderer.bounds.extents.y - 0.01f;
-        return isLeftSideOnSlope(spriteRenderer) || isRightSideOnSlope(spriteRenderer)? true : false;
+        this.castSize.y = 0.5f;
+        this.castDirection = Vector2.down;
+        this.castPosition.x = transform.position.x;
+        this.castPosition.y = transform.position.y - spriteRenderer.bounds.extents.y;
+
+        return isLeftSideOnSlope(spriteRenderer) || isRightSideOnSlope(spriteRenderer) ? true : false;
     }
 
     private bool isLeftSideOnSlope(SpriteRenderer spriteRenderer)
     {
-        //this.boxCastPosition.x data | temporaryGroundDataEndPos , startPos, width
+        this.castPosition.x = !spriteRenderer.flipX ? 
+        (transform.position.x - spriteRenderer.bounds.extents.x + (this.temporaryGroundDataWidth / 2) + this.temporaryGroundDataStartPos) - 0.05f:
+        (transform.position.x + spriteRenderer.bounds.extents.x + (this.temporaryGroundDataWidth / 2) - this.temporaryGroundDataEndPos) - 0.05f;
         return isRayCastOnAngle();
     }
     private bool isRightSideOnSlope(SpriteRenderer spriteRenderer)
-    {   
-        //this.boxCastPosition.x data | temporaryGroundDataEndPos , startPos, width
+    {
+        this.castPosition.x = !spriteRenderer.flipX ? 
+        (transform.position.x - spriteRenderer.bounds.extents.x + (this.temporaryGroundDataWidth / 2) + this.temporaryGroundDataStartPos) + 0.05f:
+        (transform.position.x + spriteRenderer.bounds.extents.x + (this.temporaryGroundDataWidth / 2) - this.temporaryGroundDataEndPos) + 0.05f;
         return isRayCastOnAngle();
     }
 }
