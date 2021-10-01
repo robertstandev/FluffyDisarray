@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8144231415090482541}
   - component: {fileID: 7781698764767414753}
-  m_Layer: 31
+  m_Layer: 0
   m_Name: Mushroom Palette
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2373062263890406673}
   - component: {fileID: 2812707399155694517}
-  m_Layer: 31
+  m_Layer: 0
   m_Name: Sign Palette
   m_TagString: Untagged
   m_Icon: {fileID: 0}

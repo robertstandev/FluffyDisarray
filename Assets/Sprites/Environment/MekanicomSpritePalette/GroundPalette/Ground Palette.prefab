@@ -204,7 +204,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9090279802431227950}
   - component: {fileID: 4502836812749573381}
-  m_Layer: 31
+  m_Layer: 0
   m_Name: Ground Palette
   m_TagString: Untagged
   m_Icon: {fileID: 0}

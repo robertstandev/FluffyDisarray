@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4252618103585059471}
   - component: {fileID: 4807896861928568491}
-  m_Layer: 31
+  m_Layer: 0
   m_Name: Bush Palette
   m_TagString: Untagged
   m_Icon: {fileID: 0}
