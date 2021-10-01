@@ -41,7 +41,7 @@ public class CheckSurroundings : MonoBehaviour
 
         for(int i = 0; i < spritePixels.Length; i++)
         {
-            if(spritePixels[i].a > 0.1f)
+            if(this.spritePixels[i].a > 0.1f)
             {
                 if(this.temporaryGroundDataStartPos == -1)
                 {
@@ -106,9 +106,9 @@ public class CheckSurroundings : MonoBehaviour
     private bool isRayCastOnAngle()
     {
         this.raycastHit2D = Physics2D.Raycast(this.castPosition, this.castDirection, this.castSize.y);
-            if (raycastHit2D.collider)
+            if (this.raycastHit2D.collider)
             {
-                if (raycastHit2D.normal != Vector2.up)
+                if (this.raycastHit2D.normal != Vector2.up)
                 {
                 return true;
                 }

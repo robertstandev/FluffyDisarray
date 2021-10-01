@@ -16,36 +16,36 @@ public class PlayerAnimationsController : MonoBehaviour
 
     private void Awake()
     {
-        animationsContainerComponent = GetComponent<AnimationsManager>();
+        this.animationsContainerComponent = GetComponent<AnimationsManager>();
     }
 
     public void attack()
     {
-        animationsContainerComponent.changeAnimation(attackAnimationName);
+        this.animationsContainerComponent.changeAnimation(attackAnimationName);
     }
 
     public void jump()
     {
-        animationsContainerComponent.changeAnimation(jumpAnimationName);
+        this.animationsContainerComponent.changeAnimation(jumpAnimationName);
     }
 
     public void move()
     {
-        animationsContainerComponent.changeAnimation(moveAnimationName);
+        this.animationsContainerComponent.changeAnimation(moveAnimationName);
     }
 
     public void crouch()
     {
-        animationsContainerComponent.changeAnimation(crouchAnimationName);
+        this.animationsContainerComponent.changeAnimation(crouchAnimationName);
     }
 
     public void fly()
     {
-        animationsContainerComponent.changeAnimation(flyAnimationName);
+        this.animationsContainerComponent.changeAnimation(flyAnimationName);
     }
 
     public void dash()
     {
-        animationsContainerComponent.changeAnimation(dashAnimationName);
+        this.animationsContainerComponent.changeAnimation(dashAnimationName);
     }
 }

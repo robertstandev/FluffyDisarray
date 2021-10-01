@@ -4,42 +4,34 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-   [SerializeField]private float moveForce = 2f;
-   [SerializeField]private float runForce = 4f;
-
+   [SerializeField]private float moveForce = 3f;
    private Vector2 movingVector2 = Vector2.zero;
-   public Vector2 getMovingVector2()
-   {
-      return this.movingVector2;
-   }
 
-   public void move(SpriteRenderer mySpriteRenderer, float movingFloat)
-   {
-      checkFlip(mySpriteRenderer, movingFloat);
-      movingVector2.x = movingFloat * moveForce;
-   }
+   public Vector2 getMovingVector2() { return this.movingVector2; }
 
-   public void run(SpriteRenderer mySpriteRenderer, float movingFloat)
+   public void move(SpriteRenderer characterSpriteRenderer, SpriteRenderer eyesSpriteRenderer, float movingFloat)
    {
-      checkFlip(mySpriteRenderer, movingFloat);
-      movingVector2.x = movingFloat * runForce;
+      checkFlip(characterSpriteRenderer, eyesSpriteRenderer, movingFloat);
+      this.movingVector2.x = movingFloat * this.moveForce;
    }
 
    public void moveCharacter(Rigidbody2D rb)
    {
-      movingVector2.y = rb.velocity.y;
-      rb.velocity = movingVector2;
+      this.movingVector2.y = rb.velocity.y;
+      rb.velocity = this.movingVector2;
    }
 
-   public void checkFlip(SpriteRenderer mySpriteRenderer, float movingFloat)
+   public void checkFlip(SpriteRenderer characterSpriteRenderer, SpriteRenderer eyesSpriteRenderer, float movingFloat)
    {
-      if(movingFloat > 0)
+      if(movingFloat > 0 && characterSpriteRenderer.flipX)
       {
-         mySpriteRenderer.flipX = false;
+         characterSpriteRenderer.flipX = false;
+         eyesSpriteRenderer.flipX = false;
       }
-      else if(movingFloat < 0)
+      else if(movingFloat < 0 && !characterSpriteRenderer.flipX)
       {
-         mySpriteRenderer.flipX = true;
+         characterSpriteRenderer.flipX = true;
+         eyesSpriteRenderer.flipX = true;
       }
    }
 }

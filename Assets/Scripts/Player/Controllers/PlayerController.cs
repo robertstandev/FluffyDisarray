@@ -1,30 +1,25 @@
 ﻿using UnityEngine;
-using UnityEngine.InputSystem;
 using System.Collections;
+using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Movement))]
-[RequireComponent(typeof(Jump))]
-[RequireComponent(typeof(Stamina))]
-[RequireComponent(typeof(CheckSurroundings))]
-[RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(SpriteRenderer))]
-[RequireComponent(typeof(PolygonCollider2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(Movement), typeof(Jump))]
+[RequireComponent(typeof(Stamina), typeof(CheckSurroundings), typeof(Animator))]
+
 public class PlayerController : MonoBehaviour
 {
-    private InputAction movementInput, upInput, downInput, jumpInput;
-    private ColliderUpdater colliderUpdaterComponent;
+	private InputAction movementInput, runInput, upInput, downInput, jumpInput;
     private Movement movementComponent;
     private Jump jumpComponent;
     private Stamina staminaComponent;
     private CheckSurroundings checkSurroundingsComponent;
     private Rigidbody2D rb;
-    private SpriteRenderer mySpriteRenderer;
-    private PolygonCollider2D characterCollider;
+    [SerializeField]private SpriteRenderer mySpriteRenderer;
+	[SerializeField]private SpriteRenderer eyesSpriteRenderer;
+    private Animator characterAnimator;
 
-    [SerializeField]private float staminaReloadSpeed = 1f;
-    [SerializeField]private int staminaReloadAmmount = 10;
     [SerializeField]private float wallSlideSpeed = 0.3f;
     [SerializeField]private float groundPoungSpeed = 5f;
+    private float tempMoveValue;
     private Vector2 velocityModifier = Vector2.zero;
     private Vector2 positionModifier = Vector2.zero;
     private bool isGrounded = false, isGroundedPrevVal = false;
@@ -34,60 +29,74 @@ public class PlayerController : MonoBehaviour
     private bool isCrouching = false;
     private bool isGroundPounding = false;
 
-    private void Awake()
+    [SerializeField]private GameObject impactEffect;
+ 	[SerializeField]private GameObject trailEffect;
+
+	private void Awake()
     {
-        movementInput = GetComponent<IPlayerInput>().getMovementInput;
-        movementInput.performed += context => OnMove(context);
-        movementInput.canceled += context => OnMove(context);
+        this.movementInput = GetComponent<IPlayerInput>().getMovementInput;
+        this.movementInput.performed += context => OnMove(context);
+        this.movementInput.canceled += context => OnMove(context);
 
-        upInput = GetComponent<IPlayerInput>().getUpInput;
-        upInput.performed += context => OnUpInput();
+        this.upInput = GetComponent<IPlayerInput>().getUpInput;
+        this.upInput.performed += context => OnUpInput();
 
-        downInput = GetComponent<IPlayerInput>().getDownInput;
-        downInput.performed += context => OnDownInput();
-        downInput.canceled += context => OnDownInputRelease();
+        this.downInput = GetComponent<IPlayerInput>().getDownInput;
+        this.downInput.performed += context => OnDownInput();
+        this.downInput.canceled += context => OnDownInputRelease();
 
-        jumpInput = GetComponent<IPlayerInput>().getJumpInput;
-        jumpInput.performed += context => OnJump();
+        this.jumpInput = GetComponent<IPlayerInput>().getJumpInput;
+        this.jumpInput.performed += context => OnJump();
 
-        colliderUpdaterComponent = GetComponent<ColliderUpdater>();
-        movementComponent = GetComponent<Movement>();
-        jumpComponent = GetComponent<Jump>();
-        staminaComponent = GetComponent<Stamina>();
-        checkSurroundingsComponent = GetComponent<CheckSurroundings>();
+        this.movementComponent = GetComponent<Movement>();
+        this.jumpComponent = GetComponent<Jump>();
+        this.staminaComponent = GetComponent<Stamina>();
+        this.checkSurroundingsComponent = GetComponent<CheckSurroundings>();
 
-        rb = GetComponent<Rigidbody2D>();
-        mySpriteRenderer = GetComponent<SpriteRenderer>();
-        characterCollider = GetComponent<PolygonCollider2D>();
+        this.rb = GetComponent<Rigidbody2D>();
+        this.characterAnimator = GetComponent<Animator>();
     }
 
     private void OnEnable()
     {
-        enableInput(movementInput);
-        enableInput(upInput);
-        enableInput(downInput);
-        enableInput(jumpInput);
+        enableInput(this.movementInput);
+        enableInput(this.upInput);
+        enableInput(this.downInput);
+        enableInput(this.jumpInput);
     }
     private void OnDisable()
     {
-        disableInput(movementInput);
-        disableInput(upInput);
-        disableInput(downInput);
-        disableInput(jumpInput);
+        disableInput(this.movementInput);
+        disableInput(this.upInput);
+        disableInput(this.downInput);
+        disableInput(this.jumpInput);
     }
 
     private void disableInput(InputAction input) { input.Disable(); }
     private void enableInput(InputAction input) { input.Enable(); }
 
-    private void OnMove(InputAction.CallbackContext context) { movementComponent.move(mySpriteRenderer, context.ReadValue<float>()); }
+    private void OnMove(InputAction.CallbackContext context)
+    {
+        this.tempMoveValue = context.ReadValue<float>();
+        this.movementComponent.move(this.mySpriteRenderer, this.eyesSpriteRenderer, this.tempMoveValue);
+        this.trailEffect.SetActive(this.tempMoveValue != 0f);
+    }
+
+    private void animationTest()
+    {
+        this.characterAnimator.SetFloat ("Speed", Mathf.Abs (this.tempMoveValue));
+ 		this.characterAnimator.SetBool ("IsGrounded", this.isGrounded);
+ 		this.characterAnimator.SetFloat ("vSpeed", rb.velocity.y);
+    }
+
     private void OnUpInput()
     {
         if(this.canGrabLedge)
         {
             //citeste animatia si apoi urca
             //if(this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("numeleAnimatiei"))
-                this.positionModifier.x = transform.position.x + (mySpriteRenderer.flipX ? -mySpriteRenderer.bounds.extents.x : mySpriteRenderer.bounds.extents.x);
-                this.positionModifier.y = transform.position.y + mySpriteRenderer.bounds.size.y;
+                this.positionModifier.x = transform.position.x + (this.mySpriteRenderer.flipX ? -this.mySpriteRenderer.bounds.extents.x : this.mySpriteRenderer.bounds.extents.x);
+                this.positionModifier.y = transform.position.y + this.mySpriteRenderer.bounds.size.y;
                 transform.position = this.positionModifier;
                 reactivateGravity();
                 Debug.Log("Ledge Climb");
@@ -99,7 +108,7 @@ public class PlayerController : MonoBehaviour
         if(this.canGrabLedge)
         {
             this.positionModifier.x = transform.position.x;
-            this.positionModifier.y = transform.position.y - (mySpriteRenderer.bounds.extents.y / 2);
+            this.positionModifier.y = transform.position.y - (this.mySpriteRenderer.bounds.extents.y / 2);
             transform.position = this.positionModifier;
 
             reactivateGravity();
@@ -113,11 +122,11 @@ public class PlayerController : MonoBehaviour
         else if(!this.isGrounded && !this.canGrabLedge && !this.isOnSlope)
         {
             this.isGroundPounding = true;
-            rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
+            this.rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
 
             this.velocityModifier.x = 0f;
             this.velocityModifier.y = -this.groundPoungSpeed;
-            rb.velocity = this.velocityModifier;
+            this.rb.velocity = this.velocityModifier;
             Debug.Log("Ground Pounding");
         }
     }
@@ -133,7 +142,7 @@ public class PlayerController : MonoBehaviour
     {
         if(!this.isCrouching && !this.isGroundPounding && !this.canGrabLedge)
         {
-            jumpComponent.jump(rb, staminaComponent, 10);
+            this.jumpComponent.jump(this.rb, this.staminaComponent);
             Debug.Log("Check Jump");
         }
     }
@@ -141,9 +150,9 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         //if detecting wall and user is pressing the same direction as wall , ignore user input
-        if(!(canWallJump && (mySpriteRenderer.flipX && movementComponent.getMovingVector2().x < 0f || !mySpriteRenderer.flipX && movementComponent.getMovingVector2().x > 0f)))
+        if(!(this.canWallJump && (this.mySpriteRenderer.flipX && this.movementComponent.getMovingVector2().x < 0f || !this.mySpriteRenderer.flipX && this.movementComponent.getMovingVector2().x > 0f)))
         {
-            movementComponent.moveCharacter(rb);
+            this.movementComponent.moveCharacter(this.rb);
         }
     }
 
@@ -151,15 +160,15 @@ public class PlayerController : MonoBehaviour
     { 
         checkSurroundings();
         respondToSurroundings();
-        colliderUpdaterComponent.updateCollider(mySpriteRenderer, characterCollider);
+        animationTest();
     }
 
     private void checkSurroundings()
     {
-        this.isGrounded = checkSurroundingsComponent.isGrounded(mySpriteRenderer);
-        this.canWallJump = checkSurroundingsComponent.canWallJump(mySpriteRenderer);
-        this.canGrabLedge = checkSurroundingsComponent.canGrabLedge(mySpriteRenderer);
-        this.isOnSlope = checkSurroundingsComponent.isOnSlope(mySpriteRenderer);
+        this.isGrounded = this.checkSurroundingsComponent.isGrounded(this.mySpriteRenderer);
+        this.canWallJump = this.checkSurroundingsComponent.canWallJump(this.mySpriteRenderer);
+        this.canGrabLedge = this.checkSurroundingsComponent.canGrabLedge(this.mySpriteRenderer);
+        this.isOnSlope = this.checkSurroundingsComponent.isOnSlope(this.mySpriteRenderer);
     }
 
     private void respondToSurroundings()
@@ -177,15 +186,16 @@ public class PlayerController : MonoBehaviour
             this.isGroundedPrevVal = true;
             this.canGrabLedgePrevVal = false;
             this.isGroundPounding = false;      //daca fac isGrounded sa caute doar in functie de Layer atunci sa fac si un OnCollisionEnter pt a pune isGroundPounding = false, atunci cand o sa cada pe inamici sau alte obiecte altfel va ramane la infinit cu isGroundPounding(true) ca nu detecteaza pamantul pt a il reseta
-            jumpComponent.setJumpCounter(0);
-            staminaComponent.startStaminaModifierTimer(this.staminaReloadSpeed, staminaComponent.addStamina, this.staminaReloadAmmount);
+            this.jumpComponent.setJumpCounter(0);
+            this.staminaComponent.startStaminaModifierTimer(this.staminaComponent.addStamina);
             reactivateGravity();
+            activateImpactEffect();
             Debug.Log("Grounded");
         }
         else if(!this.isGrounded && this.isGroundedPrevVal)
         {
             this.isGroundedPrevVal = false;
-            staminaComponent.stopStaminaModifierTimer();
+            this.staminaComponent.stopStaminaModifierTimer();
             Debug.Log("Not Grounded");
         }
     }
@@ -196,7 +206,7 @@ public class PlayerController : MonoBehaviour
         {
             this.canWallJumpPrevVal = true;
             reactivateGravity();
-            jumpComponent.setJumpCounter(1);
+            this.jumpComponent.setJumpCounter(1);
             Debug.Log("Touching wall in front so you can jump once if you have stamina");
         }
         else if(!this.canWallJump && this.canWallJumpPrevVal && !this.isGrounded)
@@ -205,9 +215,9 @@ public class PlayerController : MonoBehaviour
         }
         else if(this.canWallJump && !this.canGrabLedge && !this.isGrounded && !this.isGroundPounding)
         {
-            this.velocityModifier.x = rb.velocity.x;
-            this.velocityModifier.y = Mathf.Clamp(rb.velocity.y , -this.wallSlideSpeed, float.MaxValue);
-            rb.velocity = this.velocityModifier;
+            this.velocityModifier.x = this.rb.velocity.x;
+            this.velocityModifier.y = Mathf.Clamp(this.rb.velocity.y , -this.wallSlideSpeed, float.MaxValue);
+            this.rb.velocity = this.velocityModifier;
             Debug.Log("Wall Sliding");
         }
     }
@@ -217,7 +227,7 @@ public class PlayerController : MonoBehaviour
         if(this.canGrabLedge && !this.canGrabLedgePrevVal && !this.isGrounded && !this.isGroundPounding)
         {
             this.canGrabLedgePrevVal = true;
-            rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionY;
+            this.rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionY;
             Debug.Log("Grabbed Ledge");
         }
         else if(!this.canGrabLedge && this.canGrabLedgePrevVal && !this.isGrounded)
@@ -241,5 +251,22 @@ public class PlayerController : MonoBehaviour
             Debug.Log("No Slope Detected");
         }
     }
-    private void reactivateGravity() { rb.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation; }
+    private void reactivateGravity() { this.rb.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation; }
+
+    private void activateImpactEffect() { this.impactEffect.SetActive(true); }
+
+
+// 	void FixedUpdate()
+// 	{
+
+
+// 		float hor = Input.GetAxis ("Horizontal");
+
+// 		this.characterAnimator.SetFloat ("Speed", Mathf.Abs (hor));
+		  
+// 		this.characterAnimator.SetBool ("IsGrounded", this.isGrounded);
+
+// 		this.characterAnimator.SetFloat ("vSpeed", GetComponent<Rigidbody2D>().velocity.y);
+// 	}
+
 }

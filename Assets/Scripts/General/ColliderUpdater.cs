@@ -161,7 +161,7 @@ public class ColliderUpdater : MonoBehaviour
 
 
 
-//====================================================================================Algoritmi====================================================================================
+//====================================================================================Algorithm====================================================================================
 class Vertices : List<Vector2>
 {
     public Vertices(int capacity) : base(capacity) { }
@@ -189,17 +189,17 @@ sealed class TextureConverter
         this.height = colors.Length / width;
         int n, s;
 
-        solids = new byte[colors.Length];
+        this.solids = new byte[colors.Length];
 
-        for (int i = 0; i < solids.Length; i++)
+        for (int i = 0; i < this.solids.Length; i++)
         {
             n = alphaTolerance - (int)(colors[i].a * 255.0f);
             s = ((int)((n & 0x80000000) >> 31)) - 1;
             n = n * s * s;
-            solids[i] = (byte)n;
+            this.solids[i] = (byte)n;
         }
 
-        solidsLength = colors.Length;
+        this.solidsLength = colors.Length;
 
         List<Vertices> detectedVerticesList = DetectVertices();
         List<Vertices> result = new List<Vertices>();

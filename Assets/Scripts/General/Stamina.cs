@@ -4,29 +4,31 @@ using UnityEngine;
 
 public class Stamina : MonoBehaviour
 {
+   [SerializeField]private float staminaReloadSpeed = 1f;
+   [SerializeField]private int staminaReloadAmmount = 10;
+   
    private int currentStamina = 100;
    private IEnumerator staminaModifierTimerInstance;
 
    public int getStamina() { return this.currentStamina; }
 
    public void substractStamina(int amount) { this.currentStamina = this.currentStamina >= amount ? this.currentStamina -= amount : 0; }
-
    public void addStamina(int amount) { this.currentStamina = (this.currentStamina + amount) <= 100 ? this.currentStamina += amount : 100; }
    
-   private IEnumerator staminaModifierTimer(float interval, System.Action<int> getMethod , int amountPerTick)
+   private IEnumerator staminaModifierTimer(System.Action<int> getMethod)
    {
-      WaitForSeconds delay = new WaitForSeconds(interval);
+      WaitForSeconds delay = new WaitForSeconds(staminaReloadSpeed);
        
       while(true)
       {
-            yield return delay;
+         yield return delay;
 
-            getMethod?.Invoke(amountPerTick);
+         getMethod?.Invoke(staminaReloadAmmount);
 
-            if(((getMethod == addStamina) && (currentStamina == 100)) || ((getMethod == substractStamina) && (currentStamina == 0)))
-            {
-               stopStaminaModifierTimer();
-            }
+         if(((getMethod == addStamina) && (this.currentStamina == 100)) || ((getMethod == substractStamina) && (this.currentStamina == 0)))
+         {
+            stopStaminaModifierTimer();
+         }
       }
    }
 
@@ -34,15 +36,15 @@ public class Stamina : MonoBehaviour
       if(this.staminaModifierTimerInstance != null)
       {
          StopCoroutine(this.staminaModifierTimerInstance);
-         staminaModifierTimerInstance = null;
+         this.staminaModifierTimerInstance = null;
       }
    }
 
-   public void startStaminaModifierTimer(float interval, System.Action<int> getMethod , int amountPerTick){
-      if(staminaModifierTimerInstance == null)
+   public void startStaminaModifierTimer(System.Action<int> getMethod){
+      if(this.staminaModifierTimerInstance == null)
       {
-         this.staminaModifierTimerInstance = staminaModifierTimer(interval,getMethod,amountPerTick);
-         StartCoroutine(staminaModifierTimerInstance);
+         this.staminaModifierTimerInstance = staminaModifierTimer(getMethod);
+         StartCoroutine(this.staminaModifierTimerInstance);
       }
    }
 }
