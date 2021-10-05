@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(Movement), typeof(Jump))]
 [RequireComponent(typeof(Stamina), typeof(CheckSurroundings), typeof(Animator))]
-
 public class PlayerController : MonoBehaviour
 {
 	private InputAction movementInput, runInput, upInput, downInput, jumpInput;
@@ -25,7 +24,6 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded = false, isGroundedPrevVal = false;
     private bool canGrabLedge = false, canGrabLedgePrevVal = false;
     private bool canWallJump = false, canWallJumpPrevVal = false;
-    private bool isOnSlope = false, isOnSlopePrevVal;
     private bool isCrouching = false;
     private bool isGroundPounding = false;
 
@@ -119,7 +117,7 @@ public class PlayerController : MonoBehaviour
             this.isCrouching = true;
             Debug.Log("Crouching");
         }
-        else if(!this.isGrounded && !this.canGrabLedge && !this.isOnSlope)
+        else if(!this.isGrounded && !this.canGrabLedge)
         {
             this.isGroundPounding = true;
             this.rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
@@ -168,7 +166,6 @@ public class PlayerController : MonoBehaviour
         this.isGrounded = this.checkSurroundingsComponent.isGrounded(this.mySpriteRenderer);
         this.canWallJump = this.checkSurroundingsComponent.canWallJump(this.mySpriteRenderer);
         this.canGrabLedge = this.checkSurroundingsComponent.canGrabLedge(this.mySpriteRenderer);
-        this.isOnSlope = this.checkSurroundingsComponent.isOnSlope(this.mySpriteRenderer);
     }
 
     private void respondToSurroundings()
@@ -176,7 +173,6 @@ public class PlayerController : MonoBehaviour
         respondToGroundedDetection();
         respondToWallDetection();
         respondToLedgeDetection();
-        respondToSlopeDetection();
     }
 
     private void respondToGroundedDetection()
@@ -237,36 +233,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Not Grabbing Ledge Anymore");
         }
     }
-
-    private void respondToSlopeDetection()
-    {
-        if(this.isOnSlope && !this.isOnSlopePrevVal)
-        {
-            this.isOnSlopePrevVal = true;
-            Debug.Log("Slope detected");
-        }
-        else if(this.isOnSlopePrevVal && !this.isOnSlope)
-        {
-            this.isOnSlopePrevVal = false;
-            Debug.Log("No Slope Detected");
-        }
-    }
     private void reactivateGravity() { this.rb.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation; }
 
     private void activateImpactEffect() { this.impactEffect.SetActive(true); }
-
-
-// 	void FixedUpdate()
-// 	{
-
-
-// 		float hor = Input.GetAxis ("Horizontal");
-
-// 		this.characterAnimator.SetFloat ("Speed", Mathf.Abs (hor));
-		  
-// 		this.characterAnimator.SetBool ("IsGrounded", this.isGrounded);
-
-// 		this.characterAnimator.SetFloat ("vSpeed", GetComponent<Rigidbody2D>().velocity.y);
-// 	}
-
 }
