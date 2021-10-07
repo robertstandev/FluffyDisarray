@@ -5,5 +5,5 @@ public class AutoHide : MonoBehaviour
 {
 	[SerializeField]private float hideAfterInterval = 0.8f;
 	private void OnEnable() { Invoke("OnDisable", hideAfterInterval); }
-	private void OnDisable() { this.gameObject.SetActive(false); }
+	private void OnDisable() { CancelInvoke(); this.gameObject.SetActive(false); }
 }

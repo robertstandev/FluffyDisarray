@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Stamina), typeof(CheckSurroundings), typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
-	private InputAction movementInput, runInput, upInput, downInput, jumpInput;
+	private InputAction movementInput, runInput, upInput, downInput, jumpInput, projectileInput;
     private Movement movementComponent;
     private Jump jumpComponent;
     private Stamina staminaComponent;
@@ -46,6 +46,9 @@ public class PlayerController : MonoBehaviour
         this.jumpInput = GetComponent<IPlayerInput>().getJumpInput;
         this.jumpInput.performed += context => OnJump();
 
+        this.projectileInput = GetComponent<IPlayerInput>().getProjectileInput;
+        this.projectileInput.performed += context => GetComponent<ProjectileManager>().executeSkill();;
+
         this.movementComponent = GetComponent<Movement>();
         this.jumpComponent = GetComponent<Jump>();
         this.staminaComponent = GetComponent<Stamina>();
@@ -61,6 +64,7 @@ public class PlayerController : MonoBehaviour
         enableInput(this.upInput);
         enableInput(this.downInput);
         enableInput(this.jumpInput);
+        enableInput(this.projectileInput);
     }
     private void OnDisable()
     {
@@ -68,6 +72,7 @@ public class PlayerController : MonoBehaviour
         disableInput(this.upInput);
         disableInput(this.downInput);
         disableInput(this.jumpInput);
+        disableInput(this.projectileInput);
     }
 
     private void disableInput(InputAction input) { input.Disable(); }

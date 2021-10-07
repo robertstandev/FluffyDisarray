@@ -9,4 +9,5 @@ public interface IPlayerInput
     InputAction getJumpInput { get; }
     InputAction getUpInput { get; }
     InputAction getDownInput { get; }
+    InputAction getProjectileInput { get; }
 }
