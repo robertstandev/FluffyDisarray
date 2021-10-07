@@ -5031,6 +5031,7 @@ GameObject:
   - component: {fileID: 573804501409757773}
   - component: {fileID: 373695605}
   - component: {fileID: 373695595}
+  - component: {fileID: 138535770}
   m_Layer: 8
   m_Name: Character
   m_TagString: Untagged
@@ -5146,6 +5147,22 @@ MonoBehaviour:
       m_Processors: 
       m_Groups: 
       m_Action: Jump Input
+      m_Flags: 0
+  projectileInput:
+    m_Name: Projectile Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 8e9cb897-89eb-4571-bb9e-4ca44617c85c
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 50c9d9c7-2c08-4747-ad93-41238ffc354e
+      m_Path: <Keyboard>/z
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Projectile Input
       m_Flags: 0
 --- !u!114 &573804501409757775
 MonoBehaviour:
@@ -5288,6 +5305,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placeToRespawn: {x: -1, y: 1, z: 0}
+--- !u!114 &138535770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573804501409757768}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9198868acb36474f834fbeaf0d74128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  muzzleEffectPrefab: {fileID: 0}
+  muzzleEffectPositionToCharacter: {x: 1, y: -0.1}
+  characterSpriteRenderer: {fileID: 573804500172515842}
+  projectileEffectPrefab: {fileID: 0}
 --- !u!1001 &9219697692685413959
 PrefabInstance:
   m_ObjectHideFlags: 0
