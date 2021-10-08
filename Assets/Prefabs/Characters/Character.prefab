@@ -5026,6 +5026,7 @@ GameObject:
   - component: {fileID: 7505971585053867861}
   - component: {fileID: 594952990967593592}
   - component: {fileID: 7543749310116882259}
+  - component: {fileID: 1286044503153903007}
   - component: {fileID: 8452613068546436134}
   - component: {fileID: 573804501409757774}
   - component: {fileID: 573804501409757773}
@@ -5224,6 +5225,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   staminaReloadSpeed: 0.5
   staminaReloadAmmount: 10
+--- !u!114 &1286044503153903007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573804501409757768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25a708b081225d6f9ac643fe6f3366ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  deathEffect: {fileID: 0}
 --- !u!114 &8452613068546436134
 MonoBehaviour:
   m_ObjectHideFlags: 0
