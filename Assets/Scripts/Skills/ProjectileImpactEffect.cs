@@ -6,6 +6,7 @@ public class ProjectileImpactEffect : MonoBehaviour
 {
     [SerializeField]private SpriteRenderer characterSpriteRenderer;
     [SerializeField]private GameObject projectileParticleGameObject;
+    [SerializeField]private int projectileDamage = 50;
     [SerializeField]private GameObject impactEffect;
     
     private Vector2 startLocalPosition = new Vector2(1.5f, 0f);
@@ -18,6 +19,7 @@ public class ProjectileImpactEffect : MonoBehaviour
         this.projectileParticleGameObject.SetActive(false);
         this.impactEffect.transform.position = this.projectileParticleGameObject.transform.position;
         this.impactEffect.SetActive(true);
+        other.gameObject.GetComponent<IHealth>()?.substractHealth(this.projectileDamage);
         this.gameObject.SetActive(false);
     }
 
