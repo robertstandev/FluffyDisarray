@@ -11,7 +11,7 @@ public class ProjectileImpactEffect : MonoBehaviour
     
     private Vector2 startLocalPosition = new Vector2(1.5f, 0f);
     private Vector2 currentModifiedPosition = Vector2.zero; 
-    private WaitForSeconds wait = new WaitForSeconds(0.005f);
+    private WaitForSeconds wait = new WaitForSeconds(0.003f);
     private float moveDirection = 0.1f;
 
     private void OnCollisionEnter2D(Collision2D other)
