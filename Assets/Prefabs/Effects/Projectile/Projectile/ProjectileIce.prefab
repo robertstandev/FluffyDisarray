@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: -8660672412577147938}
   - component: {fileID: 9202721312778182390}
   - component: {fileID: 7428163038665006118}
+  - component: {fileID: 853544945}
   m_Layer: 0
   m_Name: ProjectileIce
   m_TagString: Untagged
@@ -80,6 +81,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterSpriteRenderer: {fileID: 0}
   projectileParticleGameObject: {fileID: 4881524486060528284}
+  projectileDamage: 50
   impactEffect: {fileID: 0}
 --- !u!61 &9202721312778182390
 BoxCollider2D:
@@ -120,6 +122,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hideAfterInterval: 5
+--- !u!50 &853544945
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8259933171936786642}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &8260955778799646718
 GameObject:
   m_ObjectHideFlags: 0
@@ -841,7 +864,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 7
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -5017,7 +5040,7 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 1}
+      minColor: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 1}
       maxColor: {r: 0.9339623, g: 0.9339623, b: 0.9339623, a: 1}
       maxGradient:
         serializedVersion: 2
@@ -5080,8 +5103,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2
-      minScalar: 1
+      scalar: 3
+      minScalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -6138,7 +6161,7 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 19661
+        atime1: 9830
         atime2: 45875
         atime3: 65535
         atime4: 0
