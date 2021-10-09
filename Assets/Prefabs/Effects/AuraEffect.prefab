@@ -9481,13 +9481,14 @@ GameObject:
   - component: {fileID: 4299952606933750}
   - component: {fileID: 198858562690846188}
   - component: {fileID: 199240645737875422}
+  - component: {fileID: 1503665773711973612}
   m_Layer: 0
   m_Name: AuraEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4299952606933750
 Transform:
   m_ObjectHideFlags: 0
@@ -9496,7 +9497,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1844191813266838}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4768087405571930}
@@ -14274,3 +14275,16 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &1503665773711973612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844191813266838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df49915e024f25b40bf1006debd9d983, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hideAfterInterval: 8
