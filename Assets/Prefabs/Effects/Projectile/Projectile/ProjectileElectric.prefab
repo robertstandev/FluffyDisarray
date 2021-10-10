@@ -9724,10 +9724,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1207041319c83295987fb721f30845c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterSpriteRenderer: {fileID: 0}
-  projectileParticleGameObject: {fileID: 4191612281002835336}
+  projectileEffect: {fileID: 4191612281002835336}
   projectileDamage: 50
-  impactEffect: {fileID: 0}
+  impactEffect: {fileID: 1351045683517926, guid: 5437767f5f3dd5a45aee00470cff8171,
+    type: 3}
 --- !u!61 &248176601
 BoxCollider2D:
   m_ObjectHideFlags: 0

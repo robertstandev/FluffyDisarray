@@ -5238,7 +5238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  deathEffect: {fileID: 0}
+  deathEffect: {fileID: 100006, guid: 2a474af3f4c27be4e9bdce39cfe4315d, type: 3}
 --- !u!114 &8452613068546436134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5327,15 +5327,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 573804501409757768}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9198868acb36474f834fbeaf0d74128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  muzzleEffectPrefab: {fileID: 0}
+  muzzleEffectPrefab: {fileID: 1237854105968354, guid: 04a5cfcd62a83c8438ec4daafe366eab,
+    type: 3}
   muzzleEffectPositionToCharacter: {x: 1, y: -0.1}
-  characterSpriteRenderer: {fileID: 573804500172515842}
-  projectileEffectPrefab: {fileID: 0}
+  projectileEffectPrefab: {fileID: 742382953750511981, guid: 7ea0fb0480c753e6587cc6166410b4f1,
+    type: 3}
 --- !u!1001 &9219697692685413959
 PrefabInstance:
   m_ObjectHideFlags: 0
