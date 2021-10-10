@@ -18,7 +18,7 @@ public class CollectibleKillAll : MonoBehaviour
 
         foreach (MonoBehaviour item in gameObjectsWithHealthComponent)
         {
-            characters.Add(item.gameObject);
+            this.characters.Add(item.gameObject);
         }
     }
 
@@ -27,9 +27,19 @@ public class CollectibleKillAll : MonoBehaviour
         if(other.gameObject.GetComponent<IHealth>() != null)
         {
             //toti ceilalti playeri si NPC (caut la awake la asta toti care au IHealth sau cv ca sa ii salvez intr-un cached GameObject[] si la aia le bag sa fie dead trimit substractHP la IHealth)
-            // efectul va avea loc la toti in afara de acesta de la other.gameObject
+            //efectul va avea loc la toti in afara de acesta de la other.gameObject
             //fara efect (vizual)
+            killEveryoneExceptTrigger(other.gameObject);
             this.gameObject.SetActive(false);
+        }
+    }
+
+    private void killEveryoneExceptTrigger(GameObject triggerObject)
+    {
+        for(int i = 0 ; i < this.characters.Count ; i++)
+        {
+            if(this.characters[i].Equals(triggerObject)) { continue; }
+            this.characters[i].GetComponent<IHealth>().substractHealth(100);
         }
     }
 }
