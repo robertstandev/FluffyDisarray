@@ -1,9 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class CollectibleKillAll : MonoBehaviour
 {
+    private List<GameObject> characters = new List<GameObject>();
+
+    private void Start()
+    {
+        getCharactersFromScene();
+    }
+
+    private void getCharactersFromScene()
+    {
+        IHealth[] gameObjectsWithHealthComponent = FindObjectsOfType<MonoBehaviour>(true).OfType<IHealth>().ToArray();
+
+        foreach (MonoBehaviour item in gameObjectsWithHealthComponent)
+        {
+            characters.Add(item.gameObject);
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         if(other.gameObject.GetComponent<IHealth>() != null)

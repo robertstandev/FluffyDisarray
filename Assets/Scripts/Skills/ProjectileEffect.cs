@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class ProjectileEffect : MonoBehaviour
 {
-    private SpriteRenderer characterSpriteRenderer;
     [SerializeField]private GameObject projectileEffect;
     [SerializeField]private int projectileDamage = 50;
     [SerializeField]private GameObject impactEffect;
-    
+    private SpriteRenderer characterSpriteRenderer;
     private Vector2 startLocalPosition = new Vector2(1.5f, 0f);
     private Vector2 currentModifiedPosition = Vector2.zero; 
     private WaitForSeconds wait = new WaitForSeconds(0.003f);

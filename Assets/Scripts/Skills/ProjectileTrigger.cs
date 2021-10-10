@@ -6,9 +6,9 @@ public class ProjectileTrigger : MonoBehaviour
 {
     [SerializeField]private GameObject muzzleEffectPrefab;
     [SerializeField]private Vector2 muzzleEffectPositionToCharacter;
-    private SpriteRenderer characterSpriteRenderer;
     [SerializeField]private GameObject projectileEffectPrefab;
-
+    private SpriteRenderer characterSpriteRenderer;
+    
     private void Awake()
     {
         this.characterSpriteRenderer = GetComponent<IController>().getCharacterRenderer;
