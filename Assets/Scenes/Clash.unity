@@ -166,9 +166,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2adbfd26cc703ee1693cfba1a2de87fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characters:
-  - {fileID: 517718123}
-  - {fileID: 8659493947601475494}
   respawnTime: 3
 --- !u!1 &54528750
 GameObject:
@@ -672,12 +669,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04519271c46edddecac9c3ea8219f59b, type: 3}
---- !u!1 &517718123 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 573804501409757768, guid: a1b2399bb020341c1bfcbd69dcab8d73,
-    type: 3}
-  m_PrefabInstance: {fileID: 373695593}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &523206608
 GameObject:
   m_ObjectHideFlags: 0
@@ -2500,7 +2491,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2070255229}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 30, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1541554879}
@@ -2531,6 +2522,8 @@ MonoBehaviour:
   - {fileID: 1330964370}
   minimumSpawnInterval: 30
   MaximumSpawnInterval: 90
+  minimumXDropLocation: -18
+  MaximumXDropLocation: 18
 --- !u!1 &2099090073
 GameObject:
   m_ObjectHideFlags: 0
@@ -2750,23 +2743,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2070255230}
     m_Modifications:
-    - target: {fileID: 1860531665, guid: 2bf681bb53040be7ca3df8491bf29283, type: 3}
-      propertyPath: m_AngularDrag
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1860531665, guid: 2bf681bb53040be7ca3df8491bf29283, type: 3}
-      propertyPath: m_GravityScale
-      value: 0.05
-      objectReference: {fileID: 0}
     - target: {fileID: 3776284837708155436, guid: 2bf681bb53040be7ca3df8491bf29283,
         type: 3}
       propertyPath: m_Name
       value: ParachuteTime
-      objectReference: {fileID: 0}
-    - target: {fileID: 3776284837708155436, guid: 2bf681bb53040be7ca3df8491bf29283,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4650328842305642023, guid: 2bf681bb53040be7ca3df8491bf29283,
         type: 3}
@@ -2776,12 +2756,12 @@ PrefabInstance:
     - target: {fileID: 4650328842305642023, guid: 2bf681bb53040be7ca3df8491bf29283,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.41
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4650328842305642023, guid: 2bf681bb53040be7ca3df8491bf29283,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 30
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4650328842305642023, guid: 2bf681bb53040be7ca3df8491bf29283,
         type: 3}
@@ -2832,14 +2812,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2070255230}
     m_Modifications:
-    - target: {fileID: 1330964372, guid: c60750e4656d451c7a9b315690e3b851, type: 3}
-      propertyPath: m_AngularDrag
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1330964372, guid: c60750e4656d451c7a9b315690e3b851, type: 3}
-      propertyPath: m_GravityScale
-      value: 0.05
-      objectReference: {fileID: 0}
     - target: {fileID: 1894154303834173686, guid: c60750e4656d451c7a9b315690e3b851,
         type: 3}
       propertyPath: m_RootOrder
@@ -2848,12 +2820,12 @@ PrefabInstance:
     - target: {fileID: 1894154303834173686, guid: c60750e4656d451c7a9b315690e3b851,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.06
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1894154303834173686, guid: c60750e4656d451c7a9b315690e3b851,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 30
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1894154303834173686, guid: c60750e4656d451c7a9b315690e3b851,
         type: 3}
@@ -2900,11 +2872,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ParachuteRandom
       objectReference: {fileID: 0}
-    - target: {fileID: 4401792514588634800, guid: c60750e4656d451c7a9b315690e3b851,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c60750e4656d451c7a9b315690e3b851, type: 3}
 --- !u!1001 &6881407715085284973
@@ -2914,14 +2881,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2070255230}
     m_Modifications:
-    - target: {fileID: 863201638, guid: 1f2f4906f9c2c84b487d8bfb3f782b85, type: 3}
-      propertyPath: m_AngularDrag
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 863201638, guid: 1f2f4906f9c2c84b487d8bfb3f782b85, type: 3}
-      propertyPath: m_GravityScale
-      value: 0.05
-      objectReference: {fileID: 0}
     - target: {fileID: 5234194045138176974, guid: 1f2f4906f9c2c84b487d8bfb3f782b85,
         type: 3}
       propertyPath: m_RootOrder
@@ -2930,12 +2889,12 @@ PrefabInstance:
     - target: {fileID: 5234194045138176974, guid: 1f2f4906f9c2c84b487d8bfb3f782b85,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.38
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5234194045138176974, guid: 1f2f4906f9c2c84b487d8bfb3f782b85,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 30
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5234194045138176974, guid: 1f2f4906f9c2c84b487d8bfb3f782b85,
         type: 3}
@@ -2982,11 +2941,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ParachuteStats
       objectReference: {fileID: 0}
-    - target: {fileID: 8913641194903028330, guid: 1f2f4906f9c2c84b487d8bfb3f782b85,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f2f4906f9c2c84b487d8bfb3f782b85, type: 3}
 --- !u!1001 &7666919998163971695
@@ -2996,14 +2950,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2070255230}
     m_Modifications:
-    - target: {fileID: 1541554875, guid: 2310a65392c6a9f7e8b5f3024c8c39f2, type: 3}
-      propertyPath: m_AngularDrag
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1541554875, guid: 2310a65392c6a9f7e8b5f3024c8c39f2, type: 3}
-      propertyPath: m_GravityScale
-      value: 0.05
-      objectReference: {fileID: 0}
     - target: {fileID: 2665680045839727828, guid: 2310a65392c6a9f7e8b5f3024c8c39f2,
         type: 3}
       propertyPath: m_RootOrder
@@ -3012,12 +2958,12 @@ PrefabInstance:
     - target: {fileID: 2665680045839727828, guid: 2310a65392c6a9f7e8b5f3024c8c39f2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.73
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2665680045839727828, guid: 2310a65392c6a9f7e8b5f3024c8c39f2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 30
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2665680045839727828, guid: 2310a65392c6a9f7e8b5f3024c8c39f2,
         type: 3}
@@ -3064,11 +3010,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ParachuteKillAll
       objectReference: {fileID: 0}
-    - target: {fileID: 6125478464236997648, guid: 2310a65392c6a9f7e8b5f3024c8c39f2,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2310a65392c6a9f7e8b5f3024c8c39f2, type: 3}
 --- !u!1001 &7748176930422949689
@@ -3078,14 +3019,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2070255230}
     m_Modifications:
-    - target: {fileID: 575420254, guid: e6ea31063919e51df8ea11884453f393, type: 3}
-      propertyPath: m_AngularDrag
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 575420254, guid: e6ea31063919e51df8ea11884453f393, type: 3}
-      propertyPath: m_GravityScale
-      value: 0.05
-      objectReference: {fileID: 0}
     - target: {fileID: 3114525222004869433, guid: e6ea31063919e51df8ea11884453f393,
         type: 3}
       propertyPath: m_RootOrder
@@ -3094,12 +3027,12 @@ PrefabInstance:
     - target: {fileID: 3114525222004869433, guid: e6ea31063919e51df8ea11884453f393,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.32
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3114525222004869433, guid: e6ea31063919e51df8ea11884453f393,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 30
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3114525222004869433, guid: e6ea31063919e51df8ea11884453f393,
         type: 3}
@@ -3145,11 +3078,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ParachutePresent
-      objectReference: {fileID: 0}
-    - target: {fileID: 6918896701791028132, guid: e6ea31063919e51df8ea11884453f393,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6ea31063919e51df8ea11884453f393, type: 3}
