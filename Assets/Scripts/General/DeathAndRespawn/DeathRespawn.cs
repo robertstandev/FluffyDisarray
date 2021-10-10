@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class DeathRespawn : MonoBehaviour
 {
-    [SerializeField]private GameObject[] players;
+    [SerializeField]private GameObject[] characters;
     [SerializeField]private int respawnTime = 10;
-    private int[] playersDeathCountDown;
+    private int[] charactersDeathCountDown;
 
     private WaitForSeconds wait = new WaitForSeconds(1f);
 
     private void Start()
     {
-        this.playersDeathCountDown = new int[players.Length];
+        this.charactersDeathCountDown = new int[characters.Length];
         StartCoroutine("checkDeadPlayersTimer");
     }
 
@@ -27,24 +27,24 @@ public class DeathRespawn : MonoBehaviour
 
     private void checkDeadPlayers()
     {
-        for(int i = 0; i < this.players.Length; i++)
+        for(int i = 0; i < this.characters.Length; i++)
         {
-            if(this.players[i].activeInHierarchy) { continue; }
+            if(this.characters[i].activeInHierarchy) { continue; }
 
-            if(this.playersDeathCountDown[i] == 0)
+            if(this.charactersDeathCountDown[i] == 0)
             {
-                this.playersDeathCountDown[i] = this.respawnTime;
+                this.charactersDeathCountDown[i] = this.respawnTime;
             }
-            else if(this.playersDeathCountDown[i] == 1)
+            else if(this.charactersDeathCountDown[i] == 1)
             {
-                this.players[i].SetActive(true);
-                this.players[i].GetComponent<IRespawn>().respawn();
-                this.players[i].GetComponent<IHealth>().addHealth(100);
-                this.playersDeathCountDown[i] = 0;
+                this.characters[i].SetActive(true);
+                this.characters[i].GetComponent<IRespawn>().respawn();
+                this.characters[i].GetComponent<IHealth>().addHealth(100);
+                this.charactersDeathCountDown[i] = 0;
             }
             else
             {
-                this.playersDeathCountDown[i] -= 1;
+                this.charactersDeathCountDown[i] -= 1;
             }
 
         }

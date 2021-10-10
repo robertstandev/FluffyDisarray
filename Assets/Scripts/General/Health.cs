@@ -7,6 +7,7 @@ public class Health : MonoBehaviour, IHealth
     [SerializeField]private int health = 100;
     [SerializeField]private GameObject deathEffect;
 
+    private void Awake() { instantiateDeathEffect(); }
     public void addHealth(int value)
     {
         this.health = (this.health + value) <= 100 ? this.health + value : 100;
@@ -25,4 +26,5 @@ public class Health : MonoBehaviour, IHealth
         this.deathEffect.SetActive(true);
         this.gameObject.SetActive(false);
     }
+    public void instantiateDeathEffect() { this.deathEffect = Instantiate(this.deathEffect, Vector3.zero , Quaternion.identity); }
 }

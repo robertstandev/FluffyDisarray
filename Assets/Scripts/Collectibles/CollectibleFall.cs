@@ -43,7 +43,7 @@ public class CollectibleFall : MonoBehaviour
         while(true)
         {
             yield return wait;
-            this.transform.position = new Vector2(this.transform.position.x + Random.Range(-15.0f , 15.0f) * Time.deltaTime, this.transform.position.y);
+            this.transform.position = new Vector2(this.transform.position.x + Random.Range(-10.0f , 10.0f) * Time.deltaTime, this.transform.position.y);
         }
     }
 }

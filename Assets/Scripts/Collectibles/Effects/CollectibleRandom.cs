@@ -8,7 +8,10 @@ public class CollectibleRandom : MonoBehaviour
     {
         if(other.gameObject.GetComponent<IHealth>() != null)
         {
-            //da effect la player
+            //dau un efect random dintre toate celelalte
+            //poate pun toate scripturile de la celelalte pe asta cu disabled si dau enabled la scriptul ala care e ales random
+            //iar dupa la asta la enabled dau ca toate scripturile de efecte sa fie disabled si fac enabled doar cand se face random
+            //fara efect special vizual
             this.gameObject.SetActive(false);
         }
     }

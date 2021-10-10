@@ -8,7 +8,8 @@ public class CollectiblePresent : MonoBehaviour
     {
         if(other.gameObject.GetComponent<IHealth>() != null)
         {
-            //da effect la player
+            //ceva special ca si cadou poate fac ca asta sa fie valabil doar in story mode si fac sa dea cv gen puncte,bani etc
+            //fara efect special vizual
             this.gameObject.SetActive(false);
         }
     }

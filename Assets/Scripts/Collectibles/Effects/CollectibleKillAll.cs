@@ -8,7 +8,9 @@ public class CollectibleKillAll : MonoBehaviour
     {
         if(other.gameObject.GetComponent<IHealth>() != null)
         {
-            //da effect la player
+            //toti ceilalti playeri si NPC (caut la awake la asta toti care au IHealth sau cv ca sa ii salvez intr-un cached GameObject[] si la aia le bag sa fie dead trimit substractHP la IHealth)
+            // efectul va avea loc la toti in afara de acesta de la other.gameObject
+            //fara efect (vizual)
             this.gameObject.SetActive(false);
         }
     }
