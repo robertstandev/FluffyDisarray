@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 575420253}
   - component: {fileID: 575420256}
   - component: {fileID: 9049809303641901627}
+  - component: {fileID: 575420259}
   m_Layer: 0
   m_Name: ParachutePresent
   m_TagString: Untagged
@@ -157,3 +158,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b8b8d7d851e9af96a8a6a9b417a4ad4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &575420259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6918896701791028132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df49915e024f25b40bf1006debd9d983, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hideAfterInterval: 20
