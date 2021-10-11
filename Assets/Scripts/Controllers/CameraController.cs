@@ -6,7 +6,7 @@ public class CameraController : MonoBehaviour
 	[SerializeField]private Transform objectToFollow;
 	[SerializeField]private float followSpeed = 0.3f;
 
-	public void OnEnable() { GetComponent<Camera>().orthographicSize = (Screen.height / 100f) / 0.7f; }
+	//public void OnEnable() { GetComponent<Camera>().orthographicSize = (Screen.height / 100f) / 0.7f; }
 
 	public void LateUpdate()
 	{

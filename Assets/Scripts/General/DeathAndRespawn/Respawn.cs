@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Respawn : MonoBehaviour, IRespawn
+public class Respawn : MonoBehaviour
 {
     [SerializeField]private Vector3 placeToRespawn;
 

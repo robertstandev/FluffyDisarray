@@ -18,7 +18,7 @@ public class ProjectileEffect : MonoBehaviour
         this.projectileEffect.SetActive(false);
         this.impactEffect.transform.position = this.projectileEffect.transform.position;
         this.impactEffect.SetActive(true);
-        other.gameObject.GetComponent<IHealth>()?.substractHealth(this.projectileDamage);
+        other.gameObject.GetComponent<Health>()?.substractHealth(this.projectileDamage);
         this.gameObject.SetActive(false);
     }
 

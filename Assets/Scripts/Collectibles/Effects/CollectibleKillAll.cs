@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
 public class CollectibleKillAll : MonoBehaviour
 {
@@ -14,7 +13,7 @@ public class CollectibleKillAll : MonoBehaviour
 
     private void getCharactersFromScene()
     {
-        IHealth[] gameObjectsWithHealthComponent = FindObjectsOfType<MonoBehaviour>(true).OfType<IHealth>().ToArray();
+        Health[] gameObjectsWithHealthComponent = FindObjectsOfType<Health>();
 
         foreach (MonoBehaviour item in gameObjectsWithHealthComponent)
         {
@@ -24,7 +23,7 @@ public class CollectibleKillAll : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.GetComponent<IHealth>() != null)
+        if(other.gameObject.GetComponent<Health>() != null)
         {
             //toti ceilalti playeri si NPC (caut la awake la asta toti care au IHealth sau cv ca sa ii salvez intr-un cached GameObject[] si la aia le bag sa fie dead trimit substractHP la IHealth)
             //efectul va avea loc la toti in afara de acesta de la other.gameObject
@@ -39,7 +38,7 @@ public class CollectibleKillAll : MonoBehaviour
         for(int i = 0 ; i < this.characters.Count ; i++)
         {
             if(this.characters[i].Equals(triggerObject)) { continue; }
-            this.characters[i].GetComponent<IHealth>().substractHealth(100);
+            this.characters[i].GetComponent<Health>().substractHealth(100);
         }
     }
 }

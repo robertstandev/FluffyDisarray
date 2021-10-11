@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour, IHealth
+public class Health : MonoBehaviour
 {
     [SerializeField]private int health = 100;
     [SerializeField]private GameObject deathEffect;

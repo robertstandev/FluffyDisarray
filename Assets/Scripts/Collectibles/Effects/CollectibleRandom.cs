@@ -6,7 +6,7 @@ public class CollectibleRandom : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.GetComponent<IHealth>() != null)
+        if(other.gameObject.GetComponent<Health>() != null)
         {
             //dau un efect random dintre toate celelalte
             //poate pun toate scripturile de la celelalte pe asta cu disabled si dau enabled la scriptul ala care e ales random

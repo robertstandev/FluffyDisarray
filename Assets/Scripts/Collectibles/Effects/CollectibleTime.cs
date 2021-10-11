@@ -6,7 +6,7 @@ public class CollectibleTime : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.GetComponent<IHealth>() != null)
+        if(other.gameObject.GetComponent<Health>() != null)
         {
             //toti ceilalti playeri si NPC (caut la awake la asta toti care au IHealth sau cv (vad sa aibe inclusiv pe cei SetActive false in lista) ca sa ii salvez intr-un cached GameObject[] si la aia le bag Rigidbody.Constraints.FreezeAll)
             // efectul va avea loc la toti in afara de acesta de la other.gameObject

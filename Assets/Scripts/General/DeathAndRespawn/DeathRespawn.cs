@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
 public class DeathRespawn : MonoBehaviour
 {
@@ -20,7 +19,7 @@ public class DeathRespawn : MonoBehaviour
 
     private void getCharactersFromScene()
     {
-        IHealth[] gameObjectsWithHealthComponent = FindObjectsOfType<MonoBehaviour>(true).OfType<IHealth>().ToArray();
+        Health[] gameObjectsWithHealthComponent = FindObjectsOfType<Health>();
 
         foreach (MonoBehaviour item in gameObjectsWithHealthComponent)
         {
@@ -50,8 +49,8 @@ public class DeathRespawn : MonoBehaviour
             else if(this.charactersDeathCountDown[i] == 1)
             {
                 this.characters[i].SetActive(true);
-                this.characters[i].GetComponent<IRespawn>().respawn();
-                this.characters[i].GetComponent<IHealth>().addHealth(100);
+                this.characters[i].GetComponent<Respawn>().respawn();
+                this.characters[i].GetComponent<Health>().addHealth(100);
                 this.charactersDeathCountDown[i] = 0;
             }
             else

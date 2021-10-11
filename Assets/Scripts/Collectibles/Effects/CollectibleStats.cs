@@ -6,7 +6,7 @@ public class CollectibleStats : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.GetComponent<IHealth>() != null)
+        if(other.gameObject.GetComponent<Health>() != null)
         {
             //da effect la cel care a intrat in el
             //face hp si stamina la 100 in fiecare secunda timp de 10 secunde (fac mai bn asa decat sa il faca invincibil , astfel incat tot poate fi omorat dar mai greu) , poate de ce nu sa maresc Scale-ul la 2,2,2 si sa maresc movement speedul la 11 si nr of times to jummp la 3
