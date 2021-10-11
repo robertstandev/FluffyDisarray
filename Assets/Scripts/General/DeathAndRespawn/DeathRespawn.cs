@@ -19,7 +19,7 @@ public class DeathRespawn : MonoBehaviour
 
     private void getCharactersFromScene()
     {
-        Health[] gameObjectsWithHealthComponent = FindObjectsOfType<Health>();
+        Health[] gameObjectsWithHealthComponent = FindObjectsOfType<Health>(true);
 
         foreach (MonoBehaviour item in gameObjectsWithHealthComponent)
         {
