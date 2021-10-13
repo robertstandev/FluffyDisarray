@@ -7,6 +7,8 @@ public class Movement : MonoBehaviour
    [SerializeField]private float moveForce = 3f;
    private Vector2 movingVector2 = Vector2.zero;
 
+   public void setMoveForce(float moveForce) { this.moveForce = moveForce; }
+   public float getMoveForce() { return this.moveForce; }
    public Vector2 getMovingVector2() { return this.movingVector2; }
 
    public void move(SpriteRenderer characterSpriteRenderer, SpriteRenderer eyesSpriteRenderer, float movingFloat)

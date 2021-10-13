@@ -5,4 +5,6 @@ using UnityEngine;
 public interface IController
 {
     SpriteRenderer getCharacterRenderer { get; }
+    void disableController();
+    void enableController();
 }

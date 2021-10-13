@@ -2,18 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Triggered object gets recharged HP , Stamina every second for 10 sec (can still be killed - not invincible) , decrease size to half and increase speed with 50% , and the times that he can jump increased to 3
 public class CollectibleStats : MonoBehaviour
 {
+    [SerializeField]private GameObject auraEffectPrefab;
+    private CollectibleStatsEffect collectibleStatsEffectCachedScript;
+
+    private void Awake()
+    {
+        this.auraEffectPrefab = Instantiate(this.auraEffectPrefab , Vector3.zero , Quaternion.identity);
+        this.collectibleStatsEffectCachedScript = this.auraEffectPrefab.GetComponent<CollectibleStatsEffect>();
+        this.auraEffectPrefab.transform.parent = this.gameObject.transform.parent;
+    }
     private void OnCollisionEnter2D(Collision2D other)
     {
         if(other.gameObject.GetComponent<Health>() != null)
         {
-            //da effect la cel care a intrat in el
-            //face hp si stamina la 100 in fiecare secunda timp de 10 secunde (fac mai bn asa decat sa il faca invincibil , astfel incat tot poate fi omorat dar mai greu) , poate de ce nu sa maresc Scale-ul la 2,2,2 si sa maresc movement speedul la 11 si nr of times to jummp la 3
-            //bag efectul ala cu aura vizual si fac ca ala sa fie child la other.gameObject si la ala la OnDisable sa se mute la parentul care era la inceput (fac sa ia parentul la Start sa il salveze)
-            //apoi inainte sa dispara sa reseteze statsurile la gameObjectul care tocmai a fost parent (caracterul respectiv)
-            //sa am grija daca moare ala care are efectul sa refaca cum era la inceput
+            addBuff(other.gameObject);
             this.gameObject.SetActive(false);
         }
+    }
+
+    private void addBuff(GameObject character)
+    {
+        auraEffectPrefab.transform.parent = character.transform;
+        auraEffectPrefab.transform.localPosition = Vector3.zero;
+        auraEffectPrefab.SetActive(true);
+        collectibleStatsEffectCachedScript.startStatsEffect(character);
     }
 }

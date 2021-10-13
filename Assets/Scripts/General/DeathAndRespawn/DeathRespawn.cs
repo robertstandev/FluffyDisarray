@@ -48,9 +48,7 @@ public class DeathRespawn : MonoBehaviour
             }
             else if(this.charactersDeathCountDown[i] == 1)
             {
-                this.characters[i].SetActive(true);
-                this.characters[i].GetComponent<Respawn>().respawn();
-                this.characters[i].GetComponent<Health>().addHealth(100);
+                resetAndRespawn(this.characters[i]);
                 this.charactersDeathCountDown[i] = 0;
             }
             else
@@ -59,5 +57,14 @@ public class DeathRespawn : MonoBehaviour
             }
 
         }
+    }
+
+    private void resetAndRespawn(GameObject character)
+    {
+        character.SetActive(true);
+        character.GetComponent<Respawn>().respawn();
+        character.GetComponent<Health>().addHealth(100);
+        character.GetComponent<IController>().enableController();
+        character.GetComponent<Animator>().enabled = true;
     }
 }

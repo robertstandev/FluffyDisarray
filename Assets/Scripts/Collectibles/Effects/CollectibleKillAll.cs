@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//All characters (Players and NPC) (besides the one that is triggering this) , will instantly die (if they are alive)
 public class CollectibleKillAll : MonoBehaviour
 {
     private List<GameObject> characters = new List<GameObject>();
@@ -25,9 +26,6 @@ public class CollectibleKillAll : MonoBehaviour
     {
         if(other.gameObject.GetComponent<Health>() != null)
         {
-            //toti ceilalti playeri si NPC (caut la awake la asta toti care au IHealth sau cv ca sa ii salvez intr-un cached GameObject[] si la aia le bag sa fie dead trimit substractHP la IHealth)
-            //efectul va avea loc la toti in afara de acesta de la other.gameObject
-            //fara efect (vizual)
             killEveryoneExceptTrigger(other.gameObject);
             this.gameObject.SetActive(false);
         }

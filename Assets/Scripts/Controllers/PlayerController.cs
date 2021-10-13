@@ -79,6 +79,8 @@ public class PlayerController : MonoBehaviour, IController
     private void enableInput(InputAction input) { input.Enable(); }
 
     public SpriteRenderer getCharacterRenderer { get { return this.mySpriteRenderer; } }
+    public void disableController() { this.enabled = false; }
+    public void enableController() { this.enabled = true; }
 
     private void OnMove(InputAction.CallbackContext context)
     {
@@ -98,14 +100,11 @@ public class PlayerController : MonoBehaviour, IController
     {
         if(this.canGrabLedge)
         {
-            //citeste animatia si apoi urca
-            //if(this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("numeleAnimatiei"))
-                this.positionModifier.x = transform.position.x + (this.mySpriteRenderer.flipX ? -this.mySpriteRenderer.bounds.extents.x : this.mySpriteRenderer.bounds.extents.x);
-                this.positionModifier.y = transform.position.y + this.mySpriteRenderer.bounds.size.y;
-                transform.position = this.positionModifier;
-                reactivateGravity();
-                Debug.Log("Ledge Climb");
-            //
+            this.positionModifier.x = transform.position.x + (this.mySpriteRenderer.flipX ? -this.mySpriteRenderer.bounds.extents.x : this.mySpriteRenderer.bounds.extents.x);
+            this.positionModifier.y = transform.position.y + this.mySpriteRenderer.bounds.size.y;
+            transform.position = this.positionModifier;
+            reactivateGravity();
+            Debug.Log("Ledge Climb");
         }
     }
     private void OnDownInput()
@@ -188,7 +187,7 @@ public class PlayerController : MonoBehaviour, IController
         {
             this.isGroundedPrevVal = true;
             this.canGrabLedgePrevVal = false;
-            this.isGroundPounding = false;      //daca fac isGrounded sa caute doar in functie de Layer atunci sa fac si un OnCollisionEnter pt a pune isGroundPounding = false, atunci cand o sa cada pe inamici sau alte obiecte altfel va ramane la infinit cu isGroundPounding(true) ca nu detecteaza pamantul pt a il reseta
+            this.isGroundPounding = false;      //daca fac isGrounded sa caute doar in functie de Layer atunci sa fac si un OnCollisionEnter pt a pune isGroundPounding = false, atunci cand o sa cada pe inamici sau alte obiecte altfel va ramane la infinit cu isGroundPounding(true)
             this.jumpComponent.setJumpCounter(0);
             this.staminaComponent.startStaminaModifierTimer(this.staminaComponent.addStamina);
             reactivateGravity();

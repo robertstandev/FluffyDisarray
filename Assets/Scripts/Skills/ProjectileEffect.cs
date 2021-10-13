@@ -8,7 +8,7 @@ public class ProjectileEffect : MonoBehaviour
     [SerializeField]private int projectileDamage = 50;
     [SerializeField]private GameObject impactEffect;
     private SpriteRenderer characterSpriteRenderer;
-    private Vector2 startLocalPosition = new Vector2(1.5f, 0f);
+    private Vector2 startLocalPosition = new Vector2(1.5f, 0.25f);
     private Vector2 currentModifiedPosition = Vector2.zero; 
     private WaitForSeconds wait = new WaitForSeconds(0.003f);
     private float moveDirection = 0.1f;

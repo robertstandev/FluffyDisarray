@@ -11,7 +11,9 @@ public class Jump : MonoBehaviour
     private int jumpCounter = 0;
     private Vector2 jumpVelocity = Vector2.zero;
 
-    public bool canJump() { return this.jumpCounter < this.maxNrOfJumps; }    
+    public bool canJump() { return this.jumpCounter < this.maxNrOfJumps; }
+    public void setMaxNrOfJumps(int value) { this.maxNrOfJumps = value; }
+    public int getMaxNrOfJumps() { return this.maxNrOfJumps; }
 
     public void jump(Rigidbody2D rb, Stamina staminaComponent){
         if(canJump() && (staminaComponent.getStamina() >= this.jumpStaminaCost))
