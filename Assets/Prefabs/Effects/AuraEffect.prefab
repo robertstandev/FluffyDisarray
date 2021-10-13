@@ -9481,7 +9481,7 @@ GameObject:
   - component: {fileID: 4299952606933750}
   - component: {fileID: 198858562690846188}
   - component: {fileID: 199240645737875422}
-  - component: {fileID: 1503665773711973612}
+  - component: {fileID: -7429974311497272926}
   m_Layer: 0
   m_Name: AuraEffect
   m_TagString: Untagged
@@ -14275,7 +14275,7 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &1503665773711973612
+--- !u!114 &-7429974311497272926
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14284,7 +14284,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1844191813266838}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df49915e024f25b40bf1006debd9d983, type: 3}
+  m_Script: {fileID: 11500000, guid: 7341d3ae091901374b8e16c788174959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hideAfterInterval: 8
+  effectDuration: 12
