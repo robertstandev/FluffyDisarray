@@ -18,7 +18,11 @@ public class CollectibleStats : MonoBehaviour
     {
         if(other.gameObject.GetComponent<Health>() != null)
         {
-            addBuff(other.gameObject);
+            //check if character doesnt already have that buff (else it will stack)
+            if (GameObject.Find(other.gameObject.name + "/" + auraEffectPrefab.name) == null)
+            { 
+                addBuff(other.gameObject);
+            }
             this.gameObject.SetActive(false);
         }
     }
