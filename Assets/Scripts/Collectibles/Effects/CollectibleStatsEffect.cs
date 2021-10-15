@@ -44,6 +44,7 @@ public class CollectibleStatsEffect : MonoBehaviour
     {
         StopAllCoroutines();
         decreaseStats();
+        this.gameObject.SetActive(false);
     }
 
     private IEnumerator statsEffectTimer()

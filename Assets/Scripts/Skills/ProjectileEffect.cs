@@ -4,21 +4,24 @@ using UnityEngine;
 
 public class ProjectileEffect : MonoBehaviour
 {
-    [SerializeField]private GameObject projectileEffect;
-    [SerializeField]private int projectileDamage = 50;
+    [SerializeField]private GameObject projectileEffectGroup;
     [SerializeField]private GameObject impactEffect;
+
+    private GameObject instantiatedImpactEffect;
+    private int projectileDamage;
+
     private SpriteRenderer characterSpriteRenderer;
-    private Vector2 startLocalPosition = new Vector2(1.5f, 0.25f);
+    private Vector2 startLocalPosition;
     private Vector2 currentModifiedPosition = Vector2.zero; 
     private WaitForSeconds wait = new WaitForSeconds(0.003f);
-    private float moveDirection = 0.1f;
+    private float moveDirection;
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        this.projectileEffect.SetActive(false);
-        this.impactEffect.transform.position = this.projectileEffect.transform.position;
-        this.impactEffect.SetActive(true);
-        other.gameObject.GetComponent<Health>()?.substractHealth(this.projectileDamage);
+        this.projectileEffectGroup.SetActive(false);
+        this.instantiatedImpactEffect.transform.position = this.projectileEffectGroup.transform.position;
+        this.instantiatedImpactEffect.SetActive(true);
+        other.gameObject.GetComponent<Health>().substractHealth(this.projectileDamage);
         this.gameObject.SetActive(false);
     }
 
@@ -35,7 +38,7 @@ public class ProjectileEffect : MonoBehaviour
     private void OnDisable()
     {
         StopAllCoroutines();
-        this.projectileEffect.SetActive(true);
+        this.projectileEffectGroup.SetActive(true);
     }
 
     private IEnumerator executeProjectile()
@@ -48,6 +51,8 @@ public class ProjectileEffect : MonoBehaviour
         }
     }
 
+    public void setProjectileDamage(int value) { this.projectileDamage = value; }
     public void setCharacterSpriteRenderer(SpriteRenderer charSpriteRenderer) { this.characterSpriteRenderer = charSpriteRenderer; }
-    public void instantiateImpactEffect() { this.impactEffect = Instantiate(this.impactEffect , Vector3.zero , Quaternion.identity); }
+    public void setProjectilePositionOffset(Vector2 value) { this.startLocalPosition = value; }
+    public void instantiateImpactEffect() { this.instantiatedImpactEffect = Instantiate(this.impactEffect , Vector3.zero , Quaternion.identity); }
 }

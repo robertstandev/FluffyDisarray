@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Stamina), typeof(CheckSurroundings), typeof(Animator))]
 public class PlayerController : MonoBehaviour, IController
 {
-	private InputAction movementInput, runInput, upInput, downInput, jumpInput, projectileInput;
+	private InputAction movementInput, runInput, upInput, downInput, jumpInput, projectileInput, slashInput;
     private Movement movementComponent;
     private Jump jumpComponent;
     private Stamina staminaComponent;
@@ -47,7 +47,10 @@ public class PlayerController : MonoBehaviour, IController
         this.jumpInput.performed += context => OnJump();
 
         this.projectileInput = GetComponent<IPlayerInput>().getProjectileInput;
-        this.projectileInput.performed += context => GetComponent<ProjectileTrigger>().executeSkill();;
+        this.projectileInput.performed += context => GetComponent<ProjectileTrigger>().executeSkill();
+
+        this.slashInput = GetComponent<IPlayerInput>().getSlashInput;
+        this.slashInput.performed += context => GetComponent<SlashTrigger>().executeSkill();
 
         this.movementComponent = GetComponent<Movement>();
         this.jumpComponent = GetComponent<Jump>();
@@ -65,6 +68,7 @@ public class PlayerController : MonoBehaviour, IController
         enableInput(this.downInput);
         enableInput(this.jumpInput);
         enableInput(this.projectileInput);
+        enableInput(this.slashInput);
     }
     private void OnDisable()
     {
@@ -73,6 +77,7 @@ public class PlayerController : MonoBehaviour, IController
         disableInput(this.downInput);
         disableInput(this.jumpInput);
         disableInput(this.projectileInput);
+        disableInput(this.slashInput);
     }
 
     private void disableInput(InputAction input) { input.Disable(); }
@@ -240,6 +245,5 @@ public class PlayerController : MonoBehaviour, IController
         }
     }
     private void reactivateGravity() { this.rb.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation; }
-
     private void activateImpactEffect() { this.impactEffect.SetActive(true); }
 }

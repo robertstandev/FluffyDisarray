@@ -63,7 +63,7 @@ public class DeathRespawn : MonoBehaviour
     {
         character.SetActive(true);
         character.GetComponent<Respawn>().respawn();
-        character.GetComponent<Health>().addHealth(100);
+        character.GetComponent<Health>().addHealth(character.GetComponent<Health>().getMaximumHealth());
         character.GetComponent<IController>().enableController();
         character.GetComponent<Animator>().enabled = true;
     }

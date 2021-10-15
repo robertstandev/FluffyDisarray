@@ -4,29 +4,38 @@ using UnityEngine;
 
 public class ProjectileTrigger : MonoBehaviour
 {
-    [SerializeField]private GameObject muzzleEffectPrefab;
-    [SerializeField]private Vector2 muzzleEffectPositionToCharacter;
+    [SerializeField]private int projectileDamage = 50;
     [SerializeField]private GameObject projectileEffectPrefab;
+    [SerializeField]private Vector2 projectilePositionOffset;
+    [SerializeField]private GameObject muzzleEffectPrefab;
+    [SerializeField]private Vector2 muzzlePositionOffset;
+
+    private GameObject instantiatedMuzzleEffect, instantiatedprojectileEffect;
     private SpriteRenderer characterSpriteRenderer;
     
-    private void Awake()
+    private void Start()
     {
         this.characterSpriteRenderer = GetComponent<IController>().getCharacterRenderer;
         instantiateMuzzleEffect();
         instantiateProjectileEffect();
-        this.projectileEffectPrefab.GetComponent<ProjectileEffect>().setCharacterSpriteRenderer(this.characterSpriteRenderer);
-        this.projectileEffectPrefab.GetComponent<ProjectileEffect>().instantiateImpactEffect();
+        this.instantiatedprojectileEffect.GetComponent<ProjectileEffect>().setCharacterSpriteRenderer(this.characterSpriteRenderer);
+        this.instantiatedprojectileEffect.GetComponent<ProjectileEffect>().instantiateImpactEffect();
     }
     public void executeSkill()
     {
-        if(!projectileEffectPrefab.activeInHierarchy)
+        if(!this.instantiatedprojectileEffect.activeInHierarchy)
         {
-            this.muzzleEffectPrefab.transform.position = new Vector2(this.transform.position.x + (this.characterSpriteRenderer.flipX ? -this.muzzleEffectPositionToCharacter.x : this.muzzleEffectPositionToCharacter.x) , this.transform.position.y + this.muzzleEffectPositionToCharacter.y);
-            this.muzzleEffectPrefab.SetActive(true);
-            this.projectileEffectPrefab.SetActive(true);
+            this.instantiatedMuzzleEffect.transform.position = new Vector2(this.transform.position.x + (this.characterSpriteRenderer.flipX ? -this.muzzlePositionOffset.x : this.muzzlePositionOffset.x) , this.transform.position.y + this.muzzlePositionOffset.y);
+            this.instantiatedMuzzleEffect.SetActive(true);
+            this.instantiatedprojectileEffect.SetActive(true);
         }
     }
 
-    private void instantiateMuzzleEffect() { this.muzzleEffectPrefab = Instantiate(this.muzzleEffectPrefab , Vector3.zero , Quaternion.identity); }
-    private void instantiateProjectileEffect() { this.projectileEffectPrefab = Instantiate(this.projectileEffectPrefab , Vector3.zero , Quaternion.identity); }
+    private void instantiateMuzzleEffect() { this.instantiatedMuzzleEffect = Instantiate(this.muzzleEffectPrefab , Vector3.zero , Quaternion.identity); }
+    private void instantiateProjectileEffect()
+    {
+        this.instantiatedprojectileEffect = Instantiate(this.projectileEffectPrefab , Vector3.zero , Quaternion.identity);
+        this.instantiatedprojectileEffect.GetComponent<ProjectileEffect>().setProjectilePositionOffset(this.projectilePositionOffset);
+        this.instantiatedprojectileEffect.GetComponent<ProjectileEffect>().setProjectileDamage(this.projectileDamage);
+    }
 }
