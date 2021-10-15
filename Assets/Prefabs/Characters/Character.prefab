@@ -5033,6 +5033,7 @@ GameObject:
   - component: {fileID: 373695605}
   - component: {fileID: 373695595}
   - component: {fileID: 138535770}
+  - component: {fileID: 187981891109220196}
   m_Layer: 8
   m_Name: Character
   m_TagString: Untagged
@@ -5164,6 +5165,22 @@ MonoBehaviour:
       m_Processors: 
       m_Groups: 
       m_Action: Projectile Input
+      m_Flags: 0
+  slashInput:
+    m_Name: Slash Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 360dacbd-8b50-4f72-8647-b88ef8b15852
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 836f6e51-958f-4957-90b9-c80d6e60d790
+      m_Path: <Keyboard>/x
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Slash Input
       m_Flags: 0
 --- !u!114 &573804501409757775
 MonoBehaviour:
@@ -5332,11 +5349,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9198868acb36474f834fbeaf0d74128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  muzzleEffectPrefab: {fileID: 1237854105968354, guid: 04a5cfcd62a83c8438ec4daafe366eab,
-    type: 3}
-  muzzleEffectPositionToCharacter: {x: 1, y: -0.1}
+  projectileDamage: 50
   projectileEffectPrefab: {fileID: 742382953750511981, guid: 7ea0fb0480c753e6587cc6166410b4f1,
     type: 3}
+  projectilePositionOffset: {x: 1.5, y: 0.25}
+  muzzleEffectPrefab: {fileID: 1237854105968354, guid: 04a5cfcd62a83c8438ec4daafe366eab,
+    type: 3}
+  muzzlePositionOffset: {x: 1, y: 0}
+--- !u!114 &187981891109220196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573804501409757768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6271f049bc3fe965b0159aea630439f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slashEffectPrefab: {fileID: 3606336089940347628, guid: d8bcd7a72ffaf7f7b94f2757a74413a0,
+    type: 3}
+  slashDamage: 10
+  slashEffectPositonToCharacter: {x: 0, y: 0}
 --- !u!1001 &9219697692685413959
 PrefabInstance:
   m_ObjectHideFlags: 0

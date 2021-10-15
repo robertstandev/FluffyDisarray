@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1207041319c83295987fb721f30845c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileEffect: {fileID: 4881524486060528284}
+  projectileEffectGroup: {fileID: 4881524486060528284}
   projectileDamage: 50
   impactEffect: {fileID: 1188432315835894, guid: ffeb06188f51d0748a70843f87615819,
     type: 3}
