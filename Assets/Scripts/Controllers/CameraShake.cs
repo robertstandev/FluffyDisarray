@@ -4,39 +4,43 @@ using UnityEngine;
 
 public class CameraShake : MonoBehaviour
 {
-    [SerializeField]private bool shouldShake = false;
-   [SerializeField]private float power = 0.7f;
-   [SerializeField]private float duration = 10.0f;
-   [SerializeField]private Transform myCamera;
-   [SerializeField]private float slowDownAmount = 1.0f;
+    [SerializeField]private int duration = 10;
+    [SerializeField]private float power = 0.7f;
+    [SerializeField]private Transform myCamera;
    
    private Vector3 startPosition;
-   private float initialDuration;
+   private int currentDuration = 10;
+   private WaitForSeconds timerWait = new WaitForSeconds(0.025f);
 
    private void Start()
    {
-       this.myCamera = Camera.main.transform;
-       this.startPosition = myCamera.localPosition;
-       this.initialDuration = this.duration;
-
-       //incerc cu coroutine
+        this.myCamera = this.transform;
+        this.startPosition = myCamera.localPosition;
+        resetDuration();
    }
 
-   private void LateUpdate()
-   {
-       if(this.shouldShake)
-       {
-           if(this.duration > 0)
-           {
-               this.myCamera.localPosition = this.startPosition + Random.insideUnitSphere * this.power;
-               this.duration -= Time.deltaTime * this.slowDownAmount;
-           }
-           else
-           {
-               this.shouldShake = false;
-               this.duration = this.initialDuration;
-               this.myCamera.localPosition = this.startPosition;
-           }
-       }
-   }
+    private void OnEnable() { shakeCamera(); }
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+        resetDuration();
+        resetPosition();
+    }
+
+   public void shakeCamera() { StartCoroutine("shakeCameraTimer"); }
+
+    private IEnumerator shakeCameraTimer()
+    {
+        while(this.currentDuration > 0)
+        {
+            yield return timerWait;
+            
+            this.myCamera.localPosition = this.startPosition + Random.insideUnitSphere * this.power;
+            this.currentDuration -= 1;
+        }
+        this.enabled = false;
+    }
+
+    private void resetDuration() { this.currentDuration = this.duration * 40; }
+    private void resetPosition() { this.myCamera.localPosition = this.startPosition; }
 }

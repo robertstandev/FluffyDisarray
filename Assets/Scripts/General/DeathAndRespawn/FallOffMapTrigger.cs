@@ -8,7 +8,7 @@ public class FallOffMapTrigger : MonoBehaviour
     {
         if(other.gameObject.GetComponent<Respawn>() != null)
         {
-            other.gameObject.SetActive(false);
+            other.gameObject.GetComponent<Health>().substractHealth(other.gameObject.GetComponent<Health>().getMaximumHealth());
         }
     }
 }

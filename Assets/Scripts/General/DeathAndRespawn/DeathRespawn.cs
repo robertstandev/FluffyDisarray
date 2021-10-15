@@ -7,6 +7,7 @@ public class DeathRespawn : MonoBehaviour
     [SerializeField]private int respawnTime = 10;
     private List<GameObject> characters = new List<GameObject>();
     private int[] charactersDeathCountDown;
+    private Dictionary<GameObject, CollectibleSwitchRevert> characterCameraCollectibleSwitchReverters = new Dictionary<GameObject, CollectibleSwitchRevert>();
 
     private WaitForSeconds wait = new WaitForSeconds(1f);
 
@@ -14,6 +15,7 @@ public class DeathRespawn : MonoBehaviour
     {
         getCharactersFromScene();
         this.charactersDeathCountDown = new int[characters.Count];
+        getcharactersCamerasSwitchReverters();
         StartCoroutine("checkDeadPlayersTimer");
     }
 
@@ -24,6 +26,15 @@ public class DeathRespawn : MonoBehaviour
         foreach (MonoBehaviour item in gameObjectsWithHealthComponent)
         {
             characters.Add(item.gameObject);
+        }
+    }
+
+    private void getcharactersCamerasSwitchReverters()
+    {
+        GameObject[] temporaryCamerasList = GameObject.FindGameObjectsWithTag("MainCamera");
+        for(int i = 0 ; i < temporaryCamerasList.Length ; i++)
+        {
+            this.characterCameraCollectibleSwitchReverters.Add(temporaryCamerasList[i].GetComponent<CameraController>().getObjectToFollow() , temporaryCamerasList[i].GetComponentInChildren<CollectibleSwitchRevert>());
         }
     }
 
@@ -64,7 +75,20 @@ public class DeathRespawn : MonoBehaviour
         character.SetActive(true);
         character.GetComponent<Respawn>().respawn();
         character.GetComponent<Health>().addHealth(character.GetComponent<Health>().getMaximumHealth());
+
+        //collectible time reset
         character.GetComponent<IController>().enableController();
         character.GetComponent<Animator>().enabled = true;
+        //=======================================
+        
+        //collectible camera switch reset
+        foreach (KeyValuePair<GameObject, CollectibleSwitchRevert> item in this.characterCameraCollectibleSwitchReverters) 
+        {
+            if(item.Key.Equals(character))
+            {
+                item.Value.enabled = false;
+            }
+        }
+        //======================================
     }
 }

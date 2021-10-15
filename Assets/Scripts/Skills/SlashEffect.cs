@@ -12,7 +12,7 @@ public class SlashEffect : MonoBehaviour
     {
         if(this.affectedGameObject != null)
         {
-            this.affectedGameObject.transform.position = new Vector2(this.affectedGameObject.transform.position.x + (this.affectedGameObject.transform.position.x < this.gameObject.transform.position.x ? -2f : 2f) , this.affectedGameObject.transform.position.y);
+            this.affectedGameObject.transform.position = new Vector2(this.affectedGameObject.transform.position.x + (this.affectedGameObject.transform.position.x < this.gameObject.transform.position.x ? -1f : 1f) , this.affectedGameObject.transform.position.y);
             this.affectedGameObject.GetComponent<Health>().substractHealth(this.slashDamage);
             this.affectedGameObject = null;
         }
