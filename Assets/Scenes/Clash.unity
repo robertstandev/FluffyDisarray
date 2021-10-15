@@ -1270,75 +1270,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04519271c46edddecac9c3ea8219f59b, type: 3}
---- !u!1001 &1006531703
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3606336089940347625, guid: d8bcd7a72ffaf7f7b94f2757a74413a0,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3606336089940347625, guid: d8bcd7a72ffaf7f7b94f2757a74413a0,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.7250855
-      objectReference: {fileID: 0}
-    - target: {fileID: 3606336089940347625, guid: d8bcd7a72ffaf7f7b94f2757a74413a0,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.06667
-      objectReference: {fileID: 0}
-    - target: {fileID: 3606336089940347625, guid: d8bcd7a72ffaf7f7b94f2757a74413a0,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1.022081
-      objectReference: {fileID: 0}
-    - target: {fileID: 3606336089940347625, guid: d8bcd7a72ffaf7f7b94f2757a74413a0,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3606336089940347625, guid: d8bcd7a72ffaf7f7b94f2757a74413a0,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3606336089940347625, guid: d8bcd7a72ffaf7f7b94f2757a74413a0,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3606336089940347625, guid: d8bcd7a72ffaf7f7b94f2757a74413a0,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3606336089940347625, guid: d8bcd7a72ffaf7f7b94f2757a74413a0,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3606336089940347625, guid: d8bcd7a72ffaf7f7b94f2757a74413a0,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3606336089940347625, guid: d8bcd7a72ffaf7f7b94f2757a74413a0,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3606336089940347628, guid: d8bcd7a72ffaf7f7b94f2757a74413a0,
-        type: 3}
-      propertyPath: m_Name
-      value: SlashEffect
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d8bcd7a72ffaf7f7b94f2757a74413a0, type: 3}
 --- !u!1001 &1044683059
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2951,6 +2882,7 @@ GameObject:
   - component: {fileID: 9212715548585232773}
   - component: {fileID: 9212715548216118964}
   - component: {fileID: 8659493947601475496}
+  - component: {fileID: 8659493947601475497}
   m_Layer: 8
   m_Name: Player2
   m_TagString: Untagged
@@ -2989,6 +2921,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   deathEffect: {fileID: 100006, guid: 2a474af3f4c27be4e9bdce39cfe4315d, type: 3}
+--- !u!114 &8659493947601475497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8659493947601475494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6271f049bc3fe965b0159aea630439f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slashEffectPrefab: {fileID: 3606336089940347628, guid: d8bcd7a72ffaf7f7b94f2757a74413a0,
+    type: 3}
+  slashDamage: 10
+  slashEffectPositonToCharacter: {x: 0, y: 0}
 --- !u!4 &8659493948708787348
 Transform:
   m_ObjectHideFlags: 0
@@ -7931,11 +7879,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9198868acb36474f834fbeaf0d74128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  muzzleEffectPrefab: {fileID: 1344490692017412, guid: b3ce31c3d02349d47b248885536fb3b2,
-    type: 3}
-  muzzleEffectPositionToCharacter: {x: 1, y: -0.1}
+  projectileDamage: 50
   projectileEffectPrefab: {fileID: 8259933171936786642, guid: 3b8f1fcec418dc980ad4972bbf4d8c95,
     type: 3}
+  projectilePositionOffset: {x: 1.5, y: 0.25}
+  muzzleEffectPrefab: {fileID: 1344490692017412, guid: b3ce31c3d02349d47b248885536fb3b2,
+    type: 3}
+  muzzlePositionOffset: {x: 1, y: 0}
 --- !u!212 &9212715548422224272
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8125,6 +8075,22 @@ MonoBehaviour:
       m_Processors: 
       m_Groups: 
       m_Action: Projectile Input
+      m_Flags: 0
+  slashInput:
+    m_Name: Slash Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: b1b8a1cd-6219-49eb-939f-921ec2589666
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 237875c6-ce03-473a-aca5-4d3efe266f16
+      m_Path: <Keyboard>/numpadPlus
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Slash Input
       m_Flags: 0
 --- !u!114 &9212715548585232773
 MonoBehaviour:
