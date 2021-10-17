@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PCPlayerInput : MonoBehaviour , IPlayerInput
+public class PlayerInputManager : MonoBehaviour , IPlayerInput
 {
     [SerializeField]private InputAction movementInput;
     [SerializeField]private InputAction upInput;
