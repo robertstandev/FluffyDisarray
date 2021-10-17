@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
 
@@ -32,24 +32,26 @@ public class PlayerController : MonoBehaviour, IController
 
 	private void Awake()
     {
-        this.movementInput = GetComponent<IPlayerInput>().getMovementInput;
+        PlayerInputManager cachedPlayerInput = GetComponent<PlayerInputManager>();
+
+        this.movementInput = cachedPlayerInput.getMovementInput;
         this.movementInput.performed += context => OnMove(context);
         this.movementInput.canceled += context => OnMove(context);
 
-        this.upInput = GetComponent<IPlayerInput>().getUpInput;
+        this.upInput = cachedPlayerInput.getUpInput;
         this.upInput.performed += context => OnUpInput();
 
-        this.downInput = GetComponent<IPlayerInput>().getDownInput;
+        this.downInput = cachedPlayerInput.getDownInput;
         this.downInput.performed += context => OnDownInput();
         this.downInput.canceled += context => OnDownInputRelease();
 
-        this.jumpInput = GetComponent<IPlayerInput>().getJumpInput;
+        this.jumpInput = cachedPlayerInput.getJumpInput;
         this.jumpInput.performed += context => OnJump();
 
-        this.projectileInput = GetComponent<IPlayerInput>().getProjectileInput;
+        this.projectileInput = cachedPlayerInput.getProjectileInput;
         this.projectileInput.performed += context => GetComponent<ProjectileTrigger>().executeSkill();
 
-        this.slashInput = GetComponent<IPlayerInput>().getSlashInput;
+        this.slashInput = cachedPlayerInput.getSlashInput;
         this.slashInput.performed += context => GetComponent<SlashTrigger>().executeSkill();
 
         this.movementComponent = GetComponent<Movement>();
