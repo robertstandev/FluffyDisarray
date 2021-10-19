@@ -22,6 +22,7 @@ public class CollectibleFall : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        if(other.gameObject.GetComponent<CollectibleFall>() != null) { return; }
         stopFall();
     }
 
