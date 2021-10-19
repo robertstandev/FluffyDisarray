@@ -71,7 +71,31 @@ public class MapManager : MonoBehaviour
                 character.GetComponent<Respawn>().setPlaceToRespawn(new Vector3(6f,1f,0f));
             }
         }
-        else if(this.playerCount == 3 || this.playerCount == 4)
+        else if(this.playerCount == 3)
+        {
+            if(playerNumber == 0)
+            {
+                tempCameraComponent.rect = new Rect(0f,0.0f,0.3333333f,1f);
+
+                character.transform.localPosition = new Vector3(-8f,1f,0f);
+                character.GetComponent<Respawn>().setPlaceToRespawn(new Vector3(-8f,1f,0f));
+            }
+            else if(playerNumber == 1)
+            {
+                tempCameraComponent.rect = new Rect(0.3333333f,0f,0.3333333f,1f);
+
+                character.transform.localPosition = new Vector3(-1f,1f,0f);
+                character.GetComponent<Respawn>().setPlaceToRespawn(new Vector3(-1f,1f,0f));
+            }
+            else if(playerNumber == 2)
+            {
+                tempCameraComponent.rect = new Rect(0.6666667f,0f,0.3333333f,1f);
+
+                character.transform.localPosition = new Vector3(6f,1f,0f);
+                character.GetComponent<Respawn>().setPlaceToRespawn(new Vector3(6f,1f,0f));
+            }
+        }
+        else if(this.playerCount == 4)
         {
             if(playerNumber == 0)
             {
