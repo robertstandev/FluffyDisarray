@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CollectibleStatsEffect : MonoBehaviour
 {
-    [SerializeField]private float effectDuration = 15f;
-    private float remainingDuration = 0;
+    private int effectDuration;
+    private int remainingDuration;
 
     private GameObject character;
     private IController characterController;
@@ -20,10 +20,11 @@ public class CollectibleStatsEffect : MonoBehaviour
 
     private WaitForSeconds waitInterval = new WaitForSeconds(0.1f);
 
-    public void startStatsEffect(GameObject character)
+    private void Awake() { cacheData(this.gameObject.transform.parent.gameObject); }
+
+    private void OnEnable()
     {
-        cacheData(character);
-        this.remainingDuration = (int)this.effectDuration * 10;
+        this.remainingDuration = this.effectDuration * 10;
         StartCoroutine("statsEffectTimer");
     }
 
@@ -80,4 +81,6 @@ public class CollectibleStatsEffect : MonoBehaviour
         this.characterController.disableController();
         this.characterController.enableController();
     }
+
+    public void setDuration (int value) { this.effectDuration = value; }
 }

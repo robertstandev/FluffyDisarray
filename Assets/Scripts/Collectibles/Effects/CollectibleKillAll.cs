@@ -36,7 +36,10 @@ public class CollectibleKillAll : MonoBehaviour
         for(int i = 0 ; i < this.characters.Count ; i++)
         {
             if(this.characters[i].Equals(triggerObject)) { continue; }
-            this.characters[i].GetComponent<Health>().substractHealth(100);
+            if(this.characters[i].activeInHierarchy)
+            {
+                this.characters[i].GetComponent<Health>().substractHealth(100);
+            }
         }
     }
 }
