@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 8792707084038788423}
   - component: {fileID: 1860531665}
   - component: {fileID: 1860531664}
-  - component: {fileID: 1860531667}
+  - component: {fileID: -3547152649945705378}
   - component: {fileID: 2546853149814158987}
   - component: {fileID: 1860531670}
+  - component: {fileID: 1860531667}
   m_Layer: 0
   m_Name: ParachuteTime
   m_TagString: Untagged
@@ -134,7 +135,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 7, y: 7}
   m_EdgeRadius: 0
---- !u!114 &1860531667
+--- !u!114 &-3547152649945705378
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,7 +144,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3776284837708155436}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c3cf99dcf2b3a33dbfd75d41d9030bc, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f7c25a94d2c4359db09dc55021f45e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2546853149814158987
@@ -158,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00b49812d55cf5969b43adb7673d84f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 10
+  duration: 12
   freezeEffect: {fileID: 7653779335093609003, guid: 1eb7c7ab7ae31a6e1a6614ccad471b18,
     type: 3}
 --- !u!114 &1860531670
@@ -174,3 +175,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hideAfterInterval: 20
+--- !u!114 &1860531667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3776284837708155436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c3cf99dcf2b3a33dbfd75d41d9030bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

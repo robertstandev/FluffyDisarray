@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 7949521424561055916}
   - component: {fileID: 863201638}
   - component: {fileID: 863201637}
-  - component: {fileID: 863201640}
+  - component: {fileID: 1361118991850680340}
   - component: {fileID: 7527826838549499365}
   - component: {fileID: 863201643}
+  - component: {fileID: 863201640}
   m_Layer: 0
   m_Name: ParachuteStats
   m_TagString: Untagged
@@ -125,7 +126,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8, y: 16.516129}
+    oldSize: {x: 8, y: 16.4}
     newSize: {x: 1.28, y: 1.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -134,7 +135,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 7, y: 7}
   m_EdgeRadius: 0
---- !u!114 &863201640
+--- !u!114 &1361118991850680340
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,7 +144,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8913641194903028330}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c3cf99dcf2b3a33dbfd75d41d9030bc, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f7c25a94d2c4359db09dc55021f45e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &7527826838549499365
@@ -158,6 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed9009c8f01a9162da70892bfb8da28a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  duration: 15
   auraEffectPrefab: {fileID: 1844191813266838, guid: 968c924d2be019d4b9e67647551eec3e,
     type: 3}
 --- !u!114 &863201643
@@ -173,3 +175,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hideAfterInterval: 20
+--- !u!114 &863201640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8913641194903028330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c3cf99dcf2b3a33dbfd75d41d9030bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
