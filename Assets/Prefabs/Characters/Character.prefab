@@ -174,7 +174,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 573804500369586554}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Textures
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5034,7 +5034,7 @@ GameObject:
   - component: {fileID: 373695595}
   - component: {fileID: 138535770}
   - component: {fileID: 187981891109220196}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5240,6 +5240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afdb84b9b8399b681bb7f25e3ea6b1a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maximumStamina: 100
   staminaReloadSpeed: 0.5
   staminaReloadAmmount: 10
 --- !u!114 &1286044503153903007
@@ -5254,7 +5255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25a708b081225d6f9ac643fe6f3366ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  maximumHealth: 100
   deathEffect: {fileID: 100006, guid: 2a474af3f4c27be4e9bdce39cfe4315d, type: 3}
 --- !u!114 &8452613068546436134
 MonoBehaviour:
