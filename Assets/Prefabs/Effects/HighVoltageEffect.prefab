@@ -9623,7 +9623,7 @@ GameObject:
   - component: {fileID: 8137782802840423197}
   - component: {fileID: 5907544983901955166}
   m_Layer: 0
-  m_Name: WeaponEffect
+  m_Name: HighVoltageEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

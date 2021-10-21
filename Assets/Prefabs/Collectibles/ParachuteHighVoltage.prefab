@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3416817385890687505}
   - component: {fileID: 801663786553362292}
   m_Layer: 0
-  m_Name: ParachuteWeapon
+  m_Name: ParachuteHighVoltage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

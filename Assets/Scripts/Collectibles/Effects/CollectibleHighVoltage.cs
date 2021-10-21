@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectibleWeapon : MonoBehaviour
+public class CollectibleHighVoltage : MonoBehaviour
 {
     [SerializeField]private float duration = 8f;
     [SerializeField]private GameObject weaponEffectPrefab;
