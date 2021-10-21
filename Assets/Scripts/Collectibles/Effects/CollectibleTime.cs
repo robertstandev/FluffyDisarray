@@ -9,50 +9,36 @@ public class CollectibleTime : MonoBehaviour
     [SerializeField]private int duration = 15;
     [SerializeField]private GameObject freezeEffect;
     private List<GameObject> instantiatedFreezeEffect = new List<GameObject>();
-    private List<GameObject> characters = new List<GameObject>();
+    private GetCharactersFromScene getCharactersFromSceneScript;
 
-    private void Start()
-    {
-        getCharactersFromScene();
-        instantiateFreezeEffects();
-    }
+    private void Awake() { this.getCharactersFromSceneScript = GetComponent<GetCharactersFromScene>(); }
+    private void Start() { instantiateFreezeEffects(); }
 
-    private void getCharactersFromScene()
-    {
-        Health[] gameObjectsWithHealthComponent = FindObjectsOfType<Health>(true);
-
-        foreach (MonoBehaviour item in gameObjectsWithHealthComponent)
-        {
-            this.characters.Add(item.gameObject);
-        }
-    }
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.GetComponent<Health>() != null)
+        if(this.getCharactersFromSceneScript.isCollidedObjectInList(other.gameObject))
         {
-            freezeEveryoneExceptTrigger(getTriggerGameObjectIndex(other.gameObject));
+            freezeEveryoneExceptTrigger(getCharactersFromSceneScript.getIndexOfCollidedObject(other.gameObject));
             this.gameObject.SetActive(false);
         }
     }
 
     private void freezeEveryoneExceptTrigger(int indexOfTriggerGameObject)
     {
-        for(int i = 0 ; i < this.characters.Count ; i++)
+        for(int i = 0 ; i < this.getCharactersFromSceneScript.getListOfCharactersFromScene().Count ; i++)
         {
             if(i.Equals(indexOfTriggerGameObject)) { continue; }
-            this.characters[i].GetComponent<IController>().disableController();
-            this.characters[i].GetComponent<Animator>().enabled = false;
+            this.getCharactersFromSceneScript.getListOfCharactersFromScene()[i].GetComponent<IController>().disableController();
+            this.getCharactersFromSceneScript.getListOfCharactersFromScene()[i].GetComponent<Animator>().enabled = false;
             this.instantiatedFreezeEffect[i].SetActive(true);
         }
     }
-
-    private int getTriggerGameObjectIndex(GameObject triggerGameObject) { return this.characters.IndexOf(triggerGameObject); }
     private void instantiateFreezeEffects()
     {
-        for(int i = 0 ; i < this.characters.Count ; i++)
+        for(int i = 0 ; i < this.getCharactersFromSceneScript.getListOfCharactersFromScene().Count ; i++)
         {
             this.instantiatedFreezeEffect.Add(Instantiate(this.freezeEffect , Vector3.zero, Quaternion.identity));
-            this.instantiatedFreezeEffect[i].transform.parent = this.characters[i].transform;
+            this.instantiatedFreezeEffect[i].transform.parent = this.getCharactersFromSceneScript.getListOfCharactersFromScene()[i].transform;
             this.instantiatedFreezeEffect[i].transform.localPosition = Vector3.zero;
             this.instantiatedFreezeEffect[i].GetComponent<CollectibleTimeEffect>().setDuration(this.duration);
         }

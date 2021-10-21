@@ -5,26 +5,13 @@ using UnityEngine;
 //All characters (Players and NPC) (besides the one that is triggering this) , will instantly die (if they are alive)
 public class CollectibleKillAll : MonoBehaviour
 {
-    private List<GameObject> characters = new List<GameObject>();
+    private GetCharactersFromScene getCharactersFromSceneScript;
 
-    private void Start()
-    {
-        getCharactersFromScene();
-    }
-
-    private void getCharactersFromScene()
-    {
-        Health[] gameObjectsWithHealthComponent = FindObjectsOfType<Health>(true);
-
-        foreach (MonoBehaviour item in gameObjectsWithHealthComponent)
-        {
-            this.characters.Add(item.gameObject);
-        }
-    }
+    private void Awake() { this.getCharactersFromSceneScript = GetComponent<GetCharactersFromScene>(); }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.GetComponent<Health>() != null)
+        if(this.getCharactersFromSceneScript.isCollidedObjectInList(other.gameObject))
         {
             killEveryoneExceptTrigger(other.gameObject);
             this.gameObject.SetActive(false);
@@ -33,12 +20,13 @@ public class CollectibleKillAll : MonoBehaviour
 
     private void killEveryoneExceptTrigger(GameObject triggerObject)
     {
-        for(int i = 0 ; i < this.characters.Count ; i++)
+        for(int i = 0 ; i < this.getCharactersFromSceneScript.getListOfCharactersFromScene().Count ; i++)
         {
-            if(this.characters[i].Equals(triggerObject)) { continue; }
-            if(this.characters[i].activeInHierarchy)
+            if(this.getCharactersFromSceneScript.getListOfCharactersFromScene()[i].Equals(triggerObject)) { continue; }
+            if(this.getCharactersFromSceneScript.getListOfCharactersFromScene()[i].activeInHierarchy)
             {
-                this.characters[i].GetComponent<Health>().substractHealth(100);
+                Health cachedHealthComponent =  this.getCharactersFromSceneScript.getListOfCharactersFromScene()[i].GetComponent<Health>();
+                cachedHealthComponent.substractHealth(cachedHealthComponent.getMaximumHealth());
             }
         }
     }
