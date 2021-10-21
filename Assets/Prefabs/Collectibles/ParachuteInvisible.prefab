@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 401c59998e20d252fb26f4559411c10d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 10
+  duration: 12
   invisibilityEffectPrefab: {fileID: 3832197657543854621, guid: 3d2c14f4ea764489291f962ed8ea8972,
     type: 3}
   ignoreInvisibilityForThisObjects:
