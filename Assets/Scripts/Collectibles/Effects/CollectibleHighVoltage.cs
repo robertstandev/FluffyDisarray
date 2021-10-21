@@ -5,6 +5,7 @@ using UnityEngine;
 public class CollectibleHighVoltage : MonoBehaviour
 {
     [SerializeField]private float duration = 8f;
+    [SerializeField]private int distanceToAffectCharacters = 15;
     [SerializeField]private GameObject weaponEffectPrefab;
     private List<GameObject> instantiatedWeaponEffect = new List<GameObject>();
     private GetCharactersFromScene getCharactersFromSceneScript;
@@ -28,6 +29,10 @@ public class CollectibleHighVoltage : MonoBehaviour
             this.instantiatedWeaponEffect[i].transform.parent = getCharactersFromSceneScript.getListOfCharactersFromScene()[i].transform;
             this.instantiatedWeaponEffect[i].transform.localPosition = Vector3.zero;
             this.instantiatedWeaponEffect[i].GetComponent<AutoHide>().setDuration(this.duration);
+
+            CollectibleHighVoltageEffect tempCachedHighVoltageEffectScript = this.instantiatedWeaponEffect[i].GetComponent<CollectibleHighVoltageEffect>();
+            tempCachedHighVoltageEffectScript.setListOfCharactersInScene(this.getCharactersFromSceneScript.getListOfCharactersFromScene());
+            tempCachedHighVoltageEffectScript.setDistanceToAffectCharacters(this.distanceToAffectCharacters);
         }
     }
 }

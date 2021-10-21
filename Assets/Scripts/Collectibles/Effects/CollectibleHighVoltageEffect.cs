@@ -6,9 +6,13 @@ public class CollectibleHighVoltageEffect : MonoBehaviour
 {
     private Transform[] listOfCharactersInScene;
     private WaitForSeconds timerWait = new WaitForSeconds(0.1f);
-    private void OnEnable()
+    private int distanceToAffectCharacters;
+    private void OnEnable() { StartCoroutine("checkDistanceOfCharactersComparedToThisObjectTimer"); }
+
+    private void OnDisable()
     {
-        
+        StopAllCoroutines();
+        this.gameObject.SetActive(false);
     }
 
     private IEnumerator checkDistanceOfCharactersComparedToThisObjectTimer()
@@ -24,7 +28,7 @@ public class CollectibleHighVoltageEffect : MonoBehaviour
     {
        for(int i = 0 ; i < listOfCharactersInScene.Length ; i++)
        {
-           if(Vector2.Distance(transform.position , listOfCharactersInScene[i].transform.position) < 15)
+           if(Vector2.Distance(transform.position , listOfCharactersInScene[i].transform.position) < this.distanceToAffectCharacters)
            {
                Debug.Log("Attacking " + listOfCharactersInScene[i].gameObject);
            }
@@ -36,8 +40,11 @@ public class CollectibleHighVoltageEffect : MonoBehaviour
         List<Transform> temporaryList = new List<Transform>();
         foreach(GameObject go in listOfCharacters)
         {
+            if(go.Equals(this.transform.parent.gameObject)) { continue; }
             temporaryList.Add(go.transform);
         }
         this.listOfCharactersInScene = temporaryList.ToArray();
     }
+
+    public void setDistanceToAffectCharacters(int value) { this.distanceToAffectCharacters = value; }
 }
