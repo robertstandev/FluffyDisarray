@@ -5,6 +5,7 @@ using UnityEngine;
 public class CollectibleHighVoltageEffect : MonoBehaviour
 {
     private Transform[] listOfCharactersInScene;
+    private List<Health> listOfHealthComponents = new List<Health>();
     private WaitForSeconds timerWait = new WaitForSeconds(0.1f);
     private int distanceToAffectCharacters;
     private void OnEnable() { StartCoroutine("checkDistanceOfCharactersComparedToThisObjectTimer"); }
@@ -30,7 +31,7 @@ public class CollectibleHighVoltageEffect : MonoBehaviour
        {
            if(Vector2.Distance(transform.position , listOfCharactersInScene[i].transform.position) < this.distanceToAffectCharacters)
            {
-               Debug.Log("Attacking " + listOfCharactersInScene[i].gameObject);
+               listOfHealthComponents[i].substractHealth(2);
            }
        }
     }
@@ -42,6 +43,7 @@ public class CollectibleHighVoltageEffect : MonoBehaviour
         {
             if(go.Equals(this.transform.parent.gameObject)) { continue; }
             temporaryList.Add(go.transform);
+            this.listOfHealthComponents.Add(go.GetComponent<Health>());
         }
         this.listOfCharactersInScene = temporaryList.ToArray();
     }

@@ -14,14 +14,16 @@ public class Health : MonoBehaviour
         instantiateDeathEffect();
         this.currentHealth = this.maximumHealth;
     }
-    public void addHealth(int value)
-    {
-        this.currentHealth = (this.currentHealth + value) <= this.maximumHealth ? this.currentHealth + value : this.maximumHealth;
-    }
+
+    public void addHealth(int value) { this.currentHealth = (this.currentHealth + value) <= this.maximumHealth ? this.currentHealth + value : this.maximumHealth; }
+
     public void substractHealth(int value)
     {
-       this.currentHealth = (this.currentHealth - value) >= 0 ? this.currentHealth - value : 0;
-       deathCheck();
+        if(this.gameObject.activeInHierarchy)
+        {
+            this.currentHealth = (this.currentHealth - value) >= 0 ? this.currentHealth - value : 0;
+            deathCheck();
+        }
     }
 
     private void deathCheck()
@@ -32,6 +34,7 @@ public class Health : MonoBehaviour
         this.instantiatedDeathEffect.SetActive(true);
         this.gameObject.SetActive(false);
     }
+    
     public void instantiateDeathEffect() { this.instantiatedDeathEffect = Instantiate(this.deathEffect, Vector3.zero , Quaternion.identity); }
     public int getMaximumHealth() { return this.maximumHealth; }
 }
