@@ -8,9 +8,9 @@ public class CollectibleStats : MonoBehaviour
     [SerializeField]private int duration = 15;
     [SerializeField]private GameObject auraEffectPrefab;
     private List<GameObject> instantiatedAuraEffects = new List<GameObject>();
-    private GetCharactersFromScene getCharactersFromSceneScript;
+    private MapCharacterManager getCharactersFromSceneScript;
 
-    private void Awake() { this.getCharactersFromSceneScript = GetComponent<GetCharactersFromScene>(); }
+    private void Awake() { this.getCharactersFromSceneScript = FindObjectOfType<MapCharacterManager>(); }
     private void Start() { instantiateAuraEffects(); }
 
     private void OnCollisionEnter2D(Collision2D other)

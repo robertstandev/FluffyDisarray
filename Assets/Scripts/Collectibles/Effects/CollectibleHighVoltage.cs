@@ -8,9 +8,9 @@ public class CollectibleHighVoltage : MonoBehaviour
     [SerializeField]private int distanceToAffectCharacters = 15;
     [SerializeField]private GameObject weaponEffectPrefab;
     private List<GameObject> instantiatedWeaponEffect = new List<GameObject>();
-    private GetCharactersFromScene getCharactersFromSceneScript;
+    private MapCharacterManager getCharactersFromSceneScript;
 
-    private void Awake() { this.getCharactersFromSceneScript = GetComponent<GetCharactersFromScene>(); }
+    private void Awake() { this.getCharactersFromSceneScript = FindObjectOfType<MapCharacterManager>(); }
     private void Start() { instantiateWeaponEffects(); }
 
     private void OnCollisionEnter2D(Collision2D other)

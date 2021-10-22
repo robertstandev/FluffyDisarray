@@ -9,9 +9,9 @@ public class CollectibleTime : MonoBehaviour
     [SerializeField]private int duration = 15;
     [SerializeField]private GameObject freezeEffect;
     private List<GameObject> instantiatedFreezeEffect = new List<GameObject>();
-    private GetCharactersFromScene getCharactersFromSceneScript;
+    private MapCharacterManager getCharactersFromSceneScript;
 
-    private void Awake() { this.getCharactersFromSceneScript = GetComponent<GetCharactersFromScene>(); }
+    private void Awake() { this.getCharactersFromSceneScript = FindObjectOfType<MapCharacterManager>(); }
     private void Start() { instantiateFreezeEffects(); }
 
     private void OnCollisionEnter2D(Collision2D other)

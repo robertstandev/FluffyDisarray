@@ -5,9 +5,9 @@ using UnityEngine;
 //All characters (Players and NPC) (besides the one that is triggering this) , will instantly die (if they are alive)
 public class CollectibleKillAll : MonoBehaviour
 {
-    private GetCharactersFromScene getCharactersFromSceneScript;
+    private MapCharacterManager getCharactersFromSceneScript;
 
-    private void Awake() { this.getCharactersFromSceneScript = GetComponent<GetCharactersFromScene>(); }
+    private void Awake() { this.getCharactersFromSceneScript = FindObjectOfType<MapCharacterManager>(); }
 
     private void OnCollisionEnter2D(Collision2D other)
     {

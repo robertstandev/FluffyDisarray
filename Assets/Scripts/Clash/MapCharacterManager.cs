@@ -13,37 +13,36 @@ public class MapCharacterManager : MonoBehaviour
     [SerializeField]private GameObject botPrefab;
 
     private List<GameObject> gameCharacters = new List<GameObject>();
-
-    public int getPlayerCount() { return this.playerCount; }
-    public void setPlayerCount(int value) { this.playerCount = value; }
-
-    public int getBotCount() { return this.botCount; }
-    public void setBotCount(int value) { this.botCount = value; }
     
     private void OnEnable()
     {
-        createPlayers();
+        configureCharacters(this.playerCount, playerPrefab);
+        configureCharacters(this.botCount, botPrefab);
     }
 
-    private void OnDisable()
+    private void configureCharacters(int numberOfCharacters, GameObject typeOfCharacter)
     {
-        
-    }
+        if(numberOfCharacters.Equals(0)) { return; }
 
-    private void createPlayers()
-    {
-        for(int i = 0 ; i < this.playerCount; i++)
+        for(int i = 0 ; i < numberOfCharacters; i++)
         {
-            GameObject tempPlayer = Instantiate(playerPrefab , Vector3.zero , Quaternion.identity);
+            this.gameCharacters.Add(Instantiate(typeOfCharacter.Equals(playerPrefab) ? playerPrefab : botPrefab , Vector3.zero , Quaternion.identity));
+
+            if(typeOfCharacter.Equals(playerPrefab))
+            {
+                configurePlayer(this.gameCharacters[i], i);
             //tempPlayer.GetComponent<IController>()
             //tempPlayer.GetComponent<ProjectileTrigger>() - sa bag ce model de projectile vreau
             //poate iau material la Sprite la child si sa bag alta culoare
-            
-            configurePlayer(tempPlayer , i);
+            }
+            else
+            {
+                //configureBot(this.gameCharacters[i]);
+            }
         }
     }
 
-    private void configurePlayer(GameObject character, int playerNumber)
+    private void configurePlayer(GameObject character, int playerIndex)
     {
         if(this.playerCount == 1)
         {
@@ -51,45 +50,45 @@ public class MapCharacterManager : MonoBehaviour
         }
         else if(this.playerCount == 2)
         {
-            if(playerNumber == 0)
+            if(playerIndex == 0)
             {
                  configurePlayerCameraAndStartPosition(character, 15f, new Rect(0f,0f,0.5f,1f) ,  new Vector3(-1f,1f,0f));
             }
-            else if(playerNumber == 1)
+            else if(playerIndex == 1)
             {
                 configurePlayerCameraAndStartPosition(character, 15f, new Rect(0.5f,0f,0.5f,1f) ,  new Vector3(6f,1f,0f));
             }
         }
         else if(this.playerCount == 3)
         {
-            if(playerNumber == 0)
+            if(playerIndex == 0)
             {
                 configurePlayerCameraAndStartPosition(character, 20f, new Rect(0f,0.0f,0.3333333f,1f) ,  new Vector3(-8f,1f,0f));
             }
-            else if(playerNumber == 1)
+            else if(playerIndex == 1)
             {
                 configurePlayerCameraAndStartPosition(character, 20f, new Rect(0.3333333f,0f,0.3333333f,1f) ,  new Vector3(-1f,1f,0f));
             }
-            else if(playerNumber == 2)
+            else if(playerIndex == 2)
             {
                 configurePlayerCameraAndStartPosition(character, 20f, new Rect(0.6666667f,0f,0.3333333f,1f) ,  new Vector3(6f,1f,0f));
             }
         }
         else if(this.playerCount == 4)
         {
-            if(playerNumber == 0)
+            if(playerIndex == 0)
             {
                 configurePlayerCameraAndStartPosition(character, 10f, new Rect(0f,0.5f,0.5f,0.5f) ,  new Vector3(-8f,1f,0f));
             }
-            else if(playerNumber == 1)
+            else if(playerIndex == 1)
             {
                 configurePlayerCameraAndStartPosition(character, 10f, new Rect(0.5f,0.5f,0.5f,0.5f) ,  new Vector3(-1f,1f,0f));
             }
-            else if(playerNumber == 2)
+            else if(playerIndex == 2)
             {
                 configurePlayerCameraAndStartPosition(character, 10f, new Rect(0f,0f,0.5f,0.5f) ,  new Vector3(6f,1f,0f));
             }
-            else if(playerNumber == 3)
+            else if(playerIndex == 3)
             {
                 configurePlayerCameraAndStartPosition(character, 10f, new Rect(0.5f,0f,0.5f,0.5f) ,  new Vector3(13f,1f,0f));
             }
@@ -116,4 +115,8 @@ public class MapCharacterManager : MonoBehaviour
         character.transform.localPosition = positionToSetTo;
         character.GetComponent<Respawn>().setPlaceToRespawn(positionToSetTo);
     }
+
+    public List<GameObject> getListOfCharactersFromScene() { return this.gameCharacters; }
+    public bool isCollidedObjectInList(GameObject objectToSearchFor) { return this.gameCharacters.Contains(objectToSearchFor); }
+    public int getIndexOfCollidedObject(GameObject objectToSearchFor) { return this.gameCharacters.IndexOf(objectToSearchFor); }
 }

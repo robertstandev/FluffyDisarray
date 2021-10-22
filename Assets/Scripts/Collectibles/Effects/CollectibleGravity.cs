@@ -8,9 +8,9 @@ public class CollectibleGravity : MonoBehaviour
     [SerializeField]private float gravityValue = 2f;
     [SerializeField]private GameObject gravityEffectPrefab;
     private List<GameObject> instantiatedGravityEffects = new List<GameObject>();
-    private GetCharactersFromScene getCharactersFromSceneScript;
+    private MapCharacterManager getCharactersFromSceneScript;
 
-    private void Awake() { this.getCharactersFromSceneScript = GetComponent<GetCharactersFromScene>(); }
+    private void Awake() { this.getCharactersFromSceneScript = FindObjectOfType<MapCharacterManager>(); }
     private void Start() { instantiateGravityEffect(); }
 
     private void OnCollisionEnter2D(Collision2D other)

@@ -10,9 +10,9 @@ public class CollectibleLookAway : MonoBehaviour
     private List<GameObject> instantiatedLookAwayEffects = new List<GameObject>();
     private List<CollectibleLookAwayEffect> listOfLookAwayEffectScripts = new List<CollectibleLookAwayEffect>();
 
-    private GetCharactersFromScene getCharactersFromSceneScript;
+    private MapCharacterManager getCharactersFromSceneScript;
 
-    private void Awake() { this.getCharactersFromSceneScript = GetComponent<GetCharactersFromScene>(); }
+    private void Awake() { this.getCharactersFromSceneScript = FindObjectOfType<MapCharacterManager>(); }
     private void Start() { instantiateGravityEffect(); }
 
     private void OnCollisionEnter2D(Collision2D other)
