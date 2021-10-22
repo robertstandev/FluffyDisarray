@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AutoHide : MonoBehaviour
+public class AutoHideTimer : MonoBehaviour
 {
 	[SerializeField]private float hideAfterInterval = 0.8f;
 	private void OnEnable() { StartCoroutine("autoHideTimer"); }

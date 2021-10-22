@@ -28,7 +28,7 @@ public class CollectibleHighVoltage : MonoBehaviour
             this.instantiatedWeaponEffect.Add(Instantiate(this.weaponEffectPrefab , Vector3.zero , Quaternion.identity));
             this.instantiatedWeaponEffect[i].transform.parent = getCharactersFromSceneScript.getListOfCharactersFromScene()[i].transform;
             this.instantiatedWeaponEffect[i].transform.localPosition = Vector3.zero;
-            this.instantiatedWeaponEffect[i].GetComponent<AutoHide>().setDuration(this.duration);
+            this.instantiatedWeaponEffect[i].GetComponent<AutoHideTimer>().setDuration(this.duration);
 
             CollectibleHighVoltageEffect tempCachedHighVoltageEffectScript = this.instantiatedWeaponEffect[i].GetComponent<CollectibleHighVoltageEffect>();
             tempCachedHighVoltageEffectScript.setListOfCharactersInScene(this.getCharactersFromSceneScript.getListOfCharactersFromScene());

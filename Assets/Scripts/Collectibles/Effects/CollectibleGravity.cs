@@ -30,7 +30,7 @@ public class CollectibleGravity : MonoBehaviour
             this.instantiatedGravityEffects[i].transform.parent = getCharactersFromSceneScript.getListOfCharactersFromScene()[i].transform;
             this.instantiatedGravityEffects[i].transform.localPosition = Vector3.zero;
             this.instantiatedGravityEffects[i].GetComponent<CollectibleGravityEffect>().setParameters(this.duration, this.gravityValue);
-            this.instantiatedGravityEffects[i].GetComponent<AutoHide>().setDuration(this.duration);
+            this.instantiatedGravityEffects[i].GetComponent<AutoHideTimer>().setDuration(this.duration);
         }
     }
 }

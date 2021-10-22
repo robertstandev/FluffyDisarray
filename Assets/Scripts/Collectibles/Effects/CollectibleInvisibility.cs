@@ -30,7 +30,7 @@ public class CollectibleInvisibility : MonoBehaviour
             this.instantiatedInvisibilityEffects.Add(Instantiate(this.invisibilityEffectPrefab , Vector3.zero, Quaternion.identity));
             this.instantiatedInvisibilityEffects[i].transform.parent = this.getCharactersFromSceneScript.getListOfCharactersFromScene()[i].transform;
             this.instantiatedInvisibilityEffects[i].transform.localPosition = Vector3.zero;
-            this.instantiatedInvisibilityEffects[i].GetComponent<AutoHide>().setDuration(this.duration);
+            this.instantiatedInvisibilityEffects[i].GetComponent<AutoHideTimer>().setDuration(this.duration);
 
             List<string> temporaryStringList = new List<string>();
             for(int j = 0 ; j < this.ignoreInvisibilityForThisObjects.Length; j++)
