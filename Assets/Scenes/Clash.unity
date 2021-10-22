@@ -904,24 +904,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Menu
       objectReference: {fileID: 0}
-    - target: {fileID: 8948888029049804736, guid: 2cfbccaaa0355a08ba2ce4ee293ac5f6,
-        type: 3}
-      propertyPath: canvasToDisable.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8948888029049804736, guid: 2cfbccaaa0355a08ba2ce4ee293ac5f6,
-        type: 3}
-      propertyPath: canvasToDisable.Array.data[1]
-      value: 
-      objectReference: {fileID: 859018938}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cfbccaaa0355a08ba2ce4ee293ac5f6, type: 3}
---- !u!223 &859018938 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 5387892076074601268, guid: 2cfbccaaa0355a08ba2ce4ee293ac5f6,
-    type: 3}
-  m_PrefabInstance: {fileID: 859018937}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &878830448
 GameObject:
   m_ObjectHideFlags: 0
