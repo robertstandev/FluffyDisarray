@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class CollectibleLookAway : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField]private float duration;
+    [SerializeField]private GameObject lookAwayEffectPrefab;
+    private List<GameObject> instantiatedLookAwayEffects = new List<GameObject>();
 }
