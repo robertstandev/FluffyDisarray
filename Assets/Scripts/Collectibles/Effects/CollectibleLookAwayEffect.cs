@@ -12,6 +12,9 @@ public class CollectibleLookAwayEffect : MonoBehaviour
     private WaitForSeconds timerWait = new WaitForSeconds(0.1f);
     private int effectTimer = 0;
 
+    private bool isCharacterLookingTowardsTheTarget;
+    private Color32 originalColor, activeColor = new Color32(255,0,0, 255);
+
     private void Awake()
     {
         Transform temporaryCharacterTransform = transform.parent;
@@ -19,6 +22,7 @@ public class CollectibleLookAwayEffect : MonoBehaviour
         this.characterHealthComponent = temporaryCharacterTransform.GetComponent<Health>();
 
         this.effectSpriteRenderer = GetComponent<SpriteRenderer>();
+        this.originalColor = this.effectSpriteRenderer.color;
     }
 
     public void setTarget(Transform targetToPut)
@@ -29,7 +33,7 @@ public class CollectibleLookAwayEffect : MonoBehaviour
 
     private void OnEnable()
     {
-        this.effectSpriteRenderer.enabled = false;
+        this.effectSpriteRenderer.color = this.originalColor;
         StartCoroutine("checkFacingDirectionTimer");
     }
 
@@ -44,19 +48,20 @@ public class CollectibleLookAwayEffect : MonoBehaviour
         while(true)
         {
             yield return timerWait;
-            this.effectSpriteRenderer.enabled = isCharacterLookingTowardsTheTarget();
+            checkIfCharacterIsLookingTowardsTheTarget();
             this.effectTimer -= 1;
-            
-            if(this.effectSpriteRenderer.enabled && (this.effectTimer <= 0))
+            this.effectSpriteRenderer.color = this.isCharacterLookingTowardsTheTarget ? this.activeColor : this.originalColor;
+
+            if(this.isCharacterLookingTowardsTheTarget && (this.effectTimer <= 0))
             {
                 this.characterHealthComponent.substractHealth(20);
                 this.effectTimer = 10;
             }
         }
     }
-    private bool isCharacterLookingTowardsTheTarget()
+    private void checkIfCharacterIsLookingTowardsTheTarget()
     {
-        return (((transform.position.x > this.target.position.x) && this.characterSpriteRenderer.flipX && !this.targetSpriteRenderer.flipX) || ((transform.position.x < this.target.position.x) && !this.characterSpriteRenderer.flipX && this.targetSpriteRenderer.flipX));
+        this.isCharacterLookingTowardsTheTarget = (((transform.position.x > this.target.position.x) && this.characterSpriteRenderer.flipX && !this.targetSpriteRenderer.flipX) || ((transform.position.x < this.target.position.x) && !this.characterSpriteRenderer.flipX && this.targetSpriteRenderer.flipX));
     }
 
 }

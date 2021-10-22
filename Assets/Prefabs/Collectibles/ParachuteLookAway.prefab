@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1c7227ad941dc516a469623bfbf1e64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 20
+  duration: 16
   lookAwayEffectPrefab: {fileID: 5113986654452280725, guid: 025a7f70695b6002b8b24887a789724c,
     type: 3}
   lookAwayEffectOffset: {x: 0, y: 3}
