@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ChangeColorTouch : MonoBehaviour,IPointerDownHandler
+public class ChangeColorTouch : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField]private Color32 activatedColor;
     private Color32 originalColor;

@@ -3,13 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class HideShowTouch : MonoBehaviour,IPointerDownHandler
+public class HideShowTouch : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField]private Canvas[] canvasToDisable;
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        disableEnableSelectedCanvas();
-    }
+    public void OnPointerDown(PointerEventData eventData) {disableEnableSelectedCanvas(); }
 
     public void disableEnableSelectedCanvas()
     {
