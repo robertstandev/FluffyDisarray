@@ -7,11 +7,8 @@ public class CollectibleGravityEffect : MonoBehaviour
     private float duration , gravityValue , originalGravityValue;
     private Rigidbody2D rigidbodyComponent;
 
-    public void setParameters(float duration, float gravityValue)
-    {
-        this.duration = duration;
-        this.gravityValue = gravityValue;
-    }
+    public void setGravityValue(float gravityValue) { this.gravityValue = gravityValue; }
+    public void setDuration(float durationValue) { this.duration = durationValue; }
 
     private void Awake()
     {
