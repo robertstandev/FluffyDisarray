@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClashAIController : MonoBehaviour
+public class ClashAIController : MonoBehaviour , IController
 {
-
-
     //fac coroutine care verifica la 1 sec
     //ideea AI-ului:
     //-mai intai cauta si se duce spre collectibles (dar sa astept sa vina putin spre pamant nu s-a spawnat collectible-ul si asta deja fuge spre collectible cand nici nu se vede)
@@ -24,4 +22,10 @@ public class ClashAIController : MonoBehaviour
     //time -> te duci si il ataci automat insa doar daca nu are doar PRIMELE 2 efecte
     //gravity -> te duci sa il ataci (dar doar daca nu are si vreuna din primele 3 efecte)
     //high voltage-> te feresti de el daca are viata peste 21 (stai la peste 15f departe de el si dai doar cu proiectile spre el (daca sunt valabile)) , daca are mai putin de 21 atunci daca ai mai mult de 60 viata te duci spre el altfel doar cu proiectile dai
+
+    [SerializeField]private SpriteRenderer mySpriteRenderer;
+    public SpriteRenderer getCharacterRenderer { get { return this.mySpriteRenderer; } }
+    public void disableController() { this.enabled = false; }
+    public void enableController() { this.enabled = true; }
+
 }

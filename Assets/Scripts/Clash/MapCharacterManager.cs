@@ -37,7 +37,7 @@ public class MapCharacterManager : MonoBehaviour
             }
             else
             {
-                //configureBot(this.gameCharacters[i]);
+                configureCharacterStartPosition(this.gameCharacters[i], new Vector3(6f,1f,0f));
             }
         }
     }
@@ -98,7 +98,7 @@ public class MapCharacterManager : MonoBehaviour
     private void configurePlayerCameraAndStartPosition(GameObject character, float orthoGraphicSize, Rect cameraRect, Vector3 positionToSetTo)
     {
         configurePlayerCamera(character, orthoGraphicSize, cameraRect);
-        configurePlayerStartPosition(character, positionToSetTo);
+        configureCharacterStartPosition(character, positionToSetTo);
     }
 
     private void configurePlayerCamera(GameObject character, float orthoGraphicSize, Rect cameraRect)
@@ -110,7 +110,7 @@ public class MapCharacterManager : MonoBehaviour
         tempCameraComponent.orthographicSize = orthoGraphicSize;
     }
 
-    private void configurePlayerStartPosition(GameObject character, Vector3 positionToSetTo)
+    private void configureCharacterStartPosition(GameObject character, Vector3 positionToSetTo)
     {
         character.transform.localPosition = positionToSetTo;
         character.GetComponent<Respawn>().setPlaceToRespawn(positionToSetTo);

@@ -51,6 +51,8 @@ public class CollectibleStatsEffect : MonoBehaviour
     private IEnumerator statsEffectTimer()
     {
         increaseAltStats();
+        this.characterController.disableController();
+        this.characterController.enableController();
         while(this.remainingDuration > 0)
         {
             yield return this.waitInterval;

@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 32200222}
   - component: {fileID: 32200223}
   m_Layer: 0
-  m_Name: DeathRespawn
+  m_Name: DeathRespawnManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -446,7 +446,7 @@ GameObject:
   m_Component:
   - component: {fileID: 310516913}
   m_Layer: 0
-  m_Name: Managers&General
+  m_Name: Managers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -644,7 +644,7 @@ GameObject:
   - component: {fileID: 523206609}
   - component: {fileID: 523206610}
   m_Layer: 0
-  m_Name: MapManager
+  m_Name: MapCharacterManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -676,13 +676,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeedbc712014c40418bcddaae305b898, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCount: 2
-  botCount: 0
+  playerCount: 1
+  botCount: 1
   playerPrefab: {fileID: 573804501409757768, guid: a1b2399bb020341c1bfcbd69dcab8d73,
     type: 3}
   cameraPrefab: {fileID: 1639079167040668655, guid: e01ae38cd8893101fa4dea849d545359,
     type: 3}
-  botPrefab: {fileID: 0}
+  botPrefab: {fileID: 625996239217950892, guid: 8c3dbfc224df3faf2a41649fd5c0f8a6,
+    type: 3}
 --- !u!1001 &819954134
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -964,7 +965,7 @@ GameObject:
   - component: {fileID: 880456476}
   - component: {fileID: 880456475}
   m_Layer: 0
-  m_Name: FallOffMapArea
+  m_Name: FallOffMapAreaManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
