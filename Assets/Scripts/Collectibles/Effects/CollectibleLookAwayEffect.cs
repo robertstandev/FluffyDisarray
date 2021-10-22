@@ -9,7 +9,8 @@ public class CollectibleLookAwayEffect : MonoBehaviour
     private SpriteRenderer effectSpriteRenderer;
     private Transform target;
     private SpriteRenderer targetSpriteRenderer;
-    private WaitForSeconds timerWait = new WaitForSeconds(1f);
+    private WaitForSeconds timerWait = new WaitForSeconds(0.1f);
+    private int effectTimer = 0;
 
     private void Awake()
     {
@@ -44,10 +45,12 @@ public class CollectibleLookAwayEffect : MonoBehaviour
         {
             yield return timerWait;
             this.effectSpriteRenderer.enabled = isCharacterLookingTowardsTheTarget();
+            this.effectTimer -= 1;
             
-            if(this.effectSpriteRenderer.enabled)
+            if(this.effectSpriteRenderer.enabled && (this.effectTimer <= 0))
             {
                 this.characterHealthComponent.substractHealth(20);
+                this.effectTimer = 10;
             }
         }
     }
