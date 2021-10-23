@@ -20,6 +20,11 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
        if(this.characterNumber < 8)
        {
             increaseCharacterNumber();
+
+            //have max 4 players and 4 bots
+            //if 4 players reach remove player text from characterTypeText
+            //if 4 bots reach , remove bot text from characterTypeText
+
             //this.mapCharacterManagerGameObject.setCharacterDetails(this.characterTypeText.text, this.characterColorImage.color, this.characterProjectilePrefab, this.keyBindingManager)
             //create on mapCharacterManager lists with all of this values like 
             //List<string>...Add(from parameter characterTypeText.text)
