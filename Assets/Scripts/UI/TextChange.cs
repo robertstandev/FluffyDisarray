@@ -15,7 +15,6 @@ public class TextChange : MonoBehaviour, IPointerDownHandler
 
     private void changeString()
     {
-        Debug.Log(this.textObjectsToChangeStringsTo[0].text);
         for(int i = 0 ; i < this.textObjectsToChangeStringsTo.Length; i++)
         {
             this.textObjectsToChangeStringsTo[i].text = getNextString(this.textObjectsToChangeStringsTo[i].text);
