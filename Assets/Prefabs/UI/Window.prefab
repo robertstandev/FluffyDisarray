@@ -99,7 +99,6 @@ GameObject:
   - component: {fileID: 5387892077733425825}
   - component: {fileID: 5387892077733425839}
   - component: {fileID: 5387892077733425824}
-  - component: {fileID: 2827369205733213216}
   - component: {fileID: 1485082343407673197}
   m_Layer: 5
   m_Name: Audio
@@ -165,18 +164,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2827369205733213216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5387892077733425826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d07fe3d8a700e0759872bfda1bce884, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1485082343407673197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,7 +180,7 @@ MonoBehaviour:
   - serializedVersion: 2
     rgba: 4294967295
   - serializedVersion: 2
-    rgba: 4287993237
+    rgba: 4284966759
 --- !u!1 &8948888028424877132
 GameObject:
   m_ObjectHideFlags: 0

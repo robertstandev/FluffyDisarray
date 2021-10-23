@@ -169,27 +169,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f30bf220890f9b0c8a1ba86f8f6c63b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colors:
+  colorsToChangeTo:
   - serializedVersion: 2
-    rgba: 0
+    rgba: 4281216558
   - serializedVersion: 2
-    rgba: 0
+    rgba: 4286282619
   - serializedVersion: 2
-    rgba: 0
+    rgba: 4291611852
   - serializedVersion: 2
-    rgba: 0
+    rgba: 4294967295
   - serializedVersion: 2
-    rgba: 0
+    rgba: 4278190335
   - serializedVersion: 2
-    rgba: 0
+    rgba: 4281414078
   - serializedVersion: 2
-    rgba: 0
+    rgba: 4280756086
   - serializedVersion: 2
-    rgba: 0
+    rgba: 4279242817
   - serializedVersion: 2
-    rgba: 0
+    rgba: 4278241791
   - serializedVersion: 2
-    rgba: 0
+    rgba: 4278216092
+  - serializedVersion: 2
+    rgba: 4278205515
+  - serializedVersion: 2
+    rgba: 4292083967
+  - serializedVersion: 2
+    rgba: 4285464683
+  - serializedVersion: 2
+    rgba: 4294797939
+  - serializedVersion: 2
+    rgba: 4288427822
+  - serializedVersion: 2
+    rgba: 4284820512
+  - serializedVersion: 2
+    rgba: 4294044542
+  - serializedVersion: 2
+    rgba: 4285951532
+  - serializedVersion: 2
+    rgba: 4285003081
+  - serializedVersion: 2
+    rgba: 4279190292
 --- !u!1 &1483350234730965389
 GameObject:
   m_ObjectHideFlags: 0
