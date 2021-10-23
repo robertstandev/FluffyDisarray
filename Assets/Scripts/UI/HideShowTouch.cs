@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class HideShowTouch : MonoBehaviour, IPointerDownHandler
 {
@@ -15,6 +16,9 @@ public class HideShowTouch : MonoBehaviour, IPointerDownHandler
             if(this.canvasToDisable[i].TryGetComponent<Canvas>(out Canvas tempCanvasComponent))
             {
                 tempCanvasComponent.enabled = !tempCanvasComponent.enabled;
+
+                GraphicRaycaster graphicRaycasterComponent = tempCanvasComponent.gameObject.GetComponent<GraphicRaycaster>();
+                graphicRaycasterComponent.enabled = !graphicRaycasterComponent.enabled;
             }
         }
     }
