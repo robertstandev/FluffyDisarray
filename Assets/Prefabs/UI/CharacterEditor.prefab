@@ -330,6 +330,7 @@ GameObject:
   - component: {fileID: 6258532284742772358}
   - component: {fileID: 1523491576391912835}
   - component: {fileID: 6185227578440423324}
+  - component: {fileID: 153440026457050165}
   m_Layer: 5
   m_Name: 'Finish '
   m_TagString: Untagged
@@ -400,6 +401,20 @@ MonoBehaviour:
   m_Text: 'Finish
 
 '
+--- !u!114 &153440026457050165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2820303113435381564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27ae24726d09a35239e6160fde17c0b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasToDisable:
+  - {fileID: 3426701446253574929}
 --- !u!1 &3426701445543540448
 GameObject:
   m_ObjectHideFlags: 0
