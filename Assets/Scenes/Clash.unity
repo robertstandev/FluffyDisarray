@@ -2644,6 +2644,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1609286205}
     m_Modifications:
+    - target: {fileID: 2334509320531017432, guid: f5435c9e620fa0f389c26129eb013ca1,
+        type: 3}
+      propertyPath: mapCharacterManagerGameObject
+      value: 
+      objectReference: {fileID: 523206610}
     - target: {fileID: 3426701446253574928, guid: f5435c9e620fa0f389c26129eb013ca1,
         type: 3}
       propertyPath: m_Pivot.x
