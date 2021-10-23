@@ -617,6 +617,7 @@ GameObject:
   - component: {fileID: 1523491576391912835}
   - component: {fileID: 6185227578440423324}
   - component: {fileID: 153440026457050165}
+  - component: {fileID: 3328372156302635919}
   m_Layer: 5
   m_Name: 'Finish '
   m_TagString: Untagged
@@ -701,6 +702,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameObjectToHideShow:
   - {fileID: 3426701446253574940}
+--- !u!114 &3328372156302635919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2820303113435381564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c40c13ac3e67b8d887a69b57811e92e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3426701445543540448
 GameObject:
   m_ObjectHideFlags: 0
@@ -1222,6 +1235,7 @@ GameObject:
   - component: {fileID: 2952033628650922453}
   - component: {fileID: 1021227184312048158}
   - component: {fileID: 2334509320531017432}
+  - component: {fileID: 953992628384383341}
   m_Layer: 5
   m_Name: Continue
   m_TagString: Untagged
@@ -1318,10 +1332,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapCharacterManagerGameObject: {fileID: 0}
+  characterNumberText: {fileID: 5961916412668621893}
   characterTypeText: {fileID: 3691142797219448312}
   characterColorImage: {fileID: 1486349530815052586}
   characterProjectilePrefab: {fileID: 7580099734392434975}
   keyBindingManager: {fileID: 2190109299770710528}
+  finishText: {fileID: 2820303113435381564}
+--- !u!114 &953992628384383341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5483640973619305050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c40c13ac3e67b8d887a69b57811e92e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5767272661242544372
 GameObject:
   m_ObjectHideFlags: 0
