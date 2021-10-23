@@ -23,9 +23,12 @@ public class ClashAIController : MonoBehaviour , IController
     //gravity -> te duci sa il ataci (dar doar daca nu are si vreuna din primele 3 efecte)
     //high voltage-> te feresti de el daca are viata peste 21 (stai la peste 15f departe de el si dai doar cu proiectile spre el (daca sunt valabile)) , daca are mai putin de 21 atunci daca ai mai mult de 60 viata te duci spre el altfel doar cu proiectile dai
 
+    //if menuGameObject opened then stop moving
     [SerializeField]private SpriteRenderer mySpriteRenderer;
+    private GameObject menuGameObject;
     public SpriteRenderer getCharacterRenderer { get { return this.mySpriteRenderer; } }
     public void disableController() { this.enabled = false; }
     public void enableController() { this.enabled = true; }
+    public void setMenu(GameObject menuToSet) { this.menuGameObject = menuToSet; }
 
 }

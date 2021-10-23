@@ -5212,7 +5212,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mySpriteRenderer: {fileID: 573804500172515842}
   eyesSpriteRenderer: {fileID: 470717566}
-  menuGameObject: {fileID: 0}
+  menuGameObject: {fileID: 8948888028424877132, guid: 2cfbccaaa0355a08ba2ce4ee293ac5f6,
+    type: 3}
   wallSlideSpeed: 0.3
   groundPoungSpeed: 30
   impactEffect: {fileID: 9219697692685534247}

@@ -16,9 +16,9 @@ public class PlayerController : MonoBehaviour, IController
 	[SerializeField]private SpriteRenderer eyesSpriteRenderer;
     private Animator characterAnimator;
 
+    private GameObject menuGameObject;
     [SerializeField]private float wallSlideSpeed = 0.3f;
     [SerializeField]private float groundPoungSpeed = 5f;
-    private GameObject menuGameObject;
     private float tempMoveValue;
     private Vector2 velocityModifier = Vector2.zero;
     private Vector2 positionModifier = Vector2.zero;
@@ -56,7 +56,6 @@ public class PlayerController : MonoBehaviour, IController
         this.slashInput.performed += context => GetComponent<SlashTrigger>().executeSkill();
 
         this.menuInput = cachedPlayerInput.getMenuInput;
-        this.menuGameObject = GameObject.FindWithTag("Menu");
         this.menuInput.performed += context => this.menuGameObject.SetActive(!this.menuGameObject.activeInHierarchy);
 
         this.movementComponent = GetComponent<Movement>();
@@ -95,6 +94,7 @@ public class PlayerController : MonoBehaviour, IController
     public SpriteRenderer getCharacterRenderer { get { return this.mySpriteRenderer; } }
     public void disableController() { this.enabled = false; }
     public void enableController() { this.enabled = true; }
+    public void setMenu(GameObject menuToSet) { this.menuGameObject = menuToSet; }
 
     private void OnMove(InputAction.CallbackContext context)
     {

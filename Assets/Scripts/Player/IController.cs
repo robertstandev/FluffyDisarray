@@ -7,4 +7,5 @@ public interface IController
     SpriteRenderer getCharacterRenderer { get; }
     void disableController();
     void enableController();
+    void setMenu(GameObject menuToSet);
 }

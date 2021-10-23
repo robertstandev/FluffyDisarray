@@ -11,7 +11,7 @@ public class MapCharacterManager : MonoBehaviour
     [SerializeField]private GameObject cameraPrefab;
 
     [SerializeField]private GameObject botPrefab;
-
+    [SerializeField]private GameObject gameMenu;
     private List<GameObject> gameCharacters = new List<GameObject>();
     
     private void OnEnable()
@@ -34,6 +34,7 @@ public class MapCharacterManager : MonoBehaviour
             //tempPlayer.GetComponent<IController>()
             //tempPlayer.GetComponent<ProjectileTrigger>() - sa bag ce model de projectile vreau
             //poate iau material la Sprite la child si sa bag alta culoare
+                this.gameCharacters[i].GetComponent<IController>().setMenu(this.gameMenu);
             }
             else
             {
