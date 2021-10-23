@@ -11,6 +11,7 @@ public class PlayerInputManager : MonoBehaviour
     [SerializeField]private InputAction jumpInput;
     [SerializeField]private InputAction projectileInput;
     [SerializeField]private InputAction slashInput;
+    [SerializeField]private InputAction menuInput;
 
     public InputAction getMovementInput { get { return this.movementInput; } }
     public InputAction getJumpInput { get { return this.jumpInput; } }
@@ -18,5 +19,5 @@ public class PlayerInputManager : MonoBehaviour
     public InputAction getDownInput { get { return this.downInput; } }
     public InputAction getProjectileInput { get { return this.projectileInput; } }
     public InputAction getSlashInput { get { return this.slashInput; } }
-
+    public InputAction getMenuInput { get { return this.menuInput; } }
 }

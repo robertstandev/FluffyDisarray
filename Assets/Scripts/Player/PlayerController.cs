@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Stamina), typeof(CheckSurroundings), typeof(Animator))]
 public class PlayerController : MonoBehaviour, IController
 {
-	private InputAction movementInput, runInput, upInput, downInput, jumpInput, projectileInput, slashInput;
+	private InputAction movementInput, runInput, upInput, downInput, jumpInput, projectileInput, slashInput, menuInput;
     private Movement movementComponent;
     private Jump jumpComponent;
     private Stamina staminaComponent;
@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour, IController
 
     [SerializeField]private float wallSlideSpeed = 0.3f;
     [SerializeField]private float groundPoungSpeed = 5f;
+    private GameObject menuGameObject;
     private float tempMoveValue;
     private Vector2 velocityModifier = Vector2.zero;
     private Vector2 positionModifier = Vector2.zero;
@@ -54,6 +55,10 @@ public class PlayerController : MonoBehaviour, IController
         this.slashInput = cachedPlayerInput.getSlashInput;
         this.slashInput.performed += context => GetComponent<SlashTrigger>().executeSkill();
 
+        this.menuInput = cachedPlayerInput.getMenuInput;
+        this.menuGameObject = GameObject.FindWithTag("Menu");
+        this.menuInput.performed += context => this.menuGameObject.SetActive(!this.menuGameObject.activeInHierarchy);
+
         this.movementComponent = GetComponent<Movement>();
         this.jumpComponent = GetComponent<Jump>();
         this.staminaComponent = GetComponent<Stamina>();
@@ -71,6 +76,7 @@ public class PlayerController : MonoBehaviour, IController
         enableInput(this.jumpInput);
         enableInput(this.projectileInput);
         enableInput(this.slashInput);
+        enableInput(this.menuInput);
     }
     private void OnDisable()
     {
@@ -80,6 +86,7 @@ public class PlayerController : MonoBehaviour, IController
         disableInput(this.jumpInput);
         disableInput(this.projectileInput);
         disableInput(this.slashInput);
+        disableInput(this.menuInput);
     }
 
     private void disableInput(InputAction input) { input.Disable(); }

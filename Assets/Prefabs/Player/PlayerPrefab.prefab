@@ -5182,6 +5182,22 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Slash Input
       m_Flags: 0
+  menuInput:
+    m_Name: Menu Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 8fdf7cea-0240-45fc-ab2e-d086d3087372
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: bf937bb0-4d7a-4969-932c-d5fcf851a1e3
+      m_Path: <Keyboard>/escape
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Menu Input
+      m_Flags: 0
 --- !u!114 &573804501409757775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5196,6 +5212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mySpriteRenderer: {fileID: 573804500172515842}
   eyesSpriteRenderer: {fileID: 470717566}
+  menuGameObject: {fileID: 0}
   wallSlideSpeed: 0.3
   groundPoungSpeed: 30
   impactEffect: {fileID: 9219697692685534247}
