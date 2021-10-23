@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagerScript : MonoBehaviour
 {
+    [SerializeField]private float informationScreenDuration = 8f;
     private AsyncOperation asyncOperation;
-    private WaitForSeconds timerWait = new WaitForSeconds(5f);
     private bool activateSceneTimerActive = false;
 
 
@@ -23,7 +23,6 @@ public class SceneManagerScript : MonoBehaviour
             if (this.asyncOperation.progress >= 0.9f && !this.activateSceneTimerActive)
             {
                 this.activateSceneTimerActive = true;
-                Debug.Log("Scene starts in 5 seconds , show screen with loading that you display information about the game , Collectibles , tricks etc");
                 StartCoroutine("activateScene");
             }
             yield return null;
@@ -32,7 +31,7 @@ public class SceneManagerScript : MonoBehaviour
 
     private IEnumerator activateScene()
     {
-        yield return timerWait;
+        yield return new WaitForSeconds(this.informationScreenDuration);
         this.asyncOperation.allowSceneActivation = true;
     }
 }
