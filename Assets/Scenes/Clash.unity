@@ -812,7 +812,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCount: 1
-  botCount: 1
+  botCount: 0
   playerPrefab: {fileID: 573804501409757768, guid: a1b2399bb020341c1bfcbd69dcab8d73,
     type: 3}
   cameraPrefab: {fileID: 1639079167040668655, guid: e01ae38cd8893101fa4dea849d545359,

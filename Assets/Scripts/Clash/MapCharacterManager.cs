@@ -5,7 +5,7 @@ using UnityEngine;
 public class MapCharacterManager : MonoBehaviour
 {
     [SerializeField][Range(1,4)]private int playerCount = 1;
-    [SerializeField][Range(0,3)]private int botCount = 1;
+    [SerializeField][Range(0,4)]private int botCount = 1;
 
     [SerializeField]private GameObject playerPrefab;
     [SerializeField]private GameObject cameraPrefab;
