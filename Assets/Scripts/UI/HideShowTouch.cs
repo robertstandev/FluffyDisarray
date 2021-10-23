@@ -6,20 +6,14 @@ using UnityEngine.UI;
 
 public class HideShowTouch : MonoBehaviour, IPointerDownHandler
 {
-    [SerializeField]private Canvas[] canvasToDisable;
+    [SerializeField]private GameObject[] gameObjectToHideShow;
     public void OnPointerDown(PointerEventData eventData) {disableEnableSelectedCanvas(); }
 
     public void disableEnableSelectedCanvas()
     {
-        for(int i = 0 ; i < this.canvasToDisable.Length ; i++)
+        for(int i = 0 ; i < this.gameObjectToHideShow.Length ; i++)
         {
-            if(this.canvasToDisable[i].TryGetComponent<Canvas>(out Canvas tempCanvasComponent))
-            {
-                tempCanvasComponent.enabled = !tempCanvasComponent.enabled;
-
-                GraphicRaycaster graphicRaycasterComponent = tempCanvasComponent.gameObject.GetComponent<GraphicRaycaster>();
-                graphicRaycasterComponent.enabled = !graphicRaycasterComponent.enabled;
-            }
+            this.gameObjectToHideShow[i].SetActive(!this.gameObjectToHideShow[i].activeInHierarchy);
         }
     }
 }

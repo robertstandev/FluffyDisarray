@@ -9,8 +9,11 @@ public class SceneManagerScript : MonoBehaviour
     private AsyncOperation asyncOperation;
     private bool activateSceneTimerActive = false;
 
+    public void loadScene(string sceneName) { StartCoroutine(loadSceneExecutor(sceneName)); }
 
-    public IEnumerator loadScene(string sceneName)
+
+
+    private IEnumerator loadSceneExecutor(string sceneName)
     {
         yield return null;
 

@@ -413,8 +413,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27ae24726d09a35239e6160fde17c0b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasToDisable:
-  - {fileID: 3426701446253574929}
+  gameObjectToHideShow:
+  - {fileID: 3426701446253574940}
 --- !u!1 &3426701445543540448
 GameObject:
   m_ObjectHideFlags: 0
