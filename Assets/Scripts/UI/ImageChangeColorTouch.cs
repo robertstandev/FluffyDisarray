@@ -22,7 +22,7 @@ public class ImageChangeColorTouch : MonoBehaviour, IPointerDownHandler
         {
             if(this.colorsToChangeTo[i].Equals(currentColor))
             {
-                return i.Equals(this.colorsToChangeTo.Length - 1) ? this.colorsToChangeTo[i - 1] : this.colorsToChangeTo[i + 1];
+                return i.Equals(this.colorsToChangeTo.Length - 1) ? this.colorsToChangeTo[0] : this.colorsToChangeTo[i + 1];
             }
         }
 
