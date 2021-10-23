@@ -1602,9 +1602,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f30bf220890f9b0c8a1ba86f8f6c63b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activatedColor:
-    serializedVersion: 2
-    rgba: 4281677109
+  colorsToChangeTo:
+  - serializedVersion: 2
+    rgba: 4294967295
+  - serializedVersion: 2
+    rgba: 4285295724
 --- !u!1 &8948888029788759376
 GameObject:
   m_ObjectHideFlags: 0
