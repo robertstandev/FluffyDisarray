@@ -7,6 +7,7 @@ public class MapCharacterManager : MonoBehaviour
     private int playerCount = 0;
     private int botCount = 0;
 
+    [SerializeField]private GameObject startupCamera;
     [SerializeField]private GameObject playerPrefab;
     [SerializeField]private GameObject cameraPrefab;
 
@@ -128,6 +129,18 @@ public class MapCharacterManager : MonoBehaviour
         this.gameCharactersProjectiles = charactersProjectilesList;
         this.gameCharactersInputKeys = charactersInputsList;
 
+        Destroy(this.startupCamera);
         configureCharacters();
+        
+        Invoke("enableOtherManagers" , 2f);
+    }
+
+    private void enableOtherManagers()
+    {
+        Transform[] childrenTransforms = this.transform.parent.GetComponentsInChildren<Transform>(true);
+        for(int i = 0 ; i < childrenTransforms.Length; i++)
+        {
+            childrenTransforms[i].gameObject.SetActive(true);
+        }
     }
 }
