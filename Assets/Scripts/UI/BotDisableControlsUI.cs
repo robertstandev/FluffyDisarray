@@ -2,21 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class BotDisableControlsUI : MonoBehaviour
+public class BotDisableControlsUI : MonoBehaviour, IPointerDownHandler
 {
-    private Text textComponent;
-    private GameObject gameObjectToShowHide;
+    [SerializeField]private Text textComponent;
+    [SerializeField]private GameObject controlsGroupGameObject;
 
-    public void checkTextComponent()//send command to check from continue button and arrow buttons
-    {
-        if(this.textComponent.text.Equals("Bot"))
-        {
-            this.gameObjectToShowHide.SetActive(false);
-        }
-        else
-        {
-            this.gameObjectToShowHide.SetActive(true);
-        }
-    }
+    public void OnPointerDown(PointerEventData eventData) { checkTextComponentAndShowHideControlsUI(); }
+
+    private void checkTextComponentAndShowHideControlsUI() { this.controlsGroupGameObject.SetActive(!this.textComponent.text.Equals("Bot")); }
 }

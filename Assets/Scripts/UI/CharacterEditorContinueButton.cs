@@ -13,6 +13,7 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
     [SerializeField]private CharacterEditorProjectilePicker characterProjectilePrefab;//fac un script care are 2 array : 1 cu imagini si 1 cu prefaburi de projectile , fiecare cu indexul celuilalt
     [SerializeField]private CharacterEditorKeyBindingManager charactersInput;
     [SerializeField]private GameObject finishText;
+    [SerializeField]private GameObject controlsGroupGameObject;
     private HideShowTouch hideShowTouchComponent;
     private int characterNumber = 1;
     private int playerCount = 0;
@@ -71,6 +72,7 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
         {
             this.hideShowTouchComponent.disableEnableSelectedCanvas();
             this.characterTypeText.text = "Bot";
+            this.controlsGroupGameObject.SetActive(false);
         }
 
     }
