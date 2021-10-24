@@ -129,7 +129,5 @@ public class MapCharacterManager : MonoBehaviour
         this.gameCharactersInputKeys = charactersInputsList;
 
         configureCharacters();
-
-        Debug.Log("Creating configured characters");
     }
 }

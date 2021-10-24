@@ -39,8 +39,6 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
         configureCharacter();
 
         checkAndExecuteTypeOfTextAvailable();
-
-        Debug.Log("Players created: " + playerCount + " | Bots created: " + botCount);
     
         checkAndExecuteIfMaximumCharacterCountReached();
     }
@@ -112,7 +110,7 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
 
         if(this.characterNumber < 8)
         {
-                increaseCharacterNumber();
+            increaseCharacterNumber();
         }
         else
         {
