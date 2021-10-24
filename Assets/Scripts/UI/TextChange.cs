@@ -8,10 +8,7 @@ public class TextChange : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField]private Text[] textObjectsToChangeStringsTo;
     [SerializeField]private string[] stringsToSwapBetween;
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        changeString();
-    }
+    public void OnPointerDown(PointerEventData eventData) { changeString(); }
 
     private void changeString()
     {

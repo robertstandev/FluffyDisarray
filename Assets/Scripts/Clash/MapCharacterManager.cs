@@ -27,7 +27,7 @@ public class MapCharacterManager : MonoBehaviour
     
     private void configureCharacters()
     {
-        int tempPlayerNumber = 0;
+        int tempPlayerNumber = 0 , tempBotNumber = 0;
         for(int i = 0 ; i < this.temporaryGameCharacters.Count; i++)
         {
             this.gameCharacters.Add(Instantiate(this.temporaryGameCharacters[i] , Vector3.zero , Quaternion.identity));
@@ -38,15 +38,17 @@ public class MapCharacterManager : MonoBehaviour
                 tempPlayerNumber += 1;
 
                 //this.gameCharacters[i].GetComponent<IController>().setInputKeys(this.gameCharactersInputKeys[i]);
-                //this.gameCharacters[i].GetComponent<ProjectileTrigger>().setProjectile(this.gameCharactersProjectiles[i]);
-                this.gameCharacters[i].GetComponent<IController>().getCharacterRenderer.material.SetColor("_Color", this.gameCharactersColors[i]);
 
                 this.gameCharacters[i].GetComponent<IController>().setMenu(this.gameMenu);
             }
             else
             {
-                configureCharacterStartPosition(this.gameCharacters[i], new Vector3(6f,1f,0f));
+                configureBot(this.gameCharacters[i] , tempBotNumber);
+                tempBotNumber += 1;
             }
+
+            //this.gameCharacters[i].GetComponent<ProjectileTrigger>().setProjectile(this.gameCharactersProjectiles[i]);
+            this.gameCharacters[i].GetComponent<IController>().getCharacterRenderer.material.SetColor("_Color", this.gameCharactersColors[i]);
         }
     }
 
@@ -122,6 +124,26 @@ public class MapCharacterManager : MonoBehaviour
     {
         character.transform.localPosition = positionToSetTo;
         character.GetComponent<Respawn>().setPlaceToRespawn(positionToSetTo);
+    }
+
+    private void configureBot(GameObject character, int botIndex)
+    {
+        if(botIndex == 0)
+        {
+            configureCharacterStartPosition(character, new Vector3(-10f,7f,0f));
+        }
+        else if(botIndex == 1)
+        {
+            configureCharacterStartPosition(character, new Vector3(-5f,5f,0f));
+        }
+        else if(botIndex == 2)
+        {
+            configureCharacterStartPosition(character, new Vector3(10f,5f,0f));
+        }
+        else if(botIndex == 3)
+        {
+            configureCharacterStartPosition(character, new Vector3(15f,7f,0f));
+        }
     }
 
     public List<GameObject> getListOfCharactersFromScene() { return this.gameCharacters; }
