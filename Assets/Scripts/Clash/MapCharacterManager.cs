@@ -13,24 +13,24 @@ public class MapCharacterManager : MonoBehaviour
     [SerializeField]private GameObject botPrefab;
     [SerializeField]private GameObject gameMenu;
     private List<GameObject> gameCharacters = new List<GameObject>();
-    private List<GameObject> temporaryCharacter = new List<GameObject>();
+    private List<GameObject> temporaryGameCharacters = new List<GameObject>();
     private List<Color32> gameCharactersColors = new List<Color32>();
     private List<GameObject> gameCharactersProjectiles = new List<GameObject>();
     private List<CharacterEditorKeyBindingManager> gameCharactersInputKeys = new List<CharacterEditorKeyBindingManager>();
     
     private void configureCharacters()
     {
-        for(int i = 0 ; i < this.temporaryCharacter.Count; i++)
+        for(int i = 0 ; i < this.temporaryGameCharacters.Count; i++)
         {
-            this.gameCharacters.Add(Instantiate(this.temporaryCharacter[i] , Vector3.zero , Quaternion.identity));
+            this.gameCharacters.Add(Instantiate(this.temporaryGameCharacters[i] , Vector3.zero , Quaternion.identity));
 
             if(this.gameCharacters[i].Equals(playerPrefab))
             {
                 configurePlayer(this.gameCharacters[i], i);
                 //this.gameCharacters[i].GetComponent<IController>().setInputKeys(this.gameCharactersInputKeys[i]);
                 //this.gameCharacters[i].GetComponent<ProjectileTrigger>().setProjectile(this.gameCharactersProjectiles[i]);
+                this.gameCharacters[i].GetComponent<IController>().getCharacterRenderer.material.SetColor("_Color", this.gameCharactersColors[i]);
 
-            //poate iau material la Sprite la child si sa bag alta culoare
                 this.gameCharacters[i].GetComponent<IController>().setMenu(this.gameMenu);
             }
             else
@@ -119,11 +119,17 @@ public class MapCharacterManager : MonoBehaviour
     public int getIndexOfCollidedObject(GameObject objectToSearchFor) { return this.gameCharacters.IndexOf(objectToSearchFor); }
     public GameObject getPlayerPrefab() { return this.playerPrefab; }
     public GameObject getBotPrefab() { return this.botPrefab; }
-    public void createCharacters(int playerCount, int botCount)
+    public void createCharacters(int playerCount, int botCount, List<GameObject> charactersList, List<Color32> characteresColorsList, List<GameObject> charactersProjectilesList, List<CharacterEditorKeyBindingManager> charactersInputsList)
     {
         this.playerCount = playerCount;
         this.botCount = botCount;
+        this.temporaryGameCharacters = charactersList;
+        this.gameCharactersColors = characteresColorsList;
+        this.gameCharactersProjectiles = charactersProjectilesList;
+        this.gameCharactersInputKeys = charactersInputsList;
+
         configureCharacters();
+
         Debug.Log("Creating configured characters");
     }
 }

@@ -17,6 +17,10 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
     private int characterNumber = 1;
     private int playerCount = 0;
     private int botCount = 0;
+    private List<GameObject> gameCharacters = new List<GameObject>();
+    private List<Color32> gameCharactersColors = new List<Color32>();
+    private List<GameObject> gameCharactersProjectiles = new List<GameObject>();
+    private List<CharacterEditorKeyBindingManager> gameCharactersInputs = new List<CharacterEditorKeyBindingManager>();
 
     private void Awake()
     {
@@ -117,6 +121,6 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
     private void OnDisable()
     {
         //send lists and player and bot count
-        this.mapCharacterManagerGameObject.createCharacters(this.playerCount, this.botCount);
+        this.mapCharacterManagerGameObject.createCharacters(this.playerCount, this.botCount, this.gameCharacters, this.gameCharactersColors, this.gameCharactersProjectiles, this.gameCharactersInputs);
     }
 }
