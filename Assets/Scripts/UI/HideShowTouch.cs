@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class HideShowTouch : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField]private GameObject[] gameObjectToHideShow;
-    public void OnPointerDown(PointerEventData eventData) {disableEnableSelectedCanvas(); }
+    private bool canExecute = true;
+    public void OnPointerDown(PointerEventData eventData) { if(canExecute) { disableEnableSelectedCanvas(); } }
 
     public void disableEnableSelectedCanvas()
     {
@@ -16,4 +17,6 @@ public class HideShowTouch : MonoBehaviour, IPointerDownHandler
             this.gameObjectToHideShow[i].SetActive(!this.gameObjectToHideShow[i].activeInHierarchy);
         }
     }
+
+    public void setCanExecute(bool value) { this.canExecute = value; }
 }
