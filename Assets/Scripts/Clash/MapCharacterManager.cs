@@ -132,6 +132,8 @@ public class MapCharacterManager : MonoBehaviour
         Destroy(this.startupCamera);
         configureCharacters();
         
+
+        //folosesc IEnumerator sa imi zica cand s-a terminat configureCharacters() - poate pun un bool la sfarsit la configurecharacters();
         Invoke("enableOtherManagers" , 2f);
     }
 
