@@ -18,7 +18,11 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
     private int playerCount = 0;
     private int botCount = 0;
 
-    private void Awake() { this.hideShowTouchComponent = GetComponent<HideShowTouch>(); }
+    private void Awake()
+    {
+        if(this.mapCharacterManagerGameObject == null) { this.mapCharacterManagerGameObject = FindObjectOfType<MapCharacterManager>(); }
+        this.hideShowTouchComponent = GetComponent<HideShowTouch>();
+    }
     public void OnPointerDown(PointerEventData eventData)
     {
         this.hideShowTouchComponent.setCanExecute(false);
@@ -96,9 +100,7 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
         {
                 increaseCharacterNumber();
 
-                //have max 4 players and 4 bots
-                //if 4 players reach remove player text from characterTypeText
-                //if 4 bots reach , remove bot text from characterTypeText
+                //save the data to lists on here and send the lists to mapcharacterManager on disable
 
                 //this.mapCharacterManagerGameObject.setCharacterDetails(this.characterTypeText.text, this.characterColorImage.color, this.characterProjectilePrefab, this.keyBindingManager)
                 //create on mapCharacterManager lists with all of this values like 
@@ -110,5 +112,11 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
         {
             transform.parent.gameObject.SetActive(false);
         }
+    }
+
+    private void OnDisable()
+    {
+        //send lists and player and bot count
+        this.mapCharacterManagerGameObject.createCharacters(this.playerCount, this.botCount);
     }
 }

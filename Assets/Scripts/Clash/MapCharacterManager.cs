@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MapCharacterManager : MonoBehaviour
 {
-    [SerializeField][Range(1,4)]private int playerCount = 1;
-    [SerializeField][Range(0,4)]private int botCount = 1;
+    private int playerCount = 0;
+    private int botCount = 0;
 
     [SerializeField]private GameObject playerPrefab;
     [SerializeField]private GameObject cameraPrefab;
@@ -13,26 +13,23 @@ public class MapCharacterManager : MonoBehaviour
     [SerializeField]private GameObject botPrefab;
     [SerializeField]private GameObject gameMenu;
     private List<GameObject> gameCharacters = new List<GameObject>();
+    private List<GameObject> temporaryCharacter = new List<GameObject>();
+    private List<Color32> gameCharactersColors = new List<Color32>();
+    private List<GameObject> gameCharactersProjectiles = new List<GameObject>();
+    private List<CharacterEditorKeyBindingManager> gameCharactersInputKeys = new List<CharacterEditorKeyBindingManager>();
     
-    private void OnEnable()
+    private void configureCharacters()
     {
-        configureCharacters(this.playerCount, playerPrefab);
-        configureCharacters(this.botCount, botPrefab);
-    }
-
-    private void configureCharacters(int numberOfCharacters, GameObject typeOfCharacter)
-    {
-        if(numberOfCharacters.Equals(0)) { return; }
-
-        for(int i = 0 ; i < numberOfCharacters; i++)
+        for(int i = 0 ; i < this.temporaryCharacter.Count; i++)
         {
-            this.gameCharacters.Add(Instantiate(typeOfCharacter.Equals(playerPrefab) ? playerPrefab : botPrefab , Vector3.zero , Quaternion.identity));
+            this.gameCharacters.Add(Instantiate(this.temporaryCharacter[i] , Vector3.zero , Quaternion.identity));
 
-            if(typeOfCharacter.Equals(playerPrefab))
+            if(this.gameCharacters[i].Equals(playerPrefab))
             {
                 configurePlayer(this.gameCharacters[i], i);
-            //tempPlayer.GetComponent<IController>()
-            //tempPlayer.GetComponent<ProjectileTrigger>() - sa bag ce model de projectile vreau
+                //this.gameCharacters[i].GetComponent<IController>().setInputKeys(this.gameCharactersInputKeys[i]);
+                //this.gameCharacters[i].GetComponent<ProjectileTrigger>().setProjectile(this.gameCharactersProjectiles[i]);
+
             //poate iau material la Sprite la child si sa bag alta culoare
                 this.gameCharacters[i].GetComponent<IController>().setMenu(this.gameMenu);
             }
@@ -120,5 +117,13 @@ public class MapCharacterManager : MonoBehaviour
     public List<GameObject> getListOfCharactersFromScene() { return this.gameCharacters; }
     public bool isCollidedObjectInList(GameObject objectToSearchFor) { return this.gameCharacters.Contains(objectToSearchFor); }
     public int getIndexOfCollidedObject(GameObject objectToSearchFor) { return this.gameCharacters.IndexOf(objectToSearchFor); }
-    public void createCharacters() { Debug.Log("Creating configured characters"); }
+    public GameObject getPlayerPrefab() { return this.playerPrefab; }
+    public GameObject getBotPrefab() { return this.botPrefab; }
+    public void createCharacters(int playerCount, int botCount)
+    {
+        this.playerCount = playerCount;
+        this.botCount = botCount;
+        configureCharacters();
+        Debug.Log("Creating configured characters");
+    }
 }
