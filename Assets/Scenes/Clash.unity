@@ -823,6 +823,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeedbc712014c40418bcddaae305b898, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapGameObject: {fileID: 1782943206}
   startupCamera: {fileID: 1618300375}
   playerPrefab: {fileID: 573804501409757768, guid: a1b2399bb020341c1bfcbd69dcab8d73,
     type: 3}

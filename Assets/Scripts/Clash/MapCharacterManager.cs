@@ -7,6 +7,7 @@ public class MapCharacterManager : MonoBehaviour
     private int playerCount = 0;
     private int botCount = 0;
 
+    [SerializeField]private GameObject mapGameObject;
     [SerializeField]private GameObject startupCamera;
     [SerializeField]private GameObject playerPrefab;
     [SerializeField]private GameObject cameraPrefab;
@@ -18,6 +19,11 @@ public class MapCharacterManager : MonoBehaviour
     private List<Color32> gameCharactersColors = new List<Color32>();
     private List<GameObject> gameCharactersProjectiles = new List<GameObject>();
     private List<CharacterEditorKeyBindingManager> gameCharactersInputKeys = new List<CharacterEditorKeyBindingManager>();
+
+    private void Awake()
+    {
+        this.mapGameObject.SetActive(false);
+    }
     
     private void configureCharacters()
     {
@@ -133,6 +139,9 @@ public class MapCharacterManager : MonoBehaviour
         this.gameCharactersInputKeys = charactersInputsList;
 
         Destroy(this.startupCamera);
+
+        this.mapGameObject.SetActive(true);
+
         configureCharacters();
         
 
