@@ -2758,6 +2758,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CharacterEditor
       objectReference: {fileID: 0}
+    - target: {fileID: 4827174125460922559, guid: f5435c9e620fa0f389c26129eb013ca1,
+        type: 3}
+      propertyPath: mapCharacterManagerScript
+      value: 
+      objectReference: {fileID: 523206610}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5435c9e620fa0f389c26129eb013ca1, type: 3}
 --- !u!1001 &7796767689916730587
