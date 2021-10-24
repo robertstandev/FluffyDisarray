@@ -37,7 +37,7 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
        }
        if(this.characterNumber == 8)
        {
-           this.GetComponent<Text>().text = "Finish";
+           this.GetComponent<Text>().text = "Save & Finish";
            finishText.SetActive(false);
        }
     }

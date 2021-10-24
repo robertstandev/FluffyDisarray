@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CharacterEditorFinish : MonoBehaviour
 {
-    [SerializeField]private MapCharacterManager mapCharacterManagerGameObject;
+    [SerializeField]private MapCharacterManager mapCharacterManagerScript;
+    [SerializeField]private CharacterEditorContinueButton characterEditorContinueButtonScript;
 
     private void OnDisable()
     {
