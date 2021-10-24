@@ -42,6 +42,8 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
         checkAndExecuteTypeOfTextAvailable();
     
         checkAndExecuteIfMaximumCharacterCountReached();
+
+        checkCharacterNumber();
     }
 
     private void increaseCharacterNumber()
@@ -92,13 +94,8 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
         }
     }
 
-    private void configureCharacter()
+    private void checkCharacterNumber()
     {
-        this.gameCharacters.Add(this.characterTypeText.text.Equals("Player") ? playerPrefab : botPrefab);
-        this.gameCharactersColors.Add(this.characterColorImage.color);
-        this.gameCharactersProjectiles.Add(this.characterProjectilePrefab.getProjectilePrefab());
-        this.gameCharactersInputs.Add(this.charactersInput);
-        
         if(this.characterNumber < 7)
         {
             increaseCharacterNumber();
@@ -107,6 +104,13 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
         {
             transform.parent.gameObject.SetActive(false);
         }
+    }
+    private void configureCharacter()
+    {
+        this.gameCharacters.Add(this.characterTypeText.text.Equals("Player") ? playerPrefab : botPrefab);
+        this.gameCharactersColors.Add(this.characterColorImage.color);
+        this.gameCharactersProjectiles.Add(this.characterProjectilePrefab.getProjectilePrefab());
+        this.gameCharactersInputs.Add(this.charactersInput);
     }
 
     private void OnDisable()

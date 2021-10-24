@@ -21,13 +21,16 @@ public class MapCharacterManager : MonoBehaviour
     
     private void configureCharacters()
     {
+        int tempPlayerNumber = 0;
         for(int i = 0 ; i < this.temporaryGameCharacters.Count; i++)
         {
             this.gameCharacters.Add(Instantiate(this.temporaryGameCharacters[i] , Vector3.zero , Quaternion.identity));
 
             if(this.gameCharacters[i].name.Equals(playerPrefab.name + "(Clone)"))
             {
-                configurePlayer(this.gameCharacters[i], i);
+                configurePlayer(this.gameCharacters[i], tempPlayerNumber);
+                tempPlayerNumber += 1;
+
                 //this.gameCharacters[i].GetComponent<IController>().setInputKeys(this.gameCharactersInputKeys[i]);
                 //this.gameCharacters[i].GetComponent<ProjectileTrigger>().setProjectile(this.gameCharactersProjectiles[i]);
                 this.gameCharacters[i].GetComponent<IController>().getCharacterRenderer.material.SetColor("_Color", this.gameCharactersColors[i]);
