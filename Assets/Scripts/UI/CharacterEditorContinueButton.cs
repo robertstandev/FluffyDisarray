@@ -11,7 +11,7 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
     [SerializeField]private Text characterTypeText;
     [SerializeField]private Image characterColorImage;
     [SerializeField]private CharacterEditorProjectilePicker characterProjectilePrefab;//fac un script care are 2 array : 1 cu imagini si 1 cu prefaburi de projectile , fiecare cu indexul celuilalt
-    [SerializeField]private CharacterEditorKeyBindingManager keyBindingManager;
+    [SerializeField]private CharacterEditorKeyBindingManager charactersInput;
     [SerializeField]private GameObject finishText;
     private HideShowTouch hideShowTouchComponent;
     private int characterNumber = 1;
@@ -22,22 +22,27 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
     private List<GameObject> gameCharactersProjectiles = new List<GameObject>();
     private List<CharacterEditorKeyBindingManager> gameCharactersInputs = new List<CharacterEditorKeyBindingManager>();
 
+    private GameObject playerPrefab , botPrefab;
+
     private void Awake()
     {
         if(this.mapCharacterManagerGameObject == null) { this.mapCharacterManagerGameObject = FindObjectOfType<MapCharacterManager>(); }
+        this.playerPrefab = this.mapCharacterManagerGameObject.getPlayerPrefab();
+        this.botPrefab = this.mapCharacterManagerGameObject.getBotPrefab();
+
         this.hideShowTouchComponent = GetComponent<HideShowTouch>();
     }
     public void OnPointerDown(PointerEventData eventData)
     {
         this.hideShowTouchComponent.setCanExecute(false);
 
+        configureCharacter();
+
         checkAndExecuteTypeOfTextAvailable();
 
         Debug.Log("Players created: " + playerCount + " | Bots created: " + botCount);
     
         checkAndExecuteIfMaximumCharacterCountReached();
-
-        checkAndExecuteIfCanConfigurePlayer();
     }
 
     private void increaseCharacterNumber()
@@ -98,19 +103,16 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
         }
     }
 
-    private void checkAndExecuteIfCanConfigurePlayer()
+    private void configureCharacter()
     {
+        this.gameCharacters.Add(this.characterTypeText.text.Equals("Player") ? playerPrefab : botPrefab);
+        this.gameCharactersColors.Add(this.characterColorImage.color);
+        this.gameCharactersProjectiles.Add(this.characterProjectilePrefab.getProjectilePrefab());
+        this.gameCharactersInputs.Add(this.charactersInput);
+
         if(this.characterNumber < 8)
         {
                 increaseCharacterNumber();
-
-                //save the data to lists on here and send the lists to mapcharacterManager on disable
-
-                //this.mapCharacterManagerGameObject.setCharacterDetails(this.characterTypeText.text, this.characterColorImage.color, this.characterProjectilePrefab, this.keyBindingManager)
-                //create on mapCharacterManager lists with all of this values like 
-                //List<string>...Add(from parameter characterTypeText.text)
-                //List<Color32>...Add(from parameter characterColorImage.color)
-                //List<CharacterEditorKeyBindingManager>.Add(from parameter new CharacterEditorKeyBindingManager from parameter (altfel toate le vor lua pe a lu ala))
         }
         else
         {
@@ -120,7 +122,6 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
 
     private void OnDisable()
     {
-        //send lists and player and bot count
         this.mapCharacterManagerGameObject.createCharacters(this.playerCount, this.botCount, this.gameCharacters, this.gameCharactersColors, this.gameCharactersProjectiles, this.gameCharactersInputs);
     }
 }

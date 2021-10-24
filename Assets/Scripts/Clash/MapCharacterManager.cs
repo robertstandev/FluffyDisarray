@@ -24,7 +24,7 @@ public class MapCharacterManager : MonoBehaviour
         {
             this.gameCharacters.Add(Instantiate(this.temporaryGameCharacters[i] , Vector3.zero , Quaternion.identity));
 
-            if(this.gameCharacters[i].Equals(playerPrefab))
+            if(this.gameCharacters[i].name.Equals(playerPrefab.name + "(Clone)"))
             {
                 configurePlayer(this.gameCharacters[i], i);
                 //this.gameCharacters[i].GetComponent<IController>().setInputKeys(this.gameCharactersInputKeys[i]);
