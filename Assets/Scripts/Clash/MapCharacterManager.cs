@@ -120,4 +120,5 @@ public class MapCharacterManager : MonoBehaviour
     public List<GameObject> getListOfCharactersFromScene() { return this.gameCharacters; }
     public bool isCollidedObjectInList(GameObject objectToSearchFor) { return this.gameCharacters.Contains(objectToSearchFor); }
     public int getIndexOfCollidedObject(GameObject objectToSearchFor) { return this.gameCharacters.IndexOf(objectToSearchFor); }
+    public void createCharacters() { Debug.Log("Creating configured characters"); }
 }

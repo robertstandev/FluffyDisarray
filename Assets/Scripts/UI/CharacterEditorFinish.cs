@@ -6,9 +6,6 @@ public class CharacterEditorFinish : MonoBehaviour
 {
     [SerializeField]private MapCharacterManager mapCharacterManagerScript;
 
-    private void OnDisable()
-    {
-        //send command to mapCharacterManagerGameObject to create the characters
-        Debug.Log("Send Signal To Create Chars");
-    }
+    private void Awake() { if(this.mapCharacterManagerScript == null) { this.mapCharacterManagerScript = FindObjectOfType<MapCharacterManager>(); } }
+    private void OnDisable() { this.mapCharacterManagerScript.createCharacters(); }
 }
