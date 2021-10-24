@@ -14,7 +14,7 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
     [SerializeField]private CharacterEditorKeyBindingManager charactersInput;
     [SerializeField]private GameObject finishText;
     private HideShowTouch hideShowTouchComponent;
-    private int characterNumber = 0;
+    private int characterNumber = 1;
     private int playerCount = 0;
     private int botCount = 0;
     private List<GameObject> gameCharacters = new List<GameObject>();
@@ -49,7 +49,7 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
     private void increaseCharacterNumber()
     {
         this.characterNumber += 1;
-        this.characterNumberText.text = "Character Nr.  " + (this.characterNumber + 1).ToString();
+        this.characterNumberText.text = "Character Nr.  " + this.characterNumber.ToString();
     }
 
     private void checkAndExecuteTypeOfTextAvailable()
@@ -96,7 +96,7 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
 
     private void checkCharacterNumber()
     {
-        if(this.characterNumber < 7)
+        if(this.characterNumber < 8)
         {
             increaseCharacterNumber();
         }
