@@ -14,7 +14,7 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
     [SerializeField]private CharacterEditorKeyBindingManager charactersInput;
     [SerializeField]private GameObject finishText;
     private HideShowTouch hideShowTouchComponent;
-    private int characterNumber = 1;
+    private int characterNumber = 0;
     private int playerCount = 0;
     private int botCount = 0;
     private List<GameObject> gameCharacters = new List<GameObject>();
@@ -35,6 +35,7 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         this.hideShowTouchComponent.setCanExecute(false);
+        this.finishText.SetActive(true);
 
         configureCharacter();
 
@@ -46,7 +47,7 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
     private void increaseCharacterNumber()
     {
         this.characterNumber += 1;
-        this.characterNumberText.text = "Character Nr.  " + this.characterNumber.ToString();
+        this.characterNumberText.text = "Character Nr.  " + (this.characterNumber + 1).ToString();
     }
 
     private void checkAndExecuteTypeOfTextAvailable()
@@ -63,38 +64,28 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
 
     private void checkAndConfigureIf4PlayersReached()
     {
-        switch (this.playerCount)
+        this.playerCount += 1;
+        if(this.playerCount.Equals(4))
         {
-            case 2:
-                    this.hideShowTouchComponent.setCanExecute(true);
-                    break;
-            case 3:
-                    this.hideShowTouchComponent.setCanExecute(false);
-                    this.characterTypeText.text = "Bot";
-                    break;
+            this.hideShowTouchComponent.disableEnableSelectedCanvas();
+            this.characterTypeText.text = "Bot";
         }
 
-        this.playerCount += 1;
     }
 
     private void checkAndConfigureIf4BotsReached()
     {
-        switch (this.botCount)
-        {
-            case 2:
-                    this.hideShowTouchComponent.setCanExecute(true);
-                    break;
-            case 3:
-                    this.hideShowTouchComponent.setCanExecute(false);
-                    this.characterTypeText.text = "Player";
-                    break;
-        }
         this.botCount += 1;
+        if(this.botCount.Equals(4))
+        {
+            this.hideShowTouchComponent.disableEnableSelectedCanvas();
+            this.characterTypeText.text = "Player";
+        }
     }
 
     private void checkAndExecuteIfMaximumCharacterCountReached()
     {
-        if(this.characterNumber == 8)
+        if(this.characterNumber == 7)
         {
             this.GetComponent<Text>().text = "Save & Finish";
             finishText.SetActive(false);
@@ -107,8 +98,8 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
         this.gameCharactersColors.Add(this.characterColorImage.color);
         this.gameCharactersProjectiles.Add(this.characterProjectilePrefab.getProjectilePrefab());
         this.gameCharactersInputs.Add(this.charactersInput);
-
-        if(this.characterNumber < 8)
+        
+        if(this.characterNumber < 7)
         {
             increaseCharacterNumber();
         }

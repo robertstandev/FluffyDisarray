@@ -623,7 +623,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6258532284742772358
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1322,7 +1322,7 @@ MonoBehaviour:
   characterTypeText: {fileID: 3691142797219448312}
   characterColorImage: {fileID: 1486349530815052586}
   characterProjectilePrefab: {fileID: 7580099734392434975}
-  keyBindingManager: {fileID: 2190109299770710528}
+  charactersInput: {fileID: 0}
   finishText: {fileID: 2820303113435381564}
 --- !u!1 &5767272661242544372
 GameObject:
