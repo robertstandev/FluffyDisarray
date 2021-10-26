@@ -5,28 +5,19 @@ using UnityEngine;
 public class DeathRespawn : MonoBehaviour
 {
     [SerializeField]private int respawnTime = 10;
-    private List<GameObject> characters = new List<GameObject>();
     private int[] charactersDeathCountDown;
     private Dictionary<GameObject, CollectibleSwitchRevert> characterCameraCollectibleSwitchReverters = new Dictionary<GameObject, CollectibleSwitchRevert>();
 
     private WaitForSeconds wait = new WaitForSeconds(1f);
 
+    private MapCharacterManager getCharactersFromSceneScript;
+
+    private void Awake() { this.getCharactersFromSceneScript = FindObjectOfType<MapCharacterManager>(); }
     private void Start()
     {
-        getCharactersFromScene();
-        this.charactersDeathCountDown = new int[characters.Count];
+        this.charactersDeathCountDown = new int[this.getCharactersFromSceneScript.getListOfCharactersFromScene().Count];
         getcharactersCamerasSwitchReverters();
         StartCoroutine("checkDeadPlayersTimer");
-    }
-
-    private void getCharactersFromScene()
-    {
-        Health[] gameObjectsWithHealthComponent = FindObjectsOfType<Health>(true);
-
-        foreach (MonoBehaviour item in gameObjectsWithHealthComponent)
-        {
-            characters.Add(item.gameObject);
-        }
     }
 
     private void getcharactersCamerasSwitchReverters()
@@ -49,9 +40,9 @@ public class DeathRespawn : MonoBehaviour
 
     private void checkDeadPlayers()
     {
-        for(int i = 0; i < this.characters.Count; i++)
+        for(int i = 0; i < this.getCharactersFromSceneScript.getListOfCharactersFromScene().Count; i++)
         {
-            if(this.characters[i].activeInHierarchy) { continue; }
+            if(this.getCharactersFromSceneScript.getListOfCharactersFromScene()[i].activeInHierarchy) { continue; }
 
             if(this.charactersDeathCountDown[i] == 0)
             {
@@ -59,7 +50,7 @@ public class DeathRespawn : MonoBehaviour
             }
             else if(this.charactersDeathCountDown[i] == 1)
             {
-                resetAndRespawn(this.characters[i]);
+                resetAndRespawn(this.getCharactersFromSceneScript.getListOfCharactersFromScene()[i]);
                 this.charactersDeathCountDown[i] = 0;
             }
             else
