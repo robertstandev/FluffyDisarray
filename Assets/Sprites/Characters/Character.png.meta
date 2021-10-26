@@ -1,7 +1,97 @@
 fileFormatVersion: 2
-guid: 4ad12064e3152bd81a0c63aba04cb939
+guid: b04511e046b4ac64cbb6cddf651a9c3a
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: FurBall_Jump_11_256_1024_0
+  - first:
+      213: 21300002
+    second: FurBall_Jump_11_256_1024_1
+  - first:
+      213: 21300004
+    second: FurBall_Jump_11_256_1024_2
+  - first:
+      213: 21300006
+    second: FurBall_Jump_11_256_1024_3
+  - first:
+      213: 21300008
+    second: FurBall_Jump_11_256_1024_4
+  - first:
+      213: 21300010
+    second: FurBall_Jump_11_256_1024_5
+  - first:
+      213: 21300012
+    second: FurBall_Jump_11_256_1024_6
+  - first:
+      213: 21300014
+    second: FurBall_Jump_11_256_1024_7
+  - first:
+      213: 21300016
+    second: FurBall_Jump_11_256_1024_8
+  - first:
+      213: 21300018
+    second: FurBall_Jump_11_256_1024_9
+  - first:
+      213: 21300020
+    second: FurBall_Jump_11_256_1024_10
+  - first:
+      213: 21300022
+    second: FurBall_Jump_11_256_1024_11
+  - first:
+      213: 21300024
+    second: FurBall_Jump_11_256_1024_12
+  - first:
+      213: 21300026
+    second: FurBall_Jump_11_256_1024_13
+  - first:
+      213: 21300028
+    second: Furry_Jump_11_256_1024_0
+  - first:
+      213: 21300030
+    second: Furry_Jump_11_256_1024_1
+  - first:
+      213: 21300032
+    second: Furry_Jump_11_256_1024_2
+  - first:
+      213: 21300034
+    second: Furry_Jump_11_256_1024_3
+  - first:
+      213: 21300036
+    second: Furry_Jump_11_256_1024_4
+  - first:
+      213: 21300038
+    second: Furry_Jump_11_256_1024_5
+  - first:
+      213: 21300040
+    second: Furry_Jump_11_256_1024_6
+  - first:
+      213: 21300042
+    second: Furry_Jump_11_256_1024_7
+  - first:
+      213: 21300044
+    second: Furry_Jump_11_256_1024_8
+  - first:
+      213: 21300046
+    second: Furry_Jump_11_256_1024_9
+  - first:
+      213: 21300048
+    second: Furry_Jump_11_256_1024_10
+  - first:
+      213: 21300050
+    second: Furry_Jump_11_256_1024_11
+  - first:
+      213: 21300052
+    second: Furry_Jump_11_256_1024_12
+  - first:
+      213: 21300054
+    second: Furry_Jump_11_256_1024_13
+  - first:
+      213: 21300056
+    second: Furry_Jump_11_256_1024_14
+  - first:
+      213: 21300058
+    second: Furry_Jump_11_256_1024_15
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -27,12 +117,12 @@ TextureImporter:
   generateCubemap: 6
   cubemapConvolution: 0
   seamlessCubemap: 0
-  textureFormat: 1
-  maxTextureSize: 2048
+  textureFormat: -1
+  maxTextureSize: 1024
   textureSettings:
     serializedVersion: 2
     filterMode: 1
-    aniso: 1
+    aniso: 16
     mipBias: 0
     wrapU: 1
     wrapV: 1
@@ -40,14 +130,14 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 192
-  spriteBorder: {x: 34, y: 47, z: 45, w: 32}
-  spriteGenerateFallbackPhysicsShape: 1
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -57,11 +147,11 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
-  applyGammaDecoding: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 512
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -73,7 +163,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 512
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -85,7 +175,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
-    maxTextureSize: 512
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -97,340 +187,352 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Furry_Jump_11_256_1024_0
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 824
+        width: 166
+        height: 159
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3305410000000000800000000000000
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Furry_Jump_11_256_1024_1
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 809
+        width: 169
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3305410000000000800000000000000
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Furry_Jump_11_256_1024_2
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 813
+        width: 167
+        height: 171
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04305410000000000800000000000000
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Furry_Jump_11_256_1024_3
+      rect:
+        serializedVersion: 2
+        x: 811
+        y: 813
+        width: 168
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24305410000000000800000000000000
+      internalID: 21300034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Furry_Jump_11_256_1024_4
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 557
+        width: 154
+        height: 165
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44305410000000000800000000000000
+      internalID: 21300036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Furry_Jump_11_256_1024_5
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 557
+        width: 159
+        height: 179
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64305410000000000800000000000000
+      internalID: 21300038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Furry_Jump_11_256_1024_6
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 562
+        width: 146
+        height: 178
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84305410000000000800000000000000
+      internalID: 21300040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Furry_Jump_11_256_1024_7
+      rect:
+        serializedVersion: 2
+        x: 821
+        y: 565
+        width: 144
+        height: 178
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4305410000000000800000000000000
+      internalID: 21300042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Furry_Jump_11_256_1024_8
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 336
+        width: 154
+        height: 155
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4305410000000000800000000000000
+      internalID: 21300044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Furry_Jump_11_256_1024_9
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 343
+        width: 149
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4305410000000000800000000000000
+      internalID: 21300046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Furry_Jump_11_256_1024_10
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 343
+        width: 149
+        height: 151
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05305410000000000800000000000000
+      internalID: 21300048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Furry_Jump_11_256_1024_11
+      rect:
+        serializedVersion: 2
+        x: 817
+        y: 331
+        width: 150
+        height: 175
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25305410000000000800000000000000
+      internalID: 21300050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Furry_Jump_11_256_1024_12
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 67
+        width: 161
+        height: 173
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45305410000000000800000000000000
+      internalID: 21300052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Furry_Jump_11_256_1024_13
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 56
+        width: 154
+        height: 177
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65305410000000000800000000000000
+      internalID: 21300054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Furry_Jump_11_256_1024_14
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 53
+        width: 157
+        height: 193
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85305410000000000800000000000000
+      internalID: 21300056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Furry_Jump_11_256_1024_15
+      rect:
+        serializedVersion: 2
+        x: 822
+        y: 55
+        width: 151
+        height: 191
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5305410000000000800000000000000
+      internalID: 21300058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
-    bones:
-    - name: bone_1
-      position: {x: 194.35211, y: 350.75482, z: 0}
-      rotation: {x: 0, y: 0, z: -0.7180624, w: 0.69597876}
-      length: 13.909613
-      parentId: -1
-    - name: bone_2
-      position: {x: 13.909616, y: 0.000008948565, z: 0}
-      rotation: {x: 0, y: 0, z: 0.028431641, w: 0.99959576}
-      length: 186.43231
-      parentId: 0
-    - name: bone_3
-      position: {x: 186.43233, y: 0.00017936112, z: 0}
-      rotation: {x: 0, y: 0, z: 0.008884242, w: 0.9999606}
-      length: 100.026634
-      parentId: 1
-    spriteID: 5e97eb03825dee720800000000000000
+    bones: []
+    spriteID: 95547c10d3079dce78b19f7f47a68345
     internalID: 0
-    vertices:
-    - {x: 184.047, y: 42.731995}
-    - {x: 234.536, y: 45.039}
-    - {x: 273.505, y: 44.304}
-    - {x: 314.69202, y: 62.257004}
-    - {x: 338.688, y: 85.378}
-    - {x: 360, y: 131.038}
-    - {x: 363.57098, y: 176.058}
-    - {x: 365.911, y: 225.255}
-    - {x: 358.63098, y: 274.36798}
-    - {x: 346.556, y: 320.711}
-    - {x: 335.111, y: 354.888}
-    - {x: 305.089, y: 376.91}
-    - {x: 256.257, y: 379.437}
-    - {x: 208.757, y: 379.643}
-    - {x: 159.506, y: 376.96002}
-    - {x: 139.767, y: 380.639}
-    - {x: 90.088, y: 372.18}
-    - {x: 59.892, y: 345.586}
-    - {x: 34.082993, y: 323.525}
-    - {x: 28.397003, y: 291.3}
-    - {x: 25.272995, y: 257.993}
-    - {x: 29.606995, y: 211.228}
-    - {x: 30.291, y: 178.908}
-    - {x: 37.569, y: 129.32599}
-    - {x: 38.472, y: 113.005}
-    - {x: 46.479004, y: 95.311}
-    - {x: 63.822998, y: 72.142}
-    - {x: 93.796, y: 52.496994}
-    - {x: 129.446, y: 43.296997}
-    - {x: 181.403, y: 42.339996}
-    - {x: 196.23425, y: 211.44638}
-    indices: 19000000180000001700000008000000070000001e000000090000000b0000000a0000001e00000009000000080000001e0000000e0000000d0000001e0000000d0000000c0000001e0000000c000000090000000b000000090000000c0000001e0000000600000005000000020000001e000000030000001e000000050000000400000004000000030000001e00000001000000000000001e00000002000000010000001e000000000000001d0000001e0000001e0000001c0000001b00000015000000140000001e0000001e000000110000000e000000110000000f0000000e0000000f00000011000000100000001e00000014000000130000001300000012000000110000001e00000013000000110000001e0000001600000015000000170000001a00000019000000170000001b0000001a000000170000001e0000001b00000017000000160000001e00000007000000060000001e0000001d0000001c0000001e000000
-    edges:
-    - {x: 1, y: 0}
-    - {x: 2, y: 1}
-    - {x: 3, y: 2}
-    - {x: 4, y: 3}
-    - {x: 5, y: 4}
-    - {x: 6, y: 5}
-    - {x: 7, y: 6}
-    - {x: 8, y: 7}
-    - {x: 9, y: 8}
-    - {x: 10, y: 9}
-    - {x: 11, y: 10}
-    - {x: 12, y: 11}
-    - {x: 13, y: 12}
-    - {x: 14, y: 13}
-    - {x: 14, y: 15}
-    - {x: 16, y: 15}
-    - {x: 17, y: 16}
-    - {x: 18, y: 17}
-    - {x: 19, y: 18}
-    - {x: 20, y: 19}
-    - {x: 21, y: 20}
-    - {x: 21, y: 22}
-    - {x: 23, y: 22}
-    - {x: 24, y: 23}
-    - {x: 25, y: 24}
-    - {x: 26, y: 25}
-    - {x: 27, y: 26}
-    - {x: 28, y: 27}
-    - {x: 29, y: 28}
-    - {x: 0, y: 29}
-    weights:
-    - weight[0]: 1
-      weight[1]: 0
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 2
-      boneIndex[1]: 0
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 0.99999994
-      weight[1]: 0
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 2
-      boneIndex[1]: 0
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 0.96217245
-      weight[1]: 0.037827555
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 2
-      boneIndex[1]: 1
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 0.87446415
-      weight[1]: 0.12553588
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 2
-      boneIndex[1]: 1
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 0.785627
-      weight[1]: 0.21437295
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 2
-      boneIndex[1]: 1
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 0.5901839
-      weight[1]: 0.39036462
-      weight[2]: 0.019451488
-      weight[3]: 0
-      boneIndex[0]: 2
-      boneIndex[1]: 1
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 0.5534763
-      weight[1]: 0.39222893
-      weight[2]: 0.054294813
-      weight[3]: 0
-      boneIndex[0]: 1
-      boneIndex[1]: 2
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 0.65767837
-      weight[1]: 0.20523405
-      weight[2]: 0.13708761
-      weight[3]: 0
-      boneIndex[0]: 1
-      boneIndex[1]: 2
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 0.65422904
-      weight[1]: 0.26916116
-      weight[2]: 0.07660979
-      weight[3]: 0
-      boneIndex[0]: 1
-      boneIndex[1]: 0
-      boneIndex[2]: 2
-      boneIndex[3]: 0
-    - weight[0]: 0.50085944
-      weight[1]: 0.47872782
-      weight[2]: 0.020412745
-      weight[3]: 0
-      boneIndex[0]: 1
-      boneIndex[1]: 0
-      boneIndex[2]: 2
-      boneIndex[3]: 0
-    - weight[0]: 0.6079109
-      weight[1]: 0.39208913
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 0
-      boneIndex[1]: 1
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 0.71508634
-      weight[1]: 0.28491366
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 0
-      boneIndex[1]: 1
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 0.88698494
-      weight[1]: 0.113015056
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 0
-      boneIndex[1]: 1
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 1
-      weight[1]: 0
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 0
-      boneIndex[1]: 0
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 1
-      weight[1]: 0
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 0
-      boneIndex[1]: 0
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 0.95506036
-      weight[1]: 0.044939622
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 0
-      boneIndex[1]: 1
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 0.6415973
-      weight[1]: 0.3584026
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 0
-      boneIndex[1]: 1
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 0.523579
-      weight[1]: 0.4489677
-      weight[2]: 0.0274533
-      weight[3]: 0
-      boneIndex[0]: 1
-      boneIndex[1]: 0
-      boneIndex[2]: 2
-      boneIndex[3]: 0
-    - weight[0]: 0.60618293
-      weight[1]: 0.34227872
-      weight[2]: 0.051538285
-      weight[3]: 0
-      boneIndex[0]: 1
-      boneIndex[1]: 0
-      boneIndex[2]: 2
-      boneIndex[3]: 0
-    - weight[0]: 0.6576141
-      weight[1]: 0.2548386
-      weight[2]: 0.08754732
-      weight[3]: 0
-      boneIndex[0]: 1
-      boneIndex[1]: 0
-      boneIndex[2]: 2
-      boneIndex[3]: 0
-    - weight[0]: 0.68294615
-      weight[1]: 0.16430844
-      weight[2]: 0.15274541
-      weight[3]: 0
-      boneIndex[0]: 1
-      boneIndex[1]: 0
-      boneIndex[2]: 2
-      boneIndex[3]: 0
-    - weight[0]: 0.6242149
-      weight[1]: 0.30342454
-      weight[2]: 0.07236058
-      weight[3]: 0
-      boneIndex[0]: 1
-      boneIndex[1]: 2
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 0.52366674
-      weight[1]: 0.44196212
-      weight[2]: 0.03437112
-      weight[3]: 0
-      boneIndex[0]: 1
-      boneIndex[1]: 2
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 0.67081255
-      weight[1]: 0.32918745
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 2
-      boneIndex[1]: 1
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 0.72717345
-      weight[1]: 0.2728266
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 2
-      boneIndex[1]: 1
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 0.7846728
-      weight[1]: 0.21532722
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 2
-      boneIndex[1]: 1
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 0.85692245
-      weight[1]: 0.14307754
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 2
-      boneIndex[1]: 1
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 0.9246399
-      weight[1]: 0.07536011
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 2
-      boneIndex[1]: 1
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 0.9734849
-      weight[1]: 0.02651511
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 2
-      boneIndex[1]: 1
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 1
-      weight[1]: 0
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 2
-      boneIndex[1]: 0
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 1
-      weight[1]: 0
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 1
-      boneIndex[1]: 0
-      boneIndex[2]: 0
-      boneIndex[3]: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
     secondaryTextures: []
   spritePackingTag: 
   pSDRemoveMatte: 0
