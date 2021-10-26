@@ -444,10 +444,10 @@ TextureImporter:
       name: Furry_Jump_11_256_1024_12
       rect:
         serializedVersion: 2
-        x: 47
-        y: 67
+        x: 43
+        y: 70
         width: 161
-        height: 173
+        height: 171
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
