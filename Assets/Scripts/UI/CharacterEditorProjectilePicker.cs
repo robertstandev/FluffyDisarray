@@ -21,7 +21,6 @@ public class CharacterEditorProjectilePicker : MonoBehaviour, IPointerDownHandle
     {
         selectNextProjectile();
         updateImageThumbnail();
-        Debug.Log(this.currentSelectedProjectileIndex);
     }
 
     private void selectNextProjectile()
