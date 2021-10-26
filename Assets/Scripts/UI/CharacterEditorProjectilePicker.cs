@@ -45,7 +45,6 @@ public class CharacterEditorProjectilePicker : MonoBehaviour, IPointerDownHandle
                 this.selectedProjectilePrefab = this.projectilePrefab[this.currentSelectedProjectileIndex];
                 this.selectedProjectilePositionOffset = this.projectilePositionOffset[this.currentSelectedProjectileIndex];
                 this.selectetProjectileMuzzleEffectPrefab = this.projectileMuzzleEffectPrefab[this.currentSelectedProjectileIndex];
-                Debug.Log(this.currentSelectedProjectileIndex);
                 break;
             }
         }
