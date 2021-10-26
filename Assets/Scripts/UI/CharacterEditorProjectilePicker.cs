@@ -10,7 +10,7 @@ public class CharacterEditorProjectilePicker : MonoBehaviour, IPointerDownHandle
     [SerializeField]private Sprite[] projectileThumbnail;
     private Image imageComponent;
     private GameObject selectedProjectilePrefab;
-    private int currentSelectedProjectileIndex = 0 , temporaryIndexCheck;
+    private int currentSelectedProjectileIndex = 0;
 
     private void Awake() { this.imageComponent = GetComponent<Image>(); }
 
@@ -21,6 +21,7 @@ public class CharacterEditorProjectilePicker : MonoBehaviour, IPointerDownHandle
     {
         selectNextProjectile();
         updateImageThumbnail();
+        Debug.Log(this.currentSelectedProjectileIndex);
     }
 
     private void selectNextProjectile()
@@ -29,9 +30,9 @@ public class CharacterEditorProjectilePicker : MonoBehaviour, IPointerDownHandle
         {
             if(i.Equals(this.currentSelectedProjectileIndex))
             {
-                this.temporaryIndexCheck = i.Equals(this.projectilePrefab.Length - 1) ? 0 : i + 1;
-                this.selectedProjectilePrefab = this.projectilePrefab[this.temporaryIndexCheck];
-                this.currentSelectedProjectileIndex = this.temporaryIndexCheck;
+                this.currentSelectedProjectileIndex = i.Equals(this.projectilePrefab.Length - 1) ? 0 : i + 1;
+                this.selectedProjectilePrefab = this.projectilePrefab[this.currentSelectedProjectileIndex];
+                break;
             }
         }
     }
