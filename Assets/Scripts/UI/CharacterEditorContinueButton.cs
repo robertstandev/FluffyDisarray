@@ -23,6 +23,7 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
     private List<GameObject> gameCharactersProjectiles = new List<GameObject>();
     private List<Vector2> gameCharactersProjectilesPositionOffsets = new List<Vector2>();
     private List<GameObject> gameCharactersProjectilesMuzzleEffects = new List<GameObject>();
+    private List<Vector2> gameCharactersProjectilesMuzzlePositionOffsets = new List<Vector2>();
     private List<CharacterEditorKeyBindingManager> gameCharactersInputs = new List<CharacterEditorKeyBindingManager>();
 
     private GameObject playerPrefab , botPrefab;
@@ -116,11 +117,12 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
         this.gameCharactersProjectiles.Add(this.characterProjectileSelectorScript.getProjectilePrefab());
         this.gameCharactersProjectilesPositionOffsets.Add(this.characterProjectileSelectorScript.getProjectilePositionOffset());
         this.gameCharactersProjectilesMuzzleEffects.Add(this.characterProjectileSelectorScript.getProjectileMuzzleEffectPrefab());
+        this.gameCharactersProjectilesMuzzlePositionOffsets.Add(this.characterProjectileSelectorScript.getProjectileMuzzlePositionOffset());
         this.gameCharactersInputs.Add(this.charactersInput);
     }
 
     private void OnDisable()
     {
-        this.mapCharacterManagerGameObject.createCharacters(this.playerCount, this.botCount, this.gameCharacters, this.gameCharactersColors, this.gameCharactersProjectiles, this.gameCharactersProjectilesPositionOffsets, this.gameCharactersProjectilesMuzzleEffects, this.gameCharactersInputs);
+        this.mapCharacterManagerGameObject.createCharacters(this.playerCount, this.botCount, this.gameCharacters, this.gameCharactersColors, this.gameCharactersProjectiles, this.gameCharactersProjectilesPositionOffsets, this.gameCharactersProjectilesMuzzleEffects, this.gameCharactersProjectilesMuzzlePositionOffsets, this.gameCharactersInputs);
     }
 }

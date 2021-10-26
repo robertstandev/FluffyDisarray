@@ -1004,6 +1004,9 @@ MonoBehaviour:
   projectileMuzzleEffectPrefab:
   - {fileID: 1237854105968354, guid: 04a5cfcd62a83c8438ec4daafe366eab, type: 3}
   - {fileID: 1344490692017412, guid: b3ce31c3d02349d47b248885536fb3b2, type: 3}
+  projectileMuzzlePositionOffset:
+  - {x: 1, y: 0}
+  - {x: 1, y: 0}
   projectileThumbnail:
   - {fileID: 21300000, guid: 35e51cbe92983e8e48f3cb3b79a4cb06, type: 3}
   - {fileID: 21300000, guid: 513be6180d8c0357dab90272c258a45a, type: 3}

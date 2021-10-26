@@ -9,24 +9,19 @@ public class CharacterEditorProjectilePicker : MonoBehaviour, IPointerDownHandle
     [SerializeField]private GameObject[] projectilePrefab;
     [SerializeField]private Vector2[] projectilePositionOffset;
     [SerializeField]private GameObject[] projectileMuzzleEffectPrefab;
+    [SerializeField]private Vector2[] projectileMuzzlePositionOffset;
     [SerializeField]private Sprite[] projectileThumbnail;
     private Image imageComponent;
-    private GameObject selectedProjectilePrefab, selectetProjectileMuzzleEffectPrefab;
-    private Vector2 selectedProjectilePositionOffset;
     private int currentSelectedProjectileIndex = 0;
 
     private void Awake() { this.imageComponent = GetComponent<Image>(); }
-    private void Start()
-    {
-        this.selectedProjectilePrefab = this.projectilePrefab[0];
-        this.selectedProjectilePositionOffset = this.projectilePositionOffset[0];
-        this.selectetProjectileMuzzleEffectPrefab = this.projectileMuzzleEffectPrefab[0];
-    }
+
 
     public void OnPointerDown(PointerEventData eventData) { changeProjectile(); }
-    public GameObject getProjectilePrefab() { return this.selectedProjectilePrefab; }
-    public Vector2 getProjectilePositionOffset() { return this.selectedProjectilePositionOffset; }
-    public GameObject getProjectileMuzzleEffectPrefab() { return this.selectetProjectileMuzzleEffectPrefab; }
+    public GameObject getProjectilePrefab() { return this.projectilePrefab[this.currentSelectedProjectileIndex]; }
+    public Vector2 getProjectilePositionOffset() { return this.projectilePositionOffset[this.currentSelectedProjectileIndex]; }
+    public GameObject getProjectileMuzzleEffectPrefab() { return this.projectileMuzzleEffectPrefab[this.currentSelectedProjectileIndex]; }
+    public Vector2 getProjectileMuzzlePositionOffset() { return this.projectileMuzzlePositionOffset[this.currentSelectedProjectileIndex]; }
 
 
     private void changeProjectile()
@@ -42,9 +37,6 @@ public class CharacterEditorProjectilePicker : MonoBehaviour, IPointerDownHandle
             if(i.Equals(this.currentSelectedProjectileIndex))
             {
                 this.currentSelectedProjectileIndex = i.Equals(this.projectilePrefab.Length - 1) ? 0 : i + 1;
-                this.selectedProjectilePrefab = this.projectilePrefab[this.currentSelectedProjectileIndex];
-                this.selectedProjectilePositionOffset = this.projectilePositionOffset[this.currentSelectedProjectileIndex];
-                this.selectetProjectileMuzzleEffectPrefab = this.projectileMuzzleEffectPrefab[this.currentSelectedProjectileIndex];
                 break;
             }
         }

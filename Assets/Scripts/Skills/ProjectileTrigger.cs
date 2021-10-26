@@ -5,10 +5,10 @@ using UnityEngine;
 public class ProjectileTrigger : MonoBehaviour
 {
     [SerializeField]private int projectileDamage = 50;
-    [SerializeField]private GameObject projectileEffectPrefab;
-    [SerializeField]private Vector2 projectilePositionOffset;
-    [SerializeField]private GameObject muzzleEffectPrefab;
-    [SerializeField]private Vector2 muzzlePositionOffset;
+    private GameObject projectileEffectPrefab;
+    private Vector2 projectilePositionOffset;
+    private GameObject muzzleEffectPrefab;
+    private Vector2 muzzlePositionOffset;
 
     private GameObject instantiatedMuzzleEffect, instantiatedprojectileEffect;
     private SpriteRenderer characterSpriteRenderer;
@@ -39,11 +39,12 @@ public class ProjectileTrigger : MonoBehaviour
         this.instantiatedprojectileEffect.GetComponent<ProjectileEffect>().setProjectileDamage(this.projectileDamage);
     }
 
-    public void setProjectile(GameObject projectileGameObject, Vector2 projectilePositionOffset, GameObject muzzleGameObject)
+    public void setProjectile(GameObject projectileGameObject, Vector2 projectilePositionOffset, GameObject muzzleGameObject, Vector2 muzzlePositionOffset)
     {
         this.projectileEffectPrefab = projectileGameObject;
-        this.muzzlePositionOffset = projectilePositionOffset;
+        this.projectilePositionOffset = projectilePositionOffset;
         this.muzzleEffectPrefab = muzzleGameObject;
+        this.muzzlePositionOffset = muzzlePositionOffset;
         this.activateProjectile();
     }
 }

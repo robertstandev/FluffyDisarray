@@ -11,8 +11,6 @@ public class SceneManagerScript : MonoBehaviour
 
     public void loadScene(string sceneName) { StartCoroutine(loadSceneExecutor(sceneName)); }
 
-
-
     private IEnumerator loadSceneExecutor(string sceneName)
     {
         yield return null;
