@@ -10,7 +10,7 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
     [SerializeField]private Text characterNumberText;
     [SerializeField]private Text characterTypeText;
     [SerializeField]private Image characterColorImage;
-    [SerializeField]private CharacterEditorProjectilePicker characterProjectilePrefab;//fac un script care are 2 array : 1 cu imagini si 1 cu prefaburi de projectile , fiecare cu indexul celuilalt
+    [SerializeField]private CharacterEditorProjectilePicker characterProjectileSelectorScript;
     [SerializeField]private CharacterEditorKeyBindingManager charactersInput;
     [SerializeField]private GameObject finishText;
     [SerializeField]private GameObject controlsGroupGameObject;
@@ -21,6 +21,8 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
     private List<GameObject> gameCharacters = new List<GameObject>();
     private List<Color32> gameCharactersColors = new List<Color32>();
     private List<GameObject> gameCharactersProjectiles = new List<GameObject>();
+    private List<Vector2> gameCharactersProjectilesPositionOffsets = new List<Vector2>();
+    private List<GameObject> gameCharactersProjectilesMuzzleEffects = new List<GameObject>();
     private List<CharacterEditorKeyBindingManager> gameCharactersInputs = new List<CharacterEditorKeyBindingManager>();
 
     private GameObject playerPrefab , botPrefab;
@@ -111,12 +113,14 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
     {
         this.gameCharacters.Add(this.characterTypeText.text.Equals("Player") ? playerPrefab : botPrefab);
         this.gameCharactersColors.Add(this.characterColorImage.color);
-        this.gameCharactersProjectiles.Add(this.characterProjectilePrefab.getProjectilePrefab());
+        this.gameCharactersProjectiles.Add(this.characterProjectileSelectorScript.getProjectilePrefab());
+        this.gameCharactersProjectilesPositionOffsets.Add(this.characterProjectileSelectorScript.getProjectilePositionOffset());
+        this.gameCharactersProjectilesMuzzleEffects.Add(this.characterProjectileSelectorScript.getProjectileMuzzleEffectPrefab());
         this.gameCharactersInputs.Add(this.charactersInput);
     }
 
     private void OnDisable()
     {
-        this.mapCharacterManagerGameObject.createCharacters(this.playerCount, this.botCount, this.gameCharacters, this.gameCharactersColors, this.gameCharactersProjectiles, this.gameCharactersInputs);
+        this.mapCharacterManagerGameObject.createCharacters(this.playerCount, this.botCount, this.gameCharacters, this.gameCharactersColors, this.gameCharactersProjectiles, this.gameCharactersProjectilesPositionOffsets, this.gameCharactersProjectilesMuzzleEffects, this.gameCharactersInputs);
     }
 }

@@ -13,7 +13,7 @@ public class ProjectileTrigger : MonoBehaviour
     private GameObject instantiatedMuzzleEffect, instantiatedprojectileEffect;
     private SpriteRenderer characterSpriteRenderer;
     
-    private void Start()
+    private void activateProjectile()
     {
         this.characterSpriteRenderer = GetComponent<IController>().getCharacterRenderer;
         instantiateMuzzleEffect();
@@ -37,5 +37,13 @@ public class ProjectileTrigger : MonoBehaviour
         this.instantiatedprojectileEffect = Instantiate(this.projectileEffectPrefab , Vector3.zero , Quaternion.identity);
         this.instantiatedprojectileEffect.GetComponent<ProjectileEffect>().setProjectilePositionOffset(this.projectilePositionOffset);
         this.instantiatedprojectileEffect.GetComponent<ProjectileEffect>().setProjectileDamage(this.projectileDamage);
+    }
+
+    public void setProjectile(GameObject projectileGameObject, Vector2 projectilePositionOffset, GameObject muzzleGameObject)
+    {
+        this.projectileEffectPrefab = projectileGameObject;
+        this.muzzlePositionOffset = projectilePositionOffset;
+        this.muzzleEffectPrefab = muzzleGameObject;
+        this.activateProjectile();
     }
 }

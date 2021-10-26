@@ -998,6 +998,12 @@ MonoBehaviour:
   projectilePrefab:
   - {fileID: 742382953750511981, guid: 7ea0fb0480c753e6587cc6166410b4f1, type: 3}
   - {fileID: 8259933171936786642, guid: 3b8f1fcec418dc980ad4972bbf4d8c95, type: 3}
+  projectilePositionOffset:
+  - {x: 1.5, y: 0.25}
+  - {x: 1.5, y: 0.25}
+  projectileMuzzleEffectPrefab:
+  - {fileID: 1237854105968354, guid: 04a5cfcd62a83c8438ec4daafe366eab, type: 3}
+  - {fileID: 1344490692017412, guid: b3ce31c3d02349d47b248885536fb3b2, type: 3}
   projectileThumbnail:
   - {fileID: 21300000, guid: 35e51cbe92983e8e48f3cb3b79a4cb06, type: 3}
   - {fileID: 21300000, guid: 513be6180d8c0357dab90272c258a45a, type: 3}
@@ -1348,7 +1354,7 @@ MonoBehaviour:
   characterNumberText: {fileID: 5961916412668621893}
   characterTypeText: {fileID: 3691142797219448312}
   characterColorImage: {fileID: 1486349530815052586}
-  characterProjectilePrefab: {fileID: 7580099734392434975}
+  characterProjectileSelectorScript: {fileID: 7580099734392434975}
   charactersInput: {fileID: 2190109299770710528}
   finishText: {fileID: 2820303113435381564}
   controlsGroupGameObject: {fileID: 610652779156420736}

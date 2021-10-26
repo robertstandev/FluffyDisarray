@@ -18,6 +18,8 @@ public class MapCharacterManager : MonoBehaviour
     private List<GameObject> temporaryGameCharacters = new List<GameObject>();
     private List<Color32> gameCharactersColors = new List<Color32>();
     private List<GameObject> gameCharactersProjectiles = new List<GameObject>();
+    private List<Vector2> gameCharactersProjectilesPositionOffsets = new List<Vector2>();
+    private List<GameObject> gameCharactersProjectilesMuzzleEffects = new List<GameObject>();
     private List<CharacterEditorKeyBindingManager> gameCharactersInputKeys = new List<CharacterEditorKeyBindingManager>();
 
     private void Awake()
@@ -47,7 +49,7 @@ public class MapCharacterManager : MonoBehaviour
                 tempBotNumber += 1;
             }
 
-            //this.gameCharacters[i].GetComponent<ProjectileTrigger>().setProjectile(this.gameCharactersProjectiles[i]);
+            this.gameCharacters[i].GetComponent<ProjectileTrigger>().setProjectile(this.gameCharactersProjectiles[i] , this.gameCharactersProjectilesPositionOffsets[i], this.gameCharactersProjectilesMuzzleEffects[i]);
             this.gameCharacters[i].GetComponent<IController>().getCharacterRenderer.material.SetColor("_Color", this.gameCharactersColors[i]);
         }
     }
@@ -151,13 +153,15 @@ public class MapCharacterManager : MonoBehaviour
     public int getIndexOfCollidedObject(GameObject objectToSearchFor) { return this.gameCharacters.IndexOf(objectToSearchFor); }
     public GameObject getPlayerPrefab() { return this.playerPrefab; }
     public GameObject getBotPrefab() { return this.botPrefab; }
-    public void createCharacters(int playerCount, int botCount, List<GameObject> charactersList, List<Color32> characteresColorsList, List<GameObject> charactersProjectilesList, List<CharacterEditorKeyBindingManager> charactersInputsList)
+    public void createCharacters(int playerCount, int botCount, List<GameObject> charactersList, List<Color32> characteresColorsList, List<GameObject> charactersProjectilesList, List<Vector2> charactersProjectilesPositionOffsetList, List<GameObject> charactersProjectileMuzzleEffectList , List<CharacterEditorKeyBindingManager> charactersInputsList)
     {
         this.playerCount = playerCount;
         this.botCount = botCount;
         this.temporaryGameCharacters = charactersList;
         this.gameCharactersColors = characteresColorsList;
         this.gameCharactersProjectiles = charactersProjectilesList;
+        this.gameCharactersProjectilesPositionOffsets = charactersProjectilesPositionOffsetList;
+        this.gameCharactersProjectilesMuzzleEffects = charactersProjectileMuzzleEffectList;
         this.gameCharactersInputKeys = charactersInputsList;
 
         Destroy(this.startupCamera);
