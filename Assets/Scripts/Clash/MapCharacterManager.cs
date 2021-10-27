@@ -25,7 +25,7 @@ public class MapCharacterManager : MonoBehaviour
 
     private void Awake() { this.mapGameObject.SetActive(false); }
     
-    private void configureCharacters()
+    private IEnumerator configureCharacters()
     {
         int tempPlayerNumber = 0 , tempCharacterNumber = 0;
         for(int i = 0 ; i < this.temporaryGameCharacters.Count; i++)
@@ -50,6 +50,7 @@ public class MapCharacterManager : MonoBehaviour
             this.gameCharacters[i].GetComponent<ProjectileTrigger>().setProjectile(this.gameCharactersProjectiles[i] , this.gameCharactersProjectilesPositionOffsets[i],this.gameCharactersProjectilesMuzzleEffects[i], this.gameCharactersProjectilesMuzzlePositionOffsets[i]);
             this.gameCharacters[i].GetComponent<IController>().getCharacterRenderer.material.SetColor("_Color", this.gameCharactersColors[i]);
         }
+        yield return true;
     }
 
     private void configurePlayer(GameObject character, int tempCharacterNumber ,int tempPlayerNumber)
@@ -130,11 +131,13 @@ public class MapCharacterManager : MonoBehaviour
 
         this.mapGameObject.SetActive(true);
 
-        configureCharacters();
-        
+        StartCoroutine(configureCharactersAndEnableManagers());
+    }
 
-        //folosesc IEnumerator sa imi zica cand s-a terminat configureCharacters() - poate pun un bool la sfarsit la configurecharacters();
-        Invoke("enableOtherManagers" , 2f);
+    private IEnumerator configureCharactersAndEnableManagers()
+    {
+        yield return StartCoroutine(configureCharacters());
+        enableOtherManagers();  //wait for above method to finish to start this
     }
 
     private void enableOtherManagers()
