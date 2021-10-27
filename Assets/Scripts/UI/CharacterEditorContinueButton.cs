@@ -79,16 +79,8 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
         }
 
     }
-
-    private void checkAndConfigureIf4BotsReached()
-    {
-        this.botCount += 1;
-        if(this.botCount.Equals(4))
-        {
-            this.hideShowTouchComponent.disableEnableSelectedCanvas();
-            this.characterTypeText.text = "Player";
-        }
-    }
+    
+    private void checkAndConfigureIf4BotsReached() { this.botCount += 1; }
 
     private void checkAndExecuteIfMaximumCharacterCountReached()
     {
