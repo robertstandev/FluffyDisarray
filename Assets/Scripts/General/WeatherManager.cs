@@ -8,15 +8,10 @@ public class WeatherManager : MonoBehaviour
     [SerializeField]private GameObject[] weatherEffects;
     private List<GameObject> instantiatedWeatherEffects = new List<GameObject>();
     [SerializeField]private Color32[] weatherEffectsColorChange;
-    [SerializeField]private float minimumStartInterval = 10f;
-    [SerializeField]private float maximumStartInterval = 11f;
-    [SerializeField]private float minimumDurationInterval = 6f;
-    [SerializeField]private float maximumDurationInterval = 7f;
-
-    // [SerializeField][Range(60,360)]private float minimumStartInterval = 60f;
-    // [SerializeField][Range(361,720)]private float maximumStartInterval = 361f;
-    // [SerializeField][Range(30,60)]private float minimumDurationInterval = 30f;
-    // [SerializeField][Range(61,180)]private float maximumDurationInterval = 61f;
+    [SerializeField][Range(120,720)]private float minimumStartInterval = 120f;
+    [SerializeField][Range(120,720)]private float maximumStartInterval = 240f;
+    [SerializeField][Range(20,60)]private float minimumDurationInterval = 20f;
+    [SerializeField][Range(20,60)]private float maximumDurationInterval = 60f;
 
     private Color32 originalEnvironmentMaterialColor;
 
@@ -30,6 +25,7 @@ public class WeatherManager : MonoBehaviour
 
     private void OnDisable()
     {
+        this.environmentMaterial.color  = this.originalEnvironmentMaterialColor;
         StopAllCoroutines();
     }
 
@@ -54,11 +50,13 @@ public class WeatherManager : MonoBehaviour
 
     private IEnumerator materialTransitionTimer(Color32 colorToChangeTo)
     {
-        WaitForSeconds visualDelay = new WaitForSeconds(1f);
-        while(true)
+        float progress = 0f;
+        yield return new WaitForSeconds(5f);
+        while(this.environmentMaterial.color != colorToChangeTo)
         {
-            yield return visualDelay;
-            //transition towards colorToChangeTo
+            progress += Time.deltaTime * 0.001f;
+            this.environmentMaterial.color = Color.Lerp(this.environmentMaterial.color, colorToChangeTo, progress);
+            yield return null;
         }
     }
 
@@ -80,7 +78,7 @@ public class WeatherManager : MonoBehaviour
         {
             this.instantiatedWeatherEffects.Add(Instantiate(this.weatherEffects[i], Vector3.zero, Quaternion.identity));
             this.instantiatedWeatherEffects[i].transform.parent = this.transform;
-            //poate adaug locatia ca localPosition
+            this.instantiatedWeatherEffects[i].transform.localPosition = this.weatherEffects[i].transform.position;
         }
     }
 }

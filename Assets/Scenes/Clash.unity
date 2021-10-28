@@ -2551,10 +2551,10 @@ MonoBehaviour:
     rgba: 4279308561
   - serializedVersion: 2
     rgba: 4286085240
-  minimumStartInterval: 6
-  maximumStartInterval: 7
-  minimumDurationInterval: 4
-  maximumDurationInterval: 5
+  minimumStartInterval: 120
+  maximumStartInterval: 240
+  minimumDurationInterval: 20
+  maximumDurationInterval: 60
 --- !u!1 &2032795497
 GameObject:
   m_ObjectHideFlags: 0
