@@ -64,13 +64,13 @@ public class WeatherManager : MonoBehaviour
 
     private void startEffect(int indexOfEffect)
     {
-        this.instantiatedWeatherEffects[indexOfEffect].GetComponent<ParticleSystem>().Play();
+        this.instantiatedWeatherEffects[indexOfEffect].Play();
         StartCoroutine(materialTransitionTimer(this.weatherEffectsColorChange[indexOfEffect], this.weatherEffectColorChangeStartDelay[indexOfEffect], this.weatherEffectColorChangeTransitionSpeed[indexOfEffect] / 1000));
     }
 
     private void revertEffect(int indexOfEffect)
     {
-        this.instantiatedWeatherEffects[indexOfEffect].GetComponent<ParticleSystem>().Stop();
+        this.instantiatedWeatherEffects[indexOfEffect].Stop();
         StartCoroutine(materialTransitionTimer(this.originalEnvironmentMaterialColor , this.weatherEffectColorChangeStartDelay[indexOfEffect] , this.weatherEffectColorChangeTransitionSpeed[indexOfEffect] / 1000));
     }
 
@@ -79,7 +79,6 @@ public class WeatherManager : MonoBehaviour
         for(int i = 0 ; i < this.weatherEffects.Length; i++)
         {
             this.instantiatedWeatherEffects.Add(Instantiate(this.weatherEffects[i], Vector3.zero, Quaternion.identity).GetComponent<ParticleSystem>());
-            this.instantiatedWeatherEffects[i].Stop();
             this.instantiatedWeatherEffects[i].transform.parent = this.transform;
             this.instantiatedWeatherEffects[i].transform.localPosition = this.weatherEffects[i].transform.position;
 
