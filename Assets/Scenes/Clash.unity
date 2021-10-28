@@ -2895,6 +2895,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallGround
       objectReference: {fileID: 0}
+    - target: {fileID: 8352400003251614362, guid: 04519271c46edddecac9c3ea8219f59b,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8352400003251614362, guid: 04519271c46edddecac9c3ea8219f59b,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8352400003251614362, guid: 04519271c46edddecac9c3ea8219f59b,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8352400003251614362, guid: 04519271c46edddecac9c3ea8219f59b,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8352400003251614362, guid: 04519271c46edddecac9c3ea8219f59b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d6c4efa4a7b600254b85ff59fbecd4a9, type: 2}
     - target: {fileID: 8352400003251614363, guid: 04519271c46edddecac9c3ea8219f59b,
         type: 3}
       propertyPath: m_RootOrder
