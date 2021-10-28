@@ -25,7 +25,6 @@ public class PlayerController : MonoBehaviour, IController
     private bool isGrounded = false, isGroundedPrevVal = false;
     private bool canGrabLedge = false, canGrabLedgePrevVal = false;
     private bool canWallJump = false, canWallJumpPrevVal = false;
-    private bool isCrouching = false;
     private bool isGroundPounding = false;
 
     [SerializeField]private GameObject impactEffect;
@@ -44,7 +43,6 @@ public class PlayerController : MonoBehaviour, IController
 
         this.downInput = cachedPlayerInput.getDownInput;
         this.downInput.performed += context => OnDownInput();
-        this.downInput.canceled += context => OnDownInputRelease();
 
         this.jumpInput = cachedPlayerInput.getJumpInput;
         this.jumpInput.performed += context => OnJump();
@@ -132,11 +130,6 @@ public class PlayerController : MonoBehaviour, IController
             reactivateGravity();
             Debug.Log("Ledge Drop");
         }
-        else if(this.isGrounded && !this.canGrabLedge)
-        {
-            this.isCrouching = true;
-            Debug.Log("Crouching");
-        }
         else if(!this.isGrounded && !this.canGrabLedge)
         {
             this.isGroundPounding = true;
@@ -148,17 +141,9 @@ public class PlayerController : MonoBehaviour, IController
             Debug.Log("Ground Pounding");
         }
     }
-    private void OnDownInputRelease()
-    {
-        if(this.isCrouching)
-        {
-            this.isCrouching = false;
-            Debug.Log("Not Crouching Anymore");
-        }
-    }
     private void OnJump()
     {
-        if(!this.isCrouching && !this.isGroundPounding && !this.canGrabLedge)
+        if(!this.isGroundPounding && !this.canGrabLedge)
         {
             this.jumpComponent.jump(this.rb, this.staminaComponent);
             Debug.Log("Check Jump");
