@@ -2548,7 +2548,7 @@ MonoBehaviour:
   - {fileID: 100000, guid: de07bf378e7247444a0715ad2ff509e3, type: 3}
   weatherEffectsColorChange:
   - serializedVersion: 2
-    rgba: 4279308561
+    rgba: 4279176975
   - serializedVersion: 2
     rgba: 4287401100
   weatherEffectColorChangeStartDelay:
@@ -2558,7 +2558,7 @@ MonoBehaviour:
   - 0.8
   - 0.2
   minimumStartInterval: 120
-  maximumStartInterval: 180
+  maximumStartInterval: 120
   minimumDurationInterval: 60
   maximumDurationInterval: 60
 --- !u!1 &2032795497
