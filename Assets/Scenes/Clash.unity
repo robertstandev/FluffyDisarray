@@ -2558,7 +2558,7 @@ MonoBehaviour:
   - 0.8
   - 0.2
   minimumStartInterval: 120
-  maximumStartInterval: 120
+  maximumStartInterval: 180
   minimumDurationInterval: 60
   maximumDurationInterval: 60
 --- !u!1 &2032795497
