@@ -2754,11 +2754,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Meteor
       objectReference: {fileID: 0}
-    - target: {fileID: 7024013284796366773, guid: d086fb56bbf070703b0805ad24a3e01a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7024013284796719917, guid: d086fb56bbf070703b0805ad24a3e01a,
         type: 3}
       propertyPath: m_RootOrder
