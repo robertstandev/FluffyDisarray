@@ -16,14 +16,14 @@ public class CameraShake : MonoBehaviour
    {
         this.myCamera = this.transform;
         this.startPosition = myCamera.localPosition;
-        resetDuration();
+        resetCurrentDuration();
    }
 
     private void OnEnable() { shakeCamera(); }
     private void OnDisable()
     {
         StopAllCoroutines();
-        resetDuration();
+        resetCurrentDuration();
         resetPosition();
     }
 
@@ -41,6 +41,8 @@ public class CameraShake : MonoBehaviour
         this.enabled = false;
     }
 
-    private void resetDuration() { this.currentDuration = this.duration * 40; }
+    private void resetCurrentDuration() { this.currentDuration = this.duration * 40; }
     private void resetPosition() { this.myCamera.localPosition = this.startPosition; }
+
+    public void setDuration(int value) { this.duration = value; }
 }

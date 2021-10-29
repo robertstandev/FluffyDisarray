@@ -22,6 +22,7 @@ public class MapCharacterManager : MonoBehaviour
     private List<GameObject> gameCharactersProjectilesMuzzleEffects = new List<GameObject>();
     private List<Vector2> gameCharactersProjectilesMuzzlePositionOffsets = new List<Vector2>();
     private List<CharacterEditorKeyBindingManager> gameCharactersInputKeys = new List<CharacterEditorKeyBindingManager>();
+    private List<GameObject> gameCharactersPlayerCameras = new List<GameObject>();
 
     private void Awake() { this.mapGameObject.SetActive(false); }
     
@@ -61,9 +62,9 @@ public class MapCharacterManager : MonoBehaviour
 
     private void configurePlayerCamera(GameObject character, int tempPlayerNumber)
     {
-        GameObject tempCamera = Instantiate(cameraPrefab , Vector3.zero , Quaternion.identity);
-        tempCamera.GetComponent<CameraController>().setObjectToFollow(character);
-        Camera tempCameraComponent = tempCamera.GetComponentInChildren<Camera>();
+        this.gameCharactersPlayerCameras.Add(Instantiate(cameraPrefab , Vector3.zero , Quaternion.identity));
+        this.gameCharactersPlayerCameras[this.gameCharactersPlayerCameras.Count - 1].GetComponent<CameraController>().setObjectToFollow(character);
+        Camera tempCameraComponent = this.gameCharactersPlayerCameras[this.gameCharactersPlayerCameras.Count - 1].GetComponentInChildren<Camera>();
         tempCameraComponent.rect = getCameraRect(tempPlayerNumber);
         tempCameraComponent.orthographicSize = getCameraSize();
     }
@@ -111,6 +112,7 @@ public class MapCharacterManager : MonoBehaviour
     }
 
     public List<GameObject> getListOfCharactersFromScene() { return this.gameCharacters; }
+    public List<GameObject> getListOfPlayerCamerasFromScene() { return this.gameCharactersPlayerCameras; }
     public bool isCollidedObjectInList(GameObject objectToSearchFor) { return this.gameCharacters.Contains(objectToSearchFor); }
     public int getIndexOfCollidedObject(GameObject objectToSearchFor) { return this.gameCharacters.IndexOf(objectToSearchFor); }
     public GameObject getPlayerPrefab() { return this.playerPrefab; }

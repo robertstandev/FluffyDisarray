@@ -9,10 +9,13 @@ public class CollectibleSwitch : MonoBehaviour
     private List<GameObject> playersCamerasGameObjects = new List<GameObject>();
     private List<GameObject> cachedPlayersFromCameraController = new List<GameObject>();
     private List<CollectibleSwitchRevert> cachedCamerasFromCamerasGameObjects = new List<CollectibleSwitchRevert>();
+    private MapCharacterManager playerCamerasScript;
+
+    private void Awake() { this.playerCamerasScript = FindObjectOfType<MapCharacterManager>(); }
 
     private void Start()
     {
-        this.playersCamerasGameObjects.AddRange(GameObject.FindGameObjectsWithTag("MainCamera"));
+        this.playersCamerasGameObjects.AddRange(this.playerCamerasScript.getListOfPlayerCamerasFromScene());
         for(int i = 0 ; i < this.playersCamerasGameObjects.Count ; i++)
         {
             this.cachedPlayersFromCameraController.Add(this.playersCamerasGameObjects[i].GetComponent<CameraController>().getObjectToFollow());

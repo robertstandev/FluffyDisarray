@@ -13,7 +13,7 @@ public class WeatherManager : MonoBehaviour
     [SerializeField][Range(120,720)]private float minimumStartInterval = 120f;
     [SerializeField][Range(120,720)]private float maximumStartInterval = 240f;
     [SerializeField][Range(25,60)]private float minimumDurationInterval = 25f;
-     [SerializeField][Range(25,60)]private float maximumDurationInterval = 60f;//Max duration must be half of minimumStartInterval - weatherEffectColorChangeStartDelay for any of the items in the list
+    [SerializeField][Range(25,60)]private float maximumDurationInterval = 60f;//Max duration must be half of minimumStartInterval - weatherEffectColorChangeStartDelay for any of the items in the list
 
     private Color32 originalEnvironmentMaterialColor;
 
