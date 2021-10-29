@@ -23,7 +23,6 @@ public class MeteorShowerManager : MonoBehaviour
             this.instantiatedMeteors.Add(Instantiate(this.meteorPrefab , Vector3.zero, Quaternion.identity));
             this.instantiatedMeteors[i].transform.parent = this.transform;
             this.instantiatedMeteors[i].transform.localPosition = Vector3.zero;
-            this.instantiatedMeteors[i].transform.localEulerAngles = new Vector3(0f,0f,270f);
         }
     }
 
@@ -90,7 +89,7 @@ public class MeteorShowerManager : MonoBehaviour
     {
         for(int i = 0 ; i < this.playerCamerasShakeScripts.Count ; i++)
         {
-            this.playerCamerasShakeScripts[i].setDuration(this.duration + 5);
+            this.playerCamerasShakeScripts[i].setDuration(this.duration + 3);
         }
     }
 }
