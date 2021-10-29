@@ -13,7 +13,7 @@ public class InputKeyRebinder : MonoBehaviour, IPointerDownHandler
     private enum inputList { movementInput, downInput, upInput, jumpInput, projectileInput, slashInput, menuInput};
     [SerializeField]private inputList inputToReplace = inputList.movementInput;
     [SerializeField]private Text textComponent;
-    private InputAction actionInput = new InputAction();
+    private InputAction actionInput;
 
     private string originalText;
 
@@ -24,6 +24,9 @@ public class InputKeyRebinder : MonoBehaviour, IPointerDownHandler
     private void getUserInput()
     {
         this.originalText  = this.textComponent.text;
+
+        this.actionInput = new InputAction();
+
         if(this.typeOfInput.Equals(typesOfInputs.Button))
         {
             this.textComponent.text = "Press Key";
@@ -80,6 +83,7 @@ public class InputKeyRebinder : MonoBehaviour, IPointerDownHandler
     private void rebindCanceled()
     {
         this.textComponent.text = this.originalText;
+        this.rebindingOperation.Dispose();
     }
 
     private void setKeyBinding()
