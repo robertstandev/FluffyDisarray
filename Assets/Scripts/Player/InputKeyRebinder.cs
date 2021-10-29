@@ -42,8 +42,8 @@ public class InputKeyRebinder : MonoBehaviour, IPointerDownHandler
     private void configureAxisInput()
     {
         this.actionInput.AddCompositeBinding("Axis") // Or just "Axis"
-        .With("Positive", "<Gamepad>/rightTrigger")
-        .With("Negative", "<Gamepad>/leftTrigger");
+        .With("Positive", "A")
+        .With("Negative", "A");
 
         this.rebindingOperation = actionInput.PerformInteractiveRebinding(0)
         .WithRebindAddingNewBinding()
