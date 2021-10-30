@@ -54,7 +54,7 @@ public class InputKeyRebinder : MonoBehaviour, IPointerDownHandler
         this.rebindingOperation = this.actionInput.PerformInteractiveRebinding(bindingIndex)
         .WithRebindAddingNewBinding()
         .WithControlsExcluding("Mouse")
-        .OnMatchWaitForAnother(0.1f)
+        .OnMatchWaitForAnother(0.3f)
         .OnComplete(
                     operation =>
                     {
