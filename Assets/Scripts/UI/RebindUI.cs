@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 
 public class RebindUI : MonoBehaviour
 {
-    [SerializeField]private List<InputActionReference> allInputActions = new List<InputActionReference>();
     [SerializeField]private InputActionReference inputActionReference;
     [SerializeField][Range(0,10)]private int selectedBinding;
     [SerializeField]private InputBinding.DisplayStringOptions displayStringOptions;
@@ -92,6 +91,7 @@ public class RebindUI : MonoBehaviour
     {
         //Debug.Log("New Value : " + change.value);
         //this.inputActionReference.Set(this.allInputActions[change.value]);
+        //this.inputActionReference.Set(InputManager.inputActions.Gameplay.MenuInput);
         //this.inputActionReference.Set(InputManager.inputActions.asset.FindAction(InputManager.inputActions.Gameplay + "/" + this.referenceDropdown.options[change.value].text));
     }
 

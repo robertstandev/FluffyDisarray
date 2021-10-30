@@ -2849,6 +2849,12 @@ PrefabInstance:
       propertyPath: mapCharacterManagerGameObject
       value: 
       objectReference: {fileID: 523206610}
+    - target: {fileID: 3333592061610800461, guid: f5435c9e620fa0f389c26129eb013ca1,
+        type: 3}
+      propertyPath: allInputActions.Array.data[2]
+      value: 
+      objectReference: {fileID: -8560322627464949119, guid: 10221d09c0049cbaf8c1bfa72eb54280,
+        type: 3}
     - target: {fileID: 3426701446253574928, guid: f5435c9e620fa0f389c26129eb013ca1,
         type: 3}
       propertyPath: m_Pivot.x
@@ -2964,6 +2970,26 @@ PrefabInstance:
       propertyPath: mapCharacterManagerScript
       value: 
       objectReference: {fileID: 523206610}
+    - target: {fileID: 6276011540679232817, guid: f5435c9e620fa0f389c26129eb013ca1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000009536743
+      objectReference: {fileID: 0}
+    - target: {fileID: 7725501112363734944, guid: f5435c9e620fa0f389c26129eb013ca1,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7725501112363734944, guid: f5435c9e620fa0f389c26129eb013ca1,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8463715073180267000, guid: f5435c9e620fa0f389c26129eb013ca1,
+        type: 3}
+      propertyPath: m_Text
+      value: s
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5435c9e620fa0f389c26129eb013ca1, type: 3}
 --- !u!1001 &7796767689916730587
