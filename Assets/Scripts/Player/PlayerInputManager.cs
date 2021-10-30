@@ -27,5 +27,16 @@ public class PlayerInputManager : MonoBehaviour
     public void setJumpInput(InputAction inputAction) { this.jumpInput = inputAction; }
     public void setProjectileInput(InputAction inputAction) { this.projectileInput = inputAction; }
     public void setSlashInput(InputAction inputAction) { this.slashInput = inputAction; }
-    public void setMenuInput(InputAction inputAction) { this.menuInput = inputAction; }
+    public void setMenuInput(InputAction inputAction) { this.menuInput.AddBinding(inputAction.bindings[0]); }
+
+    public void setInputKeys(PlayerInputManager playerInputManagerScript)
+    {
+        // this.movementInput = playerInputManagerScript.getMovementInput;
+        // this.upInput = playerInputManagerScript.getUpInput;
+        // this.downInput = playerInputManagerScript.downInput;
+        // this.jumpInput = playerInputManagerScript.jumpInput;
+        // this.projectileInput = playerInputManagerScript.projectileInput;
+        // this.slashInput = playerInputManagerScript.slashInput;
+        //this.menuInput.AddBinding(playerInputManagerScript.menuInput.bindings[0]);
+    }
 }

@@ -58,7 +58,7 @@ public class InputKeyRebinder : MonoBehaviour, IPointerDownHandler
         .OnComplete(
                     operation =>
                     {
-                        rebindComplete();
+                        rebindComplete(hasComposite);
 
                         if (hasComposite)
                         {
@@ -71,14 +71,12 @@ public class InputKeyRebinder : MonoBehaviour, IPointerDownHandler
         .Start();
     }
 
-    private void rebindComplete()
+    private void rebindComplete(bool hasComposite)
     {
         //sa pun decat rebindingOperation.dispose dupa fiecare iar astea cu text si seKey doar daca nu mai exista composite/partofcomposite
-        Debug.Log(actionInput);//delete after
-
 
         this.textComponent.text = "";
-        for(int i = 0 ; i < this.actionInput.bindings.Count ; i++)
+        for(int i = hasComposite ? 1 : 0 ; i < this.actionInput.bindings.Count ; i++)
         {
             if(actionInput.bindings[i].isPartOfComposite){ continue; }
             this.textComponent.text += InputControlPath.ToHumanReadableString(this.actionInput.bindings[i].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice);

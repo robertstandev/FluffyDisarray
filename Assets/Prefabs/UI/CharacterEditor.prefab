@@ -447,14 +447,6 @@ MonoBehaviour:
   keyBindingManager: {fileID: 2526088451318758626}
   inputToReplace: 6
   textComponent: {fileID: 1789606960620334826}
-  actionInput:
-    m_Name: 
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
 --- !u!1 &2350420980022186846
 GameObject:
   m_ObjectHideFlags: 0
@@ -550,14 +542,6 @@ MonoBehaviour:
   keyBindingManager: {fileID: 2526088451318758626}
   inputToReplace: 4
   textComponent: {fileID: 2311004559109855879}
-  actionInput:
-    m_Name: 
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
 --- !u!1 &2422016366671809849
 GameObject:
   m_ObjectHideFlags: 0
@@ -1343,14 +1327,6 @@ MonoBehaviour:
   keyBindingManager: {fileID: 2526088451318758626}
   inputToReplace: 5
   textComponent: {fileID: 3680721467150178489}
-  actionInput:
-    m_Name: 
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
 --- !u!1 &5483640973619305050
 GameObject:
   m_ObjectHideFlags: 0
@@ -1639,14 +1615,6 @@ MonoBehaviour:
   keyBindingManager: {fileID: 2526088451318758626}
   inputToReplace: 2
   textComponent: {fileID: 3825267867408961515}
-  actionInput:
-    m_Name: 
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
 --- !u!1 &6484543952432318323
 GameObject:
   m_ObjectHideFlags: 0
@@ -1943,14 +1911,6 @@ MonoBehaviour:
   keyBindingManager: {fileID: 2526088451318758626}
   inputToReplace: 3
   textComponent: {fileID: 2961722050384108725}
-  actionInput:
-    m_Name: 
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
 --- !u!1 &7337182137786670086
 GameObject:
   m_ObjectHideFlags: 0
@@ -2280,14 +2240,6 @@ MonoBehaviour:
   keyBindingManager: {fileID: 2526088451318758626}
   inputToReplace: 1
   textComponent: {fileID: 726020158218084724}
-  actionInput:
-    m_Name: 
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
 --- !u!1 &8588772307422833959
 GameObject:
   m_ObjectHideFlags: 0
@@ -2383,14 +2335,6 @@ MonoBehaviour:
   keyBindingManager: {fileID: 2526088451318758626}
   inputToReplace: 0
   textComponent: {fileID: 514624973617163211}
-  actionInput:
-    m_Name: Action Input
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 8002901c-6d5f-41fa-a842-1d8f6eefc0c7
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
 --- !u!1 &8761389940637880086
 GameObject:
   m_ObjectHideFlags: 0
@@ -2562,14 +2506,6 @@ MonoBehaviour:
   keyBindingManager: {fileID: 2526088451318758626}
   inputToReplace: 0
   textComponent: {fileID: 2374935324301625101}
-  actionInput:
-    m_Name: Action Input
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: da27f465-989b-445f-8e17-de1f9bc3b58d
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
 --- !u!1 &9175713318396963068
 GameObject:
   m_ObjectHideFlags: 0

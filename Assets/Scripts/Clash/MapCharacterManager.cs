@@ -40,6 +40,7 @@ public class MapCharacterManager : MonoBehaviour
                 configurePlayer(this.gameCharacters[i], tempCharacterNumber, tempPlayerNumber);
 
                 //this.gameCharacters[i].GetComponent<IController>().setInputKeys(this.gameCharactersInputKeys[i]);
+                this.gameCharacters[i].GetComponent<PlayerInputManager>().setInputKeys(this.gameCharactersInputKeys[i]);
 
                 this.gameCharacters[i].GetComponent<IController>().setMenu(this.gameMenu);
             }
