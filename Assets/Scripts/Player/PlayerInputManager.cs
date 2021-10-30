@@ -20,4 +20,12 @@ public class PlayerInputManager : MonoBehaviour
     public InputAction getProjectileInput { get { return this.projectileInput; } }
     public InputAction getSlashInput { get { return this.slashInput; } }
     public InputAction getMenuInput { get { return this.menuInput; } }
+
+    public void setMovementInput(InputAction inputAction) { this.movementInput = inputAction; }
+    public void setUpInput(InputAction inputAction) { this.upInput = inputAction; }
+    public void setDownInput(InputAction inputAction) { this.downInput = inputAction; }
+    public void setJumpInput(InputAction inputAction) { this.jumpInput = inputAction; }
+    public void setProjectileInput(InputAction inputAction) { this.projectileInput = inputAction; }
+    public void setSlashInput(InputAction inputAction) { this.slashInput = inputAction; }
+    public void setMenuInput(InputAction inputAction) { this.menuInput = inputAction; }
 }

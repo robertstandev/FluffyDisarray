@@ -9,11 +9,11 @@ public class InputKeyRebinder : MonoBehaviour, IPointerDownHandler
 {
     private enum typesOfInputs {Button , Axis};
     [SerializeField]private typesOfInputs typeOfInput = typesOfInputs.Button;
-    [SerializeField]private CharacterEditorKeyBindingManager keyBindingManager;
+    [SerializeField]private PlayerInputManager keyBindingManager;
     private enum inputList { movementInput, downInput, upInput, jumpInput, projectileInput, slashInput, menuInput};
     [SerializeField]private inputList inputToReplace = inputList.movementInput;
     [SerializeField]private Text textComponent;
-    private InputAction actionInput;
+    private InputAction actionInput = new InputAction();
 
     private string originalText;
 
@@ -25,7 +25,7 @@ public class InputKeyRebinder : MonoBehaviour, IPointerDownHandler
     {
         this.originalText  = this.textComponent.text;
 
-        this.actionInput = new InputAction();
+        this.actionInput.RemoveAllBindingOverrides();
 
         if(this.typeOfInput.Equals(typesOfInputs.Button))
         {

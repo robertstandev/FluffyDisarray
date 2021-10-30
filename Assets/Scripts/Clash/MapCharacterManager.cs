@@ -21,7 +21,7 @@ public class MapCharacterManager : MonoBehaviour
     private List<Vector2> gameCharactersProjectilesPositionOffsets = new List<Vector2>();
     private List<GameObject> gameCharactersProjectilesMuzzleEffects = new List<GameObject>();
     private List<Vector2> gameCharactersProjectilesMuzzlePositionOffsets = new List<Vector2>();
-    private List<CharacterEditorKeyBindingManager> gameCharactersInputKeys = new List<CharacterEditorKeyBindingManager>();
+    private List<PlayerInputManager> gameCharactersInputKeys = new List<PlayerInputManager>();
     private List<GameObject> gameCharactersPlayerCameras = new List<GameObject>();
 
     private void Awake() { this.mapGameObject.SetActive(false); }
@@ -117,7 +117,7 @@ public class MapCharacterManager : MonoBehaviour
     public int getIndexOfCollidedObject(GameObject objectToSearchFor) { return this.gameCharacters.IndexOf(objectToSearchFor); }
     public GameObject getPlayerPrefab() { return this.playerPrefab; }
     public GameObject getBotPrefab() { return this.botPrefab; }
-    public void createCharacters(int playerCount, int botCount, List<GameObject> charactersList, List<Color32> characteresColorsList, List<GameObject> charactersProjectilesList, List<Vector2> charactersProjectilesPositionOffsetList, List<GameObject> charactersProjectileMuzzleEffectList , List<Vector2> charactersProjectileMuzzlePositionOffsetList, List<CharacterEditorKeyBindingManager> charactersInputsList)
+    public void createCharacters(int playerCount, int botCount, List<GameObject> charactersList, List<Color32> characteresColorsList, List<GameObject> charactersProjectilesList, List<Vector2> charactersProjectilesPositionOffsetList, List<GameObject> charactersProjectileMuzzleEffectList , List<Vector2> charactersProjectileMuzzlePositionOffsetList, List<PlayerInputManager> charactersInputsList)
     {
         this.playerCount = playerCount;
         this.botCount = botCount;

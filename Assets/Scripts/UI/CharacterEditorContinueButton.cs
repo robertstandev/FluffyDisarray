@@ -11,7 +11,7 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
     [SerializeField]private Text characterTypeText;
     [SerializeField]private Image characterColorImage;
     [SerializeField]private CharacterEditorProjectilePicker characterProjectileSelectorScript;
-    [SerializeField]private CharacterEditorKeyBindingManager charactersInput;
+    [SerializeField]private PlayerInputManager charactersInput;
     [SerializeField]private GameObject finishText;
     [SerializeField]private GameObject controlsGroupGameObject;
     private HideShowTouch hideShowTouchComponent;
@@ -24,7 +24,7 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
     private List<Vector2> gameCharactersProjectilesPositionOffsets = new List<Vector2>();
     private List<GameObject> gameCharactersProjectilesMuzzleEffects = new List<GameObject>();
     private List<Vector2> gameCharactersProjectilesMuzzlePositionOffsets = new List<Vector2>();
-    private List<CharacterEditorKeyBindingManager> gameCharactersInputs = new List<CharacterEditorKeyBindingManager>();
+    private List<PlayerInputManager> gameCharactersInputs = new List<PlayerInputManager>();
 
     private GameObject playerPrefab , botPrefab;
 

@@ -444,7 +444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeOfInput: 0
-  keyBindingManager: {fileID: 2190109299770710528}
+  keyBindingManager: {fileID: 2526088451318758626}
   inputToReplace: 6
   textComponent: {fileID: 1789606960620334826}
 --- !u!1 &2350420980022186846
@@ -539,7 +539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeOfInput: 0
-  keyBindingManager: {fileID: 2190109299770710528}
+  keyBindingManager: {fileID: 2526088451318758626}
   inputToReplace: 4
   textComponent: {fileID: 2311004559109855879}
 --- !u!1 &2422016366671809849
@@ -1324,7 +1324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeOfInput: 0
-  keyBindingManager: {fileID: 2190109299770710528}
+  keyBindingManager: {fileID: 2526088451318758626}
   inputToReplace: 5
   textComponent: {fileID: 3680721467150178489}
 --- !u!1 &5483640973619305050
@@ -1439,7 +1439,7 @@ MonoBehaviour:
   characterTypeText: {fileID: 3691142797219448312}
   characterColorImage: {fileID: 1486349530815052586}
   characterProjectileSelectorScript: {fileID: 7580099734392434975}
-  charactersInput: {fileID: 2190109299770710528}
+  charactersInput: {fileID: 0}
   finishText: {fileID: 2820303113435381564}
   controlsGroupGameObject: {fileID: 610652779156420736}
 --- !u!1 &5767272661242544372
@@ -1612,7 +1612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeOfInput: 0
-  keyBindingManager: {fileID: 2190109299770710528}
+  keyBindingManager: {fileID: 2526088451318758626}
   inputToReplace: 2
   textComponent: {fileID: 3825267867408961515}
 --- !u!1 &6484543952432318323
@@ -1908,7 +1908,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeOfInput: 0
-  keyBindingManager: {fileID: 2190109299770710528}
+  keyBindingManager: {fileID: 2526088451318758626}
   inputToReplace: 3
   textComponent: {fileID: 2961722050384108725}
 --- !u!1 &7337182137786670086
@@ -2042,7 +2042,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8055664957058050942}
-  - component: {fileID: 2190109299770710528}
+  - component: {fileID: 2526088451318758626}
   m_Layer: 5
   m_Name: KeyBindingManager
   m_TagString: Untagged
@@ -2077,7 +2077,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2190109299770710528
+--- !u!114 &2526088451318758626
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2086,62 +2086,62 @@ MonoBehaviour:
   m_GameObject: {fileID: 7611420244021700641}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb201d690a9ae17f58dae362919ce2bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a523dbb75f7387cda998575ae000df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   movementInput:
-    m_Name: 
+    m_Name: Movement Input
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 
+    m_Id: 1ab34b6e-05bf-490d-bab6-e2997bacbb7e
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
   upInput:
-    m_Name: 
+    m_Name: Up Input
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 
+    m_Id: 8e22c6a7-8a55-4a94-8800-f0773041657e
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
   downInput:
-    m_Name: 
+    m_Name: Down Input
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 
+    m_Id: 68dde267-0de8-4619-b16c-215223d05808
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
   jumpInput:
-    m_Name: 
+    m_Name: Jump Input
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 
+    m_Id: 9f032775-0a47-4ed8-9796-c9877e282e68
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
   projectileInput:
-    m_Name: 
+    m_Name: Projectile Input
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 
+    m_Id: ffe558f0-88c1-4ae5-b140-b3c76d288f9f
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
   slashInput:
-    m_Name: 
+    m_Name: Slash Input
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 
+    m_Id: 6f755dfa-2ac2-4186-8b24-1352d2b66b8d
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
   menuInput:
-    m_Name: 
+    m_Name: Menu Input
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 
+    m_Id: bc5629bc-5b07-479d-b339-84a6ee948fd0
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
@@ -2237,7 +2237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeOfInput: 0
-  keyBindingManager: {fileID: 2190109299770710528}
+  keyBindingManager: {fileID: 2526088451318758626}
   inputToReplace: 1
   textComponent: {fileID: 726020158218084724}
 --- !u!1 &8588772307422833959
@@ -2332,7 +2332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeOfInput: 1
-  keyBindingManager: {fileID: 2190109299770710528}
+  keyBindingManager: {fileID: 2526088451318758626}
   inputToReplace: 0
   textComponent: {fileID: 514624973617163211}
 --- !u!1 &8761389940637880086
@@ -2503,7 +2503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeOfInput: 0
-  keyBindingManager: {fileID: 2190109299770710528}
+  keyBindingManager: {fileID: 2526088451318758626}
   inputToReplace: 0
   textComponent: {fileID: 2374935324301625101}
 --- !u!1 &9175713318396963068
