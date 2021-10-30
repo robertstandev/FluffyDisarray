@@ -25,59 +25,60 @@ public class InputKeyRebinder : MonoBehaviour, IPointerDownHandler
     {
         this.originalText  = this.textComponent.text;
 
-        this.actionInput.RemoveAllBindingOverrides();
+        this.actionInput = new InputAction();
 
         if(this.typeOfInput.Equals(typesOfInputs.Button))
         {
             this.textComponent.text = "Press Key";
-            configureButtonInput();
+            performInteractiveRebind(false , -1);   //-1 adica il ia exact pe el
         }
         else
         {
             this.textComponent.text = "Press Key(s)";
-            configureAxisInput();
+            //performInteractiveRebind(true , 1);   //cu composite vine mai intai ce e "Axis" , "2DVector" etc (index 0) si mai apoi <Keyboard>/button (index 1) , <keyboard>/button (index 2) etc
+            configureAxisInput();//test delete after
         }
     }
 
     private void configureAxisInput()
     {
         this.actionInput.AddCompositeBinding("Axis") // Or just "Axis"
-        .With("Positive", "A")
-        .With("Negative", "A");
+        .With("Positive", "<Gamepad>/rightTrigger")
+        .With("Negative", "<Gamepad>/leftTrigger");
 
-        this.rebindingOperation = actionInput.PerformInteractiveRebinding(0)
-        .WithRebindAddingNewBinding()
-        .WithControlsExcluding("Mouse")
-        .OnMatchWaitForAnother(0.1f)
-        .OnCancel(operation => rebindCanceled())
-        .Start();
-
-        this.rebindingOperation = actionInput.PerformInteractiveRebinding(1)
-        .WithRebindAddingNewBinding()
-        .WithControlsExcluding("Mouse")
-        .OnMatchWaitForAnother(0.1f)
-        .OnCancel(operation => rebindCanceled())
-        .Start();
-  
-        rebindComplete();
+        performInteractiveRebind(true , 1);
     }
 
-    private void configureButtonInput()
+    private void performInteractiveRebind(bool hasComposite, int bindingIndex)
     {
-        this.rebindingOperation = actionInput.PerformInteractiveRebinding()
+        this.rebindingOperation = this.actionInput.PerformInteractiveRebinding(bindingIndex)
         .WithRebindAddingNewBinding()
         .WithControlsExcluding("Mouse")
         .OnMatchWaitForAnother(0.1f)
-        .OnComplete(operation => rebindComplete())
+        .OnComplete(
+                    operation =>
+                    {
+                        rebindComplete();
+
+                        if (hasComposite)
+                        {
+                            var nextBindingIndex = bindingIndex + 1;
+                            if (nextBindingIndex < this.actionInput.bindings.Count && this.actionInput.bindings[nextBindingIndex].isPartOfComposite)
+                                performInteractiveRebind(true, nextBindingIndex);
+                        }
+                    })
         .OnCancel(operation => rebindCanceled())
         .Start();
     }
 
     private void rebindComplete()
     {
-        this.textComponent.text = InputControlPath.ToHumanReadableString(this.actionInput.bindings[0].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice);
+        //sa pun decat rebindingOperation.dispose dupa fiecare iar astea cu text si seKey doar daca nu mai exista composite/partofcomposite etc
+        this.textComponent.text = InputControlPath.ToHumanReadableString(this.actionInput.bindings.ToString(), InputControlPath.HumanReadableStringOptions.OmitDevice);
         setKeyBinding();
         this.rebindingOperation.Dispose();
+
+        Debug.Log(actionInput);//delete after
     }
 
     private void rebindCanceled()
