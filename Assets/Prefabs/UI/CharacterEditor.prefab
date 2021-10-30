@@ -1385,13 +1385,7 @@ MonoBehaviour:
   m_ItemImage: {fileID: 0}
   m_Value: 0
   m_Options:
-    m_Options:
-    - m_Text: Movement
-      m_Image: {fileID: 0}
-    - m_Text: Up
-      m_Image: {fileID: 0}
-    - m_Text: Down
-      m_Image: {fileID: 0}
+    m_Options: []
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2366,7 +2360,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Movement
+  m_Text: 
 --- !u!1 &6484543952432318323
 GameObject:
   m_ObjectHideFlags: 0
