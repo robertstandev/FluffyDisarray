@@ -17,6 +17,11 @@ public class RebindUI : MonoBehaviour
     [SerializeField]private Text rebindText;
     [SerializeField]private Button resetButton;
 
+    private void Start()
+    {
+        populateDropDown();
+    }
+
     private void OnEnable()
     {
         this.rebindButton.onClick.AddListener(() => doRebind());
@@ -83,7 +88,19 @@ public class RebindUI : MonoBehaviour
 
     private void DropdownValueChanged(Dropdown change)
     {
-        Debug.Log("New Value : " + change.value);
+        //Debug.Log("New Value : " + change.value);
+       //this.inputActionReference = InputManager.inputActions.Gameplay.MenuInput;
     }
 
+    private void populateDropDown()
+    {
+        List<string> inputCategoryList = new List<string>();
+
+        foreach (var action in InputManager.inputActions)
+        {
+            inputCategoryList.Add(action.name);
+        }
+
+        this.referenceDropdown.AddOptions(inputCategoryList);
+    }
 }
