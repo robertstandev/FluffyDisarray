@@ -73,8 +73,14 @@ public class InputKeyRebinder : MonoBehaviour, IPointerDownHandler
 
     private void rebindComplete()
     {
-        //sa pun decat rebindingOperation.dispose dupa fiecare iar astea cu text si seKey doar daca nu mai exista composite/partofcomposite etc
-        this.textComponent.text = InputControlPath.ToHumanReadableString(this.actionInput.bindings.ToString(), InputControlPath.HumanReadableStringOptions.OmitDevice);
+        //sa pun decat rebindingOperation.dispose dupa fiecare iar astea cu text si seKey doar daca nu mai exista composite/partofcomposite
+
+        this.textComponent.text = "";
+        for(int i = 0 ; i < this.actionInput.bindings.Count ; i++)
+        {
+            if(actionInput.bindings[i].isPartOfComposite){ continue; }
+            this.textComponent.text += InputControlPath.ToHumanReadableString(this.actionInput.bindings[i].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice);
+        }
         setKeyBinding();
         this.rebindingOperation.Dispose();
 
