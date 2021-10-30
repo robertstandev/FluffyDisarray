@@ -74,6 +74,10 @@ public class InputManager : MonoBehaviour
             rebindCanceled?.Invoke();
         });
 
+        rebind.WithCancelingThrough("<Keyboard>/escape");
+        //rebind.WithCancelingThrough("<Keyboard>/Z");
+        //can add multiple (including controllers)
+
         rebindStarted?.Invoke(actionToRebind, bindingIndex);
         rebind.Start();
    }

@@ -7,13 +7,11 @@ using UnityEngine.InputSystem;
 public class RebindUI : MonoBehaviour
 {
     [SerializeField]private InputActionReference inputActionReference;
-    [SerializeField]private bool excludeMouse = true;
     [SerializeField][Range(0,10)]private int selectedBinding;
     [SerializeField]private InputBinding.DisplayStringOptions displayStringOptions;
     [SerializeField]private InputBinding inputBinding;
     private int bindingIndex;
     private string actionName;
-    [SerializeField]private Text actionText;
     [SerializeField]private Button rebindButton;
     [SerializeField]private Text rebindText;
     [SerializeField]private Button resetButton;
@@ -24,11 +22,13 @@ public class RebindUI : MonoBehaviour
         resetButton.onClick.AddListener(() => resetBinding());
 
         InputManager.rebindComplete += updateUI;
+        InputManager.rebindCanceled += updateUI;
     }
 
     private void OnDisable()
     {
         InputManager.rebindComplete -= updateUI;
+        InputManager.rebindCanceled -= updateUI;
     }
 
     private void OnValidate()
@@ -55,11 +55,6 @@ public class RebindUI : MonoBehaviour
 
     private void updateUI()
     {
-        if(actionText != null)
-        {
-            actionText.text = actionName;
-        }
-
         if(rebindText != null)
         {
             if(Application.isPlaying)

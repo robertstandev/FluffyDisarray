@@ -38,8 +38,6 @@ public class MapCharacterManager : MonoBehaviour
                 tempPlayerNumber += 1;
                 configurePlayer(this.gameCharacters[i], tempCharacterNumber, tempPlayerNumber);
 
-                //this.gameCharacters[i].GetComponent<IController>().setInputKeys(this.gameCharactersInputKeys[i]);
-
                 this.gameCharacters[i].GetComponent<IController>().setMenu(this.gameMenu);
             }
             else
@@ -137,7 +135,7 @@ public class MapCharacterManager : MonoBehaviour
     private IEnumerator configureCharactersAndEnableManagers()
     {
         yield return StartCoroutine(configureCharacters());
-        enableOtherManagers();  //wait for above method to finish to start this
+        enableOtherManagers();
     }
 
     private void enableOtherManagers()
