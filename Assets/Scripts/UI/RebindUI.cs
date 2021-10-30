@@ -90,7 +90,7 @@ public class RebindUI : MonoBehaviour
     private void DropdownValueChanged(Dropdown change)
     {
         //Debug.Log("New Value : " + change.value);
-        this.inputActionReference.Set(InputManager.inputActions.asset.FindAction("Gameplay/" + this.referenceDropdown.options[change.value].text));
+        this.inputActionReference.Set(InputManager.inputActions.asset.FindAction(InputManager.inputActions.Gameplay + "/" + this.referenceDropdown.options[change.value].text));
     }
 
     private void populateDropDown()
