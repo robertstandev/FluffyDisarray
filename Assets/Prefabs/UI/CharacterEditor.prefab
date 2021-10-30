@@ -2735,6 +2735,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b4d8ebef025b7bb9b415a9a4407d247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allInputActions:
+  - {fileID: 4455643718342499001, guid: 10221d09c0049cbaf8c1bfa72eb54280, type: 3}
+  - {fileID: -8560322627464949119, guid: 10221d09c0049cbaf8c1bfa72eb54280, type: 3}
+  - {fileID: 7260450572150006650, guid: 10221d09c0049cbaf8c1bfa72eb54280, type: 3}
+  - {fileID: 8481011405741307123, guid: 10221d09c0049cbaf8c1bfa72eb54280, type: 3}
+  - {fileID: -7460553763326497124, guid: 10221d09c0049cbaf8c1bfa72eb54280, type: 3}
+  - {fileID: -7947662021473230826, guid: 10221d09c0049cbaf8c1bfa72eb54280, type: 3}
+  - {fileID: -5412904266612105252, guid: 10221d09c0049cbaf8c1bfa72eb54280, type: 3}
   inputActionReference: {fileID: 0}
   selectedBinding: 0
   displayStringOptions: 0
