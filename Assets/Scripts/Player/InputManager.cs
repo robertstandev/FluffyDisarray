@@ -92,4 +92,23 @@ public class InputManager : MonoBehaviour
        InputAction action = inputActions.asset.FindAction(actionName);
        return action.GetBindingDisplayString(bindingIndex);
    }
+
+   public static void resetBinding(string actionName, int bindingIndex)
+   {
+       InputAction action = inputActions.asset.FindAction(actionName);
+
+       if(action == null || action.bindings.Count <= bindingIndex) { return; }
+
+       if(action.bindings[bindingIndex].isComposite)
+        {
+            for(int i = bindingIndex; i< action.bindings.Count && action.bindings[i].isComposite; i++)
+            {
+                action.RemoveBindingOverride(i);
+            }
+        }
+        else
+        {
+            action.RemoveBindingOverride(bindingIndex);
+        }
+    }
 }

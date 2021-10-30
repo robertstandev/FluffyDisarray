@@ -75,7 +75,8 @@ public class RebindUI : MonoBehaviour
 
     private void resetBinding()
     {
-
+        InputManager.resetBinding(actionName, bindingIndex);
+        updateUI();
     }
 
 }
