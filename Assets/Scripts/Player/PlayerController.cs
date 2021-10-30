@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Stamina), typeof(CheckSurroundings), typeof(Animator))]
 public class PlayerController : MonoBehaviour, IController
 {
-	private InputAction movementInput, runInput, upInput, downInput, jumpInput, projectileInput, slashInput, menuInput;
+    private InputAction movementInput, runInput, upInput, downInput, jumpInput, projectileInput, slashInput, menuInput;
     private Movement movementComponent;
     private Jump jumpComponent;
     private Stamina staminaComponent;
@@ -32,28 +32,28 @@ public class PlayerController : MonoBehaviour, IController
 
 	private void Awake()
     {
-        PlayerInputManager cachedPlayerInput = GetComponent<PlayerInputManager>();
+        PlayerInputManager playerInputManager = InputManager.inputActions;
 
-        this.movementInput = cachedPlayerInput.getMovementInput;
+        this.movementInput = playerInputManager.Gameplay.MovementInput;
         this.movementInput.performed += context => OnMove(context);
         this.movementInput.canceled += context => OnMove(context);
 
-        this.upInput = cachedPlayerInput.getUpInput;
+        this.upInput = playerInputManager.Gameplay.UpInput;
         this.upInput.performed += context => OnUpInput();
 
-        this.downInput = cachedPlayerInput.getDownInput;
+        this.downInput = playerInputManager.Gameplay.DownInput;
         this.downInput.performed += context => OnDownInput();
 
-        this.jumpInput = cachedPlayerInput.getJumpInput;
+        this.jumpInput = playerInputManager.Gameplay.JumpInput;
         this.jumpInput.performed += context => OnJump();
 
-        this.projectileInput = cachedPlayerInput.getProjectileInput;
+        this.projectileInput = playerInputManager.Gameplay.ProjectileInput;
         this.projectileInput.performed += context => GetComponent<ProjectileTrigger>().executeSkill();
 
-        this.slashInput = cachedPlayerInput.getSlashInput;
+        this.slashInput = playerInputManager.Gameplay.SlashInput;
         this.slashInput.performed += context => GetComponent<SlashTrigger>().executeSkill();
 
-        this.menuInput = cachedPlayerInput.getMenuInput;
+        this.menuInput = playerInputManager.Gameplay.MenuInput;
         this.menuInput.performed += context => this.menuGameObject.SetActive(!this.menuGameObject.activeInHierarchy);
 
         this.movementComponent = GetComponent<Movement>();
