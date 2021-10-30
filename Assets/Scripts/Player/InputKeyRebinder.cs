@@ -74,6 +74,8 @@ public class InputKeyRebinder : MonoBehaviour, IPointerDownHandler
     private void rebindComplete()
     {
         //sa pun decat rebindingOperation.dispose dupa fiecare iar astea cu text si seKey doar daca nu mai exista composite/partofcomposite
+        Debug.Log(actionInput);//delete after
+
 
         this.textComponent.text = "";
         for(int i = 0 ; i < this.actionInput.bindings.Count ; i++)
@@ -83,8 +85,6 @@ public class InputKeyRebinder : MonoBehaviour, IPointerDownHandler
         }
         setKeyBinding();
         this.rebindingOperation.Dispose();
-
-        Debug.Log(actionInput);//delete after
     }
 
     private void rebindCanceled()
