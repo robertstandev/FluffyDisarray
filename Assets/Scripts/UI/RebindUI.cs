@@ -12,14 +12,16 @@ public class RebindUI : MonoBehaviour
     [SerializeField]private InputBinding inputBinding;
     private int bindingIndex;
     private string actionName;
+    [SerializeField]private Dropdown referenceDropdown;
     [SerializeField]private Button rebindButton;
     [SerializeField]private Text rebindText;
     [SerializeField]private Button resetButton;
 
     private void OnEnable()
     {
-        rebindButton.onClick.AddListener(() => doRebind());
-        resetButton.onClick.AddListener(() => resetBinding());
+        this.rebindButton.onClick.AddListener(() => doRebind());
+        this.resetButton.onClick.AddListener(() => resetBinding());
+        this.referenceDropdown.onValueChanged.AddListener(delegate { DropdownValueChanged(this.referenceDropdown); });
 
         InputManager.rebindComplete += updateUI;
         InputManager.rebindCanceled += updateUI;
@@ -33,7 +35,7 @@ public class RebindUI : MonoBehaviour
 
     private void OnValidate()
     {
-        if(inputActionReference == null) { return; }
+        if(this.inputActionReference == null) { return; }
 
         getBindingInfo();
         updateUI();
@@ -41,42 +43,47 @@ public class RebindUI : MonoBehaviour
 
     private void getBindingInfo()
     {
-        if(inputActionReference.action != null)
+        if(this.inputActionReference.action != null)
         {
-            actionName = inputActionReference.action.name;
+            this.actionName = this.inputActionReference.action.name;
         }
 
-        if(inputActionReference.action.bindings.Count > selectedBinding)
+        if(this.inputActionReference.action.bindings.Count > this.selectedBinding)
         {
-            inputBinding = inputActionReference.action.bindings[selectedBinding];
-            bindingIndex = selectedBinding;
+            this.inputBinding = this.inputActionReference.action.bindings[selectedBinding];
+            this.bindingIndex = this.selectedBinding;
         }
     }
 
     private void updateUI()
     {
-        if(rebindText != null)
+        if(this.rebindText != null)
         {
             if(Application.isPlaying)
             {
-                rebindText.text = InputManager.getBindingName(actionName, bindingIndex);
+                this.rebindText.text = InputManager.getBindingName(this.actionName, this.bindingIndex);
             }
             else
             {
-                rebindText.text = inputActionReference.action.GetBindingDisplayString(bindingIndex);
+                this.rebindText.text = this.inputActionReference.action.GetBindingDisplayString(this.bindingIndex);
             }
         }
     }
 
     private void doRebind()
     {
-        InputManager.startRebind(actionName, bindingIndex, rebindText);
+        InputManager.startRebind(this.actionName, this.bindingIndex, this.rebindText);
     }
 
     private void resetBinding()
     {
-        InputManager.resetBinding(actionName, bindingIndex);
+        InputManager.resetBinding(this.actionName, this.bindingIndex);
         updateUI();
+    }
+
+    private void DropdownValueChanged(Dropdown change)
+    {
+        Debug.Log("New Value : " + change.value);
     }
 
 }
