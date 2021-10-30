@@ -20,7 +20,7 @@ public class RebindUI : MonoBehaviour
     private void Start()
     {
         populateDropDown();
-        this.inputActionReference = new InputActionReference();
+        this.inputActionReference = (InputActionReference) ScriptableObject.CreateInstance(typeof(InputActionReference));
     }
 
     private void OnEnable()
@@ -90,7 +90,8 @@ public class RebindUI : MonoBehaviour
     private void DropdownValueChanged(Dropdown change)
     {
         //Debug.Log("New Value : " + change.value);
-        this.inputActionReference.Set(InputManager.inputActions.asset.FindAction(InputManager.inputActions.Gameplay + "/" + this.referenceDropdown.options[change.value].text));
+        this.inputActionReference.Set(InputManager.inputActions.Gameplay.MenuInput);
+        //this.inputActionReference.Set(InputManager.inputActions.asset.FindAction(InputManager.inputActions.Gameplay + "/" + this.referenceDropdown.options[change.value].text));
     }
 
     private void populateDropDown()
