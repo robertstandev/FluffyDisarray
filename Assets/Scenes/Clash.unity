@@ -2851,6 +2851,37 @@ PrefabInstance:
       objectReference: {fileID: 523206610}
     - target: {fileID: 3333592061610800461, guid: f5435c9e620fa0f389c26129eb013ca1,
         type: 3}
+      propertyPath: inputBinding.m_Id
+      value: 697519f4-d129-4050-88d1-90e1c12e1afc
+      objectReference: {fileID: 0}
+    - target: {fileID: 3333592061610800461, guid: f5435c9e620fa0f389c26129eb013ca1,
+        type: 3}
+      propertyPath: inputBinding.m_Name
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3333592061610800461, guid: f5435c9e620fa0f389c26129eb013ca1,
+        type: 3}
+      propertyPath: inputBinding.m_Path
+      value: <Keyboard>/s
+      objectReference: {fileID: 0}
+    - target: {fileID: 3333592061610800461, guid: f5435c9e620fa0f389c26129eb013ca1,
+        type: 3}
+      propertyPath: inputActionReference
+      value: 
+      objectReference: {fileID: 7260450572150006650, guid: 10221d09c0049cbaf8c1bfa72eb54280,
+        type: 3}
+    - target: {fileID: 3333592061610800461, guid: f5435c9e620fa0f389c26129eb013ca1,
+        type: 3}
+      propertyPath: inputBinding.m_Flags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3333592061610800461, guid: f5435c9e620fa0f389c26129eb013ca1,
+        type: 3}
+      propertyPath: inputBinding.m_Action
+      value: DownInput
+      objectReference: {fileID: 0}
+    - target: {fileID: 3333592061610800461, guid: f5435c9e620fa0f389c26129eb013ca1,
+        type: 3}
       propertyPath: allInputActions.Array.data[2]
       value: 
       objectReference: {fileID: -8560322627464949119, guid: 10221d09c0049cbaf8c1bfa72eb54280,
@@ -2988,7 +3019,7 @@ PrefabInstance:
     - target: {fileID: 8463715073180267000, guid: f5435c9e620fa0f389c26129eb013ca1,
         type: 3}
       propertyPath: m_Text
-      value: Rebind
+      value: a/d
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5435c9e620fa0f389c26129eb013ca1, type: 3}

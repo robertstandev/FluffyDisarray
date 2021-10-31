@@ -27,7 +27,6 @@ public class RebindUI : MonoBehaviour
     {
         this.rebindButton.onClick.AddListener(() => doRebind());
         this.resetButton.onClick.AddListener(() => resetBinding());
-        this.referenceDropdown.onValueChanged.AddListener(delegate { DropdownValueChanged(this.referenceDropdown); });
 
         InputManager.rebindComplete += updateUI;
         InputManager.rebindCanceled += updateUI;
@@ -56,7 +55,7 @@ public class RebindUI : MonoBehaviour
 
         if(this.inputActionReference.action.bindings.Count > this.selectedBinding)
         {
-            this.inputBinding = this.inputActionReference.action.bindings[selectedBinding];
+            this.inputBinding = inputActionReference.action.bindings[this.selectedBinding];
             this.bindingIndex = this.selectedBinding;
         }
     }
@@ -71,25 +70,25 @@ public class RebindUI : MonoBehaviour
             }
             else
             {
-                this.rebindText.text = this.inputActionReference.action.GetBindingDisplayString(this.bindingIndex);
+                this.rebindText.text = inputActionReference.action.GetBindingDisplayString(this.bindingIndex);
             }
         }
     }
 
     private void doRebind()
     {
-        InputManager.startRebind(this.actionName, this.bindingIndex, this.rebindText);
+        InputManager.startRebind(actionName, bindingIndex, rebindText);
     }
 
     private void resetBinding()
     {
-        InputManager.resetBinding(this.actionName, this.bindingIndex);
+        InputManager.resetBinding(actionName, bindingIndex);
         updateUI();
     }
 
     private void DropdownValueChanged(Dropdown change)
     {
-        //Debug.Log("New Value : " + change.value);
+        Debug.Log("New Value : " + change.value);
         //this.inputActionReference.Set(this.allInputActions[change.value]);
         //this.inputActionReference.Set(InputManager.inputActions.Gameplay.MenuInput);
         // this.inputActionReference.Set(InputManager.inputActions.asset.FindAction(InputManager.inputActions.Gameplay + "/" + this.referenceDropdown.options[change.value].text));
