@@ -13,7 +13,9 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
     [SerializeField]private CharacterEditorProjectilePicker characterProjectileSelectorScript;
     [SerializeField]private GameObject finishText;
     [SerializeField]private GameObject controlsGroupGameObject;
+    [SerializeField]private GameObject  playerConnectionTypeGroup;
     private HideShowTouch hideShowTouchComponent;
+    private bool hasExecutedOnce = false;
     private int characterNumber = 1;
     private int playerCount = 0;
     private int botCount = 0;
@@ -37,8 +39,7 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
     }
     public void OnPointerDown(PointerEventData eventData)
     {
-        this.hideShowTouchComponent.setCanExecute(false);
-        this.finishText.SetActive(true);
+        executeOnlyOnce();
 
         configureCharacter();
 
@@ -47,6 +48,17 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
         checkAndExecuteIfMaximumCharacterCountReached();
 
         checkCharacterNumber();
+    }
+
+    private void executeOnlyOnce()
+    {
+        if(!this.hasExecutedOnce)
+        {
+            this.playerConnectionTypeGroup.SetActive(true);
+            this.finishText.SetActive(true);
+            this.hideShowTouchComponent.setCanExecute(false);
+            this.hasExecutedOnce = true;
+        }
     }
 
     private void increaseCharacterNumber()
@@ -75,6 +87,7 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
             this.hideShowTouchComponent.disableEnableSelectedCanvas();
             this.characterTypeText.text = "Bot";
             this.controlsGroupGameObject.SetActive(false);
+            this.playerConnectionTypeGroup.SetActive(false);
         }
 
     }
