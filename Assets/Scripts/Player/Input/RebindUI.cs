@@ -12,18 +12,20 @@ public class RebindUI : MonoBehaviour
     [SerializeField]private InputBinding inputBinding;
     private int bindingIndex;
     private string actionName;
-    [SerializeField]private Dropdown referenceDropdown;
     [SerializeField]private Button rebindButton;
     [SerializeField]private Text rebindText;
     [SerializeField]private Button resetButton;
-
-    private void Start() { StartCoroutine(configureStartupReference()); }
 
     private void OnEnable()
     {
         this.rebindButton.onClick.AddListener(() => doRebind());
         this.resetButton.onClick.AddListener(() => resetBinding());
-        this.referenceDropdown.onValueChanged.AddListener(delegate { DropdownValueChanged(this.referenceDropdown); });
+
+        if(this.inputActionReference != null)
+        {
+            getBindingInfo();
+            updateUI();
+        }
 
         InputManager.rebindComplete += updateUI;
         InputManager.rebindCanceled += updateUI;
@@ -78,34 +80,5 @@ public class RebindUI : MonoBehaviour
     {
         InputManager.resetBinding(this.actionName, this.bindingIndex);
         updateUI();
-    }
-
-    private void DropdownValueChanged(Dropdown change) { setReference(change.value); }
-
-    private void setReference(int index)
-    {
-        this.inputActionReference = (InputActionReference) ScriptableObject.CreateInstance(typeof(InputActionReference));
-        this.inputActionReference.Set(InputManager.inputActions.asset.FindAction("Gameplay/" + this.referenceDropdown.options[index].text));
-        getBindingInfo();
-        updateUI();
-    }
-
-    private IEnumerator configureStartupReference()
-    {
-        yield return StartCoroutine(populateDropDown());
-        setReference(0);
-    }
-    private IEnumerator populateDropDown()
-    {
-        List<string> inputCategoryList = new List<string>();
-
-        foreach (var action in InputManager.inputActions)
-        {
-            inputCategoryList.Add(action.name);
-        }
-
-        this.referenceDropdown.AddOptions(inputCategoryList);
-
-        yield return null;
     }
 }
