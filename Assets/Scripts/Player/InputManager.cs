@@ -16,8 +16,13 @@ public class InputManager : MonoBehaviour
    {
        if(inputActions == null)
        {
-           inputActions = new PlayerInputManager();
+           createNewInstance();
        }
+   }
+
+   public static void createNewInstance()
+   {
+       inputActions = new PlayerInputManager();
    }
 
    public static void startRebind(string actionName, int bindingIndex, Text statusText)
@@ -85,7 +90,7 @@ public class InputManager : MonoBehaviour
    {
        if(inputActions == null)
        {
-           inputActions = new PlayerInputManager();
+           createNewInstance();
        }
 
        InputAction action = inputActions.asset.FindAction(actionName);
