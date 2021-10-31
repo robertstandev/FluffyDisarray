@@ -100,10 +100,7 @@ public class InputManager : MonoBehaviour
 
        if(action.bindings[bindingIndex].isComposite)
         {
-            for(int i = bindingIndex; i < action.bindings.Count && action.bindings[i].isPartOfComposite; i++)
-            {
-                action.RemoveBindingOverride(i);
-            }
+            action.RemoveAllBindingOverrides();
         }
         else
         {
