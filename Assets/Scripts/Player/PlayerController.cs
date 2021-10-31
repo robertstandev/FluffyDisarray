@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Stamina), typeof(CheckSurroundings), typeof(Animator))]
 public class PlayerController : MonoBehaviour, IController
 {
+    private PlayerInputManager playerInputManager;
     private InputAction movementInput, runInput, upInput, downInput, jumpInput, projectileInput, slashInput, menuInput;
     private Movement movementComponent;
     private Jump jumpComponent;
@@ -30,10 +31,8 @@ public class PlayerController : MonoBehaviour, IController
     [SerializeField]private GameObject impactEffect;
  	[SerializeField]private GameObject trailEffect;
 
-	private void Awake()
+	private void Start()
     {
-        PlayerInputManager playerInputManager = InputManager.inputActions;
-
         this.movementInput = playerInputManager.Gameplay.MovementInput;
         this.movementInput.performed += context => OnMove(context);
         this.movementInput.canceled += context => OnMove(context);
@@ -67,28 +66,24 @@ public class PlayerController : MonoBehaviour, IController
 
     private void OnEnable()
     {
-        enableInput(this.movementInput);
-        enableInput(this.upInput);
-        enableInput(this.downInput);
-        enableInput(this.jumpInput);
-        enableInput(this.projectileInput);
-        enableInput(this.slashInput);
-        enableInput(this.menuInput);
+        if(this.playerInputManager != null)
+        {
+            this.playerInputManager.Enable();
+        }
     }
     private void OnDisable()
     {
-        disableInput(this.movementInput);
-        disableInput(this.upInput);
-        disableInput(this.downInput);
-        disableInput(this.jumpInput);
-        disableInput(this.projectileInput);
-        disableInput(this.slashInput);
-        disableInput(this.menuInput);
+        if(this.playerInputManager != null)
+        {
+            this.playerInputManager.Disable();
+        }
     }
 
-    private void disableInput(InputAction input) { input.Disable(); }
-    private void enableInput(InputAction input) { input.Enable(); }
-
+    public void setInputManager(PlayerInputManager inputManager)
+    { 
+        this.playerInputManager = new PlayerInputManager();
+        this.playerInputManager = inputManager;
+    }
     public SpriteRenderer getCharacterRenderer { get { return this.mySpriteRenderer; } }
     public void disableController() { this.enabled = false; }
     public void enableController() { this.enabled = true; }

@@ -22,12 +22,14 @@ public class MapCharacterManager : MonoBehaviour
     private List<GameObject> gameCharactersProjectilesMuzzleEffects = new List<GameObject>();
     private List<Vector2> gameCharactersProjectilesMuzzlePositionOffsets = new List<Vector2>();
     private List<GameObject> gameCharactersPlayerCameras = new List<GameObject>();
+    private List<PlayerInputManager> gameCharactersPlayerInputManagers = new List<PlayerInputManager>();
 
     private void Awake() { this.mapGameObject.SetActive(false); }
-    
+
     private IEnumerator configureCharacters()
     {
         int tempPlayerNumber = 0 , tempCharacterNumber = 0;
+        IController tempControllerCache;
         for(int i = 0 ; i < this.temporaryGameCharacters.Count; i++)
         {
             this.gameCharacters.Add(Instantiate(this.temporaryGameCharacters[i] , Vector3.zero , Quaternion.identity));
@@ -36,17 +38,23 @@ public class MapCharacterManager : MonoBehaviour
             if(this.gameCharacters[i].name.Equals(playerPrefab.name + "(Clone)"))
             {
                 tempPlayerNumber += 1;
-                configurePlayer(this.gameCharacters[i], tempCharacterNumber, tempPlayerNumber);
 
-                this.gameCharacters[i].GetComponent<IController>().setMenu(this.gameMenu);
+                configurePlayer(this.gameCharacters[i], tempCharacterNumber, tempPlayerNumber);
+        
+                tempControllerCache = this.gameCharacters[i].GetComponent<IController>();
+                tempControllerCache.setInputManager(this.gameCharactersPlayerInputManagers[i]);
+                tempControllerCache.setMenu(this.gameMenu);
             }
             else
             {
                 configureCharacterStartPosition(this.gameCharacters[i] , tempCharacterNumber);
+
+                tempControllerCache = this.gameCharacters[i].GetComponent<IController>();
             }
 
             this.gameCharacters[i].GetComponent<ProjectileTrigger>().setProjectile(this.gameCharactersProjectiles[i] , this.gameCharactersProjectilesPositionOffsets[i],this.gameCharactersProjectilesMuzzleEffects[i], this.gameCharactersProjectilesMuzzlePositionOffsets[i]);
             this.gameCharacters[i].GetComponent<IController>().getCharacterRenderer.material.SetColor("_Color", this.gameCharactersColors[i]);
+            tempControllerCache.enableController();
         }
         yield return true;
     }
@@ -114,7 +122,7 @@ public class MapCharacterManager : MonoBehaviour
     public int getIndexOfCollidedObject(GameObject objectToSearchFor) { return this.gameCharacters.IndexOf(objectToSearchFor); }
     public GameObject getPlayerPrefab() { return this.playerPrefab; }
     public GameObject getBotPrefab() { return this.botPrefab; }
-    public void createCharacters(int playerCount, int botCount, List<GameObject> charactersList, List<Color32> characteresColorsList, List<GameObject> charactersProjectilesList, List<Vector2> charactersProjectilesPositionOffsetList, List<GameObject> charactersProjectileMuzzleEffectList , List<Vector2> charactersProjectileMuzzlePositionOffsetList)
+    public void createCharacters(int playerCount, int botCount, List<GameObject> charactersList, List<Color32> characteresColorsList, List<GameObject> charactersProjectilesList, List<Vector2> charactersProjectilesPositionOffsetList, List<GameObject> charactersProjectileMuzzleEffectList , List<Vector2> charactersProjectileMuzzlePositionOffsetList, List<PlayerInputManager> charactersInputScripts)
     {
         this.playerCount = playerCount;
         this.botCount = botCount;
@@ -124,6 +132,7 @@ public class MapCharacterManager : MonoBehaviour
         this.gameCharactersProjectilesPositionOffsets = charactersProjectilesPositionOffsetList;
         this.gameCharactersProjectilesMuzzleEffects = charactersProjectileMuzzleEffectList;
         this.gameCharactersProjectilesMuzzlePositionOffsets = charactersProjectileMuzzlePositionOffsetList;
+        this.gameCharactersPlayerInputManagers = charactersInputScripts;
 
         Destroy(this.startupCamera);
 

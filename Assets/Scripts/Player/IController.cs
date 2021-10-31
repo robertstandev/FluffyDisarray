@@ -4,6 +4,7 @@ using UnityEngine;
 
 public interface IController
 {
+    void setInputManager(PlayerInputManager inputManager);
     SpriteRenderer getCharacterRenderer { get; }
     void disableController();
     void enableController();

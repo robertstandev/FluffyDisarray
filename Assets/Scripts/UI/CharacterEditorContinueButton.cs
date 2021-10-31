@@ -23,6 +23,7 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
     private List<Vector2> gameCharactersProjectilesPositionOffsets = new List<Vector2>();
     private List<GameObject> gameCharactersProjectilesMuzzleEffects = new List<GameObject>();
     private List<Vector2> gameCharactersProjectilesMuzzlePositionOffsets = new List<Vector2>();
+    private List<PlayerInputManager> gameCharactersInputScripts = new List<PlayerInputManager>();
 
     private GameObject playerPrefab , botPrefab;
 
@@ -108,13 +109,26 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
         this.gameCharactersProjectilesPositionOffsets.Add(this.characterProjectileSelectorScript.getProjectilePositionOffset());
         this.gameCharactersProjectilesMuzzleEffects.Add(this.characterProjectileSelectorScript.getProjectileMuzzleEffectPrefab());
         this.gameCharactersProjectilesMuzzlePositionOffsets.Add(this.characterProjectileSelectorScript.getProjectileMuzzlePositionOffset());
+        this.gameCharactersInputScripts.Add(InputManager.inputActions); //it's static so doesnt need a reference
+        InputManager.createInputsNewInstance();
     }
 
     private void OnDisable()
     {
         if(this.mapCharacterManager != null)
         {
-            this.mapCharacterManager.createCharacters(this.playerCount, this.botCount, this.gameCharacters, this.gameCharactersColors, this.gameCharactersProjectiles, this.gameCharactersProjectilesPositionOffsets, this.gameCharactersProjectilesMuzzleEffects, this.gameCharactersProjectilesMuzzlePositionOffsets);
+            this.mapCharacterManager.createCharacters
+            (
+                this.playerCount,
+                this.botCount,
+                this.gameCharacters,
+                this.gameCharactersColors,
+                this.gameCharactersProjectiles,
+                this.gameCharactersProjectilesPositionOffsets,
+                this.gameCharactersProjectilesMuzzleEffects,
+                this.gameCharactersProjectilesMuzzlePositionOffsets,
+                this.gameCharactersInputScripts
+            );
         }
     }
 }

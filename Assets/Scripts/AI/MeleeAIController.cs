@@ -5,9 +5,9 @@ using UnityEngine;
 public class MeleeAIController : MonoBehaviour, IController
 {
     private SpriteRenderer mySpriteRenderer;
-    private GameObject menuGameObject;
     public SpriteRenderer getCharacterRenderer { get { return this.mySpriteRenderer; } }
     public void disableController() { this.enabled = false; }
     public void enableController() { this.enabled = true; }
-    public void setMenu(GameObject menuToSet) { this.menuGameObject = menuToSet; }
+    public void setMenu(GameObject menuToSet) {}
+    public void setInputManager(PlayerInputManager inputManager) {}
 }
