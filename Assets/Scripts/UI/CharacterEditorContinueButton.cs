@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
 {
-    [SerializeField]private MapCharacterManager mapCharacterManagerGameObject;
+    [SerializeField]private MapCharacterManager mapCharacterManager;
     [SerializeField]private Text characterNumberText;
     [SerializeField]private Text characterTypeText;
     [SerializeField]private Image characterColorImage;
@@ -28,9 +28,9 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
 
     private void Awake()
     {
-        if(this.mapCharacterManagerGameObject == null) { this.mapCharacterManagerGameObject = FindObjectOfType<MapCharacterManager>(); }
-        this.playerPrefab = this.mapCharacterManagerGameObject.getPlayerPrefab();
-        this.botPrefab = this.mapCharacterManagerGameObject.getBotPrefab();
+        if(this.mapCharacterManager == null) { this.mapCharacterManager = FindObjectOfType<MapCharacterManager>(); }
+        this.playerPrefab = this.mapCharacterManager.getPlayerPrefab();
+        this.botPrefab = this.mapCharacterManager.getBotPrefab();
 
         this.hideShowTouchComponent = GetComponent<HideShowTouch>();
     }
@@ -112,6 +112,9 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
 
     private void OnDisable()
     {
-        this.mapCharacterManagerGameObject.createCharacters(this.playerCount, this.botCount, this.gameCharacters, this.gameCharactersColors, this.gameCharactersProjectiles, this.gameCharactersProjectilesPositionOffsets, this.gameCharactersProjectilesMuzzleEffects, this.gameCharactersProjectilesMuzzlePositionOffsets);
+        if(this.mapCharacterManager != null)
+        {
+            this.mapCharacterManager.createCharacters(this.playerCount, this.botCount, this.gameCharacters, this.gameCharactersColors, this.gameCharactersProjectiles, this.gameCharactersProjectilesPositionOffsets, this.gameCharactersProjectilesMuzzleEffects, this.gameCharactersProjectilesMuzzlePositionOffsets);
+        }
     }
 }
