@@ -61,6 +61,7 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
         }
     }
 
+
     private void increaseCharacterNumber()
     {
         this.characterNumber += 1;
