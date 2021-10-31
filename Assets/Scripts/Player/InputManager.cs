@@ -16,11 +16,11 @@ public class InputManager : MonoBehaviour
    {
        if(inputActions == null)
        {
-           createNewInstance();
+           createInputsNewInstance();
        }
    }
 
-   public static void createNewInstance()
+   public static void createInputsNewInstance()
    {
        inputActions = new PlayerInputManager();
    }
@@ -90,7 +90,7 @@ public class InputManager : MonoBehaviour
    {
        if(inputActions == null)
        {
-           createNewInstance();
+           createInputsNewInstance();
        }
 
        InputAction action = inputActions.asset.FindAction(actionName);
