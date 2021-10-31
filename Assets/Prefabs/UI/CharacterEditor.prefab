@@ -2750,7 +2750,11 @@ MonoBehaviour:
     m_Action: 
     m_Flags: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
   referenceDropdown: {fileID: 3610996109019828273}
+=======
+  actionText: {fileID: 514624973617163211}
+>>>>>>> parent of 38af1cc (Update CharacterEditor.prefab)
 =======
   actionText: {fileID: 514624973617163211}
 >>>>>>> parent of 38af1cc (Update CharacterEditor.prefab)
