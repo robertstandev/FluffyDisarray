@@ -8,7 +8,6 @@ using System;
 public class InputManager : MonoBehaviour
 {
    public static PlayerInputManager inputActions;
-
    public static event Action rebindComplete;
    public static event Action rebindCanceled;
    public static event Action<InputAction, int> rebindStarted;
