@@ -28,9 +28,9 @@ public class InputManager : MonoBehaviour
         if(action.bindings[bindingIndex].isComposite)
         {
             var firstPartIndex = bindingIndex + 1;
-            if(firstPartIndex < action.bindings.Count && action.bindings[firstPartIndex].isComposite)
+            if(firstPartIndex < action.bindings.Count && action.bindings[firstPartIndex].isPartOfComposite)
             {
-                doRebind(action, bindingIndex, statusText, true);
+                doRebind(action, firstPartIndex, statusText, true);
             }
         }
         else
@@ -56,7 +56,7 @@ public class InputManager : MonoBehaviour
            if(allCompositeParts)
            {
                var nextBindingIndex = bindingIndex + 1;
-               if(nextBindingIndex < actionToRebind.bindings.Count && actionToRebind.bindings[nextBindingIndex].isComposite)
+               if(nextBindingIndex < actionToRebind.bindings.Count && actionToRebind.bindings[nextBindingIndex].isPartOfComposite)
                {
                    doRebind(actionToRebind, nextBindingIndex, statusText, allCompositeParts);
                }
