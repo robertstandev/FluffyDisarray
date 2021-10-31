@@ -17,10 +17,7 @@ public class RebindUI : MonoBehaviour
     [SerializeField]private Text rebindText;
     [SerializeField]private Button resetButton;
 
-    private void Start()
-    {
-        populateDropDown();
-    }
+    private void Start() { StartCoroutine(configureStartupReference()); }
 
     private void OnEnable()
     {
@@ -75,10 +72,7 @@ public class RebindUI : MonoBehaviour
         }
     }
 
-    private void doRebind()
-    {
-        InputManager.startRebind(this.actionName, this.bindingIndex, this.rebindText);
-    }
+    private void doRebind() { InputManager.startRebind(this.actionName, this.bindingIndex, this.rebindText); }
 
     private void resetBinding()
     {
@@ -86,15 +80,22 @@ public class RebindUI : MonoBehaviour
         updateUI();
     }
 
-    private void DropdownValueChanged(Dropdown change)
+    private void DropdownValueChanged(Dropdown change) { setReference(change.value); }
+
+    private void setReference(int index)
     {
         this.inputActionReference = (InputActionReference) ScriptableObject.CreateInstance(typeof(InputActionReference));
-        this.inputActionReference.Set(InputManager.inputActions.asset.FindAction("Gameplay/" + this.referenceDropdown.options[change.value].text));
+        this.inputActionReference.Set(InputManager.inputActions.asset.FindAction("Gameplay/" + this.referenceDropdown.options[index].text));
         getBindingInfo();
         updateUI();
     }
 
-    private void populateDropDown()
+    private IEnumerator configureStartupReference()
+    {
+        yield return StartCoroutine(populateDropDown());
+        setReference(0);
+    }
+    private IEnumerator populateDropDown()
     {
         List<string> inputCategoryList = new List<string>();
 
@@ -104,5 +105,7 @@ public class RebindUI : MonoBehaviour
         }
 
         this.referenceDropdown.AddOptions(inputCategoryList);
+
+        yield return null;
     }
 }
