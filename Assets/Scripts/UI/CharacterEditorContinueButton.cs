@@ -84,7 +84,7 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
         this.playerCount += 1;
         if(this.playerCount.Equals(4))
         {
-            this.hideShowTouchComponent.disableEnableSelectedCanvas();
+            this.hideShowTouchComponent.disableEnableSelectedGameObject();
             this.characterTypeText.text = "Bot";
             this.controlsGroupGameObject.SetActive(false);
             this.playerConnectionTypeGroup.SetActive(false);
@@ -111,7 +111,7 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
         }
         else
         {
-            transform.parent.gameObject.SetActive(false);
+            transform.parent.parent.gameObject.SetActive(false);
         }
     }
     private void configureCharacter()
