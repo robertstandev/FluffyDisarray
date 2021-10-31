@@ -2780,6 +2780,7 @@ MonoBehaviour:
   finishText: {fileID: 2820303113435381564}
   controlsGroupGameObject: {fileID: 8761389940637880086}
   playerConnectionTypeGroup: {fileID: 5859313514197670700}
+  nextPageGameObject: {fileID: 6901709275978192014}
 --- !u!1 &5505581717854064310
 GameObject:
   m_ObjectHideFlags: 0
@@ -3374,6 +3375,7 @@ MonoBehaviour:
   gameObjectToHideShow:
   - {fileID: 8761389940637880086}
   - {fileID: 5859313514197670700}
+  - {fileID: 6901709275978192014}
 --- !u!1 &6495106435434455294
 GameObject:
   m_ObjectHideFlags: 0
@@ -3660,6 +3662,7 @@ MonoBehaviour:
   gameObjectToHideShow:
   - {fileID: 8761389940637880086}
   - {fileID: 5859313514197670700}
+  - {fileID: 6901709275978192014}
 --- !u!1 &7611420244021700641
 GameObject:
   m_ObjectHideFlags: 0

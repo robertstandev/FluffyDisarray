@@ -14,6 +14,7 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
     [SerializeField]private GameObject finishText;
     [SerializeField]private GameObject controlsGroupGameObject;
     [SerializeField]private GameObject  playerConnectionTypeGroup;
+    [SerializeField]private GameObject nextPageGameObject;
     private HideShowTouch hideShowTouchComponent;
     private bool hasExecutedOnce = false;
     private int characterNumber = 1;
@@ -89,6 +90,7 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
             this.characterTypeText.text = "Bot";
             this.controlsGroupGameObject.SetActive(false);
             this.playerConnectionTypeGroup.SetActive(false);
+            this.nextPageGameObject.SetActive(false);
         }
 
     }
