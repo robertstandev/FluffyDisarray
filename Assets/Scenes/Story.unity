@@ -3049,7 +3049,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1045314110}
   m_Layer: 0
-  m_Name: Mutat 7 patratele sus pt 2 jump
+  m_Name: Ground 7 patratele sus pt 2 jump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4782,7 +4782,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1888984242}
   m_Layer: 0
-  m_Name: Mutat 4 patratele sus pt 1 jump
+  m_Name: Ground 4 patratele sus pt 1 jump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
