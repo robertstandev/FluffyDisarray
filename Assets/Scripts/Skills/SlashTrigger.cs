@@ -26,11 +26,10 @@ public class SlashTrigger : MonoBehaviour
 
     public void executeSkill()
     {
-        if(!this.instantiatedSlashEffect.activeInHierarchy)
-        {
-            adjustSlashEffectDirection();
-            this.instantiatedSlashEffect.SetActive(true);
-        }
+        if(this.instantiatedSlashEffect.activeInHierarchy) { return; }
+
+        adjustSlashEffectDirection();
+        this.instantiatedSlashEffect.SetActive(true);
     }
 
     private void adjustSlashEffectDirection() { this.instantiatedSlashEffect.transform.localScale = new Vector2(this.characterSpriteRenderer.flipX ? -1 : 1, 1f); }
