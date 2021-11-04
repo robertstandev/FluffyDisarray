@@ -4854,7 +4854,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300028, guid: b04511e046b4ac64cbb6cddf651a9c3a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5075,12 +5075,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileDamage: 50
-  projectileEffectPrefab: {fileID: 742382953750511981, guid: 7ea0fb0480c753e6587cc6166410b4f1,
-    type: 3}
-  projectilePositionOffset: {x: 1.5, y: 0.25}
-  muzzleEffectPrefab: {fileID: 1237854105968354, guid: 04a5cfcd62a83c8438ec4daafe366eab,
-    type: 3}
-  muzzlePositionOffset: {x: 1, y: 0}
 --- !u!114 &991553796290647424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5166,7 +5160,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: 2ce035af0907fbf4b992d89e0da44d7f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
