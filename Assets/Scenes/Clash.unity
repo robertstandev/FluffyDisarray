@@ -399,12 +399,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 193266924}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.6590841, y: 2.1176496, z: -0.37409934}
+  m_LocalPosition: {x: 0.6590841, y: 2.1176496, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 663232894}
   - {fileID: 431795696}
-  - {fileID: 2143210950}
   - {fileID: 1572610385}
   - {fileID: 1643010969}
   m_Father: {fileID: 0}
@@ -467,7 +465,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 310516912}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.139217, y: 1.0451031, z: -0.43428096}
+  m_LocalPosition: {x: 3.139217, y: 1.0451031, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 523206609}
@@ -578,7 +576,7 @@ RectTransform:
   m_LocalScale: {x: 0.6611421, y: 0.6611421, z: 0.6611421}
   m_Children: []
   m_Father: {fileID: 193266925}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -804,7 +802,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 523206608}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -18.00846, y: -2.5604305, z: 0.43428096}
+  m_LocalPosition: {x: -18.00846, y: -2.5604305, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 310516913}
@@ -831,36 +829,6 @@ MonoBehaviour:
   botPrefab: {fileID: 625996239217950892, guid: 8c3dbfc224df3faf2a41649fd5c0f8a6,
     type: 3}
   gameMenu: {fileID: 155002400}
---- !u!1 &663232893
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 663232894}
-  m_Layer: 0
-  m_Name: MapManager facut la EnableManagers sa astepte sa termine configureCharacters
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &663232894
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 663232893}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 193266925}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &819954134
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1955,7 +1923,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 193266925}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1587540950
 GameObject:
@@ -2107,7 +2075,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1609286204}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6590841, y: 2.1176496, z: -0.37409934}
+  m_LocalPosition: {x: 0.6590841, y: 2.1176496, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1426315878}
@@ -2219,7 +2187,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 193266925}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1751301459 stripped
 Transform:
@@ -2881,43 +2849,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5435c9e620fa0f389c26129eb013ca1, type: 3}
---- !u!1 &2143210949
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2143210950}
-  m_Layer: 5
-  m_Name: SA FIU ATENT LA MENIU FIE SA AIBE CONTROL DIFERIT (ALT BUTON FIECARE PLAYER)
-    FIE DOAR PLAYER 1 SA POATA PUNA MENU CONTROL SI SA DAU RESET LA PLAYER PREFAB
-    LA INPUT BUTTONS CAND TERMIN CU ASTEA DE SETAT
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2143210950
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2143210949}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.37409934}
-  m_LocalScale: {x: 0.6611421, y: 0.6611421, z: 0.6611421}
-  m_Children: []
-  m_Father: {fileID: 193266925}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 802.4837, y: 114.03972}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &7796767689916730587
 PrefabInstance:
   m_ObjectHideFlags: 0
