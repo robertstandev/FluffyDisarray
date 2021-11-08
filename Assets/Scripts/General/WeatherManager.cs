@@ -10,10 +10,10 @@ public class WeatherManager : MonoBehaviour
     [SerializeField]private Color32[] weatherEffectsColorChange;
     [SerializeField][Range(0,10)]private float[] weatherEffectColorChangeStartDelay;
     [SerializeField]private float[] weatherEffectColorChangeTransitionSpeed;
-    [SerializeField][Range(120,720)]private float minimumStartInterval = 120f;
-    [SerializeField][Range(120,720)]private float maximumStartInterval = 240f;
-    [SerializeField][Range(25,60)]private float minimumDurationInterval = 25f;
-    [SerializeField][Range(25,60)]private float maximumDurationInterval = 60f;//Max duration must be half of minimumStartInterval - weatherEffectColorChangeStartDelay for any of the items in the list
+    [SerializeField][Range(30,720)]private float minimumStartInterval = 120f;
+    [SerializeField][Range(30,720)]private float maximumStartInterval = 240f;
+    [SerializeField][Range(10,720)]private float minimumDurationInterval = 25f;
+    [SerializeField][Range(10,720)]private float maximumDurationInterval = 60f;
 
     private Color32 originalEnvironmentMaterialColor;
 
@@ -38,40 +38,36 @@ public class WeatherManager : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(this.minimumStartInterval, this.maximumStartInterval));
 
             int indexOfEffect = Random.Range(0, this.instantiatedWeatherEffects.Count);
-            startEffect(indexOfEffect);
-            StartCoroutine(weatherStopperTimer(indexOfEffect));
+            
+            yield return startEffect(indexOfEffect);
+            
+            yield return new WaitForSeconds(Random.Range(this.minimumDurationInterval, this.maximumDurationInterval));
+            yield return revertEffect(indexOfEffect);
         }
-
     }
 
-    private IEnumerator weatherStopperTimer(int indexOfEffect)
-    {
-        yield return new WaitForSeconds(Random.Range(this.minimumDurationInterval, this.maximumDurationInterval));
-        revertEffect(indexOfEffect);
-    }
-
-    private IEnumerator materialTransitionTimer(Color32 colorToChangeTo, float startDelay , float transitionSpeedDelay)
+    private IEnumerator materialTransitionTimer(Color32 colorToChangeTo, float startDelay , float transitionSpeed)
     {
         float progress = 0f;
         yield return new WaitForSeconds(startDelay);
         while(this.environmentMaterial.color != colorToChangeTo)
         {
-            progress += Time.deltaTime * transitionSpeedDelay;
+            progress += Time.deltaTime * (progress <= 0.008f ? transitionSpeed / 10000 : 1f);
             this.environmentMaterial.color = Color.Lerp(this.environmentMaterial.color, colorToChangeTo, progress);
             yield return null;
         }
     }
 
-    private void startEffect(int indexOfEffect)
+    private IEnumerator startEffect(int indexOfEffect)
     {
         this.instantiatedWeatherEffects[indexOfEffect].Play();
-        StartCoroutine(materialTransitionTimer(this.weatherEffectsColorChange[indexOfEffect], this.weatherEffectColorChangeStartDelay[indexOfEffect], this.weatherEffectColorChangeTransitionSpeed[indexOfEffect] / 1000));
+        yield return StartCoroutine(materialTransitionTimer(this.weatherEffectsColorChange[indexOfEffect], this.weatherEffectColorChangeStartDelay[indexOfEffect], this.weatherEffectColorChangeTransitionSpeed[indexOfEffect]));;
     }
 
-    private void revertEffect(int indexOfEffect)
+    private IEnumerator revertEffect(int indexOfEffect)
     {
         this.instantiatedWeatherEffects[indexOfEffect].Stop();
-        StartCoroutine(materialTransitionTimer(this.originalEnvironmentMaterialColor , this.weatherEffectColorChangeStartDelay[indexOfEffect] , this.weatherEffectColorChangeTransitionSpeed[indexOfEffect] / 1000));
+        yield return StartCoroutine(materialTransitionTimer(this.originalEnvironmentMaterialColor , this.weatherEffectColorChangeStartDelay[indexOfEffect] , this.weatherEffectColorChangeTransitionSpeed[indexOfEffect]));
     }
 
     private void instantiateEffects()

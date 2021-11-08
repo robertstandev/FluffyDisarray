@@ -2525,17 +2525,17 @@ MonoBehaviour:
   - serializedVersion: 2
     rgba: 4279176975
   - serializedVersion: 2
-    rgba: 4287401100
+    rgba: 4288453788
   weatherEffectColorChangeStartDelay:
   - 2
   - 8
   weatherEffectColorChangeTransitionSpeed:
-  - 0.8
-  - 0.2
-  minimumStartInterval: 120
-  maximumStartInterval: 180
-  minimumDurationInterval: 60
-  maximumDurationInterval: 60
+  - 5
+  - 1
+  minimumStartInterval: 30
+  maximumStartInterval: 60
+  minimumDurationInterval: 30
+  maximumDurationInterval: 90
 --- !u!1 &2032795497
 GameObject:
   m_ObjectHideFlags: 0
