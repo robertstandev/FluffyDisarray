@@ -121,5 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5726dda2383e415b986ad50aa83a3f2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hideAfterInterval: 0
-  showAfterInterval: 10
+  hideTransitionStartAfter: 0
+  hideTransitionSpeed: 12
+  showTransitionStartAfter: 10
+  showTransitionSpeed: 20

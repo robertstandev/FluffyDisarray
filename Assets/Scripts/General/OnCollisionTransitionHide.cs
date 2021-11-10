@@ -5,8 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D) , typeof(SpriteRenderer))]
 public class OnCollisionTransitionHide : MonoBehaviour
 {
-    [SerializeField]private float hideAfterInterval = 3f;
-    [SerializeField]private float showAfterInterval = 10f;
+    [SerializeField]private float hideTransitionStartAfter = 0f;
+    [SerializeField]private float hideTransitionSpeed = 10f;
+    [SerializeField]private float showTransitionStartAfter = 10f;
+    [SerializeField]private float showTransitionSpeed = 20f;
     private MapCharacterManager getCharactersFromSceneScript;
     private BoxCollider2D boxCollider2DComponent;
     private SpriteRenderer spriteRendererComponent;
@@ -44,7 +46,7 @@ public class OnCollisionTransitionHide : MonoBehaviour
         float progress = 0f;
         while(this.spriteRendererComponent.color.a != alphaToChangeTo)
         {
-            progress += Time.deltaTime / (progress <= 0.008f ? transitionSpeed : 1f);
+            progress += Time.deltaTime * (progress <= 0.007f ? transitionSpeed / 10000 : 1f);
 
             this.spriteRendererComponent.color = new Color(this.spriteRendererComponent.color.r, this.spriteRendererComponent.color.g, this.spriteRendererComponent.color.b ,Mathf.Lerp(this.spriteRendererComponent.color.a, alphaToChangeTo, progress));
             yield return null;
@@ -53,9 +55,9 @@ public class OnCollisionTransitionHide : MonoBehaviour
 
     private IEnumerator visibilityManagerTimer()
     {
-        yield return StartCoroutine(alphaTransitionTimer(0.1f, this.hideAfterInterval, 800f));
+        yield return StartCoroutine(alphaTransitionTimer(0.1f, this.hideTransitionStartAfter, this.hideTransitionSpeed));
         this.boxCollider2DComponent.enabled = false;
-        yield return StartCoroutine(alphaTransitionTimer(1f, this.showAfterInterval, 300f));
+        yield return StartCoroutine(alphaTransitionTimer(1f, this.showTransitionStartAfter, this.showTransitionSpeed));
         this.boxCollider2DComponent.enabled = true;
         this.alreadyActivated = false;
     }
