@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &9194017955208901630
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9194017955208901617}
+  - component: {fileID: 9194017955208901616}
+  m_Layer: 0
+  m_Name: WeatherManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &9194017955208901617
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9194017955208901630}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9194017955208901616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9194017955208901630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 076aba282ca17fef8952223cc52b858c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  environmentMaterial: {fileID: 2100000, guid: d6c4efa4a7b600254b85ff59fbecd4a9, type: 2}
+  weatherEffects:
+  - {fileID: 7981934235484246195, guid: ccd862d51a4f84ae8884c7d75de04e01, type: 3}
+  - {fileID: 100000, guid: de07bf378e7247444a0715ad2ff509e3, type: 3}
+  weatherEffectsColorChange:
+  - serializedVersion: 2
+    rgba: 4279176975
+  - serializedVersion: 2
+    rgba: 4288453788
+  weatherEffectColorChangeStartDelay:
+  - 2
+  - 8
+  weatherEffectColorChangeTransitionSpeed:
+  - 5
+  - 1
+  minimumStartInterval: 30
+  maximumStartInterval: 60
+  minimumDurationInterval: 30
+  maximumDurationInterval: 90
