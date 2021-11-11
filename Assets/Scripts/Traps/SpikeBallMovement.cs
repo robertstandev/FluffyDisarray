@@ -24,15 +24,17 @@ public class SpikeBallMovement : MonoBehaviour
 
     private IEnumerator swingMovementTimer()
     {
-        this.currentRotation = this.gameObject.transform.localEulerAngles.z;
         WaitForSeconds timerWait = new WaitForSeconds(this.swingMovementDelay);
+        Vector3 gameObjectRotation = this.gameObject.transform.localEulerAngles;
+        this.currentRotation = gameObjectRotation.z;
 
         while(true)
         {
             yield return timerWait;
 
             this.currentRotation += this.swingingLeftDirection ? -1f : 1f;
-            this.gameObject.transform.localEulerAngles = new Vector3(this.gameObject.transform.localEulerAngles.x, this.gameObject.transform.localEulerAngles.y, this.currentRotation);
+            gameObjectRotation.z = this.currentRotation;
+            this.gameObject.transform.localEulerAngles = gameObjectRotation;
             this.swingingLeftDirection = this.currentRotation.Equals(this.minRotation) ? false : this.currentRotation.Equals(this.maxRotation) ? true : this.swingingLeftDirection;
         }
     } 
