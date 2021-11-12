@@ -17,7 +17,6 @@ public class WeatherManager : MonoBehaviour
 
     private Color32 originalEnvironmentMaterialColor;
 
-
     private void OnEnable()
     {
         instantiateEffects();

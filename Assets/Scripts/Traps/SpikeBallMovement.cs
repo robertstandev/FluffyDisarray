@@ -9,18 +9,9 @@ public class SpikeBallMovement : MonoBehaviour
     [SerializeField]private float swingMovementDelay = 0.05f;
     private float currentRotation = 0f;
     private bool swingingLeftDirection = true;
-    private IEnumerator swingMovementTimerInstance;
 
-    private void Awake()
-    {
-        if(this.swingMovementTimerInstance == null)
-        {
-            this.swingMovementTimerInstance = swingMovementTimer();
-        }
-    }
-
-    private void OnEnable() { StartCoroutine(this.swingMovementTimerInstance); }
-    private void OnDisable() { StopCoroutine(this.swingMovementTimerInstance); }
+    private void OnEnable() { StartCoroutine(swingMovementTimer()); }
+    private void OnDisable() { StopAllCoroutines(); }
 
     private IEnumerator swingMovementTimer()
     {
