@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class MiniGameLava : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField][Range(5,30)]private int minNrOfRounds = 5;
+    [SerializeField][Range(6,30)]private int maxNrOfRounds = 10;
 }
