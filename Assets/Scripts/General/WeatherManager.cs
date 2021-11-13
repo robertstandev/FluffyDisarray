@@ -14,8 +14,10 @@ public class WeatherManager : MonoBehaviour
     [SerializeField][Range(30,720)]private float maximumStartInterval = 240f;
     [SerializeField][Range(10,720)]private float minimumDurationInterval = 25f;
     [SerializeField][Range(10,720)]private float maximumDurationInterval = 60f;
-
     private Color32 originalEnvironmentMaterialColor;
+    private MapCharacterManager getCharactersFromSceneScript;
+
+    private void Awake() { this.getCharactersFromSceneScript = FindObjectOfType<MapCharacterManager>(); }
 
     private void OnEnable()
     {
@@ -71,12 +73,17 @@ public class WeatherManager : MonoBehaviour
 
     private void instantiateEffects()
     {
-        for(int i = 0 ; i < this.weatherEffects.Length; i++)
+        for(int charIndex = 0 ; charIndex < this.getCharactersFromSceneScript.getListOfCharactersFromScene().Count ; charIndex++)
         {
-            this.instantiatedWeatherEffects.Add(Instantiate(this.weatherEffects[i], Vector3.zero, Quaternion.identity).GetComponent<ParticleSystem>());
-            this.instantiatedWeatherEffects[i].transform.parent = this.transform;
-            this.instantiatedWeatherEffects[i].transform.localPosition = this.weatherEffects[i].transform.position;
-
+            if(this.getCharactersFromSceneScript.getListOfCharactersFromScene()[charIndex].name.Equals(this.getCharactersFromSceneScript.getPlayerPrefab().name + "(Clone)"))
+            {
+                for(int weatherPrefabIndex = 0; weatherPrefabIndex < this.weatherEffects.Length ; weatherPrefabIndex++)
+                {
+                    this.instantiatedWeatherEffects.Add(Instantiate(this.weatherEffects[weatherPrefabIndex], Vector3.zero, Quaternion.identity).GetComponent<ParticleSystem>());
+                    this.instantiatedWeatherEffects[this.instantiatedWeatherEffects.Count - 1].transform.parent = this.getCharactersFromSceneScript.getListOfCharactersFromScene()[charIndex].transform;
+                    this.instantiatedWeatherEffects[this.instantiatedWeatherEffects.Count - 1].transform.localPosition = this.weatherEffects[weatherPrefabIndex].transform.position;
+                }
+            }
         }
     }
 }
