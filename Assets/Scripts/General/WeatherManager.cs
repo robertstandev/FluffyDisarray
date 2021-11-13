@@ -54,7 +54,7 @@ public class WeatherManager : MonoBehaviour
         yield return new WaitForSeconds(startDelay);
         while(this.environmentMaterial.color != colorToChangeTo)
         {
-            progress += Time.deltaTime * (progress <= 0.008f ? transitionSpeed / 10000 : 1f);
+            progress += Time.deltaTime * (progress <= 0.007f ? transitionSpeed / 10000 : 1f);
             this.environmentMaterial.color = Color.Lerp(this.environmentMaterial.color, colorToChangeTo, progress);
             yield return null;
         }
@@ -76,8 +76,7 @@ public class WeatherManager : MonoBehaviour
     {
         for(int i = indexOfEffect * this.nrOfPlayersInGame ; i < (indexOfEffect * this.nrOfPlayersInGame) + this.nrOfPlayersInGame ; i++)
         {
-            Debug.Log(i);
-            //this.instantiatedWeatherEffects[i].Play();
+            this.instantiatedWeatherEffects[i].Play();
         }
     }
 
@@ -93,16 +92,13 @@ public class WeatherManager : MonoBehaviour
     {
         for(int weatherPrefabIndex = 0; weatherPrefabIndex < this.weatherEffects.Length ; weatherPrefabIndex++)
         {
-            for(int charIndex = 0 ; charIndex < this.getCharactersFromSceneScript.getListOfCharactersFromScene().Count ; charIndex++)
+            for(int cameraIndex = 0 ; cameraIndex < this.getCharactersFromSceneScript.getListOfPlayerCamerasFromScene().Count ; cameraIndex++)
             {
-                if(this.getCharactersFromSceneScript.getListOfCharactersFromScene()[charIndex].name.Equals(this.getCharactersFromSceneScript.getPlayerPrefab().name + "(Clone)"))
-                {
                     this.instantiatedWeatherEffects.Add(Instantiate(this.weatherEffects[weatherPrefabIndex], Vector3.zero, Quaternion.identity).GetComponent<ParticleSystem>());
-                    this.instantiatedWeatherEffects[this.instantiatedWeatherEffects.Count - 1].transform.parent = this.getCharactersFromSceneScript.getListOfCharactersFromScene()[charIndex].transform;
+                    this.instantiatedWeatherEffects[this.instantiatedWeatherEffects.Count - 1].transform.parent = this.getCharactersFromSceneScript.getListOfPlayerCamerasFromScene()[cameraIndex].transform;
                     this.instantiatedWeatherEffects[this.instantiatedWeatherEffects.Count - 1].transform.localPosition = this.weatherEffects[weatherPrefabIndex].transform.position;
-                }
             }
         }
-        this.nrOfPlayersInGame = this.instantiatedWeatherEffects.Count / this.weatherEffects.Length;
+        this.nrOfPlayersInGame = this.getCharactersFromSceneScript.getListOfPlayerCamerasFromScene().Count;
     }
 }
