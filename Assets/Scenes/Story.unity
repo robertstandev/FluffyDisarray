@@ -614,6 +614,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 84596115}
+  - component: {fileID: 84596116}
   m_Layer: 0
   m_Name: BallSystem
   m_TagString: Untagged
@@ -640,6 +641,21 @@ Transform:
   m_Father: {fileID: 1150850524}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &84596116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84596114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83f07c02d3ce1d3c78d6cd6ec30d971e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minRotation: -56
+  maxRotation: 56
+  swingMovementDelay: 0.02
 --- !u!1001 &87504812
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21936,6 +21952,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2135208471}
   - component: {fileID: 2135208472}
+  - component: {fileID: 2135208475}
+  - component: {fileID: 2135208474}
   - component: {fileID: 2135208473}
   m_Layer: 0
   m_Name: SpikesBall
@@ -22021,9 +22039,37 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.14}
+  serializedVersion: 2
+  m_Radius: 1
+--- !u!114 &2135208474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135208470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be9f51450c203203c8484e4e40aea3c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &2135208475
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135208470}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.8
+  m_Radius: 2
 --- !u!1 &2143906686
 GameObject:
   m_ObjectHideFlags: 0
