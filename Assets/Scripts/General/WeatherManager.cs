@@ -74,7 +74,7 @@ public class WeatherManager : MonoBehaviour
 
     private void startWeatherEffectForAllPlayers(int indexOfEffect)
     {
-        for(int i = indexOfEffect * this.nrOfPlayersInGame ; i < i + this.nrOfPlayersInGame ; i++)
+        for(int i = indexOfEffect * this.nrOfPlayersInGame ; i < (indexOfEffect * this.nrOfPlayersInGame) + this.nrOfPlayersInGame ; i++)
         {
             Debug.Log(i);
             //this.instantiatedWeatherEffects[i].Play();
@@ -83,7 +83,7 @@ public class WeatherManager : MonoBehaviour
 
     private void stopWeatherEffectForAllPlayers(int indexOfEffect)
     {
-        for(int i = indexOfEffect * this.nrOfPlayersInGame ; i < i + this.nrOfPlayersInGame ; i++)
+        for(int i = indexOfEffect * this.nrOfPlayersInGame ; i < (indexOfEffect * this.nrOfPlayersInGame) + this.nrOfPlayersInGame ; i++)
         {
             this.instantiatedWeatherEffects[i].Stop();
         }
