@@ -3002,22 +3002,22 @@ PrefabInstance:
     - target: {fileID: 9194017955208901616, guid: 22630c5e20989b7b6a44c01303b028d6,
         type: 3}
       propertyPath: maximumStartInterval
-      value: 10
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 9194017955208901616, guid: 22630c5e20989b7b6a44c01303b028d6,
         type: 3}
       propertyPath: minimumStartInterval
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 9194017955208901616, guid: 22630c5e20989b7b6a44c01303b028d6,
         type: 3}
       propertyPath: maximumDurationInterval
-      value: 10
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 9194017955208901616, guid: 22630c5e20989b7b6a44c01303b028d6,
         type: 3}
       propertyPath: minimumDurationInterval
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 9194017955208901617, guid: 22630c5e20989b7b6a44c01303b028d6,
         type: 3}
