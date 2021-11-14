@@ -56,9 +56,9 @@ MonoBehaviour:
   - 2
   - 8
   weatherEffectColorChangeTransitionSpeed:
-  - 5
+  - 3
   - 1
-  minimumStartInterval: 30
-  maximumStartInterval: 60
+  minimumStartInterval: 60
+  maximumStartInterval: 90
   minimumDurationInterval: 30
-  maximumDurationInterval: 90
+  maximumDurationInterval: 60
