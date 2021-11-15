@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5023786356543321340}
   - component: {fileID: 4368324052938132785}
   - component: {fileID: 5099521113598106069}
+  - component: {fileID: 91307999}
   m_Layer: 0
   m_Name: RetractableSpikes
   m_TagString: Untagged
@@ -148,3 +149,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.4, y: 1.1}
   m_EdgeRadius: 0
+--- !u!114 &91307999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3897368490888197217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d67056b455cae75e4a729bc45de76228, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  retractedPosition: -3.3
+  extendedPosition: -1.5
+  incrementBy: 0.1
+  executionSpeed: 0.1
+  executionDelay: 0
