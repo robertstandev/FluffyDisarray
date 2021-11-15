@@ -2348,6 +2348,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RetractableSpikes (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3897368490888197217, guid: 0ffc34d8d23715b7f8afe42013ec8087,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ffc34d8d23715b7f8afe42013ec8087, type: 3}
 --- !u!4 &134623761 stripped
@@ -7849,6 +7854,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RetractableSpikes (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3897368490888197217, guid: 0ffc34d8d23715b7f8afe42013ec8087,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ffc34d8d23715b7f8afe42013ec8087, type: 3}
 --- !u!4 &1014011080 stripped
@@ -9177,6 +9187,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RetractableSpikes (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3897368490888197217, guid: 0ffc34d8d23715b7f8afe42013ec8087,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ffc34d8d23715b7f8afe42013ec8087, type: 3}
@@ -20808,6 +20823,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RetractableSpikes (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 3897368490888197217, guid: 0ffc34d8d23715b7f8afe42013ec8087,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ffc34d8d23715b7f8afe42013ec8087, type: 3}
 --- !u!4 &1949419934 stripped
@@ -21715,7 +21735,7 @@ PrefabInstance:
     - target: {fileID: 49979701260186757, guid: 0ffc34d8d23715b7f8afe42013ec8087,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.6
+      value: -2.42
       objectReference: {fileID: 0}
     - target: {fileID: 49979701260186757, guid: 0ffc34d8d23715b7f8afe42013ec8087,
         type: 3}
@@ -31134,6 +31154,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RetractableSpikes
+      objectReference: {fileID: 0}
+    - target: {fileID: 3897368490888197217, guid: 0ffc34d8d23715b7f8afe42013ec8087,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ffc34d8d23715b7f8afe42013ec8087, type: 3}
