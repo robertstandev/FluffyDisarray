@@ -388,7 +388,8 @@ GameObject:
   m_Component:
   - component: {fileID: 614424527}
   m_Layer: 0
-  m_Name: sa fac cand mor aia 1 cate unu
+  m_Name: sa fac cand mor aia 1 cate 1 sa verifice daca mai e cel putin 1 in viata
+    , daca nu sa incheie runda respectiva si jocul
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
