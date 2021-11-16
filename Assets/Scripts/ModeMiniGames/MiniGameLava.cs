@@ -20,12 +20,7 @@ public class MiniGameLava : MonoBehaviour
         this.currentDuration = this.roundDuration;
         yield return StartCoroutine(roundTimer());
         yield return timerWait3Seconds;
-
-        if(this.minigamesManagerScript.isActiveAndEnabled)
-        {
-            this.minigamesManagerScript.StartCoroutine(this.minigamesManagerScript.roundFinished());
-        }
-
+        this.minigamesManagerScript.StartCoroutine(this.minigamesManagerScript.roundFinished());
         this.gameObject.SetActive(false);
     }
 
