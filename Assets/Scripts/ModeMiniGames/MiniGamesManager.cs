@@ -10,8 +10,8 @@ public class MiniGamesManager : MonoBehaviour
     [SerializeField][Range(5,30)]private int minNrOfRounds = 5, maxNrOfRounds = 10;
     [SerializeField]private Text displayTextComponent;
     private int nrOfRounds, currentRound = 0;
-    private MapCharacterManager getCharactersFromSceneScript;
     private string aliveCharactersString;
+    private MapCharacterManager getCharactersFromSceneScript;
 
     private WaitForSeconds timerWait5Seconds = new WaitForSeconds(5f), timerWait10Seconds = new WaitForSeconds(10f);
 
@@ -42,7 +42,7 @@ public class MiniGamesManager : MonoBehaviour
     private IEnumerator nextRound()
     {
         this.currentRound += 1;
-        this.displayTextComponent.text = "New round is starting!\n" + "Good Luck!";
+        this.displayTextComponent.text = "New round is starting\n" + "Good luck!";
         this.displayTextComponent.enabled = true;
 
         yield return timerWait5Seconds;
@@ -52,24 +52,26 @@ public class MiniGamesManager : MonoBehaviour
 
     public IEnumerator roundFinished()
     {
-        checkAliveCharacters();
-        this.displayTextComponent.text = "Round winners are:\n" + this.aliveCharactersString;
+        this.displayTextComponent.text = getAliveCharacters();
         this.displayTextComponent.enabled = true;
         yield return timerWait10Seconds;
         this.displayTextComponent.enabled = false;
         StartCoroutine(nextRound());     
     }
 
-    private void checkAliveCharacters()
+    private string getAliveCharacters()
     {
         this.aliveCharactersString = "No winners...";
+
         for (int i = 0 ; i < this.getCharactersFromSceneScript.getListOfCharactersFromScene().Count; i++)
         {
-            if(this.getCharactersFromSceneScript.getListOfCharactersFromScene()[i].activeInHierarchy)
-            {
-                this.aliveCharactersString += this.getCharactersFromSceneScript.getListOfCharactersFromScene()[i].name + " ";
-            }
+            if(!this.getCharactersFromSceneScript.getListOfCharactersFromScene()[i].activeInHierarchy) { continue; }
+
+            this.aliveCharactersString = "Congratulations!";
+            break;
         }
+
+        return this.aliveCharactersString;
     }
 
     private void instantiateMiniGames()
