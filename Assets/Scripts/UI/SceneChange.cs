@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class SceneChange : MonoBehaviour, IPointerDownHandler
 {
-    private enum sceneNameOptions { Story, Clash }
+    private enum sceneNameOptions { Story, Clash, MiniGames }
     [SerializeField]private sceneNameOptions sceneName = sceneNameOptions.Clash;
 
     private SceneManagerScript sceneManagerScript;
