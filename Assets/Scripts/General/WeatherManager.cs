@@ -10,15 +10,12 @@ public class WeatherManager : MonoBehaviour
     [SerializeField]private Color32[] weatherEffectsColorChange;
     [SerializeField][Range(0,10)]private float[] weatherEffectColorChangeStartDelay;
     [SerializeField]private float[] weatherEffectColorChangeTransitionSpeed;
-    [SerializeField][Range(10,720)]private float minimumStartInterval = 120f;
-    [SerializeField][Range(10,720)]private float maximumStartInterval = 240f;
-    [SerializeField][Range(10,720)]private float minimumDurationInterval = 25f;
-    [SerializeField][Range(10,720)]private float maximumDurationInterval = 60f;
-    private Color32 originalEnvironmentMaterialColor;
-    private int nrOfPlayersInGame = 0;
-    private MapCharacterManager getCharactersFromSceneScript;
+    [SerializeField][Range(5,720)]private float minimumStartInterval = 120f;
+    [SerializeField][Range(5,720)]private float maximumStartInterval = 240f;
+    [SerializeField][Range(5,720)]private float minimumDurationInterval = 25f;
+    [SerializeField][Range(5,720)]private float maximumDurationInterval = 60f;
 
-    private void Awake() { this.getCharactersFromSceneScript = FindObjectOfType<MapCharacterManager>(); }
+    private Color32 originalEnvironmentMaterialColor;
 
     private void OnEnable()
     {
@@ -39,7 +36,7 @@ public class WeatherManager : MonoBehaviour
         {
             yield return new WaitForSeconds(Random.Range(this.minimumStartInterval, this.maximumStartInterval));
 
-            int indexOfEffect = Random.Range(0, this.weatherEffects.Length);
+            int indexOfEffect = Random.Range(0, this.instantiatedWeatherEffects.Count);
             
             yield return startEffect(indexOfEffect);
             
@@ -54,7 +51,7 @@ public class WeatherManager : MonoBehaviour
         yield return new WaitForSeconds(startDelay);
         while(this.environmentMaterial.color != colorToChangeTo)
         {
-            progress += Time.deltaTime * (progress <= 0.007f ? transitionSpeed / 10000 : 1f);
+            progress += Time.deltaTime * (progress <= 0.008f ? transitionSpeed / 10000 : 1f);
             this.environmentMaterial.color = Color.Lerp(this.environmentMaterial.color, colorToChangeTo, progress);
             yield return null;
         }
@@ -62,43 +59,24 @@ public class WeatherManager : MonoBehaviour
 
     private IEnumerator startEffect(int indexOfEffect)
     {
-        startWeatherEffectForAllPlayers(indexOfEffect);
+        this.instantiatedWeatherEffects[indexOfEffect].Play();
         yield return StartCoroutine(materialTransitionTimer(this.weatherEffectsColorChange[indexOfEffect], this.weatherEffectColorChangeStartDelay[indexOfEffect], this.weatherEffectColorChangeTransitionSpeed[indexOfEffect]));;
     }
 
     private IEnumerator revertEffect(int indexOfEffect)
     {
-        stopWeatherEffectForAllPlayers(indexOfEffect);
+        this.instantiatedWeatherEffects[indexOfEffect].Stop();
         yield return StartCoroutine(materialTransitionTimer(this.originalEnvironmentMaterialColor , this.weatherEffectColorChangeStartDelay[indexOfEffect] , this.weatherEffectColorChangeTransitionSpeed[indexOfEffect]));
-    }
-
-    private void startWeatherEffectForAllPlayers(int indexOfEffect)
-    {
-        for(int i = indexOfEffect * this.nrOfPlayersInGame ; i < (indexOfEffect * this.nrOfPlayersInGame) + this.nrOfPlayersInGame ; i++)
-        {
-            this.instantiatedWeatherEffects[i].Play();
-        }
-    }
-
-    private void stopWeatherEffectForAllPlayers(int indexOfEffect)
-    {
-        for(int i = indexOfEffect * this.nrOfPlayersInGame ; i < (indexOfEffect * this.nrOfPlayersInGame) + this.nrOfPlayersInGame ; i++)
-        {
-            this.instantiatedWeatherEffects[i].Stop();
-        }
     }
 
     private void instantiateEffects()
     {
-        for(int weatherPrefabIndex = 0; weatherPrefabIndex < this.weatherEffects.Length ; weatherPrefabIndex++)
+        for(int i = 0 ; i < this.weatherEffects.Length; i++)
         {
-            for(int cameraIndex = 0 ; cameraIndex < this.getCharactersFromSceneScript.getListOfPlayerCamerasFromScene().Count ; cameraIndex++)
-            {
-                    this.instantiatedWeatherEffects.Add(Instantiate(this.weatherEffects[weatherPrefabIndex], Vector3.zero, Quaternion.identity).GetComponent<ParticleSystem>());
-                    this.instantiatedWeatherEffects[this.instantiatedWeatherEffects.Count - 1].transform.parent = this.getCharactersFromSceneScript.getListOfPlayerCamerasFromScene()[cameraIndex].transform;
-                    this.instantiatedWeatherEffects[this.instantiatedWeatherEffects.Count - 1].transform.localPosition = this.weatherEffects[weatherPrefabIndex].transform.position;
-            }
+            this.instantiatedWeatherEffects.Add(Instantiate(this.weatherEffects[i], Vector3.zero, Quaternion.identity).GetComponent<ParticleSystem>());
+            this.instantiatedWeatherEffects[i].transform.parent = this.transform;
+            this.instantiatedWeatherEffects[i].transform.localPosition = this.weatherEffects[i].transform.position;
+
         }
-        this.nrOfPlayersInGame = this.getCharactersFromSceneScript.getListOfPlayerCamerasFromScene().Count;
     }
 }
