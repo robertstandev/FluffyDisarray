@@ -26,8 +26,10 @@ public class OnCollisionTransitionHide : MonoBehaviour
 
     private void OnDisable()
     {
-        this.spriteRendererComponent.color = new Color(this.spriteRendererComponent.color.r,this.spriteRendererComponent.color.g,this.spriteRendererComponent.color.b,this.originalSpriteRendererAlpha);
         StopAllCoroutines();
+        this.spriteRendererComponent.color = new Color(this.spriteRendererComponent.color.r,this.spriteRendererComponent.color.g,this.spriteRendererComponent.color.b,this.originalSpriteRendererAlpha);
+        this.boxCollider2DComponent.enabled = true;
+        this.alreadyActivated = false;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
