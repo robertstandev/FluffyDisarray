@@ -5252,7 +5252,8 @@ GameObject:
     iar cand incepe harta asta creez un nou scene de tip StoryMapScene asa practic
     creez harta din bucati si cand ajung la sfarsit la harta aia creez o alta scena
     si se creeaza o alta harta si asa mai departe , fac ca la sfarsitul hartii si
-    inceputul hartii sa fie mereu acelasi sprite ca sa para ca e in continuu
+    inceputul hartii sa fie mereu acelasi sprite ca sa para ca e in continuu. Harta
+    sa aibe cam cat e weatherul de mare ca sa pun weather pe ele
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
