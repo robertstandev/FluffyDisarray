@@ -9564,6 +9564,7 @@ GameObject:
   - component: {fileID: 248176601}
   - component: {fileID: 248176602}
   - component: {fileID: 7788055922612990973}
+  - component: {fileID: 8743387150243324577}
   m_Layer: 0
   m_Name: ProjectileElectric
   m_TagString: Untagged
@@ -9661,6 +9662,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!210 &8743387150243324577
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 742382953750511981}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 7
 --- !u!1 &4191612281002835336
 GameObject:
   m_ObjectHideFlags: 0
