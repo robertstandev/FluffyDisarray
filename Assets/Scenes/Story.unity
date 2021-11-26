@@ -368,7 +368,7 @@ PrefabInstance:
     - target: {fileID: 727081794436035209, guid: 9594a95bb7b0e7c5ab114950ed7f7641,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9594a95bb7b0e7c5ab114950ed7f7641, type: 3}
@@ -28594,6 +28594,18 @@ PrefabInstance:
       propertyPath: maximumDurationInterval
       value: 45
       objectReference: {fileID: 0}
+    - target: {fileID: 9194017955208901616, guid: 22630c5e20989b7b6a44c01303b028d6,
+        type: 3}
+      propertyPath: weatherEffects.Array.data[0]
+      value: 
+      objectReference: {fileID: 473942792708148914, guid: c8fec4b1ef9154866b4596927a2aa0bd,
+        type: 3}
+    - target: {fileID: 9194017955208901616, guid: 22630c5e20989b7b6a44c01303b028d6,
+        type: 3}
+      propertyPath: weatherEffects.Array.data[1]
+      value: 
+      objectReference: {fileID: 4922931587664657738, guid: 75ef4710dfcff4b9ea12f47ca6be119f,
+        type: 3}
     - target: {fileID: 9194017955208901617, guid: 22630c5e20989b7b6a44c01303b028d6,
         type: 3}
       propertyPath: m_RootOrder
@@ -29139,7 +29151,7 @@ PrefabInstance:
     - target: {fileID: 4944927148364470002, guid: a247dc2e0f71fa49797b1b275089b25e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -26.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4944927148364470002, guid: a247dc2e0f71fa49797b1b275089b25e,
         type: 3}
@@ -30498,7 +30510,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: space
+  m_Text: Space
 --- !u!1 &871387309676546634
 GameObject:
   m_ObjectHideFlags: 0
@@ -31635,7 +31647,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: z
+  m_Text: Z
 --- !u!224 &1879194940927179493
 RectTransform:
   m_ObjectHideFlags: 0
@@ -31810,7 +31822,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: x
+  m_Text: X
 --- !u!1 &2103601401474309487
 GameObject:
   m_ObjectHideFlags: 0
@@ -32408,7 +32420,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: a/d
+  m_Text: A/D
 --- !u!224 &2804396352588979503
 RectTransform:
   m_ObjectHideFlags: 0
@@ -34774,7 +34786,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: s
+  m_Text: S
 --- !u!1 &4783147639538042777
 GameObject:
   m_ObjectHideFlags: 0
@@ -34918,7 +34930,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -25, y: -13.650024}
+  m_AnchoredPosition: {x: -25, y: -13.649994}
   m_SizeDelta: {x: 50, y: -27.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5012634823491408870
@@ -36412,7 +36424,7 @@ PrefabInstance:
     - target: {fileID: 4418209812704991867, guid: 96905a4b5b2cca528add89d0b3895889,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96905a4b5b2cca528add89d0b3895889, type: 3}
@@ -37027,7 +37039,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: w
+  m_Text: W
 --- !u!1 &6901709277756385645
 GameObject:
   m_ObjectHideFlags: 0
