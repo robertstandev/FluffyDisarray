@@ -2434,7 +2434,7 @@ PrefabInstance:
     - target: {fileID: -5341402649437208847, guid: 04519271c46edddecac9c3ea8219f59b,
         type: 3}
       propertyPath: hideTransitionSpeed
-      value: 30
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: -5341402649437208847, guid: 04519271c46edddecac9c3ea8219f59b,
         type: 3}
