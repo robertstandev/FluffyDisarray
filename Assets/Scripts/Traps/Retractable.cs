@@ -22,6 +22,7 @@ public class Retractable : MonoBehaviour
     }
     private void OnEnable()
     {
+        this.isRetracting = true;
         StartCoroutine(retractableTimer());
     }
 

@@ -3185,6 +3185,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2386472959398606592}
     m_Modifications:
+    - target: {fileID: 6788533959397777286, guid: 55707bf5e62315085a32c2766ac4cab2,
+        type: 3}
+      propertyPath: swingMovementDelay
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 7142556715122557610, guid: 55707bf5e62315085a32c2766ac4cab2,
         type: 3}
       propertyPath: m_LocalPosition.y

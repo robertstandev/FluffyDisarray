@@ -10,7 +10,11 @@ public class SpikeBallMovement : MonoBehaviour
     private float currentRotation = 0f;
     private bool swingingLeftDirection = true;
 
-    private void OnEnable() { StartCoroutine(swingMovementTimer()); }
+    private void OnEnable()
+    {
+        this.swingingLeftDirection = true;
+        StartCoroutine(swingMovementTimer());
+    }
     private void OnDisable() { StopAllCoroutines(); }
 
     private IEnumerator swingMovementTimer()
@@ -26,7 +30,7 @@ public class SpikeBallMovement : MonoBehaviour
             this.currentRotation += this.swingingLeftDirection ? -1f : 1f;
             gameObjectRotation.z = this.currentRotation;
             this.gameObject.transform.localEulerAngles = gameObjectRotation;
-            this.swingingLeftDirection = this.currentRotation.Equals(this.minRotation) ? false : this.currentRotation.Equals(this.maxRotation) ? true : this.swingingLeftDirection;
+            this.swingingLeftDirection = this.currentRotation <= this.minRotation ? false : this.currentRotation >= this.maxRotation ? true : this.swingingLeftDirection;
         }
     } 
 }
