@@ -8651,7 +8651,7 @@ PrefabInstance:
     - target: {fileID: 841374433843603368, guid: 50f4aabe4d1ad04f8ab38559d2162da2,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50f4aabe4d1ad04f8ab38559d2162da2, type: 3}
@@ -32635,6 +32635,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: StageInside11
       objectReference: {fileID: 0}
+    - target: {fileID: 1506772669672660791, guid: 9b322b91f6f79672194ac8dd529c1c9a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2149257780830622388, guid: 9b322b91f6f79672194ac8dd529c1c9a,
         type: 3}
       propertyPath: m_RootOrder
@@ -35048,6 +35053,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StageInside12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7545837907485342825, guid: 4f69a9669d3216178941174a1ec99fc0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8903759446952116568, guid: 4f69a9669d3216178941174a1ec99fc0,
         type: 3}
