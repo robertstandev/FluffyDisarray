@@ -10339,6 +10339,75 @@ MonoBehaviour:
   - {fileID: 8761389941276799733}
   - {fileID: 5859313513024513743}
   - {fileID: 6901709277756385645}
+--- !u!1001 &4129171919911889529
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4129171920100278124, guid: ceb6a9940865dfa6aafdc390656a4de2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129171920100278124, guid: ceb6a9940865dfa6aafdc390656a4de2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -21.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129171920100278124, guid: ceb6a9940865dfa6aafdc390656a4de2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -30.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129171920100278124, guid: ceb6a9940865dfa6aafdc390656a4de2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129171920100278124, guid: ceb6a9940865dfa6aafdc390656a4de2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129171920100278124, guid: ceb6a9940865dfa6aafdc390656a4de2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129171920100278124, guid: ceb6a9940865dfa6aafdc390656a4de2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129171920100278124, guid: ceb6a9940865dfa6aafdc390656a4de2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129171920100278124, guid: ceb6a9940865dfa6aafdc390656a4de2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129171920100278124, guid: ceb6a9940865dfa6aafdc390656a4de2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129171920100278124, guid: ceb6a9940865dfa6aafdc390656a4de2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129171920100278125, guid: ceb6a9940865dfa6aafdc390656a4de2,
+        type: 3}
+      propertyPath: m_Name
+      value: StageBossOutside1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ceb6a9940865dfa6aafdc390656a4de2, type: 3}
 --- !u!224 &4130674979488312352
 RectTransform:
   m_ObjectHideFlags: 0
