@@ -4,16 +4,8 @@ using UnityEngine;
 
 public class StoryRandomMap : MonoBehaviour
 {
-    [SerializeField]private GameObject test;
-    // Start is called before the first frame update
-    void Start()
-    {
-        Instantiate(test, Vector3.zero, Quaternion.identity);
-    }
+    [SerializeField]private GameObject tutorialPrefab, bossInsidePrefab, bossOutsidePrefab;
+    [SerializeField]private GameObject[] insidePrefabs, outsidePrefabs;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private void Start() { Instantiate(tutorialPrefab, Vector3.zero, Quaternion.identity); }
 }
