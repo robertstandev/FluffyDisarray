@@ -11238,7 +11238,7 @@ GameObject:
   - component: {fileID: 1037316344}
   - component: {fileID: 1037316343}
   m_Layer: 0
-  m_Name: Test
+  m_Name: MapStageManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11256,7 +11256,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd2d87cb116e4b041bfe051e46435775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  test: {fileID: 4418209812704991867, guid: 96905a4b5b2cca528add89d0b3895889, type: 3}
+  tutorialPrefab: {fileID: 727081794436035209, guid: 9594a95bb7b0e7c5ab114950ed7f7641,
+    type: 3}
+  bossInsidePrefab: {fileID: 0}
+  bossOutsidePrefab: {fileID: 0}
+  insidePrefabs: []
+  outsidePrefabs: []
 --- !u!4 &1037316344
 Transform:
   m_ObjectHideFlags: 0
