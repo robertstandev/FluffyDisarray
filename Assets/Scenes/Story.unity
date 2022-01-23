@@ -2736,7 +2736,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialPrefab: {fileID: 727081794436035209, guid: 9594a95bb7b0e7c5ab114950ed7f7641,
     type: 3}
-  bossInsidePrefab: {fileID: 0}
+  bossInsidePrefab: {fileID: 8994084814223411802, guid: 7828db02cd1c8fc09b197be91d67c8fc,
+    type: 3}
   bossOutsidePrefab: {fileID: 0}
   insidePrefabs:
   - {fileID: 3068445235186541642, guid: 863bf403af8ce8484b1212ffd76628c6, type: 3}
@@ -4303,7 +4304,7 @@ PrefabInstance:
     - target: {fileID: 8994084814223411802, guid: 7828db02cd1c8fc09b197be91d67c8fc,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7828db02cd1c8fc09b197be91d67c8fc, type: 3}
