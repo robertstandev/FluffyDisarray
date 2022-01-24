@@ -4245,7 +4245,7 @@ PrefabInstance:
     - target: {fileID: 8497161299765610457, guid: 7828db02cd1c8fc09b197be91d67c8fc,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 8497161299765610457, guid: 7828db02cd1c8fc09b197be91d67c8fc,
         type: 3}
@@ -4305,7 +4305,7 @@ PrefabInstance:
     - target: {fileID: 8994084814223411802, guid: 7828db02cd1c8fc09b197be91d67c8fc,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7828db02cd1c8fc09b197be91d67c8fc, type: 3}
@@ -10350,7 +10350,7 @@ PrefabInstance:
     - target: {fileID: 4129171920100278124, guid: ceb6a9940865dfa6aafdc390656a4de2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 4129171920100278124, guid: ceb6a9940865dfa6aafdc390656a4de2,
         type: 3}
@@ -10406,6 +10406,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StageBossOutside1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129171920100278125, guid: ceb6a9940865dfa6aafdc390656a4de2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceb6a9940865dfa6aafdc390656a4de2, type: 3}
