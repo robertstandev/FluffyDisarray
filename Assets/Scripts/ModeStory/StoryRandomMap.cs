@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class StoryRandomMap : MonoBehaviour
 {
-    [SerializeField]private GameObject tutorialPrefab, bossInsidePrefab, bossOutsidePrefab;
-    [SerializeField]private List<GameObject> insidePrefabs, outsidePrefabs;
+    [SerializeField]private GameObject tutorialPrefab, bossInsidePrefab, bossOutsidePrefab; //vital stages
+    [SerializeField]private List<GameObject> insidePrefabs, outsidePrefabs;                 //non vital stages
     [SerializeField]private int currentStageNumber = 0 , maximumNumberOfStages;
     private GameObject currentStagePrefab;
     private List<GameObject> selectedList;
@@ -34,7 +34,7 @@ public class StoryRandomMap : MonoBehaviour
         }
         else
         {
-            yield return getNextStage();
+            yield return getNextNonVitalStage();
             this.currentStagePrefab = this.selectedList[this.selectedGameobjectIndex];
         }
 
@@ -55,7 +55,7 @@ public class StoryRandomMap : MonoBehaviour
         yield return null;
     }
 
-    private IEnumerator getNextStage()
+    private IEnumerator getNextNonVitalStage()
     {
         this.selectedList = new List<GameObject>();
         this.selectedList = Random.Range(0,1).Equals(0) ? this.insidePrefabs : this.outsidePrefabs;
