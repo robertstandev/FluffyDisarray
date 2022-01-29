@@ -2756,7 +2756,16 @@ MonoBehaviour:
   - {fileID: 7425765103392746293, guid: f2e42136ebe597123b49de430ccc40e7, type: 3}
   - {fileID: 200324987913344184, guid: 0c33870a8ce9aa67bb58555c1c6301cd, type: 3}
   - {fileID: 9000759471191467769, guid: 97d1842a7652fe693a487b72152aad5b, type: 3}
-  outsidePrefabs: []
+  outsidePrefabs:
+  - {fileID: 4418209812704991867, guid: 96905a4b5b2cca528add89d0b3895889, type: 3}
+  - {fileID: 4003084934424024990, guid: f0a7d7170e5bfcb4ebde94146c0a7fed, type: 3}
+  - {fileID: 6441981451025471711, guid: 5c03043602c34da61b2c288b96840818, type: 3}
+  - {fileID: 6541179741479208796, guid: 4ad3090f7ded1d8fda91c535a3e39aa7, type: 3}
+  - {fileID: 8124551649099082488, guid: e2774428b53972a30989792408f2b5c4, type: 3}
+  - {fileID: 1404246556990782523, guid: 6af23af014f035d1ca10363b4e92b5a9, type: 3}
+  - {fileID: 7934306629813806795, guid: 28be3f6654ddb0c869bb847f237e1a1a, type: 3}
+  - {fileID: 81990869330518204, guid: 00f2dc4235366b2da9413351fe8cdbde, type: 3}
+  - {fileID: 2488248145240116861, guid: b02babb3fade346d8b360fcab2b06222, type: 3}
 --- !u!4 &1037316344
 Transform:
   m_ObjectHideFlags: 0
@@ -4305,7 +4314,7 @@ PrefabInstance:
     - target: {fileID: 8994084814223411802, guid: 7828db02cd1c8fc09b197be91d67c8fc,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7828db02cd1c8fc09b197be91d67c8fc, type: 3}
