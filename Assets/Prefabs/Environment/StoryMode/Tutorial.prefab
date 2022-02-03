@@ -1270,12 +1270,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 8162151753985896596}
     m_Modifications:
     - target: {fileID: 91307999, guid: 0ffc34d8d23715b7f8afe42013ec8087, type: 3}
+      propertyPath: executionDelay
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 91307999, guid: 0ffc34d8d23715b7f8afe42013ec8087, type: 3}
+      propertyPath: executionSpeed
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 91307999, guid: 0ffc34d8d23715b7f8afe42013ec8087, type: 3}
       propertyPath: extendedPosition
       value: 10.4
       objectReference: {fileID: 0}
     - target: {fileID: 91307999, guid: 0ffc34d8d23715b7f8afe42013ec8087, type: 3}
       propertyPath: retractedPosition
-      value: 9.22
+      value: 9.05
       objectReference: {fileID: 0}
     - target: {fileID: 49979701260186757, guid: 0ffc34d8d23715b7f8afe42013ec8087,
         type: 3}
@@ -1352,6 +1360,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8162151753985896596}
     m_Modifications:
+    - target: {fileID: 6788533959397777286, guid: 55707bf5e62315085a32c2766ac4cab2,
+        type: 3}
+      propertyPath: swingMovementDelay
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 7142556715122557610, guid: 55707bf5e62315085a32c2766ac4cab2,
         type: 3}
       propertyPath: m_LocalRotation.w
