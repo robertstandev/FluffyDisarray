@@ -136,12 +136,12 @@ PrefabInstance:
     - target: {fileID: 228995668033617674, guid: 9594a95bb7b0e7c5ab114950ed7f7641,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -16.8
       objectReference: {fileID: 0}
     - target: {fileID: 228995668033617674, guid: 9594a95bb7b0e7c5ab114950ed7f7641,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.5
+      value: -7.5
       objectReference: {fileID: 0}
     - target: {fileID: 228995668033617674, guid: 9594a95bb7b0e7c5ab114950ed7f7641,
         type: 3}
@@ -191,7 +191,7 @@ PrefabInstance:
     - target: {fileID: 727081794436035209, guid: 9594a95bb7b0e7c5ab114950ed7f7641,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9594a95bb7b0e7c5ab114950ed7f7641, type: 3}
@@ -218,17 +218,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: StageEdgeEffect
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 2ba9ef067d14f12478dc4de6baf23094, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 2ba9ef067d14f12478dc4de6baf23094, type: 3}
       propertyPath: m_RootOrder
       value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 2ba9ef067d14f12478dc4de6baf23094, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -17.3
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 2ba9ef067d14f12478dc4de6baf23094, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -10.7
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 2ba9ef067d14f12478dc4de6baf23094, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1345,17 +1349,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: StageEdgeEffect
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 2ba9ef067d14f12478dc4de6baf23094, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 2ba9ef067d14f12478dc4de6baf23094, type: 3}
       propertyPath: m_RootOrder
       value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 2ba9ef067d14f12478dc4de6baf23094, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 37.6
+      value: 112.09999
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 2ba9ef067d14f12478dc4de6baf23094, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -13
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 2ba9ef067d14f12478dc4de6baf23094, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6518,7 +6526,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Space
+  m_Text: space
 --- !u!1 &871387309676546634
 GameObject:
   m_ObjectHideFlags: 0
@@ -7729,7 +7737,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Z
+  m_Text: z
 --- !u!224 &1879194940927179493
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7973,7 +7981,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: X
+  m_Text: x
 --- !u!1 &2103601401474309487
 GameObject:
   m_ObjectHideFlags: 0
@@ -8640,7 +8648,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: A/D
+  m_Text: a/d
 --- !u!224 &2804396352588979503
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11438,7 +11446,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: S
+  m_Text: s
 --- !u!1 &4783147639538042777
 GameObject:
   m_ObjectHideFlags: 0
@@ -13971,7 +13979,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: W
+  m_Text: w
 --- !u!1 &6901709277756385645
 GameObject:
   m_ObjectHideFlags: 0
