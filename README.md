@@ -3,4 +3,4 @@
 2D platformer game with multiplayer support
 <br>
 <br>
-![alt text](https://github.com/robertstandev/Mekanicom/tree/main/README/Images/Clash1v1.jpg)
+![alt text](https://raw.githubusercontent.com/robertstandev/Mekanicom/main/README/Images/Clash1v1.jpg)
