@@ -9,6 +9,7 @@ public class SlashTrigger : MonoBehaviour
     [SerializeField]private Vector2 slashEffectPositonToCharacter;
     private GameObject instantiatedSlashEffect;
     private SpriteRenderer characterSpriteRenderer;
+    private WaitForSeconds wait = new WaitForSeconds(0.05f);
 
     private void Start()
     {
@@ -28,9 +29,18 @@ public class SlashTrigger : MonoBehaviour
     {
         if(this.instantiatedSlashEffect.activeInHierarchy) { return; }
 
-        adjustSlashEffectDirection();
         this.instantiatedSlashEffect.SetActive(true);
+
+        StartCoroutine(adjustSlashEffectDirection());
     }
 
-    private void adjustSlashEffectDirection() { this.instantiatedSlashEffect.transform.localScale = new Vector2(this.characterSpriteRenderer.flipX ? -1 : 1, 1f); }
+    private IEnumerator adjustSlashEffectDirection()
+    {
+        while (this.instantiatedSlashEffect.activeInHierarchy)
+        {
+            this.instantiatedSlashEffect.transform.localScale = new Vector2(this.characterSpriteRenderer.flipX ? -1 : 1, 1f);
+            yield return wait;
+        }
+        yield return null;
+    }
 }
