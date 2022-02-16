@@ -2812,6 +2812,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CharacterEditor
       objectReference: {fileID: 0}
+    - target: {fileID: 4980134103973828999, guid: f5435c9e620fa0f389c26129eb013ca1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -13.650024
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5435c9e620fa0f389c26129eb013ca1, type: 3}
 --- !u!1001 &524046750751929620
