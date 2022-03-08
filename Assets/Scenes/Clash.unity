@@ -364,10 +364,8 @@ Transform:
   m_LocalPosition: {x: 0.6590841, y: 2.1176496, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1318961666}
   - {fileID: 431795696}
   - {fileID: 1572610385}
-  - {fileID: 1643010969}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -569,7 +567,7 @@ RectTransform:
   m_LocalScale: {x: 0.6611421, y: 0.6611421, z: 0.6611421}
   m_Children: []
   m_Father: {fileID: 193266925}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -708,6 +706,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1290018964}
     m_Modifications:
+    - target: {fileID: -5341402649437208847, guid: 04519271c46edddecac9c3ea8219f59b,
+        type: 3}
+      propertyPath: hideTransitionSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -5341402649437208847, guid: 04519271c46edddecac9c3ea8219f59b,
+        type: 3}
+      propertyPath: showTransitionSpeed
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 8352400003251614357, guid: 04519271c46edddecac9c3ea8219f59b,
         type: 3}
       propertyPath: m_Name
@@ -829,6 +837,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1290018964}
     m_Modifications:
+    - target: {fileID: -5341402649437208847, guid: 04519271c46edddecac9c3ea8219f59b,
+        type: 3}
+      propertyPath: hideTransitionSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -5341402649437208847, guid: 04519271c46edddecac9c3ea8219f59b,
+        type: 3}
+      propertyPath: showTransitionSpeed
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 8352400003251614357, guid: 04519271c46edddecac9c3ea8219f59b,
         type: 3}
       propertyPath: m_Name
@@ -1011,6 +1029,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 228328672}
     m_Modifications:
+    - target: {fileID: -5341402649437208847, guid: 04519271c46edddecac9c3ea8219f59b,
+        type: 3}
+      propertyPath: hideTransitionSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -5341402649437208847, guid: 04519271c46edddecac9c3ea8219f59b,
+        type: 3}
+      propertyPath: showTransitionSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: -5341402649437208847, guid: 04519271c46edddecac9c3ea8219f59b,
+        type: 3}
+      propertyPath: showTransitionStartAfter
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 8352400003251614357, guid: 04519271c46edddecac9c3ea8219f59b,
         type: 3}
       propertyPath: m_Name
@@ -1080,6 +1113,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1290018964}
     m_Modifications:
+    - target: {fileID: -5341402649437208847, guid: 04519271c46edddecac9c3ea8219f59b,
+        type: 3}
+      propertyPath: hideTransitionSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -5341402649437208847, guid: 04519271c46edddecac9c3ea8219f59b,
+        type: 3}
+      propertyPath: showTransitionSpeed
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 8352400003251614357, guid: 04519271c46edddecac9c3ea8219f59b,
         type: 3}
       propertyPath: m_Name
@@ -1149,6 +1192,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 228328672}
     m_Modifications:
+    - target: {fileID: -5341402649437208847, guid: 04519271c46edddecac9c3ea8219f59b,
+        type: 3}
+      propertyPath: hideTransitionSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -5341402649437208847, guid: 04519271c46edddecac9c3ea8219f59b,
+        type: 3}
+      propertyPath: showTransitionSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: -5341402649437208847, guid: 04519271c46edddecac9c3ea8219f59b,
+        type: 3}
+      propertyPath: showTransitionStartAfter
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 8352400003251614357, guid: 04519271c46edddecac9c3ea8219f59b,
         type: 3}
       propertyPath: m_Name
@@ -1735,39 +1793,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &1318961665
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1318961666}
-  m_Layer: 0
-  m_Name: Rezolv Problema cand caracterele sunt deja in interiorul collisionului
-    atat la slash cat si la collectible box poate la collectible box sa fac un al
-    2lea collider care il fac trigger si mai mare ca sa acopere o arie mai mare si
-    sa dau on trigger enter si cand e inside trigger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1318961666
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1318961665}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 193266925}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1343279648 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8352400003251614363, guid: 04519271c46edddecac9c3ea8219f59b,
@@ -1787,6 +1812,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1961531377}
     m_Modifications:
+    - target: {fileID: -5341402649437208847, guid: 04519271c46edddecac9c3ea8219f59b,
+        type: 3}
+      propertyPath: hideTransitionSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -5341402649437208847, guid: 04519271c46edddecac9c3ea8219f59b,
+        type: 3}
+      propertyPath: showTransitionSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: -5341402649437208847, guid: 04519271c46edddecac9c3ea8219f59b,
+        type: 3}
+      propertyPath: showTransitionStartAfter
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 8352400003251614357, guid: 04519271c46edddecac9c3ea8219f59b,
         type: 3}
       propertyPath: m_Name
@@ -1946,7 +1986,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 193266925}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1587540950
 GameObject:
@@ -2012,6 +2052,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1961531377}
     m_Modifications:
+    - target: {fileID: -5341402649437208847, guid: 04519271c46edddecac9c3ea8219f59b,
+        type: 3}
+      propertyPath: hideTransitionSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -5341402649437208847, guid: 04519271c46edddecac9c3ea8219f59b,
+        type: 3}
+      propertyPath: showTransitionSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: -5341402649437208847, guid: 04519271c46edddecac9c3ea8219f59b,
+        type: 3}
+      propertyPath: showTransitionStartAfter
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 8352400003251614357, guid: 04519271c46edddecac9c3ea8219f59b,
         type: 3}
       propertyPath: m_Name
@@ -2181,37 +2236,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1643010968
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1643010969}
-  m_Layer: 0
-  m_Name: Fac obiectele din Hierarchy>Map>Objects sa dispara dupa ce stai un timp
-    pe ele (dupa ce le atingi sa dispara dupa 3 secunde) si revin dupa 10-20 secunde
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1643010969
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1643010968}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 193266925}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1745312544
 GameObject:
   m_ObjectHideFlags: 0
@@ -2301,6 +2325,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1961531377}
     m_Modifications:
+    - target: {fileID: -5341402649437208847, guid: 04519271c46edddecac9c3ea8219f59b,
+        type: 3}
+      propertyPath: hideTransitionSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -5341402649437208847, guid: 04519271c46edddecac9c3ea8219f59b,
+        type: 3}
+      propertyPath: showTransitionSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: -5341402649437208847, guid: 04519271c46edddecac9c3ea8219f59b,
+        type: 3}
+      propertyPath: showTransitionStartAfter
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 8352400003251614357, guid: 04519271c46edddecac9c3ea8219f59b,
         type: 3}
       propertyPath: m_Name
@@ -2376,6 +2415,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1961531377}
     m_Modifications:
+    - target: {fileID: -5341402649437208847, guid: 04519271c46edddecac9c3ea8219f59b,
+        type: 3}
+      propertyPath: hideTransitionSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -5341402649437208847, guid: 04519271c46edddecac9c3ea8219f59b,
+        type: 3}
+      propertyPath: showTransitionSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: -5341402649437208847, guid: 04519271c46edddecac9c3ea8219f59b,
+        type: 3}
+      propertyPath: showTransitionStartAfter
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 8352400003251614357, guid: 04519271c46edddecac9c3ea8219f59b,
         type: 3}
       propertyPath: m_Name
@@ -3067,6 +3121,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1290018964}
     m_Modifications:
+    - target: {fileID: -5341402649437208847, guid: 04519271c46edddecac9c3ea8219f59b,
+        type: 3}
+      propertyPath: hideTransitionSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -5341402649437208847, guid: 04519271c46edddecac9c3ea8219f59b,
+        type: 3}
+      propertyPath: showTransitionSpeed
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 8352400003251614357, guid: 04519271c46edddecac9c3ea8219f59b,
         type: 3}
       propertyPath: m_Name
