@@ -4758,7 +4758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df49915e024f25b40bf1006debd9d983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hideAfterInterval: 3
+  hideAfterInterval: 7
 --- !u!61 &6913979343414908338
 BoxCollider2D:
   m_ObjectHideFlags: 0
