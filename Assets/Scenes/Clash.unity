@@ -1746,7 +1746,9 @@ GameObject:
   - component: {fileID: 1318961666}
   m_Layer: 0
   m_Name: Rezolv Problema cand caracterele sunt deja in interiorul collisionului
-    atat la slash cat si la collectible box
+    atat la slash cat si la collectible box poate la collectible box sa fac un al
+    2lea collider care il fac trigger si mai mare ca sa acopere o arie mai mare si
+    sa dau on trigger enter si cand e inside trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
