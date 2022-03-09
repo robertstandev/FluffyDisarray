@@ -7,55 +7,43 @@ public class StoryRandomMap : MonoBehaviour
     [SerializeField]private GameObject tutorialPrefab, bossInsidePrefab, bossOutsidePrefab; //vital stages
     [SerializeField]private List<GameObject> insidePrefabs, outsidePrefabs;                 //non vital stages
     [SerializeField]private int currentStageNumber = 0 , maximumNumberOfStages;
-    private GameObject currentStagePrefab, oldStagePrefab;
-    private List<GameObject> selectedList;
+    private GameObject currentStagePrefab, instantiatedStagePrefab;
+    private List<GameObject> combinedLists;
     private int selectedGameobjectIndex;
 
     private void Start()
     {
         this.maximumNumberOfStages = this.insidePrefabs.Count + this.outsidePrefabs.Count + 3;
+        combineLists();
         StartCoroutine(startNextStage());
     }
 
     private IEnumerator startNextStage()
     {
-        //Cache Old Stage If It Exists
         if(this.currentStagePrefab != null)
         {
-            this.oldStagePrefab = this.currentStagePrefab;
+            Destroy(this.currentStagePrefab);
         }
 
         //Select Next Stage
         if(this.currentStageNumber.Equals(0))
         {
-            this.currentStagePrefab = this.tutorialPrefab;
+            this.currentStagePrefab = Instantiate(this.tutorialPrefab);
         }
         else if(this.currentStageNumber.Equals(this.maximumNumberOfStages / 2))
         {
-            this.currentStagePrefab = this.bossInsidePrefab;
+            this.currentStagePrefab = Instantiate(this.bossInsidePrefab);
         }
-        else if(this.currentStageNumber.Equals(this.maximumNumberOfStages))
+        else if(this.currentStageNumber.Equals(this.maximumNumberOfStages - 1))
         {
-            this.currentStagePrefab = this.bossOutsidePrefab;
+            this.currentStagePrefab = Instantiate(this.bossOutsidePrefab);
         }
         else
         {
             yield return getNextNonVitalStage();
-            this.currentStagePrefab = this.selectedList[this.selectedGameobjectIndex];
+            this.currentStagePrefab = Instantiate(this.combinedLists[this.selectedGameobjectIndex]);
+            this.combinedLists.RemoveAt(this.selectedGameobjectIndex);
         }
-
-        //Create Stage
-        Instantiate(this.currentStagePrefab , this.currentStagePrefab.transform.position, Quaternion.identity);
-
-        //Remove Stage from list so it won't be selected again
-        if(this.selectedList != null && !this.selectedList.Equals(null))
-        {
-            this.selectedList.RemoveAt(this.selectedGameobjectIndex);
-            this.selectedList = null;
-        }
-
-        //Remove Old Stage from game
-        Destroy(this.oldStagePrefab);
 
         //get all characters and put them on starting position
         //
@@ -69,9 +57,15 @@ public class StoryRandomMap : MonoBehaviour
 
     private IEnumerator getNextNonVitalStage()
     {
-        this.selectedList = new List<GameObject>();
-        this.selectedList = Random.Range(0,1).Equals(0) ? this.insidePrefabs : this.outsidePrefabs;
-        this.selectedGameobjectIndex = Random.Range(0, this.selectedList.Count);
+        this.selectedGameobjectIndex = Random.Range(0, this.combinedLists.Count);
         yield return null;
+        yield return null;
+    }
+
+    private void combineLists()
+    {
+        this.combinedLists = new List<GameObject>();
+        this.combinedLists.AddRange(this.insidePrefabs);
+        this.combinedLists.AddRange(this.outsidePrefabs);
     }
 }
