@@ -191,7 +191,7 @@ PrefabInstance:
     - target: {fileID: 727081794436035209, guid: 9594a95bb7b0e7c5ab114950ed7f7641,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9594a95bb7b0e7c5ab114950ed7f7641, type: 3}
@@ -228,11 +228,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 2ba9ef067d14f12478dc4de6baf23094, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -17.3
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 2ba9ef067d14f12478dc4de6baf23094, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10.7
+      value: -11
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 2ba9ef067d14f12478dc4de6baf23094, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1359,7 +1359,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 2ba9ef067d14f12478dc4de6baf23094, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 112.09999
+      value: 123
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 2ba9ef067d14f12478dc4de6baf23094, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5454,12 +5454,12 @@ PrefabInstance:
     - target: {fileID: 9194017955208901616, guid: 22630c5e20989b7b6a44c01303b028d6,
         type: 3}
       propertyPath: maximumStartInterval
-      value: 5
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 9194017955208901616, guid: 22630c5e20989b7b6a44c01303b028d6,
         type: 3}
       propertyPath: minimumStartInterval
-      value: 5
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 9194017955208901616, guid: 22630c5e20989b7b6a44c01303b028d6,
         type: 3}
@@ -5486,12 +5486,12 @@ PrefabInstance:
     - target: {fileID: 9194017955208901617, guid: 22630c5e20989b7b6a44c01303b028d6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 63
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 9194017955208901617, guid: 22630c5e20989b7b6a44c01303b028d6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 40
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 9194017955208901617, guid: 22630c5e20989b7b6a44c01303b028d6,
         type: 3}
@@ -6526,7 +6526,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Space
+  m_Text: space
 --- !u!1 &871387309676546634
 GameObject:
   m_ObjectHideFlags: 0
@@ -7737,7 +7737,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Z
+  m_Text: z
 --- !u!224 &1879194940927179493
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7981,7 +7981,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: X
+  m_Text: x
 --- !u!1 &2103601401474309487
 GameObject:
   m_ObjectHideFlags: 0
@@ -8648,7 +8648,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: A/D
+  m_Text: a/d
 --- !u!224 &2804396352588979503
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11446,7 +11446,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: S
+  m_Text: s
 --- !u!1 &4783147639538042777
 GameObject:
   m_ObjectHideFlags: 0
@@ -13979,7 +13979,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: W
+  m_Text: w
 --- !u!1 &6901709277756385645
 GameObject:
   m_ObjectHideFlags: 0

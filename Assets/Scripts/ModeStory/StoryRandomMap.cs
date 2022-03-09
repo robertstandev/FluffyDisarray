@@ -39,7 +39,7 @@ public class StoryRandomMap : MonoBehaviour
         }
 
         //Create Stage
-        Instantiate(this.currentStagePrefab , Vector3.zero, Quaternion.identity);
+        Instantiate(this.currentStagePrefab , this.currentStagePrefab.transform.position, Quaternion.identity);
 
         //Remove Stage from list so it won't be selected again
         if(this.selectedList != null && !this.selectedList.Equals(null))
