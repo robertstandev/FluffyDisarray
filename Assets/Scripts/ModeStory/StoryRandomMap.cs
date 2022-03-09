@@ -7,7 +7,7 @@ public class StoryRandomMap : MonoBehaviour
     [SerializeField]private GameObject tutorialPrefab, bossInsidePrefab, bossOutsidePrefab; //vital stages
     [SerializeField]private List<GameObject> insidePrefabs, outsidePrefabs;                 //non vital stages
     [SerializeField]private int currentStageNumber = 0 , maximumNumberOfStages;
-    private GameObject currentStagePrefab;
+    private GameObject currentStagePrefab, oldStagePrefab;
     private List<GameObject> selectedList;
     private int selectedGameobjectIndex;
 
@@ -19,7 +19,13 @@ public class StoryRandomMap : MonoBehaviour
 
     private IEnumerator startNextStage()
     {
-        //Select Stage
+        //Cache Old Stage If It Exists
+        if(this.currentStagePrefab != null)
+        {
+            this.oldStagePrefab = this.currentStagePrefab;
+        }
+
+        //Select Next Stage
         if(this.currentStageNumber.Equals(0))
         {
             this.currentStagePrefab = this.tutorialPrefab;
@@ -48,7 +54,13 @@ public class StoryRandomMap : MonoBehaviour
             this.selectedList = null;
         }
 
+        //Remove Old Stage from game
+        Destroy(this.oldStagePrefab);
+
         //get all characters and put them on starting position
+        //
+        //
+        //
 
         this.currentStageNumber += 1;
 
