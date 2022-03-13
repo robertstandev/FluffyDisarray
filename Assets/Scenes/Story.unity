@@ -2030,6 +2030,11 @@ MonoBehaviour:
   botPrefab: {fileID: 625996239217950892, guid: 8c3dbfc224df3faf2a41649fd5c0f8a6,
     type: 3}
   gameMenu: {fileID: 98966684}
+  charactersSpawnPositions:
+  - {x: -3, y: 0, z: 0}
+  - {x: -1, y: 0, z: 0}
+  - {x: 1, y: 0, z: 0}
+  - {x: 3, y: 0, z: 0}
 --- !u!1 &559861808
 GameObject:
   m_ObjectHideFlags: 0

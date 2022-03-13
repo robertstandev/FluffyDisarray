@@ -14,6 +14,8 @@ public class MapCharacterManager : MonoBehaviour
 
     [SerializeField]private GameObject botPrefab;
     [SerializeField]private GameObject gameMenu;
+
+    [SerializeField]private Vector3[] charactersSpawnPositions;
     private List<GameObject> gameCharacters = new List<GameObject>();
     private List<GameObject> temporaryGameCharacters = new List<GameObject>();
     private List<Color32> gameCharactersColors = new List<Color32>();
@@ -33,7 +35,6 @@ public class MapCharacterManager : MonoBehaviour
         for(int i = 0 ; i < this.temporaryGameCharacters.Count; i++)
         {
             this.gameCharacters.Add(Instantiate(this.temporaryGameCharacters[i] , Vector3.zero , Quaternion.identity));
-            tempCharacterNumber += 1;
 
             if(this.gameCharacters[i].name.Equals(playerPrefab.name + "(Clone)"))
             {
@@ -51,6 +52,8 @@ public class MapCharacterManager : MonoBehaviour
 
                 tempControllerCache = this.gameCharacters[i].GetComponent<IController>();
             }
+
+            tempCharacterNumber += 1;
 
             this.gameCharacters[i].GetComponent<ProjectileTrigger>().setProjectile(this.gameCharactersProjectiles[i] , this.gameCharactersProjectilesPositionOffsets[i],this.gameCharactersProjectilesMuzzleEffects[i], this.gameCharactersProjectilesMuzzlePositionOffsets[i]);
             this.gameCharacters[i].GetComponent<IController>().getCharacterRenderer.material.SetColor("_Color", this.gameCharactersColors[i]);
@@ -97,23 +100,8 @@ public class MapCharacterManager : MonoBehaviour
 
     private void configureCharacterStartPosition(GameObject character, int tempCharacterNumber)
     {
-        character.transform.localPosition = getPositionToPutCharacterIn(tempCharacterNumber);
-        character.GetComponent<Respawn>().setPlaceToRespawn(getPositionToPutCharacterIn(tempCharacterNumber));
-    }
-
-    private Vector3 getPositionToPutCharacterIn(int tempCharacterNumber)
-    {
-        switch (tempCharacterNumber)
-        {
-            case 1 : return new Vector3(-8f,1f,0f);
-            case 2 : return new Vector3(-1f,1f,0f);
-            case 3 : return new Vector3(6f,1f,0f);
-            case 4 : return new Vector3(13f,1f,0f);
-            case 5 : return new Vector3(-10f,7f,0f);
-            case 6 : return new Vector3(-5f,5f,0f);
-            case 7 : return new Vector3(10f,5f,0f);
-            default: return new Vector3(15f,7f,0f);
-        }
+        character.transform.localPosition = charactersSpawnPositions[tempCharacterNumber];
+        character.GetComponent<Respawn>().setPlaceToRespawn(charactersSpawnPositions[tempCharacterNumber]);
     }
 
     public List<GameObject> getListOfCharactersFromScene() { return this.gameCharacters; }
