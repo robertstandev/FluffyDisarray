@@ -10,22 +10,40 @@ public class StoryRandomMap : MonoBehaviour
     private GameObject currentStagePrefab, instantiatedStagePrefab;
     private List<GameObject> combinedLists;
     private int selectedGameobjectIndex;
+    private MapCharacterManager charactersFromSceneScript;
 
     private void Start()
     {
+        this.charactersFromSceneScript = FindObjectOfType<MapCharacterManager>();
         this.maximumNumberOfStages = this.insidePrefabs.Count + this.outsidePrefabs.Count + 3;
         combineLists();
         StartCoroutine(startNextStage());
     }
 
-    private IEnumerator startNextStage()
+    public IEnumerator startNextStage()
+    {
+        yield return resetPlayers();
+        
+        yield return checkAndRemoveCurrentStage();
+
+        yield return setNextStage();
+
+        this.currentStageNumber += 1;
+
+        yield return null;
+    }
+
+    private IEnumerator checkAndRemoveCurrentStage()
     {
         if(this.currentStagePrefab != null)
         {
             Destroy(this.currentStagePrefab);
         }
+        yield return null;
+    }
 
-        //Select Next Stage
+    private IEnumerator setNextStage()
+    {
         if(this.currentStageNumber.Equals(0))
         {
             this.currentStagePrefab = Instantiate(this.tutorialPrefab);
@@ -44,14 +62,6 @@ public class StoryRandomMap : MonoBehaviour
             this.currentStagePrefab = Instantiate(this.combinedLists[this.selectedGameobjectIndex]);
             this.combinedLists.RemoveAt(this.selectedGameobjectIndex);
         }
-
-        //get all characters and put them on starting position
-        //
-        //
-        //
-
-        this.currentStageNumber += 1;
-
         yield return null;
     }
 
@@ -67,5 +77,17 @@ public class StoryRandomMap : MonoBehaviour
         this.combinedLists = new List<GameObject>();
         this.combinedLists.AddRange(this.insidePrefabs);
         this.combinedLists.AddRange(this.outsidePrefabs);
+    }
+
+    private IEnumerator resetPlayers()
+    {
+        for(int i = 0 ; i < this.charactersFromSceneScript.getListOfCharactersFromScene().Count ; i++)
+        {
+            if(this.charactersFromSceneScript.getListOfCharactersFromScene()[i].activeInHierarchy)
+            {
+               this.charactersFromSceneScript.getListOfCharactersFromScene()[i].GetComponent<Respawn>().respawn();
+            }
+        }
+        yield return null;
     }
 }
