@@ -26,8 +26,6 @@ public class StoryRandomMap : MonoBehaviour
 
         yield return setNextStage();
 
-        this.currentStageNumber += 1;
-
         yield return null;
     }
 
@@ -60,6 +58,9 @@ public class StoryRandomMap : MonoBehaviour
             this.currentStagePrefab = Instantiate(this.stagesPrefabs[this.selectedGameobjectIndex]);
             this.stagesPrefabs.RemoveAt(this.selectedGameobjectIndex);
         }
+
+        this.currentStageNumber += 1;
+
         yield return null;
     }
 
