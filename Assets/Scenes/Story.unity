@@ -2983,7 +2983,7 @@ MonoBehaviour:
     type: 3}
   bossOutsidePrefab: {fileID: 4129171920100278125, guid: ceb6a9940865dfa6aafdc390656a4de2,
     type: 3}
-  insidePrefabs:
+  stagesPrefabs:
   - {fileID: 3068445235186541642, guid: 863bf403af8ce8484b1212ffd76628c6, type: 3}
   - {fileID: 3783902184962191355, guid: cc83562e22cf12ba49faad88864c551a, type: 3}
   - {fileID: 501447857562756446, guid: a7feb033a7cd4e88e985d66a3668c058, type: 3}
@@ -2999,7 +2999,6 @@ MonoBehaviour:
   - {fileID: 7425765103392746293, guid: f2e42136ebe597123b49de430ccc40e7, type: 3}
   - {fileID: 200324987913344184, guid: 0c33870a8ce9aa67bb58555c1c6301cd, type: 3}
   - {fileID: 9000759471191467769, guid: 97d1842a7652fe693a487b72152aad5b, type: 3}
-  outsidePrefabs:
   - {fileID: 4418209812704991867, guid: 96905a4b5b2cca528add89d0b3895889, type: 3}
   - {fileID: 4003084934424024990, guid: f0a7d7170e5bfcb4ebde94146c0a7fed, type: 3}
   - {fileID: 6441981451025471711, guid: 5c03043602c34da61b2c288b96840818, type: 3}

@@ -5,18 +5,16 @@ using UnityEngine;
 public class StoryRandomMap : MonoBehaviour
 {
     [SerializeField]private GameObject tutorialPrefab, bossInsidePrefab, bossOutsidePrefab; //vital stages
-    [SerializeField]private List<GameObject> insidePrefabs, outsidePrefabs;                 //non vital stages
+    [SerializeField]private List<GameObject> stagesPrefabs;                                 //non vital stages
     [SerializeField]private int currentStageNumber = 0 , maximumNumberOfStages;
     private GameObject currentStagePrefab, instantiatedStagePrefab;
-    private List<GameObject> combinedLists;
     private int selectedGameobjectIndex;
     private MapCharacterManager charactersFromSceneScript;
 
     private void Start()
     {
         this.charactersFromSceneScript = FindObjectOfType<MapCharacterManager>();
-        this.maximumNumberOfStages = this.insidePrefabs.Count + this.outsidePrefabs.Count + 3;
-        combineLists();
+        this.maximumNumberOfStages = this.stagesPrefabs.Count + 3;
         StartCoroutine(startNextStage());
     }
 
@@ -59,24 +57,17 @@ public class StoryRandomMap : MonoBehaviour
         else
         {
             yield return getNextNonVitalStage();
-            this.currentStagePrefab = Instantiate(this.combinedLists[this.selectedGameobjectIndex]);
-            this.combinedLists.RemoveAt(this.selectedGameobjectIndex);
+            this.currentStagePrefab = Instantiate(this.stagesPrefabs[this.selectedGameobjectIndex]);
+            this.stagesPrefabs.RemoveAt(this.selectedGameobjectIndex);
         }
         yield return null;
     }
 
     private IEnumerator getNextNonVitalStage()
     {
-        this.selectedGameobjectIndex = Random.Range(0, this.combinedLists.Count);
+        this.selectedGameobjectIndex = Random.Range(0, this.stagesPrefabs.Count);
         yield return null;
         yield return null;
-    }
-
-    private void combineLists()
-    {
-        this.combinedLists = new List<GameObject>();
-        this.combinedLists.AddRange(this.insidePrefabs);
-        this.combinedLists.AddRange(this.outsidePrefabs);
     }
 
     private IEnumerator resetPlayers()
