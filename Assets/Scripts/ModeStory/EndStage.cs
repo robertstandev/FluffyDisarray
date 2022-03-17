@@ -17,6 +17,7 @@ public class EndStage : MonoBehaviour
     {
         if(this.charactersFromSceneScript.isCollidedObjectInList(other.gameObject))
         {
+            //if not final boss then else show cinematic with saved friends
             StartCoroutine(this.mapManager.startNextStage());
         }
     }

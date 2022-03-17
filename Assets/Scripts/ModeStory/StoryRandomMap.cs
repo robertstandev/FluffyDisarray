@@ -6,7 +6,7 @@ public class StoryRandomMap : MonoBehaviour
 {
     [SerializeField]private GameObject tutorialPrefab, bossInsidePrefab, bossOutsidePrefab; //vital stages
     [SerializeField]private List<GameObject> stagesPrefabs;                                 //non vital stages
-    [SerializeField]private int currentStageNumber = 0 , maximumNumberOfStages;
+    private int currentStageNumber = 0 , maximumNumberOfStages;
     private GameObject currentStagePrefab, instantiatedStagePrefab;
     private int selectedGameobjectIndex;
     private MapCharacterManager charactersFromSceneScript;
@@ -66,7 +66,6 @@ public class StoryRandomMap : MonoBehaviour
     private IEnumerator getNextNonVitalStage()
     {
         this.selectedGameobjectIndex = Random.Range(0, this.stagesPrefabs.Count);
-        yield return null;
         yield return null;
     }
 
