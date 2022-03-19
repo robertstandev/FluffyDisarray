@@ -1,0 +1,24 @@
+
+Facut cache la SurroundingDetection ca sa nu se mai calculeze la fiecare frame wallul , pamantul etc
+
+==================================================
+
+Sa am grija la multiplayer cand se deconecteaza un jucator ca botii/mobii din story etc vor avea lista cu primii jucatori
+
+==================================================
+
+de facut la cave sa pun bushes si hanging plants ca sa para ca face parte din environment (fac alt layer pt ala si le las pe astea asa) si sa adaug d-alea de weather ca la trees , ground etc ca sa fie alb sus
+
+==================================================
+
+refac caracterul
+
+schimbat ochii la caracter sa fac poate cv mai agresiv sau mai misto ca acum pare retardat, daca nu , il las asa (poate adaug si sa fie mai HD asa cu efect de reflexie etc ca la blana) si poate mai multi ochi gen deschis , suparat , nervos , ma uit cum se fac ochii in functie de unele expresii in realitate
+
+poate pus o gura ca ochii asa ca alt gameobject cu zambet sinistru sau cute
+
+==================================================
+
+de bagat lucruri de deblocat in joc (fac ca o carte/album cu lucruri (spriteuri) lipsa si se adauga cand atingi anumite obiective
+
+==================================================
