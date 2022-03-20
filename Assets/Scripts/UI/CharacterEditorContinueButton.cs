@@ -92,7 +92,6 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
             this.playerConnectionTypeGroup.SetActive(false);
             this.nextPageGameObject.SetActive(false);
         }
-
     }
     
     private void checkAndConfigureIf4BotsReached() { this.botCount += 1; }
@@ -131,7 +130,7 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
 
     private void OnDisable()
     {
-        if(this.mapCharacterManager != null)
+        if(this.mapCharacterManager != null && this.characterNumber > 1)
         {
             this.mapCharacterManager.createCharacters
             (

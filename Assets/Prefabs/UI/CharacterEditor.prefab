@@ -5522,6 +5522,7 @@ GameObject:
   - component: {fileID: 4616534432366861981}
   - component: {fileID: 1011977073964856080}
   - component: {fileID: 5795987210882515661}
+  - component: {fileID: 8613600356594507188}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -5606,6 +5607,24 @@ MonoBehaviour:
   - {fileID: 5402749365298384014}
   - {fileID: 4761677981103736273}
   - {fileID: 4769427734851601197}
+--- !u!114 &8613600356594507188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5084083937616100906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9c9082d18c5a4e4bc46ca63ba12aba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorsToChangeBetween:
+  - serializedVersion: 2
+    rgba: 4294967295
+  - serializedVersion: 2
+    rgba: 4278255596
+  transitionSpeed: 0.05
 --- !u!1 &5164257116500185683
 GameObject:
   m_ObjectHideFlags: 0
@@ -6871,6 +6890,7 @@ GameObject:
   - component: {fileID: 8344979931645174785}
   - component: {fileID: 2682922569781955951}
   - component: {fileID: 6121633244305464532}
+  - component: {fileID: 4625337792276106579}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -6955,6 +6975,24 @@ MonoBehaviour:
   - {fileID: 5402749365298384014}
   - {fileID: 4769427734851601197}
   - {fileID: 4761677981103736273}
+--- !u!114 &4625337792276106579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5955954759901661007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9c9082d18c5a4e4bc46ca63ba12aba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorsToChangeBetween:
+  - serializedVersion: 2
+    rgba: 4294967295
+  - serializedVersion: 2
+    rgba: 4278255596
+  transitionSpeed: 0.05
 --- !u!1 &6061188215149940677
 GameObject:
   m_ObjectHideFlags: 0
