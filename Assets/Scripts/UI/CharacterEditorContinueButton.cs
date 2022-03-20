@@ -130,7 +130,7 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
 
     private void OnDisable()
     {
-        if(this.mapCharacterManager != null && this.characterNumber > 1)
+        if(this.mapCharacterManager != null)
         {
             this.mapCharacterManager.createCharacters
             (

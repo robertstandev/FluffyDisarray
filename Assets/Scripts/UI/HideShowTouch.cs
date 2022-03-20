@@ -8,7 +8,7 @@ public class HideShowTouch : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField]private GameObject[] gameObjectToHideShow;
     private bool canExecute = true;
-    public void OnPointerDown(PointerEventData eventData) { if(canExecute) { disableEnableSelectedGameObject(); } }
+    public void OnPointerDown(PointerEventData eventData) { if(this.canExecute) { disableEnableSelectedGameObject(); } }
 
     public void disableEnableSelectedGameObject()
     {
