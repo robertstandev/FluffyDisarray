@@ -1,5 +1,5 @@
 
-Facut cache la SurroundingDetection ca sa nu se mai calculeze la fiecare frame wallul , pamantul etc
+Facut cache la SurroundingDetection ca sa nu se mai calculeze la fiecare frame care e dimensiunea la acele boxcast-uri in fata pentru wall,ledge si in jos pentru ground , insa desi faci cache la casturile alea tot calculezi locatia lor ex: stii ca ai boxcast de 2x4 in jos , salvezi sizeul si calculezi pozitia caracterului x,y si iei sizeul boxcastului din ce ai facut cache mai sus
 
 ==================================================
 
