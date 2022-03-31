@@ -1,6 +1,6 @@
 ==================================================
 
-
+creat un stage special unde sunt prietenii tai iar asta va fi pus in scriptul de MapStageManager la maximumNumberOfStages (sau maximumNumberOfStages + 1) dar incerc mai intai fara +1 tot atunci cand spawnez stageul asta mut ala de EndStage la pozitia in care sunt prietenii astia ai tai si pun la scriptul ala fie sa te dea inapoi la SceneStartup sau sa bage un video sau credits ceva
 
 ==================================================
 
