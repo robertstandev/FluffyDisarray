@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class StoryRandomMap : MonoBehaviour
 {
-    [SerializeField]private GameObject tutorialPrefab, bossInsidePrefab, bossOutsidePrefab; //vital stages
+    [SerializeField]private GameObject tutorialPrefab;
+    [SerializeField]private List<GameObject> bossStagesPrefabs;
     [SerializeField]private List<GameObject> stagesPrefabs;                                 //non vital stages
-    private int currentStageNumber = 0 , maximumNumberOfStages;
+    private int currentStageNumber = 0 , maximumNumberOfStages , bossNumberOfStages;
     private GameObject currentStagePrefab, instantiatedStagePrefab;
     private int selectedGameobjectIndex;
     private MapCharacterManager charactersFromSceneScript;
@@ -14,7 +15,9 @@ public class StoryRandomMap : MonoBehaviour
     private void Start()
     {
         this.charactersFromSceneScript = FindObjectOfType<MapCharacterManager>();
-        this.maximumNumberOfStages = this.stagesPrefabs.Count + 3;
+        this.maximumNumberOfStages = this.stagesPrefabs.Count + this.bossStagesPrefabs.Count + 1; // 1 = tutorial
+        this.bossNumberOfStages = this.bossStagesPrefabs.Count;
+
         StartCoroutine(startNextStage());
     }
 
@@ -25,8 +28,6 @@ public class StoryRandomMap : MonoBehaviour
         yield return checkAndRemoveCurrentStage();
 
         yield return setNextStage();
-
-        yield return null;
     }
 
     private IEnumerator checkAndRemoveCurrentStage()
@@ -44,17 +45,15 @@ public class StoryRandomMap : MonoBehaviour
         {
             this.currentStagePrefab = Instantiate(this.tutorialPrefab);
         }
-        else if(this.currentStageNumber.Equals(this.maximumNumberOfStages / 2))
+        else if(canSpawnNextBossStage())
         {
-            this.currentStagePrefab = Instantiate(this.bossInsidePrefab);
-        }
-        else if(this.currentStageNumber.Equals(this.maximumNumberOfStages - 1))
-        {
-            this.currentStagePrefab = Instantiate(this.bossOutsidePrefab);
+            yield return getNextStage(this.bossStagesPrefabs);
+            this.currentStagePrefab = Instantiate(this.bossStagesPrefabs[this.selectedGameobjectIndex]);
+            this.bossStagesPrefabs.RemoveAt(this.selectedGameobjectIndex);
         }
         else
         {
-            yield return getNextNonVitalStage();
+            yield return getNextStage(this.stagesPrefabs);
             this.currentStagePrefab = Instantiate(this.stagesPrefabs[this.selectedGameobjectIndex]);
             this.stagesPrefabs.RemoveAt(this.selectedGameobjectIndex);
         }
@@ -64,9 +63,27 @@ public class StoryRandomMap : MonoBehaviour
         yield return null;
     }
 
-    private IEnumerator getNextNonVitalStage()
+    private bool canSpawnNextBossStage()
     {
-        this.selectedGameobjectIndex = Random.Range(0, this.stagesPrefabs.Count);
+        if(this.currentStageNumber.Equals(this.maximumNumberOfStages - 1))
+        {
+            return true;
+        }
+
+        for(int i = 1 ; i <= this.bossNumberOfStages ; i++)
+        {
+            if(this.currentStageNumber.Equals(this.maximumNumberOfStages / i))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private IEnumerator getNextStage(List<GameObject> stagesList)
+    {
+        this.selectedGameobjectIndex = Random.Range(0, stagesList.Count);
         yield return null;
     }
 
