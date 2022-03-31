@@ -6,7 +6,7 @@ public class StoryRandomMap : MonoBehaviour
 {
     [SerializeField]private GameObject tutorialPrefab;
     [SerializeField]private List<GameObject> bossStagesPrefabs;
-    [SerializeField]private List<GameObject> stagesPrefabs;                                 //non vital stages
+    [SerializeField]private List<GameObject> normalStagesPrefabs;
     private int currentStageNumber = 0 , maximumNumberOfStages , bossNumberOfStages;
     private GameObject currentStagePrefab, instantiatedStagePrefab;
     private int selectedGameobjectIndex;
@@ -15,7 +15,7 @@ public class StoryRandomMap : MonoBehaviour
     private void Start()
     {
         this.charactersFromSceneScript = FindObjectOfType<MapCharacterManager>();
-        this.maximumNumberOfStages = this.stagesPrefabs.Count + this.bossStagesPrefabs.Count + 1; // 1 = tutorial
+        this.maximumNumberOfStages = this.normalStagesPrefabs.Count + this.bossStagesPrefabs.Count + 1; // 1 = tutorial
         this.bossNumberOfStages = this.bossStagesPrefabs.Count;
 
         StartCoroutine(startNextStage());
@@ -47,15 +47,11 @@ public class StoryRandomMap : MonoBehaviour
         }
         else if(canSpawnNextBossStage())
         {
-            yield return getNextStage(this.bossStagesPrefabs);
-            this.currentStagePrefab = Instantiate(this.bossStagesPrefabs[this.selectedGameobjectIndex]);
-            this.bossStagesPrefabs.RemoveAt(this.selectedGameobjectIndex);
+            yield return createNewStage(this.bossStagesPrefabs);
         }
         else
         {
-            yield return getNextStage(this.stagesPrefabs);
-            this.currentStagePrefab = Instantiate(this.stagesPrefabs[this.selectedGameobjectIndex]);
-            this.stagesPrefabs.RemoveAt(this.selectedGameobjectIndex);
+            yield return createNewStage(this.normalStagesPrefabs);
         }
 
         this.currentStageNumber += 1;
@@ -85,6 +81,13 @@ public class StoryRandomMap : MonoBehaviour
     {
         this.selectedGameobjectIndex = Random.Range(0, stagesList.Count);
         yield return null;
+    }
+
+    private IEnumerator createNewStage(List<GameObject> stagesList)
+    {
+        yield return getNextStage(stagesList);
+        this.currentStagePrefab = Instantiate(stagesList[this.selectedGameobjectIndex]);
+        stagesList.RemoveAt(this.selectedGameobjectIndex);
     }
 
     private IEnumerator resetPlayers()

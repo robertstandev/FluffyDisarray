@@ -3118,7 +3118,7 @@ MonoBehaviour:
   bossStagesPrefabs:
   - {fileID: 8994084814223411802, guid: 7828db02cd1c8fc09b197be91d67c8fc, type: 3}
   - {fileID: 4129171920100278125, guid: ceb6a9940865dfa6aafdc390656a4de2, type: 3}
-  stagesPrefabs:
+  normalStagesPrefabs:
   - {fileID: 3068445235186541642, guid: 863bf403af8ce8484b1212ffd76628c6, type: 3}
   - {fileID: 3783902184962191355, guid: cc83562e22cf12ba49faad88864c551a, type: 3}
   - {fileID: 501447857562756446, guid: a7feb033a7cd4e88e985d66a3668c058, type: 3}
