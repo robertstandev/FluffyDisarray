@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7978378735642480194}
   - component: {fileID: 632405628280943882}
   - component: {fileID: 5952718756336351268}
-  m_Layer: 31
+  m_Layer: 0
   m_Name: Layer1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,7 +195,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1688131169472049813}
   - component: {fileID: 432671678748288320}
-  m_Layer: 31
+  m_Layer: 0
   m_Name: HangingPlant Palette
   m_TagString: Untagged
   m_Icon: {fileID: 0}
