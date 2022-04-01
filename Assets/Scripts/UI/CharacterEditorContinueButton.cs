@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
 {
+    [SerializeField]private bool isStoryMap = false;
     [SerializeField]private MapCharacterManager mapCharacterManager;
     [SerializeField]private Text characterNumberText;
     [SerializeField]private Text characterTypeText;
@@ -37,6 +38,11 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
         this.botPrefab = this.mapCharacterManager.getBotPrefab();
 
         this.hideShowTouchComponent = GetComponent<HideShowTouch>();
+
+        if(this.isStoryMap)
+        {
+            this.hideShowTouchComponent.setCanExecute(false);
+        }
     }
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -86,6 +92,11 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
         this.playerCount += 1;
         if(this.playerCount.Equals(4))
         {
+            if(this.isStoryMap)
+            {
+                transform.parent.parent.gameObject.SetActive(false);
+                return;
+            }
             this.hideShowTouchComponent.disableEnableSelectedGameObject();
             this.characterTypeText.text = "Bot";
             this.controlsGroupGameObject.SetActive(false);

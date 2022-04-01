@@ -2208,6 +2208,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2334509320531017432, guid: f5435c9e620fa0f389c26129eb013ca1,
         type: 3}
+      propertyPath: isStoryMap
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334509320531017432, guid: f5435c9e620fa0f389c26129eb013ca1,
+        type: 3}
       propertyPath: mapCharacterManager
       value: 
       objectReference: {fileID: 548437826}
