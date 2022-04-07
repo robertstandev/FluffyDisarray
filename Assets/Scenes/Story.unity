@@ -6023,6 +6023,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2132004575}
+  - component: {fileID: 2132004576}
   m_Layer: 0
   m_Name: DELETE AFTER----------------- (1)
   m_TagString: Untagged
@@ -6044,6 +6045,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2132004576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2132004574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d4d3cf9cb76172098c0bbc8aa97ef7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  test: []
 --- !u!4 &2140493717 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 863883885460183355, guid: 0c33870a8ce9aa67bb58555c1c6301cd,
