@@ -1,4 +1,13 @@
 
+Cand aleg la character selection primul caracter sa sterg toata sectiunea(grupul UI) de offline/online pentru ca este clar ca daca nu te conectezi la cineva atunci nu ai cum sa selectezi alte caractere/boti si dupa sa conectezi un caracter online.
+Deci doar primul poate da sa dea join/host
+
+================================================
+
+Cand se conecteaza un player la alt player sa vada mai intai daca ipul e valid , dupa daca portul e deschis si dupa daca mai are loc in echipa respectiva la IP-ul ala
+
+================================================
+
 Refacut UI-UL la character/bot selection de la inceput poate pun sagetica aia de dau la pagina cu keyboard buttons select si cu offline/online sa o pun ca un scris tot pe prima pagina aia deasupra la Save&Continue dar pe mijloc
 
 =================================================
