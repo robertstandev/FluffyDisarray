@@ -6322,6 +6322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 106b81c50d921399eb8278626a0dc5ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isStoryMap: 0
   mapCharacterManager: {fileID: 0}
   characterNumberText: {fileID: 5961916412668621893}
   characterTypeText: {fileID: 3691142797219448312}
@@ -6660,7 +6661,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2217045085964350180
 RectTransform:
   m_ObjectHideFlags: 0
