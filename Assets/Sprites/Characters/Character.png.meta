@@ -113,6 +113,8 @@ TextureImporter:
   isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -144,9 +146,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
@@ -534,6 +539,23 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Furry_Jump_11_256_1024_14: 21300056
+      Furry_Jump_11_256_1024_12: 21300052
+      Furry_Jump_11_256_1024_3: 21300034
+      Furry_Jump_11_256_1024_7: 21300042
+      Furry_Jump_11_256_1024_0: 21300028
+      Furry_Jump_11_256_1024_5: 21300038
+      Furry_Jump_11_256_1024_1: 21300030
+      Furry_Jump_11_256_1024_2: 21300032
+      Furry_Jump_11_256_1024_10: 21300048
+      Furry_Jump_11_256_1024_9: 21300046
+      Furry_Jump_11_256_1024_15: 21300058
+      Furry_Jump_11_256_1024_6: 21300040
+      Furry_Jump_11_256_1024_11: 21300050
+      Furry_Jump_11_256_1024_8: 21300044
+      Furry_Jump_11_256_1024_13: 21300054
+      Furry_Jump_11_256_1024_4: 21300036
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

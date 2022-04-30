@@ -50,6 +50,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -81,9 +83,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
@@ -324,6 +329,16 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      FurBall_Cloud_1024_5: 21300010
+      FurBall_Cloud_1024_2: 21300004
+      FurBall_Cloud_1024_7: 21300014
+      FurBall_Cloud_1024_0: 21300000
+      FurBall_Cloud_1024_8: 21300016
+      FurBall_Cloud_1024_1: 21300002
+      FurBall_Cloud_1024_6: 21300012
+      FurBall_Cloud_1024_3: 21300006
+      FurBall_Cloud_1024_4: 21300008
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
