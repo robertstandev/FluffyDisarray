@@ -7,7 +7,7 @@ public class MapCharacterManager : MonoBehaviour
     private int playerCount = 0;
     private int botCount = 0;
 
-    [SerializeField]private GameObject mapGameObject;
+    [SerializeField]private GameObject mapManager;
     [SerializeField]private GameObject startupCamera;
     [SerializeField]private GameObject playerPrefab;
     [SerializeField]private GameObject cameraPrefab;
@@ -26,7 +26,7 @@ public class MapCharacterManager : MonoBehaviour
     private List<GameObject> gameCharactersPlayerCameras = new List<GameObject>();
     private List<PlayerInputManager> gameCharactersPlayerInputManagers = new List<PlayerInputManager>();
 
-    private void Awake() { this.mapGameObject.SetActive(false); }
+    private void Awake() { this.mapManager.SetActive(false); }
 
     private IEnumerator configureCharacters()
     {
@@ -124,7 +124,7 @@ public class MapCharacterManager : MonoBehaviour
 
         Destroy(this.startupCamera);
 
-        this.mapGameObject.SetActive(true);
+        this.mapManager.SetActive(true);
 
         StartCoroutine(configureCharactersAndEnableManagers());
     }
