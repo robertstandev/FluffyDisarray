@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour, IController
             this.positionModifier.y = transform.position.y + this.mySpriteRenderer.bounds.size.y;
             transform.position = this.positionModifier;
             reactivateGravity();
-            Debug.Log("Ledge Climb");
+            //Debug.Log("Ledge Climb");
         }
     }
     private void OnDownInput()
@@ -123,7 +123,7 @@ public class PlayerController : MonoBehaviour, IController
             transform.position = this.positionModifier;
 
             reactivateGravity();
-            Debug.Log("Ledge Drop");
+            //Debug.Log("Ledge Drop");
         }
         else if(!this.isGrounded && !this.canGrabLedge)
         {
@@ -133,7 +133,7 @@ public class PlayerController : MonoBehaviour, IController
             this.velocityModifier.x = 0f;
             this.velocityModifier.y = -this.groundPoungSpeed;
             this.rb.velocity = this.velocityModifier;
-            Debug.Log("Ground Pounding");
+            //Debug.Log("Ground Pounding");
         }
     }
     private void OnJump()
@@ -141,7 +141,7 @@ public class PlayerController : MonoBehaviour, IController
         if(!this.isGroundPounding && !this.canGrabLedge)
         {
             this.jumpComponent.jump(this.rb, this.staminaComponent);
-            Debug.Log("Check Jump");
+            //Debug.Log("Check Jump");
         }
     }
 
@@ -186,13 +186,13 @@ public class PlayerController : MonoBehaviour, IController
             this.staminaComponent.startStaminaModifierTimer(this.staminaComponent.addStamina);
             reactivateGravity();
             activateImpactEffect();
-            Debug.Log("Grounded");
+            //Debug.Log("Grounded");
         }
         else if(!this.isGrounded && this.isGroundedPrevVal)
         {
             this.isGroundedPrevVal = false;
             this.staminaComponent.stopStaminaModifierTimer();
-            Debug.Log("Not Grounded");
+            //Debug.Log("Not Grounded");
         }
     }
 
@@ -203,7 +203,7 @@ public class PlayerController : MonoBehaviour, IController
             this.canWallJumpPrevVal = true;
             reactivateGravity();
             this.jumpComponent.setJumpCounter(1);
-            Debug.Log("Touching wall in front so you can jump once if you have stamina");
+            //Debug.Log("Touching wall in front so you can jump once if you have stamina");
         }
         else if(!this.canWallJump && this.canWallJumpPrevVal && !this.isGrounded)
         {
@@ -214,7 +214,7 @@ public class PlayerController : MonoBehaviour, IController
             this.velocityModifier.x = this.rb.velocity.x;
             this.velocityModifier.y = Mathf.Clamp(this.rb.velocity.y , -this.wallSlideSpeed, float.MaxValue);
             this.rb.velocity = this.velocityModifier;
-            Debug.Log("Wall Sliding");
+            //Debug.Log("Wall Sliding");
         }
     }
 
@@ -224,13 +224,13 @@ public class PlayerController : MonoBehaviour, IController
         {
             this.canGrabLedgePrevVal = true;
             this.rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionY;
-            Debug.Log("Grabbed Ledge");
+            //Debug.Log("Grabbed Ledge");
         }
         else if(!this.canGrabLedge && this.canGrabLedgePrevVal && !this.isGrounded)
         {
             this.canGrabLedgePrevVal = false;
             reactivateGravity();
-            Debug.Log("Not Grabbing Ledge Anymore");
+            //Debug.Log("Not Grabbing Ledge Anymore");
         }
     }
     private void reactivateGravity() { this.rb.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation; }
