@@ -73,6 +73,7 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
     {
         this.characterNumber += 1;
         this.characterNumberText.text = "Character Nr.  " + this.characterNumber.ToString();
+        this.playerConnectionTypeGroup.SetActive(false);
     }
 
     private void checkAndExecuteTypeOfTextAvailable()
@@ -100,7 +101,6 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
             this.hideShowTouchComponent.disableEnableSelectedGameObject();
             this.characterTypeText.text = "Bot";
             this.controlsGroupGameObject.SetActive(false);
-            this.playerConnectionTypeGroup.SetActive(false);
             this.nextPageGameObject.SetActive(false);
         }
     }
