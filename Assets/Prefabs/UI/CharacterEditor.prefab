@@ -6463,6 +6463,7 @@ MonoBehaviour:
   gameObjectToHideShow:
   - {fileID: 6484543952432318323}
   - {fileID: 7337182137786670086}
+  - {fileID: 5859313514197670700}
 --- !u!114 &2334509320531017432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6483,7 +6484,6 @@ MonoBehaviour:
   characterProjectileSelectorScript: {fileID: 7580099734392434975}
   finishText: {fileID: 2820303113435381564}
   controlsGroupGameObject: {fileID: 8761389940637880086}
-  playerConnectionTypeGroup: {fileID: 5859313514197670700}
   nextPageGameObject: {fileID: 6901709275978192014}
 --- !u!1 &5767272661242544372
 GameObject:

@@ -14,7 +14,6 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
     [SerializeField]private CharacterEditorProjectilePicker characterProjectileSelectorScript;
     [SerializeField]private GameObject finishText;
     [SerializeField]private GameObject controlsGroupGameObject;
-    [SerializeField]private GameObject  playerConnectionTypeGroup;
     [SerializeField]private GameObject nextPageGameObject;
     private HideShowTouch hideShowTouchComponent;
     private bool hasExecutedOnce = false;
@@ -38,11 +37,6 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
         this.botPrefab = this.mapCharacterManager.getBotPrefab();
 
         this.hideShowTouchComponent = GetComponent<HideShowTouch>();
-
-        if(this.isStoryMap)
-        {
-            this.hideShowTouchComponent.setCanExecute(false);
-        }
     }
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -61,7 +55,6 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
     {
         if(!this.hasExecutedOnce)
         {
-            this.playerConnectionTypeGroup.SetActive(true);
             this.finishText.SetActive(true);
             this.hideShowTouchComponent.setCanExecute(false);
             this.hasExecutedOnce = true;
@@ -73,7 +66,6 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
     {
         this.characterNumber += 1;
         this.characterNumberText.text = "Character Nr.  " + this.characterNumber.ToString();
-        this.playerConnectionTypeGroup.SetActive(false);
     }
 
     private void checkAndExecuteTypeOfTextAvailable()
