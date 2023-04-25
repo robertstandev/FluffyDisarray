@@ -27,11 +27,11 @@ public class CollectibleHighVoltageEffect : MonoBehaviour
 
     private void checkDistanceAndDamageThem()
     {
-       for(int i = 0 ; i < listOfCharactersInScene.Length ; i++)
+       for(int i = 0 ; i < this.listOfCharactersInScene.Length ; i++)
        {
-           if(Vector2.Distance(transform.position , listOfCharactersInScene[i].transform.position) < this.distanceToAffectCharacters)
+           if(Vector2.Distance(transform.position , this.listOfCharactersInScene[i].transform.position) < this.distanceToAffectCharacters)
            {
-               listOfHealthComponents[i].substractHealth(2);
+               this.listOfHealthComponents[i].substractHealth(2);
            }
        }
     }
