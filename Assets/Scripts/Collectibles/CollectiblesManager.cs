@@ -18,9 +18,9 @@ public class CollectiblesManager : MonoBehaviour
     {
         for (int i = 0 ; i < collectiblesList.Length ; i++)
         {
-            instantiatedCollectibleList.Add(Instantiate(collectiblesList[i] , Vector3.zero , Quaternion.identity));
-            instantiatedCollectibleList[i].transform.parent = this.gameObject.transform;
-            instantiatedCollectibleList[i].transform.localPosition = Vector3.zero;
+            this.instantiatedCollectibleList.Add(Instantiate(collectiblesList[i] , Vector3.zero , Quaternion.identity));
+            this.instantiatedCollectibleList[i].transform.parent = this.gameObject.transform;
+            this.instantiatedCollectibleList[i].transform.localPosition = Vector3.zero;
         }
     }
 
