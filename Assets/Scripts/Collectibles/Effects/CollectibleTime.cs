@@ -18,7 +18,7 @@ public class CollectibleTime : MonoBehaviour
     {
         if(this.getCharactersFromSceneScript.isCollidedObjectInList(other.gameObject))
         {
-            freezeEveryoneExceptTrigger(getCharactersFromSceneScript.getIndexOfCollidedObject(other.gameObject));
+            freezeEveryoneExceptTrigger(this.getCharactersFromSceneScript.getIndexOfCollidedObject(other.gameObject));
             this.gameObject.SetActive(false);
         }
     }
