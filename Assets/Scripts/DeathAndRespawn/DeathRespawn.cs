@@ -33,7 +33,7 @@ public class DeathRespawn : MonoBehaviour
     {
         while(true)
         {
-            yield return wait;
+            yield return this.wait;
             checkDeadPlayers();
         }
     }
