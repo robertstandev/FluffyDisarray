@@ -36,7 +36,7 @@ public class MapCharacterManager : MonoBehaviour
         {
             this.gameCharacters.Add(Instantiate(this.temporaryGameCharacters[i] , Vector3.zero , Quaternion.identity));
 
-            if(this.gameCharacters[i].name.Equals(playerPrefab.name + "(Clone)"))
+            if(this.gameCharacters[i].name.Equals(this.playerPrefab.name + "(Clone)"))
             {
                 tempPlayerNumber += 1;
 
@@ -70,7 +70,7 @@ public class MapCharacterManager : MonoBehaviour
 
     private void configurePlayerCamera(GameObject character, int tempPlayerNumber)
     {
-        this.gameCharactersPlayerCameras.Add(Instantiate(cameraPrefab , Vector3.zero , Quaternion.identity));
+        this.gameCharactersPlayerCameras.Add(Instantiate(this.cameraPrefab , Vector3.zero , Quaternion.identity));
         this.gameCharactersPlayerCameras[this.gameCharactersPlayerCameras.Count - 1].GetComponent<CameraController>().setObjectToFollow(character);
         Camera tempCameraComponent = this.gameCharactersPlayerCameras[this.gameCharactersPlayerCameras.Count - 1].GetComponentInChildren<Camera>();
         tempCameraComponent.rect = getCameraRect(tempPlayerNumber);
@@ -100,8 +100,8 @@ public class MapCharacterManager : MonoBehaviour
 
     private void configureCharacterStartPosition(GameObject character, int tempCharacterNumber)
     {
-        character.transform.localPosition = charactersSpawnPositions[tempCharacterNumber];
-        character.GetComponent<Respawn>().setPlaceToRespawn(charactersSpawnPositions[tempCharacterNumber]);
+        character.transform.localPosition = this.charactersSpawnPositions[tempCharacterNumber];
+        character.GetComponent<Respawn>().setPlaceToRespawn(this.charactersSpawnPositions[tempCharacterNumber]);
     }
 
     public List<GameObject> getListOfCharactersFromScene() { return this.gameCharacters; }
