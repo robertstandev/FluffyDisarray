@@ -14,7 +14,7 @@ public class OnCollisionTransitionHide : MonoBehaviour
     private SpriteRenderer spriteRendererComponent;
     private float originalSpriteRendererAlpha;
     private bool alreadyActivated = false;
-   
+    private float progress = 0f;
 
     private void Awake()
     {
@@ -45,12 +45,13 @@ public class OnCollisionTransitionHide : MonoBehaviour
     {
         yield return new WaitForSeconds(startDelay);
 
-        float progress = 0f;
+        this.progress = 0f;
+
         while(this.spriteRendererComponent.color.a != alphaToChangeTo)
         {
-            progress += Time.deltaTime * (progress <= 0.007f ? transitionSpeed / 10000 : 1f);
+            this.progress += Time.deltaTime * (this.progress <= 0.003f ? transitionSpeed / 10000 : 1f);
 
-            this.spriteRendererComponent.color = new Color(this.spriteRendererComponent.color.r, this.spriteRendererComponent.color.g, this.spriteRendererComponent.color.b ,Mathf.Lerp(this.spriteRendererComponent.color.a, alphaToChangeTo, progress));
+            this.spriteRendererComponent.color = new Color(this.spriteRendererComponent.color.r, this.spriteRendererComponent.color.g, this.spriteRendererComponent.color.b ,Mathf.Lerp(this.spriteRendererComponent.color.a, alphaToChangeTo, this.progress));
             yield return null;
         }
     }
