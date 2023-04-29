@@ -11,6 +11,7 @@ public class MeteorShowerManager : MonoBehaviour
     [SerializeField][Range(120,720)]private float minimumStartInterval = 120f;
     [SerializeField][Range(240,720)]private float maximumStartInterval = 240f;
     [SerializeField]private int duration = 30;
+    private int meteorShowerSpawnTimerCurrentDuration = 0;
     private WaitForSeconds meteorSpawnerWaitTime = new WaitForSeconds(0.5f) , meteorSpawnerStopCameraShakeDelayTime = new WaitForSeconds(5f);
     private List<CameraShake> playerCamerasShakeScripts = new List<CameraShake>();
 
@@ -41,13 +42,13 @@ public class MeteorShowerManager : MonoBehaviour
 
     private IEnumerator meteorShowerSpawnerTimer()
     {
-        int currentDuration = this.duration * 2;
+        this.meteorShowerSpawnTimerCurrentDuration = this.duration * 2;
 
         enableCamerasShake();
-        while(currentDuration > 0)
+        while(this.meteorShowerSpawnTimerCurrentDuration > 0)
         {
             yield return this.meteorSpawnerWaitTime;
-            currentDuration -= 1;
+            this.meteorShowerSpawnTimerCurrentDuration -= 1;
             fireMeteor();
         }
     }
