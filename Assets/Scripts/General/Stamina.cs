@@ -18,13 +18,13 @@ public class Stamina : MonoBehaviour
    
    private IEnumerator staminaModifierTimer(System.Action<int> getMethod)
    {
-      WaitForSeconds delay = new WaitForSeconds(staminaReloadSpeed);
+      WaitForSeconds delay = new WaitForSeconds(this.staminaReloadSpeed);
        
       while(true)
       {
          yield return delay;
 
-         getMethod?.Invoke(staminaReloadAmmount);
+         getMethod?.Invoke(this.staminaReloadAmmount);
 
          if(((getMethod == addStamina) && (this.currentStamina == this.maximumStamina)) || ((getMethod == substractStamina) && (this.currentStamina == 0)))
          {
