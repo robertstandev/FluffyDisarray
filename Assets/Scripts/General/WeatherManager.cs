@@ -17,6 +17,8 @@ public class WeatherManager : MonoBehaviour
 
     private Color32 originalEnvironmentMaterialColor;
 
+    private float progress = 0f;
+
     private void OnEnable()
     {
         instantiateEffects();
@@ -47,12 +49,12 @@ public class WeatherManager : MonoBehaviour
 
     private IEnumerator materialTransitionTimer(Color32 colorToChangeTo, float startDelay , float transitionSpeed)
     {
-        float progress = 0f;
+        this.progress = 0f;
         yield return new WaitForSeconds(startDelay);
         while(this.environmentMaterial.color != colorToChangeTo)
         {
-            progress += Time.deltaTime * (progress <= 0.008f ? transitionSpeed / 10000 : 1f);
-            this.environmentMaterial.color = Color.Lerp(this.environmentMaterial.color, colorToChangeTo, progress);
+            this.progress += Time.deltaTime * (this.progress <= 0.008f ? transitionSpeed / 10000 : 1f);
+            this.environmentMaterial.color = Color.Lerp(this.environmentMaterial.color, colorToChangeTo, this.progress);
             yield return null;
         }
     }
