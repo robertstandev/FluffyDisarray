@@ -45,7 +45,7 @@ public class MiniGamesManager : MonoBehaviour
         this.displayTextComponent.text = "New round is starting\n" + "Good luck!";
         this.displayTextComponent.enabled = true;
 
-        yield return timerWait5Seconds;
+        yield return this.timerWait5Seconds;
         this.displayTextComponent.enabled = false;
         this.instantiatedMiniGames[Random.Range(0, this.instantiatedMiniGames.Count)].SetActive(true);
     }
@@ -54,7 +54,7 @@ public class MiniGamesManager : MonoBehaviour
     {
         this.displayTextComponent.text = getAliveCharacters();
         this.displayTextComponent.enabled = true;
-        yield return timerWait10Seconds;
+        yield return this.timerWait10Seconds;
         this.displayTextComponent.enabled = false;
         StartCoroutine(nextRound());     
     }
