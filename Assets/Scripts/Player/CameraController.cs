@@ -8,8 +8,8 @@ public class CameraController : MonoBehaviour
 
 	public void LateUpdate()
 	{
-		if(!objectToFollow) { return; }
-		transform.position = Vector3.Lerp(transform.position, objectToFollow.transform.position, followSpeed) + new Vector3(0, 0, -12);
+		if(!this.objectToFollow) { return; }
+		transform.position = Vector3.Lerp(transform.position, this.objectToFollow.transform.position, this.followSpeed) + new Vector3(0, 0, -12);
 	}
 
 	public GameObject getObjectToFollow() { return this.objectToFollow; }
