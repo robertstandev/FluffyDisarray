@@ -8,7 +8,7 @@ public class StoryRandomMap : MonoBehaviour
     [SerializeField]private List<GameObject> bossStagesPrefabs;
     [SerializeField]private List<GameObject> normalStagesPrefabs;
     private int currentStageNumber = 0 , maximumNumberOfStages , bossNumberOfStages;
-    private GameObject currentStagePrefab, instantiatedStagePrefab;
+    private GameObject currentStagePrefab;
     private int selectedGameobjectIndex;
     private MapCharacterManager charactersFromSceneScript;
 
