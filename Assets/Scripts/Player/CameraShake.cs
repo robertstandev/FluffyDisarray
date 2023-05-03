@@ -15,7 +15,7 @@ public class CameraShake : MonoBehaviour
    private void Start()
    {
         this.myCamera = this.transform;
-        this.startPosition = myCamera.localPosition;
+        this.startPosition = this.myCamera.localPosition;
         resetCurrentDuration();
    }
 
@@ -33,7 +33,7 @@ public class CameraShake : MonoBehaviour
     {
         while(this.currentDuration > 0)
         {
-            yield return timerWait;
+            yield return this.timerWait;
             
             this.myCamera.localPosition = this.startPosition + Random.insideUnitSphere * this.power;
             this.currentDuration -= 1;
