@@ -33,26 +33,26 @@ public class PlayerController : MonoBehaviour, IController
 
 	private void Start()
     {
-        this.movementInput = playerInputManager.Gameplay.MovementInput;
+        this.movementInput = this.playerInputManager.Gameplay.MovementInput;
         this.movementInput.performed += context => OnMove(context);
         this.movementInput.canceled += context => OnMove(context);
 
-        this.upInput = playerInputManager.Gameplay.UpInput;
+        this.upInput = this.playerInputManager.Gameplay.UpInput;
         this.upInput.performed += context => OnUpInput();
 
-        this.downInput = playerInputManager.Gameplay.DownInput;
+        this.downInput = this.playerInputManager.Gameplay.DownInput;
         this.downInput.performed += context => OnDownInput();
 
-        this.jumpInput = playerInputManager.Gameplay.JumpInput;
+        this.jumpInput = this.playerInputManager.Gameplay.JumpInput;
         this.jumpInput.performed += context => OnJump();
 
-        this.projectileInput = playerInputManager.Gameplay.ProjectileInput;
+        this.projectileInput = this.playerInputManager.Gameplay.ProjectileInput;
         this.projectileInput.performed += context => GetComponent<ProjectileTrigger>().executeSkill();
 
-        this.slashInput = playerInputManager.Gameplay.SlashInput;
+        this.slashInput = this.playerInputManager.Gameplay.SlashInput;
         this.slashInput.performed += context => GetComponent<SlashTrigger>().executeSkill();
 
-        this.menuInput = playerInputManager.Gameplay.MenuInput;
+        this.menuInput = this.playerInputManager.Gameplay.MenuInput;
         this.menuInput.performed += context => this.menuGameObject.SetActive(!this.menuGameObject.activeInHierarchy);
 
         this.movementComponent = GetComponent<Movement>();
