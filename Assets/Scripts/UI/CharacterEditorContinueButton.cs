@@ -104,7 +104,7 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
         if(this.characterNumber == 7)
         {
             this.GetComponent<Text>().text = "Save & Finish";
-            finishText.SetActive(false);
+            this.finishText.SetActive(false);
         }
     }
 
@@ -121,7 +121,7 @@ public class CharacterEditorContinueButton : MonoBehaviour, IPointerDownHandler
     }
     private void configureCharacter()
     {
-        this.gameCharacters.Add(this.characterTypeText.text.Equals("Player") ? playerPrefab : botPrefab);
+        this.gameCharacters.Add(this.characterTypeText.text.Equals("Player") ? this.playerPrefab : this.botPrefab);
         this.gameCharactersColors.Add(this.characterColorImage.color);
         this.gameCharactersProjectiles.Add(this.characterProjectileSelectorScript.getProjectilePrefab());
         this.gameCharactersProjectilesPositionOffsets.Add(this.characterProjectileSelectorScript.getProjectilePositionOffset());
