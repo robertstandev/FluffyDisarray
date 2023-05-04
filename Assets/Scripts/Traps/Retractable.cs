@@ -14,6 +14,9 @@ public class Retractable : MonoBehaviour
     private BoxCollider2D killEffectCollider;
     private float halfDistanceBetweenExtendedPositionAndRetractedPosition;
     private Vector3 newGameObjectLocalPosition;
+    private WaitForSeconds timerExecutionSpeed;
+    private WaitForSeconds timerExecutionDelay;
+
 
     private void Awake()
     {
@@ -23,24 +26,20 @@ public class Retractable : MonoBehaviour
     private void OnEnable()
     {
         this.isRetracting = true;
+        this.timerExecutionSpeed = new WaitForSeconds(this.executionSpeed);
+        this.timerExecutionDelay = new WaitForSeconds(this.executionDelay);
         StartCoroutine(retractableTimer());
     }
 
-    private void OnDisable()
-    {
-        StopAllCoroutines();
-    }
+    private void OnDisable() { StopAllCoroutines(); }
 
     private IEnumerator retractableTimer()
     {
-        WaitForSeconds timerExecutionSpeed = new WaitForSeconds(this.executionSpeed);
-        WaitForSeconds timerExecutionDelay = new WaitForSeconds(this.executionDelay);
-
         this.newGameObjectLocalPosition = this.transform.localPosition;
 
         while(true)
         {
-            yield return timerExecutionSpeed;
+            yield return this.timerExecutionSpeed;
 
             this.newGameObjectLocalPosition.y += this.isRetracting ? -this.incrementBy : this.incrementBy;
             this.gameObject.transform.localPosition = this.newGameObjectLocalPosition;
@@ -48,12 +47,12 @@ public class Retractable : MonoBehaviour
             if(this.newGameObjectLocalPosition.y <= this.retractedPosition && this.isRetracting)
             {
                 this.isRetracting = false;
-                yield return timerExecutionDelay;
+                yield return this.timerExecutionDelay;
             }
             else if(this.newGameObjectLocalPosition.y >= this.extendedPosition && !this.isRetracting)
             {
                 this.isRetracting = true;
-                yield return timerExecutionDelay;
+                yield return this.timerExecutionDelay;
             }
 
             this.killEffectCollider.enabled = this.disableKillEffectWhenRetracting && this.newGameObjectLocalPosition.y < this.halfDistanceBetweenExtendedPositionAndRetractedPosition ? false : true;
