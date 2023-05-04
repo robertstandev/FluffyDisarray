@@ -39,7 +39,7 @@ public class SlashTrigger : MonoBehaviour
         while (this.instantiatedSlashEffect.activeInHierarchy)
         {
             this.instantiatedSlashEffect.transform.localScale = new Vector2(this.characterSpriteRenderer.flipX ? -1 : 1, 1f);
-            yield return wait;
+            yield return this.wait;
         }
         yield return null;
     }
