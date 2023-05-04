@@ -27,10 +27,10 @@ public class ProjectileEffect : MonoBehaviour
 
     private void OnEnable()
     {
-        transform.position = new Vector2(this.characterSpriteRenderer.transform.position.x + (characterSpriteRenderer.flipX ? -this.startLocalPosition.x : this.startLocalPosition.x), this.characterSpriteRenderer.transform.position.y + this.startLocalPosition.y);
+        transform.position = new Vector2(this.characterSpriteRenderer.transform.position.x + (this.characterSpriteRenderer.flipX ? -this.startLocalPosition.x : this.startLocalPosition.x), this.characterSpriteRenderer.transform.position.y + this.startLocalPosition.y);
         this.currentModifiedPosition = this.transform.position;
 
-        this.moveDirection = characterSpriteRenderer.flipX ? -0.1f : 0.1f;
+        this.moveDirection = this.characterSpriteRenderer.flipX ? -0.1f : 0.1f;
 
         StartCoroutine("executeProjectile");
     }
@@ -45,7 +45,7 @@ public class ProjectileEffect : MonoBehaviour
     {
         while(true)
         {
-            yield return wait;
+            yield return this.wait;
             this.currentModifiedPosition.x += this.moveDirection;
             this.transform.position = this.currentModifiedPosition;
         }
