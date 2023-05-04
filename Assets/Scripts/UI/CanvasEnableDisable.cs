@@ -8,7 +8,7 @@ public class CanvasEnableDisable : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField]private Canvas[] canvasObjects;
     private bool canExecute = true;
-    public void OnPointerDown(PointerEventData eventData) { if(canExecute) { disableEnableSelectedCanvas(); } }
+    public void OnPointerDown(PointerEventData eventData) { if(this.canExecute) { disableEnableSelectedCanvas(); } }
 
     public void disableEnableSelectedCanvas()
     {
