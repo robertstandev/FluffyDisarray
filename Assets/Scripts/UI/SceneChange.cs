@@ -11,6 +11,6 @@ public class SceneChange : MonoBehaviour, IPointerDownHandler
     private SceneManagerScript sceneManagerScript;
     private void Awake() { this.sceneManagerScript = FindObjectOfType<SceneManagerScript>(); }
 
-    public void OnPointerDown(PointerEventData eventData) { this.sceneManagerScript.loadScene(sceneName.ToString()); }
+    public void OnPointerDown(PointerEventData eventData) { this.sceneManagerScript.loadScene(this.sceneName.ToString()); }
 
 }
