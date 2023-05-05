@@ -9,6 +9,7 @@ public class TextColorChanger : MonoBehaviour
     [SerializeField]private float transitionSpeed = 1f;
     private Text cachedTextComponent;
     private Color32 colorChangingTo;
+    private float progress = 0f;
 
     private void Awake()
     {
@@ -29,13 +30,13 @@ public class TextColorChanger : MonoBehaviour
 
     private IEnumerator changeColorTo(Color32 colorToChangeTo)
     {
-        float progress = 0f;
+        this.progress = 0f;
         this.colorChangingTo = colorToChangeTo;
 
         while(this.cachedTextComponent.color != colorToChangeTo)
         {
-            progress += Time.deltaTime * this.transitionSpeed;
-            this.cachedTextComponent.color = Color.Lerp(this.cachedTextComponent.color, colorToChangeTo, progress);
+            this.progress += Time.deltaTime * this.transitionSpeed;
+            this.cachedTextComponent.color = Color.Lerp(this.cachedTextComponent.color, colorToChangeTo, this.progress);
             yield return null;
         }
     }
