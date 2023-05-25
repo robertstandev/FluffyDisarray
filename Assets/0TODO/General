@@ -1,3 +1,8 @@
+BUG:
+Cand sunt 2 jucatori+ daca sar amandoi in acelasi timp , in aer daca se ating , practic vor pluti pentru ca detecteaza ca si cum fiecare e agatat de un ledge.
+Facut ca daca e player/bot (poate cu timpul si mobs/boss) sa nu il ia ca ledge
+
+================================================
 
 Cand se conecteaza un player la alt player sa vada mai intai daca ipul e valid , dupa daca portul e deschis si dupa daca mai are loc in echipa respectiva la IP-ul ala
 
